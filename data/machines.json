@@ -1,0 +1,40 @@
+{
+  "activeId": "m_efma",
+  "machines": [
+    {
+      "id": "m_korgt1_ch3",
+      "name": "Korg T1",
+      "out": "USB MIDI 1",
+      "channel": 3,
+      "midnamFile": "T1.midnam"
+    },
+    {
+      "id": "m_korgtr_ch5",
+      "name": "Korg TR-Rack",
+      "out": "USB MIDI 1",
+      "channel": 5,
+      "midnamFile": "TR-Rack.midnam"
+    },
+    {
+      "id": "m_k2600",
+      "name": "Kurzweil K2600",
+      "out": "USB MIDI 2",
+      "channel": 1,
+      "midnamFile": "K2600.midnam"
+    },
+    {
+      "id": "m_pc3k",
+      "name": "Kurzweil PC3K",
+      "out": "USB MIDI 5",
+      "channel": 1,
+      "midnamFile": "PC3K.midnam"
+    },
+    {
+      "id": "m_efma",
+      "name": "Kodamo EFM",
+      "out": "USB MIDI 1",
+      "channel": 1,
+      "midnamFile": "Essence FM.midnam"
+    }
+  ]
+}

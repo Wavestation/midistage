@@ -1,0 +1,1317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MIDINameDocument
+	PUBLIC "-//MIDI Manufacturers Association//DTD MIDINameDocument 0.7//EN"
+	"http://www.midi.org/dtds/MIDINameDocument10.dtd"
+	>
+
+<MIDINameDocument>
+	<Author>Sound Quest Inc.</Author>
+	<MasterDeviceNames>
+		<Manufacturer>Access</Manufacturer>
+		<Model>Virus Rack XL</Model>
+		<CustomDeviceMode Name="">
+			<ChannelNameSetAssignments>
+				<ChannelNameSetAssign Channel="1" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="2" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="3" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="4" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="5" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="6" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="7" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="8" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="9" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="10" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="11" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="12" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="13" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="14" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="15" NameSet="Singless" />
+				<ChannelNameSetAssign Channel="16" NameSet="Singless" />
+			</ChannelNameSetAssignments>
+		</CustomDeviceMode>
+
+		<ChannelNameSet Name="Singless">
+			<AvailableForChannels>
+				<AvailableChannel Channel="1" Available="true" />
+				<AvailableChannel Channel="2" Available="true" />
+				<AvailableChannel Channel="3" Available="true" />
+				<AvailableChannel Channel="4" Available="true" />
+				<AvailableChannel Channel="5" Available="true" />
+				<AvailableChannel Channel="6" Available="true" />
+				<AvailableChannel Channel="7" Available="true" />
+				<AvailableChannel Channel="8" Available="true" />
+				<AvailableChannel Channel="9" Available="true" />
+				<AvailableChannel Channel="10" Available="true" />
+				<AvailableChannel Channel="11" Available="true" />
+				<AvailableChannel Channel="12" Available="true" />
+				<AvailableChannel Channel="13" Available="true" />
+				<AvailableChannel Channel="14" Available="true" />
+				<AvailableChannel Channel="15" Available="true" />
+				<AvailableChannel Channel="16" Available="true" />
+			</AvailableForChannels>
+			<PatchBank Name="Singles Bank A" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Singles Bank A" />
+			</PatchBank>
+			<PatchBank Name="Singles Bank B" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="1" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Singles Bank B" />
+			</PatchBank>
+			<PatchBank Name="Singles Bank C" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="2" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Singles Bank C" />
+			</PatchBank>
+			<PatchBank Name="Singles Bank D" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="3" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Singles Bank D" />
+			</PatchBank>
+			<PatchBank Name="Singles Bank E" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="4" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Singles Bank E" />
+			</PatchBank>
+			<PatchBank Name="Singles Bank F" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="5" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Singles Bank F" />
+			</PatchBank>
+			<PatchBank Name="Singles Bank G" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="6" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Singles Bank G" />
+			</PatchBank>
+			<PatchBank Name="Singles Bank H" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="7" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Singles Bank H" />
+			</PatchBank>
+		</ChannelNameSet>
+
+		<ChannelNameSet Name="Multis">
+			<AvailableForChannels>
+				<AvailableChannel Channel="1" Available="true" />
+				<AvailableChannel Channel="2" Available="true" />
+				<AvailableChannel Channel="3" Available="true" />
+				<AvailableChannel Channel="4" Available="true" />
+				<AvailableChannel Channel="5" Available="true" />
+				<AvailableChannel Channel="6" Available="true" />
+				<AvailableChannel Channel="7" Available="true" />
+				<AvailableChannel Channel="8" Available="true" />
+				<AvailableChannel Channel="9" Available="true" />
+				<AvailableChannel Channel="10" Available="true" />
+				<AvailableChannel Channel="11" Available="true" />
+				<AvailableChannel Channel="12" Available="true" />
+				<AvailableChannel Channel="13" Available="true" />
+				<AvailableChannel Channel="14" Available="true" />
+				<AvailableChannel Channel="15" Available="true" />
+				<AvailableChannel Channel="16" Available="true" />
+			</AvailableForChannels>
+			<PatchBank Name="Multi Bank" ROM="false">
+				<MIDICommands>
+				</MIDICommands>
+				<UsesPatchNameList Name="Multi Bank" />
+			</PatchBank>
+		</ChannelNameSet>
+
+		<PatchNameList Name="Singles Bank A">
+			<Patch Number="Singles Bank A-  0" Name="3AM DEVICE" ProgramChange="0" />
+			<Patch Number="Singles Bank A-  1" Name="80's NutSV" ProgramChange="1" />
+			<Patch Number="Singles Bank A-  2" Name="100 tino  " ProgramChange="2" />
+			<Patch Number="Singles Bank A-  3" Name="303Friends" ProgramChange="3" />
+			<Patch Number="Singles Bank A-  4" Name="3001 SO   " ProgramChange="4" />
+			<Patch Number="Singles Bank A-  5" Name="Abby   42 " ProgramChange="5" />
+			<Patch Number="Singles Bank A-  6" Name="Acidgoes F" ProgramChange="6" />
+			<Patch Number="Singles Bank A-  7" Name="AciDic Sx " ProgramChange="7" />
+			<Patch Number="Singles Bank A-  8" Name="Additive  " ProgramChange="8" />
+			<Patch Number="Singles Bank A-  9" Name="AnaLdB Sx " ProgramChange="9" />
+			<Patch Number="Singles Bank A- 10" Name="AndRise!SV" ProgramChange="10" />
+			<Patch Number="Singles Bank A- 11" Name="Aquatica  " ProgramChange="11" />
+			<Patch Number="Singles Bank A- 12" Name="Aquatica2 " ProgramChange="12" />
+			<Patch Number="Singles Bank A- 13" Name="Ares     r" ProgramChange="13" />
+			<Patch Number="Singles Bank A- 14" Name="Baikal    " ProgramChange="14" />
+			<Patch Number="Singles Bank A- 15" Name="BeautyArp " ProgramChange="15" />
+			<Patch Number="Singles Bank A- 16" Name="Boppin' SV" ProgramChange="16" />
+			<Patch Number="Singles Bank A- 17" Name="BrokenSFX " ProgramChange="17" />
+			<Patch Number="Singles Bank A- 18" Name="BubbleRing" ProgramChange="18" />
+			<Patch Number="Singles Bank A- 19" Name="Bwahaha 42" ProgramChange="19" />
+			<Patch Number="Singles Bank A- 20" Name="byooPad zs" ProgramChange="20" />
+			<Patch Number="Singles Bank A- 21" Name="Calypso  r" ProgramChange="21" />
+			<Patch Number="Singles Bank A- 22" Name="canmod    " ProgramChange="22" />
+			<Patch Number="Singles Bank A- 23" Name="Cassandrar" ProgramChange="23" />
+			<Patch Number="Singles Bank A- 24" Name="Charon   r" ProgramChange="24" />
+			<Patch Number="Singles Bank A- 25" Name="Chemical F" ProgramChange="25" />
+			<Patch Number="Singles Bank A- 26" Name="ChipLeadBC" ProgramChange="26" />
+			<Patch Number="Singles Bank A- 27" Name="Chippy1 BC" ProgramChange="27" />
+			<Patch Number="Singles Bank A- 28" Name="Chippy3 BC" ProgramChange="28" />
+			<Patch Number="Singles Bank A- 29" Name="Chippy4 BC" ProgramChange="29" />
+			<Patch Number="Singles Bank A- 30" Name="Chippy5 BC" ProgramChange="30" />
+			<Patch Number="Singles Bank A- 31" Name="Chippy6 BC" ProgramChange="31" />
+			<Patch Number="Singles Bank A- 32" Name="Chippy7 BC" ProgramChange="32" />
+			<Patch Number="Singles Bank A- 33" Name="Choir2 HS " ProgramChange="33" />
+			<Patch Number="Singles Bank A- 34" Name="CombDrag  " ProgramChange="34" />
+			<Patch Number="Singles Bank A- 35" Name="CosmicWind" ProgramChange="35" />
+			<Patch Number="Singles Bank A- 36" Name="CrstlWvsBC" ProgramChange="36" />
+			<Patch Number="Singles Bank A- 37" Name="CRY PULSE " ProgramChange="37" />
+			<Patch Number="Singles Bank A- 38" Name="Custard 42" ProgramChange="38" />
+			<Patch Number="Singles Bank A- 39" Name="CYCLE     " ProgramChange="39" />
+			<Patch Number="Singles Bank A- 40" Name="Cyclops  r" ProgramChange="40" />
+			<Patch Number="Singles Bank A- 41" Name="DEGRADATE " ProgramChange="41" />
+			<Patch Number="Singles Bank A- 42" Name="Downwards " ProgramChange="42" />
+			<Patch Number="Singles Bank A- 43" Name="Drmspnr SV" ProgramChange="43" />
+			<Patch Number="Singles Bank A- 44" Name="DrumMe    " ProgramChange="44" />
+			<Patch Number="Singles Bank A- 45" Name="Dr.What?HS" ProgramChange="45" />
+			<Patch Number="Singles Bank A- 46" Name="dstStep zs" ProgramChange="46" />
+			<Patch Number="Singles Bank A- 47" Name="Dwardi 42 " ProgramChange="47" />
+			<Patch Number="Singles Bank A- 48" Name="EchoVowel " ProgramChange="48" />
+			<Patch Number="Singles Bank A- 49" Name="Efx-C Sx  " ProgramChange="49" />
+			<Patch Number="Singles Bank A- 50" Name="Mystery Tr" ProgramChange="50" />
+			<Patch Number="Singles Bank A- 51" Name="EggBeatr42" ProgramChange="51" />
+			<Patch Number="Singles Bank A- 52" Name="ElectroEL " ProgramChange="52" />
+			<Patch Number="Singles Bank A- 53" Name="FactorX QR" ProgramChange="53" />
+			<Patch Number="Singles Bank A- 54" Name="Fender!M  " ProgramChange="54" />
+			<Patch Number="Singles Bank A- 55" Name="FG Wind   " ProgramChange="55" />
+			<Patch Number="Singles Bank A- 56" Name="FianoMW BC" ProgramChange="56" />
+			<Patch Number="Singles Bank A- 57" Name="fiboglide " ProgramChange="57" />
+			<Patch Number="Singles Bank A- 58" Name="FlexSeq   " ProgramChange="58" />
+			<Patch Number="Singles Bank A- 59" Name="Drama Tech" ProgramChange="59" />
+			<Patch Number="Singles Bank A- 60" Name="FlyingT CS" ProgramChange="60" />
+			<Patch Number="Singles Bank A- 61" Name="ForestTrip" ProgramChange="61" />
+			<Patch Number="Singles Bank A- 62" Name="Teleport  " ProgramChange="62" />
+			<Patch Number="Singles Bank A- 63" Name="FullPsy 42" ProgramChange="63" />
+			<Patch Number="Singles Bank A- 64" Name="FuzzlineDM" ProgramChange="64" />
+			<Patch Number="Singles Bank A- 65" Name="FX10      " ProgramChange="65" />
+			<Patch Number="Singles Bank A- 66" Name="FX13      " ProgramChange="66" />
+			<Patch Number="Singles Bank A- 67" Name="FX14      " ProgramChange="67" />
+			<Patch Number="Singles Bank A- 68" Name="FX18      " ProgramChange="68" />
+			<Patch Number="Singles Bank A- 69" Name="FX19      " ProgramChange="69" />
+			<Patch Number="Singles Bank A- 70" Name="FX24      " ProgramChange="70" />
+			<Patch Number="Singles Bank A- 71" Name="GabriesqBC" ProgramChange="71" />
+			<Patch Number="Singles Bank A- 72" Name="Gaea     r" ProgramChange="72" />
+			<Patch Number="Singles Bank A- 73" Name="Venus Bee " ProgramChange="73" />
+			<Patch Number="Singles Bank A- 74" Name="Alien Stra" ProgramChange="74" />
+			<Patch Number="Singles Bank A- 75" Name="Ghost Beat" ProgramChange="75" />
+			<Patch Number="Singles Bank A- 76" Name="Ghost   QR" ProgramChange="76" />
+			<Patch Number="Singles Bank A- 77" Name="GINGER BEL" ProgramChange="77" />
+			<Patch Number="Singles Bank A- 78" Name="Glassy  QR" ProgramChange="78" />
+			<Patch Number="Singles Bank A- 79" Name="Glider  QR" ProgramChange="79" />
+			<Patch Number="Singles Bank A- 80" Name="GlitchSNX " ProgramChange="80" />
+			<Patch Number="Singles Bank A- 81" Name="Goatic 2SV" ProgramChange="81" />
+			<Patch Number="Singles Bank A- 82" Name="GoindownSV" ProgramChange="82" />
+			<Patch Number="Singles Bank A- 83" Name="Hades    r" ProgramChange="83" />
+			<Patch Number="Singles Bank A- 84" Name="Hard moog " ProgramChange="84" />
+			<Patch Number="Singles Bank A- 85" Name="HowItBegan" ProgramChange="85" />
+			<Patch Number="Singles Bank A- 86" Name="Hustler 42" ProgramChange="86" />
+			<Patch Number="Singles Bank A- 87" Name="I ACHE    " ProgramChange="87" />
+			<Patch Number="Singles Bank A- 88" Name="IDMKicks  " ProgramChange="88" />
+			<Patch Number="Singles Bank A- 89" Name="IDMTears  " ProgramChange="89" />
+			<Patch Number="Singles Bank A- 90" Name="In-PulseSA" ProgramChange="90" />
+			<Patch Number="Singles Bank A- 91" Name="In spaceSV" ProgramChange="91" />
+			<Patch Number="Singles Bank A- 92" Name="ITS COMING" ProgramChange="92" />
+			<Patch Number="Singles Bank A- 93" Name="I 3TENSION" ProgramChange="93" />
+			<Patch Number="Singles Bank A- 94" Name="Jump up! F" ProgramChange="94" />
+			<Patch Number="Singles Bank A- 95" Name="LeadThrow " ProgramChange="95" />
+			<Patch Number="Singles Bank A- 96" Name="Lethe    r" ProgramChange="96" />
+			<Patch Number="Singles Bank A- 97" Name="Mad Arp. F" ProgramChange="97" />
+			<Patch Number="Singles Bank A- 98" Name="MarsCave  " ProgramChange="98" />
+			<Patch Number="Singles Bank A- 99" Name="MatrixSeq " ProgramChange="99" />
+			<Patch Number="Singles Bank A-100" Name="Matter  BC" ProgramChange="100" />
+			<Patch Number="Singles Bank A-101" Name="McCloud HS" ProgramChange="101" />
+			<Patch Number="Singles Bank A-102" Name="Minos    r" ProgramChange="102" />
+			<Patch Number="Singles Bank A-103" Name="MonoPoly  " ProgramChange="103" />
+			<Patch Number="Singles Bank A-104" Name="MoonLight " ProgramChange="104" />
+			<Patch Number="Singles Bank A-105" Name="Moonspell " ProgramChange="105" />
+			<Patch Number="Singles Bank A-106" Name="Mystics   " ProgramChange="106" />
+			<Patch Number="Singles Bank A-107" Name="Nazgul    " ProgramChange="107" />
+			<Patch Number="Singles Bank A-108" Name="Nereus   r" ProgramChange="108" />
+			<Patch Number="Singles Bank A-109" Name="Nik'Rbots2" ProgramChange="109" />
+			<Patch Number="Singles Bank A-110" Name="no data   " ProgramChange="110" />
+			<Patch Number="Singles Bank A-111" Name="noizG Sx  " ProgramChange="111" />
+			<Patch Number="Singles Bank A-112" Name="numshei   " ProgramChange="112" />
+			<Patch Number="Singles Bank A-113" Name="ObscurftSV" ProgramChange="113" />
+			<Patch Number="Singles Bank A-114" Name="Oil-crwlSV" ProgramChange="114" />
+			<Patch Number="Singles Bank A-115" Name="Onwaves SV" ProgramChange="115" />
+			<Patch Number="Singles Bank A-116" Name="Orpheus  r" ProgramChange="116" />
+			<Patch Number="Singles Bank A-117" Name="PANSIE    " ProgramChange="117" />
+			<Patch Number="Singles Bank A-118" Name="PARTY TIME" ProgramChange="118" />
+			<Patch Number="Singles Bank A-119" Name="Phloid  HS" ProgramChange="119" />
+			<Patch Number="Singles Bank A-120" Name="PlanetarHS" ProgramChange="120" />
+			<Patch Number="Singles Bank A-121" Name="Plang 2 SV" ProgramChange="121" />
+			<Patch Number="Singles Bank A-122" Name="Pnch2 Sx  " ProgramChange="122" />
+			<Patch Number="Singles Bank A-123" Name="Pre-trncSV" ProgramChange="123" />
+			<Patch Number="Singles Bank A-124" Name="RandomBox " ProgramChange="124" />
+			<Patch Number="Singles Bank A-125" Name="RECURSIVE " ProgramChange="125" />
+			<Patch Number="Singles Bank A-126" Name="Red lineSV" ProgramChange="126" />
+			<Patch Number="Singles Bank A-127" Name="Reducer QR" ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Singles Bank B">
+			<Patch Number="Singles Bank B-  0" Name="Retroid SV" ProgramChange="0" />
+			<Patch Number="Singles Bank B-  1" Name="SE ALJEN  " ProgramChange="1" />
+			<Patch Number="Singles Bank B-  2" Name="SE DOWN   " ProgramChange="2" />
+			<Patch Number="Singles Bank B-  3" Name="SeenolgtSV" ProgramChange="3" />
+			<Patch Number="Singles Bank B-  4" Name="SEQ6      " ProgramChange="4" />
+			<Patch Number="Singles Bank B-  5" Name="SEQ7      " ProgramChange="5" />
+			<Patch Number="Singles Bank B-  6" Name="SEQ8      " ProgramChange="6" />
+			<Patch Number="Singles Bank B-  7" Name="SeqnoiseSV" ProgramChange="7" />
+			<Patch Number="Singles Bank B-  8" Name="SE UP     " ProgramChange="8" />
+			<Patch Number="Singles Bank B-  9" Name="Sitars HS " ProgramChange="9" />
+			<Patch Number="Singles Bank B- 10" Name="Slappy1 HS" ProgramChange="10" />
+			<Patch Number="Singles Bank B- 11" Name="Slivers   " ProgramChange="11" />
+			<Patch Number="Singles Bank B- 12" Name="space fx  " ProgramChange="12" />
+			<Patch Number="Singles Bank B- 13" Name="SpacePatHS" ProgramChange="13" />
+			<Patch Number="Singles Bank B- 14" Name="Spanners  " ProgramChange="14" />
+			<Patch Number="Singles Bank B- 15" Name="SpeakVowel" ProgramChange="15" />
+			<Patch Number="Singles Bank B- 16" Name="Spooky  SV" ProgramChange="16" />
+			<Patch Number="Singles Bank B- 17" Name="Sqared  SV" ProgramChange="17" />
+			<Patch Number="Singles Bank B- 18" Name="SQ FMEXP 3" ProgramChange="18" />
+			<Patch Number="Singles Bank B- 19" Name="SQ FMEXP 4" ProgramChange="19" />
+			<Patch Number="Singles Bank B- 20" Name="SQ FMXEP 1" ProgramChange="20" />
+			<Patch Number="Singles Bank B- 21" Name="SQ FMXEP 2" ProgramChange="21" />
+			<Patch Number="Singles Bank B- 22" Name="srbeo   SV" ProgramChange="22" />
+			<Patch Number="Singles Bank B- 23" Name="StampBeat " ProgramChange="23" />
+			<Patch Number="Singles Bank B- 24" Name="StarBornQR" ProgramChange="24" />
+			<Patch Number="Singles Bank B- 25" Name="StarLazor " ProgramChange="25" />
+			<Patch Number="Singles Bank B- 26" Name="Static  QR" ProgramChange="26" />
+			<Patch Number="Singles Bank B- 27" Name="Steps   SV" ProgramChange="27" />
+			<Patch Number="Singles Bank B- 28" Name="StretchrBC" ProgramChange="28" />
+			<Patch Number="Singles Bank B- 29" Name="Styx     r" ProgramChange="29" />
+			<Patch Number="Singles Bank B- 30" Name="SUCK RHYTH" ProgramChange="30" />
+			<Patch Number="Singles Bank B- 31" Name="TankYou HS" ProgramChange="31" />
+			<Patch Number="Singles Bank B- 32" Name="Tartarus r" ProgramChange="32" />
+			<Patch Number="Singles Bank B- 33" Name="TerrorH Sx" ProgramChange="33" />
+			<Patch Number="Singles Bank B- 34" Name="Tpirits Sx" ProgramChange="34" />
+			<Patch Number="Singles Bank B- 35" Name="TrancWeLuv" ProgramChange="35" />
+			<Patch Number="Singles Bank B- 36" Name="Triton   r" ProgramChange="36" />
+			<Patch Number="Singles Bank B- 37" Name="UFO FX    " ProgramChange="37" />
+			<Patch Number="Singles Bank B- 38" Name="Vectors   " ProgramChange="38" />
+			<Patch Number="Singles Bank B- 39" Name="Vortex    " ProgramChange="39" />
+			<Patch Number="Singles Bank B- 40" Name="WhirlWind " ProgramChange="40" />
+			<Patch Number="Singles Bank B- 41" Name="YeahRiteSV" ProgramChange="41" />
+			<Patch Number="Singles Bank B- 42" Name="Yerk    BC" ProgramChange="42" />
+			<Patch Number="Singles Bank B- 43" Name="zeno  arpy" ProgramChange="43" />
+			<Patch Number="Singles Bank B- 44" Name="Zeno Bong " ProgramChange="44" />
+			<Patch Number="Singles Bank B- 45" Name="zeno bubbl" ProgramChange="45" />
+			<Patch Number="Singles Bank B- 46" Name="Zeno Contr" ProgramChange="46" />
+			<Patch Number="Singles Bank B- 47" Name="Zeno Elect" ProgramChange="47" />
+			<Patch Number="Singles Bank B- 48" Name="Zeno High " ProgramChange="48" />
+			<Patch Number="Singles Bank B- 49" Name="Zeno Highp" ProgramChange="49" />
+			<Patch Number="Singles Bank B- 50" Name="Zeno Rever" ProgramChange="50" />
+			<Patch Number="Singles Bank B- 51" Name="Zeno Space" ProgramChange="51" />
+			<Patch Number="Singles Bank B- 52" Name="zeno weird" ProgramChange="52" />
+			<Patch Number="Singles Bank B- 53" Name="Zeno womp " ProgramChange="53" />
+			<Patch Number="Singles Bank B- 54" Name="Zues     r" ProgramChange="54" />
+			<Patch Number="Singles Bank B- 55" Name="OrganizeSV" ProgramChange="55" />
+			<Patch Number="Singles Bank B- 56" Name="Deepest SV" ProgramChange="56" />
+			<Patch Number="Singles Bank B- 57" Name="Flash KCSV" ProgramChange="57" />
+			<Patch Number="Singles Bank B- 58" Name="Neurons SV" ProgramChange="58" />
+			<Patch Number="Singles Bank B- 59" Name="MantorokSV" ProgramChange="59" />
+			<Patch Number="Singles Bank B- 60" Name="Dub-seq SV" ProgramChange="60" />
+			<Patch Number="Singles Bank B- 61" Name="TB-cat  SV" ProgramChange="61" />
+			<Patch Number="Singles Bank B- 62" Name="My 909snSV" ProgramChange="62" />
+			<Patch Number="Singles Bank B- 63" Name="DubstickSV" ProgramChange="63" />
+			<Patch Number="Singles Bank B- 64" Name="8-bit   SV" ProgramChange="64" />
+			<Patch Number="Singles Bank B- 65" Name="BlipohalSV" ProgramChange="65" />
+			<Patch Number="Singles Bank B- 66" Name="TimefluxSV" ProgramChange="66" />
+			<Patch Number="Singles Bank B- 67" Name="DigirainSV" ProgramChange="67" />
+			<Patch Number="Singles Bank B- 68" Name="Cozze   SV" ProgramChange="68" />
+			<Patch Number="Singles Bank B- 69" Name="LegacybsSV" ProgramChange="69" />
+			<Patch Number="Singles Bank B- 70" Name="FiveCentSV" ProgramChange="70" />
+			<Patch Number="Singles Bank B- 71" Name="TinytrncSV" ProgramChange="71" />
+			<Patch Number="Singles Bank B- 72" Name="Use Me 1SV" ProgramChange="72" />
+			<Patch Number="Singles Bank B- 73" Name="Hows    SV" ProgramChange="73" />
+			<Patch Number="Singles Bank B- 74" Name=" - Init - " ProgramChange="74" />
+			<Patch Number="Singles Bank B- 75" Name=" - Init - " ProgramChange="75" />
+			<Patch Number="Singles Bank B- 76" Name=" - Init - " ProgramChange="76" />
+			<Patch Number="Singles Bank B- 77" Name=" - Init - " ProgramChange="77" />
+			<Patch Number="Singles Bank B- 78" Name=" - Init - " ProgramChange="78" />
+			<Patch Number="Singles Bank B- 79" Name=" - Init - " ProgramChange="79" />
+			<Patch Number="Singles Bank B- 80" Name=" - Init - " ProgramChange="80" />
+			<Patch Number="Singles Bank B- 81" Name=" - Init - " ProgramChange="81" />
+			<Patch Number="Singles Bank B- 82" Name=" - Init - " ProgramChange="82" />
+			<Patch Number="Singles Bank B- 83" Name=" - Init - " ProgramChange="83" />
+			<Patch Number="Singles Bank B- 84" Name=" - Init - " ProgramChange="84" />
+			<Patch Number="Singles Bank B- 85" Name=" - Init - " ProgramChange="85" />
+			<Patch Number="Singles Bank B- 86" Name=" - Init - " ProgramChange="86" />
+			<Patch Number="Singles Bank B- 87" Name=" - Init - " ProgramChange="87" />
+			<Patch Number="Singles Bank B- 88" Name=" - Init - " ProgramChange="88" />
+			<Patch Number="Singles Bank B- 89" Name=" - Init - " ProgramChange="89" />
+			<Patch Number="Singles Bank B- 90" Name=" - Init - " ProgramChange="90" />
+			<Patch Number="Singles Bank B- 91" Name=" - Init - " ProgramChange="91" />
+			<Patch Number="Singles Bank B- 92" Name=" - Init - " ProgramChange="92" />
+			<Patch Number="Singles Bank B- 93" Name=" - Init - " ProgramChange="93" />
+			<Patch Number="Singles Bank B- 94" Name=" - Init - " ProgramChange="94" />
+			<Patch Number="Singles Bank B- 95" Name=" - Init - " ProgramChange="95" />
+			<Patch Number="Singles Bank B- 96" Name=" - Init - " ProgramChange="96" />
+			<Patch Number="Singles Bank B- 97" Name=" INPlopass" ProgramChange="97" />
+			<Patch Number="Singles Bank B- 98" Name=" INP reso " ProgramChange="98" />
+			<Patch Number="Singles Bank B- 99" Name=" INPhipass" ProgramChange="99" />
+			<Patch Number="Singles Bank B-100" Name=" INPbandps" ProgramChange="100" />
+			<Patch Number="Singles Bank B-101" Name=" INPdouble" ProgramChange="101" />
+			<Patch Number="Singles Bank B-102" Name=" INPflange" ProgramChange="102" />
+			<Patch Number="Singles Bank B-103" Name=" INP key! " ProgramChange="103" />
+			<Patch Number="Singles Bank B-104" Name=" INPkeyfol" ProgramChange="104" />
+			<Patch Number="Singles Bank B-105" Name=" INP pad  " ProgramChange="105" />
+			<Patch Number="Singles Bank B-106" Name=" INP arp1 " ProgramChange="106" />
+			<Patch Number="Singles Bank B-107" Name=" INPsatura" ProgramChange="107" />
+			<Patch Number="Singles Bank B-108" Name=" INP amp  " ProgramChange="108" />
+			<Patch Number="Singles Bank B-109" Name=" INPshaper" ProgramChange="109" />
+			<Patch Number="Singles Bank B-110" Name=" INP clean" ProgramChange="110" />
+			<Patch Number="Singles Bank B-111" Name=" VOC pad  " ProgramChange="111" />
+			<Patch Number="Singles Bank B-112" Name=" VOC pwm  " ProgramChange="112" />
+			<Patch Number="Singles Bank B-113" Name=" VOC waves" ProgramChange="113" />
+			<Patch Number="Singles Bank B-114" Name=" VOC crisp" ProgramChange="114" />
+			<Patch Number="Singles Bank B-115" Name=" VOC tube " ProgramChange="115" />
+			<Patch Number="Singles Bank B-116" Name=" VOCwalker" ProgramChange="116" />
+			<Patch Number="Singles Bank B-117" Name=" VOCnoise1" ProgramChange="117" />
+			<Patch Number="Singles Bank B-118" Name=" VOCreso1 " ProgramChange="118" />
+			<Patch Number="Singles Bank B-119" Name=" VOCrevers" ProgramChange="119" />
+			<Patch Number="Singles Bank B-120" Name=" VOC bell1" ProgramChange="120" />
+			<Patch Number="Singles Bank B-121" Name=" VOCtwelve" ProgramChange="121" />
+			<Patch Number="Singles Bank B-122" Name=" VOCnarrow" ProgramChange="122" />
+			<Patch Number="Singles Bank B-123" Name=" VOCdiffus" ProgramChange="123" />
+			<Patch Number="Singles Bank B-124" Name=" VOC lfo  " ProgramChange="124" />
+			<Patch Number="Singles Bank B-125" Name=" VOC bell2" ProgramChange="125" />
+			<Patch Number="Singles Bank B-126" Name=" VOC room " ProgramChange="126" />
+			<Patch Number="Singles Bank B-127" Name=" VOC osci1" ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Singles Bank C">
+			<Patch Number="Singles Bank C-  0" Name="Fm-glassSV" ProgramChange="0" />
+			<Patch Number="Singles Bank C-  1" Name="SyncomatSV" ProgramChange="1" />
+			<Patch Number="Singles Bank C-  2" Name="AnachronSV" ProgramChange="2" />
+			<Patch Number="Singles Bank C-  3" Name="Unusual SV" ProgramChange="3" />
+			<Patch Number="Singles Bank C-  4" Name="AlphA   SV" ProgramChange="4" />
+			<Patch Number="Singles Bank C-  5" Name="UndernthSV" ProgramChange="5" />
+			<Patch Number="Singles Bank C-  6" Name="ProjectXSV" ProgramChange="6" />
+			<Patch Number="Singles Bank C-  7" Name="Y-music SV" ProgramChange="7" />
+			<Patch Number="Singles Bank C-  8" Name="K-rider SV" ProgramChange="8" />
+			<Patch Number="Singles Bank C-  9" Name="Two keysSV" ProgramChange="9" />
+			<Patch Number="Singles Bank C- 10" Name="BionicleSV" ProgramChange="10" />
+			<Patch Number="Singles Bank C- 11" Name="PurpleTBSV" ProgramChange="11" />
+			<Patch Number="Singles Bank C- 12" Name="DarkmoonSV" ProgramChange="12" />
+			<Patch Number="Singles Bank C- 13" Name="SmokyBasSV" ProgramChange="13" />
+			<Patch Number="Singles Bank C- 14" Name="Smoky303SV" ProgramChange="14" />
+			<Patch Number="Singles Bank C- 15" Name="DarkliteSV" ProgramChange="15" />
+			<Patch Number="Singles Bank C- 16" Name="ZZ-bass RP" ProgramChange="16" />
+			<Patch Number="Singles Bank C- 17" Name="Zoober    " ProgramChange="17" />
+			<Patch Number="Singles Bank C- 18" Name="Wino Bench" ProgramChange="18" />
+			<Patch Number="Singles Bank C- 19" Name="WexTex  RP" ProgramChange="19" />
+			<Patch Number="Singles Bank C- 20" Name="Welard !  " ProgramChange="20" />
+			<Patch Number="Singles Bank C- 21" Name="V-snare RP" ProgramChange="21" />
+			<Patch Number="Singles Bank C- 22" Name="Real BD PS" ProgramChange="22" />
+			<Patch Number="Singles Bank C- 23" Name="ViBee 1 RP" ProgramChange="23" />
+			<Patch Number="Singles Bank C- 24" Name="Virus 2  K" ProgramChange="24" />
+			<Patch Number="Singles Bank C- 25" Name="V-Birth2 K" ProgramChange="25" />
+			<Patch Number="Singles Bank C- 26" Name="TriCobldDM" ProgramChange="26" />
+			<Patch Number="Singles Bank C- 27" Name="Tech-no RP" ProgramChange="27" />
+			<Patch Number="Singles Bank C- 28" Name="TechnoArp " ProgramChange="28" />
+			<Patch Number="Singles Bank C- 29" Name="So Soft RP" ProgramChange="29" />
+			<Patch Number="Singles Bank C- 30" Name="RuffSaw DM" ProgramChange="30" />
+			<Patch Number="Singles Bank C- 31" Name="RingPad   " ProgramChange="31" />
+			<Patch Number="Singles Bank C- 32" Name="PulseP41DM" ProgramChange="32" />
+			<Patch Number="Singles Bank C- 33" Name="Polaris   " ProgramChange="33" />
+			<Patch Number="Singles Bank C- 34" Name="No-Tjo  RP" ProgramChange="34" />
+			<Patch Number="Singles Bank C- 35" Name="RotterdaRP" ProgramChange="35" />
+			<Patch Number="Singles Bank C- 36" Name="Neu *Utz  " ProgramChange="36" />
+			<Patch Number="Singles Bank C- 37" Name="Mr.Oizo DM" ProgramChange="37" />
+			<Patch Number="Singles Bank C- 38" Name="GeneratoMS" ProgramChange="38" />
+			<Patch Number="Singles Bank C- 39" Name="Cl-HihatRP" ProgramChange="39" />
+			<Patch Number="Singles Bank C- 40" Name="Compress K" ProgramChange="40" />
+			<Patch Number="Singles Bank C- 41" Name="Cutoff   K" ProgramChange="41" />
+			<Patch Number="Singles Bank C- 42" Name="DarkMatter" ProgramChange="42" />
+			<Patch Number="Singles Bank C- 43" Name="EnforcerDM" ProgramChange="43" />
+			<Patch Number="Singles Bank C- 44" Name="FX 303  RP" ProgramChange="44" />
+			<Patch Number="Singles Bank C- 45" Name="BluePad RP" ProgramChange="45" />
+			<Patch Number="Singles Bank C- 46" Name="Big Fish  " ProgramChange="46" />
+			<Patch Number="Singles Bank C- 47" Name="Beasty  DM" ProgramChange="47" />
+			<Patch Number="Singles Bank C- 48" Name="Arpegiator" ProgramChange="48" />
+			<Patch Number="Singles Bank C- 49" Name="Arpeggia  " ProgramChange="49" />
+			<Patch Number="Singles Bank C- 50" Name="ABC-1   RP" ProgramChange="50" />
+			<Patch Number="Singles Bank C- 51" Name="D50SweepPS" ProgramChange="51" />
+			<Patch Number="Singles Bank C- 52" Name="D50GlsVcPS" ProgramChange="52" />
+			<Patch Number="Singles Bank C- 53" Name="MelotronPS" ProgramChange="53" />
+			<Patch Number="Singles Bank C- 54" Name="HARD Start" ProgramChange="54" />
+			<Patch Number="Singles Bank C- 55" Name="Chord ! PS" ProgramChange="55" />
+			<Patch Number="Singles Bank C- 56" Name="MoogBss1PS" ProgramChange="56" />
+			<Patch Number="Singles Bank C- 57" Name="MS20 HP PS" ProgramChange="57" />
+			<Patch Number="Singles Bank C- 58" Name="PWM BassPS" ProgramChange="58" />
+			<Patch Number="Singles Bank C- 59" Name="TheHive MS" ProgramChange="59" />
+			<Patch Number="Singles Bank C- 60" Name="SeqBass PS" ProgramChange="60" />
+			<Patch Number="Singles Bank C- 61" Name="LovetrnsGE" ProgramChange="61" />
+			<Patch Number="Singles Bank C- 62" Name="TeknoHitPS" ProgramChange="62" />
+			<Patch Number="Singles Bank C- 63" Name="TeknoSeqPS" ProgramChange="63" />
+			<Patch Number="Singles Bank C- 64" Name="PhasePadPS" ProgramChange="64" />
+			<Patch Number="Singles Bank C- 65" Name="SpacePadPS" ProgramChange="65" />
+			<Patch Number="Singles Bank C- 66" Name="Juno60  PS" ProgramChange="66" />
+			<Patch Number="Singles Bank C- 67" Name="TeknoArpPS" ProgramChange="67" />
+			<Patch Number="Singles Bank C- 68" Name="Anthem  PS" ProgramChange="68" />
+			<Patch Number="Singles Bank C- 69" Name="OB8     PS" ProgramChange="69" />
+			<Patch Number="Singles Bank C- 70" Name="BPMover PS" ProgramChange="70" />
+			<Patch Number="Singles Bank C- 71" Name="GatedPadPS" ProgramChange="71" />
+			<Patch Number="Singles Bank C- 72" Name="PPG Syn PS" ProgramChange="72" />
+			<Patch Number="Singles Bank C- 73" Name="SprStrngPS" ProgramChange="73" />
+			<Patch Number="Singles Bank C- 74" Name=" ARP StrPS" ProgramChange="74" />
+			<Patch Number="Singles Bank C- 75" Name="Century PS" ProgramChange="75" />
+			<Patch Number="Singles Bank C- 76" Name="JPEight PS" ProgramChange="76" />
+			<Patch Number="Singles Bank C- 77" Name="FM Bass PS" ProgramChange="77" />
+			<Patch Number="Singles Bank C- 78" Name="NoisArp PS" ProgramChange="78" />
+			<Patch Number="Singles Bank C- 79" Name="The GatePS" ProgramChange="79" />
+			<Patch Number="Singles Bank C- 80" Name="PercSyn PS" ProgramChange="80" />
+			<Patch Number="Singles Bank C- 81" Name="X-Files PS" ProgramChange="81" />
+			<Patch Number="Singles Bank C- 82" Name="Analog Arp" ProgramChange="82" />
+			<Patch Number="Singles Bank C- 83" Name="SweepBssPS" ProgramChange="83" />
+			<Patch Number="Singles Bank C- 84" Name="VoxOrganPS" ProgramChange="84" />
+			<Patch Number="Singles Bank C- 85" Name="GrogSyn GE" ProgramChange="85" />
+			<Patch Number="Singles Bank C- 86" Name="SaturatePS" ProgramChange="86" />
+			<Patch Number="Singles Bank C- 87" Name="Strings1PS" ProgramChange="87" />
+			<Patch Number="Singles Bank C- 88" Name="ArpSwingPS" ProgramChange="88" />
+			<Patch Number="Singles Bank C- 89" Name="NasaSpceGE" ProgramChange="89" />
+			<Patch Number="Singles Bank C- 90" Name="Trancer PS" ProgramChange="90" />
+			<Patch Number="Singles Bank C- 91" Name="MonolithPS" ProgramChange="91" />
+			<Patch Number="Singles Bank C- 92" Name="BandpassPS" ProgramChange="92" />
+			<Patch Number="Singles Bank C- 93" Name="NoiseFM PS" ProgramChange="93" />
+			<Patch Number="Singles Bank C- 94" Name="WaveLoopPS" ProgramChange="94" />
+			<Patch Number="Singles Bank C- 95" Name="PimpBassPS" ProgramChange="95" />
+			<Patch Number="Singles Bank C- 96" Name="DistoTB PS" ProgramChange="96" />
+			<Patch Number="Singles Bank C- 97" Name="CathedrlPS" ProgramChange="97" />
+			<Patch Number="Singles Bank C- 98" Name="Tri Bss PS" ProgramChange="98" />
+			<Patch Number="Singles Bank C- 99" Name="Orbit   PS" ProgramChange="99" />
+			<Patch Number="Singles Bank C-100" Name="SyncLeadPS" ProgramChange="100" />
+			<Patch Number="Singles Bank C-101" Name="Polysyn PS" ProgramChange="101" />
+			<Patch Number="Singles Bank C-102" Name="DigiSyn PS" ProgramChange="102" />
+			<Patch Number="Singles Bank C-103" Name="FastSyn PS" ProgramChange="103" />
+			<Patch Number="Singles Bank C-104" Name="Horny   PS" ProgramChange="104" />
+			<Patch Number="Singles Bank C-105" Name="The WavePS" ProgramChange="105" />
+			<Patch Number="Singles Bank C-106" Name="Arpeg 1 PS" ProgramChange="106" />
+			<Patch Number="Singles Bank C-107" Name="Ripper  PS" ProgramChange="107" />
+			<Patch Number="Singles Bank C-108" Name="LFOPad  PS" ProgramChange="108" />
+			<Patch Number="Singles Bank C-109" Name="VocalPadPS" ProgramChange="109" />
+			<Patch Number="Singles Bank C-110" Name="Robot ARP " ProgramChange="110" />
+			<Patch Number="Singles Bank C-111" Name="Photsynthe" ProgramChange="111" />
+			<Patch Number="Singles Bank C-112" Name="EpicPad PS" ProgramChange="112" />
+			<Patch Number="Singles Bank C-113" Name="Organic PS" ProgramChange="113" />
+			<Patch Number="Singles Bank C-114" Name="JX8Poly PS" ProgramChange="114" />
+			<Patch Number="Singles Bank C-115" Name="PhazBassPS" ProgramChange="115" />
+			<Patch Number="Singles Bank C-116" Name="DarknessPS" ProgramChange="116" />
+			<Patch Number="Singles Bank C-117" Name="Amadeus PS" ProgramChange="117" />
+			<Patch Number="Singles Bank C-118" Name="PulsArp PS" ProgramChange="118" />
+			<Patch Number="Singles Bank C-119" Name="Fazor   PS" ProgramChange="119" />
+			<Patch Number="Singles Bank C-120" Name="Runner  PS" ProgramChange="120" />
+			<Patch Number="Singles Bank C-121" Name="D50 Syn PS" ProgramChange="121" />
+			<Patch Number="Singles Bank C-122" Name="CosmicEcho" ProgramChange="122" />
+			<Patch Number="Singles Bank C-123" Name="FilmPad PS" ProgramChange="123" />
+			<Patch Number="Singles Bank C-124" Name="TwilightPS" ProgramChange="124" />
+			<Patch Number="Singles Bank C-125" Name="Mystery FG" ProgramChange="125" />
+			<Patch Number="Singles Bank C-126" Name="Ice Pad PS" ProgramChange="126" />
+			<Patch Number="Singles Bank C-127" Name="HousOrgnPS" ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Singles Bank D">
+			<Patch Number="Singles Bank D-  0" Name="1octStepMH" ProgramChange="0" />
+			<Patch Number="Singles Bank D-  1" Name="2step   MH" ProgramChange="1" />
+			<Patch Number="Singles Bank D-  2" Name="2xRlse  MH" ProgramChange="2" />
+			<Patch Number="Singles Bank D-  3" Name="4AD Pad MH" ProgramChange="3" />
+			<Patch Number="Singles Bank D-  4" Name="7ofnine MH" ProgramChange="4" />
+			<Patch Number="Singles Bank D-  5" Name="7th Saw MH" ProgramChange="5" />
+			<Patch Number="Singles Bank D-  6" Name="7thSeal MH" ProgramChange="6" />
+			<Patch Number="Singles Bank D-  7" Name="8oscBassMH" ProgramChange="7" />
+			<Patch Number="Singles Bank D-  8" Name="12dBbassMH" ProgramChange="8" />
+			<Patch Number="Singles Bank D-  9" Name="1977    MH" ProgramChange="9" />
+			<Patch Number="Singles Bank D- 10" Name="Aaeeii  MH" ProgramChange="10" />
+			<Patch Number="Singles Bank D- 11" Name="Absint  MH" ProgramChange="11" />
+			<Patch Number="Singles Bank D- 12" Name="AirNeon MH" ProgramChange="12" />
+			<Patch Number="Singles Bank D- 13" Name="AlertPadMH" ProgramChange="13" />
+			<Patch Number="Singles Bank D- 14" Name="AntarticMH" ProgramChange="14" />
+			<Patch Number="Singles Bank D- 15" Name="Arctic  MH" ProgramChange="15" />
+			<Patch Number="Singles Bank D- 16" Name="AsiaPlugMH" ProgramChange="16" />
+			<Patch Number="Singles Bank D- 17" Name="BaPrFp  MH" ProgramChange="17" />
+			<Patch Number="Singles Bank D- 18" Name="Base    MH" ProgramChange="18" />
+			<Patch Number="Singles Bank D- 19" Name="Bas LeadMH" ProgramChange="19" />
+			<Patch Number="Singles Bank D- 20" Name="BellAir MH" ProgramChange="20" />
+			<Patch Number="Singles Bank D- 21" Name="BellStr MH" ProgramChange="21" />
+			<Patch Number="Singles Bank D- 22" Name="BorreliaMH" ProgramChange="22" />
+			<Patch Number="Singles Bank D- 23" Name="BP-Bass MH" ProgramChange="23" />
+			<Patch Number="Singles Bank D- 24" Name="Chronos MH" ProgramChange="24" />
+			<Patch Number="Singles Bank D- 25" Name="Classic MH" ProgramChange="25" />
+			<Patch Number="Singles Bank D- 26" Name="Cobolt60MH" ProgramChange="26" />
+			<Patch Number="Singles Bank D- 27" Name="Cosmic  MH" ProgramChange="27" />
+			<Patch Number="Singles Bank D- 28" Name="CrystalsMH" ProgramChange="28" />
+			<Patch Number="Singles Bank D- 29" Name="Curtis  MH" ProgramChange="29" />
+			<Patch Number="Singles Bank D- 30" Name="DaFins  MH" ProgramChange="30" />
+			<Patch Number="Singles Bank D- 31" Name="DgtlBassMH" ProgramChange="31" />
+			<Patch Number="Singles Bank D- 32" Name="DM-1983 MH" ProgramChange="32" />
+			<Patch Number="Singles Bank D- 33" Name="Drone   MH" ProgramChange="33" />
+			<Patch Number="Singles Bank D- 34" Name="Dubrapy MH" ProgramChange="34" />
+			<Patch Number="Singles Bank D- 35" Name="DulcimerMH" ProgramChange="35" />
+			<Patch Number="Singles Bank D- 36" Name="Dullpad MH" ProgramChange="36" />
+			<Patch Number="Singles Bank D- 37" Name="Early80sMH" ProgramChange="37" />
+			<Patch Number="Singles Bank D- 38" Name="ElectricMH" ProgramChange="38" />
+			<Patch Number="Singles Bank D- 39" Name="Ember   MH" ProgramChange="39" />
+			<Patch Number="Singles Bank D- 40" Name="Entropy MH" ProgramChange="40" />
+			<Patch Number="Singles Bank D- 41" Name="Eve     MH" ProgramChange="41" />
+			<Patch Number="Singles Bank D- 42" Name="FastsyncMH" ProgramChange="42" />
+			<Patch Number="Singles Bank D- 43" Name="FatLead MH" ProgramChange="43" />
+			<Patch Number="Singles Bank D- 44" Name="Fiona   MH" ProgramChange="44" />
+			<Patch Number="Singles Bank D- 45" Name="Florian MH" ProgramChange="45" />
+			<Patch Number="Singles Bank D- 46" Name="FM-Bass MH" ProgramChange="46" />
+			<Patch Number="Singles Bank D- 47" Name="FMWave  MH" ProgramChange="47" />
+			<Patch Number="Singles Bank D- 48" Name="FrontBs MH" ProgramChange="48" />
+			<Patch Number="Singles Bank D- 49" Name="GargantuMH" ProgramChange="49" />
+			<Patch Number="Singles Bank D- 50" Name="Gloom   MH" ProgramChange="50" />
+			<Patch Number="Singles Bank D- 51" Name="GM-Funk MH" ProgramChange="51" />
+			<Patch Number="Singles Bank D- 52" Name="Groovey MH" ProgramChange="52" />
+			<Patch Number="Singles Bank D- 53" Name="GSMLead MH" ProgramChange="53" />
+			<Patch Number="Singles Bank D- 54" Name="HeadbassMH" ProgramChange="54" />
+			<Patch Number="Singles Bank D- 55" Name="HighpassMH" ProgramChange="55" />
+			<Patch Number="Singles Bank D- 56" Name="HPSweep MH" ProgramChange="56" />
+			<Patch Number="Singles Bank D- 57" Name="Ice     MH" ProgramChange="57" />
+			<Patch Number="Singles Bank D- 58" Name="Indice  MH" ProgramChange="58" />
+			<Patch Number="Singles Bank D- 59" Name="InEden  MH" ProgramChange="59" />
+			<Patch Number="Singles Bank D- 60" Name="InmymindMH" ProgramChange="60" />
+			<Patch Number="Singles Bank D- 61" Name="Kotoish MH" ProgramChange="61" />
+			<Patch Number="Singles Bank D- 62" Name="Lead5   MH" ProgramChange="62" />
+			<Patch Number="Singles Bank D- 63" Name="LFOdecayMH" ProgramChange="63" />
+			<Patch Number="Singles Bank D- 64" Name="LoFiBassMH" ProgramChange="64" />
+			<Patch Number="Singles Bank D- 65" Name="LogBass MH" ProgramChange="65" />
+			<Patch Number="Singles Bank D- 66" Name="LongmornMH" ProgramChange="66" />
+			<Patch Number="Singles Bank D- 67" Name="Lovely  MH" ProgramChange="67" />
+			<Patch Number="Singles Bank D- 68" Name="MagnoliaMH" ProgramChange="68" />
+			<Patch Number="Singles Bank D- 69" Name="Mallet  MH" ProgramChange="69" />
+			<Patch Number="Singles Bank D- 70" Name="Meister MH" ProgramChange="70" />
+			<Patch Number="Singles Bank D- 71" Name="Mindpan MH" ProgramChange="71" />
+			<Patch Number="Singles Bank D- 72" Name="MuzzyPd MH" ProgramChange="72" />
+			<Patch Number="Singles Bank D- 73" Name="Nervous MH" ProgramChange="73" />
+			<Patch Number="Singles Bank D- 74" Name="NeuFear MH" ProgramChange="74" />
+			<Patch Number="Singles Bank D- 75" Name="Noisee  MH" ProgramChange="75" />
+			<Patch Number="Singles Bank D- 76" Name="Nuclear MH" ProgramChange="76" />
+			<Patch Number="Singles Bank D- 77" Name="Oblique MH" ProgramChange="77" />
+			<Patch Number="Singles Bank D- 78" Name="OrbitingMH" ProgramChange="78" />
+			<Patch Number="Singles Bank D- 79" Name="Organic MH" ProgramChange="79" />
+			<Patch Number="Singles Bank D- 80" Name="Outland MH" ProgramChange="80" />
+			<Patch Number="Singles Bank D- 81" Name="OutrSpceMH" ProgramChange="81" />
+			<Patch Number="Singles Bank D- 82" Name="OvertuneMH" ProgramChange="82" />
+			<Patch Number="Singles Bank D- 83" Name="PFchord MH" ProgramChange="83" />
+			<Patch Number="Singles Bank D- 84" Name="PhasFltrMH" ProgramChange="84" />
+			<Patch Number="Singles Bank D- 85" Name="PimesonsMH" ProgramChange="85" />
+			<Patch Number="Singles Bank D- 86" Name="Procyon MH" ProgramChange="86" />
+			<Patch Number="Singles Bank D- 87" Name="Prodigy MH" ProgramChange="87" />
+			<Patch Number="Singles Bank D- 88" Name="Profive MH" ProgramChange="88" />
+			<Patch Number="Singles Bank D- 89" Name="Psyence MH" ProgramChange="89" />
+			<Patch Number="Singles Bank D- 90" Name="Pulsar  MH" ProgramChange="90" />
+			<Patch Number="Singles Bank D- 91" Name="PulseArpMH" ProgramChange="91" />
+			<Patch Number="Singles Bank D- 92" Name="PulseBs MH" ProgramChange="92" />
+			<Patch Number="Singles Bank D- 93" Name="PulsePadMH" ProgramChange="93" />
+			<Patch Number="Singles Bank D- 94" Name="QofTime MH" ProgramChange="94" />
+			<Patch Number="Singles Bank D- 95" Name="Ramp    MH" ProgramChange="95" />
+			<Patch Number="Singles Bank D- 96" Name="R-Bass  MH" ProgramChange="96" />
+			<Patch Number="Singles Bank D- 97" Name="Repack  MH" ProgramChange="97" />
+			<Patch Number="Singles Bank D- 98" Name="Rollin  MH" ProgramChange="98" />
+			<Patch Number="Singles Bank D- 99" Name="Sacral  MH" ProgramChange="99" />
+			<Patch Number="Singles Bank D-100" Name="Saturn  MH" ProgramChange="100" />
+			<Patch Number="Singles Bank D-101" Name="SawDNA  MH" ProgramChange="101" />
+			<Patch Number="Singles Bank D-102" Name="SCIBass MH" ProgramChange="102" />
+			<Patch Number="Singles Bank D-103" Name="SlowStr MH" ProgramChange="103" />
+			<Patch Number="Singles Bank D-104" Name="Smooth  MH" ProgramChange="104" />
+			<Patch Number="Singles Bank D-105" Name="Sparkle MH" ProgramChange="105" />
+			<Patch Number="Singles Bank D-106" Name="SqrUni  MH" ProgramChange="106" />
+			<Patch Number="Singles Bank D-107" Name="Stellar MH" ProgramChange="107" />
+			<Patch Number="Singles Bank D-108" Name="Stinger MH" ProgramChange="108" />
+			<Patch Number="Singles Bank D-109" Name="StrHits MH" ProgramChange="109" />
+			<Patch Number="Singles Bank D-110" Name="SynapsesMH" ProgramChange="110" />
+			<Patch Number="Singles Bank D-111" Name="SyncBassMH" ProgramChange="111" />
+			<Patch Number="Singles Bank D-112" Name="SyncbellMH" ProgramChange="112" />
+			<Patch Number="Singles Bank D-113" Name="SynpluckMH" ProgramChange="113" />
+			<Patch Number="Singles Bank D-114" Name="Therapy MH" ProgramChange="114" />
+			<Patch Number="Singles Bank D-115" Name="TriPad  MH" ProgramChange="115" />
+			<Patch Number="Singles Bank D-116" Name="Tubular MH" ProgramChange="116" />
+			<Patch Number="Singles Bank D-117" Name="Twinkle MH" ProgramChange="117" />
+			<Patch Number="Singles Bank D-118" Name="Ultra   MH" ProgramChange="118" />
+			<Patch Number="Singles Bank D-119" Name="Unison  MH" ProgramChange="119" />
+			<Patch Number="Singles Bank D-120" Name="Vortex  MH" ProgramChange="120" />
+			<Patch Number="Singles Bank D-121" Name="Warmpad MH" ProgramChange="121" />
+			<Patch Number="Singles Bank D-122" Name="WaveBassMH" ProgramChange="122" />
+			<Patch Number="Singles Bank D-123" Name="WavsweepMH" ProgramChange="123" />
+			<Patch Number="Singles Bank D-124" Name="Winter  MH" ProgramChange="124" />
+			<Patch Number="Singles Bank D-125" Name="X-waves MH" ProgramChange="125" />
+			<Patch Number="Singles Bank D-126" Name="Zipper  MH" ProgramChange="126" />
+			<Patch Number="Singles Bank D-127" Name="Zones   MH" ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Singles Bank E">
+			<Patch Number="Singles Bank E-  0" Name="Trilogy JL" ProgramChange="0" />
+			<Patch Number="Singles Bank E-  1" Name="SqrSwlw JL" ProgramChange="1" />
+			<Patch Number="Singles Bank E-  2" Name="ElecBas JL" ProgramChange="2" />
+			<Patch Number="Singles Bank E-  3" Name="FakeSax JL" ProgramChange="3" />
+			<Patch Number="Singles Bank E-  4" Name="WarmPad JL" ProgramChange="4" />
+			<Patch Number="Singles Bank E-  5" Name="TheDawn JL" ProgramChange="5" />
+			<Patch Number="Singles Bank E-  6" Name="Fretles JL" ProgramChange="6" />
+			<Patch Number="Singles Bank E-  7" Name="Tch Go  JL" ProgramChange="7" />
+			<Patch Number="Singles Bank E-  8" Name="Sick    JL" ProgramChange="8" />
+			<Patch Number="Singles Bank E-  9" Name="FakeGtr JL" ProgramChange="9" />
+			<Patch Number="Singles Bank E- 10" Name="SoulEatrJL" ProgramChange="10" />
+			<Patch Number="Singles Bank E- 11" Name="PythagorJL" ProgramChange="11" />
+			<Patch Number="Singles Bank E- 12" Name="FromBgn JL" ProgramChange="12" />
+			<Patch Number="Singles Bank E- 13" Name="KarnEvl JL" ProgramChange="13" />
+			<Patch Number="Singles Bank E- 14" Name="Fusion  JL" ProgramChange="14" />
+			<Patch Number="Singles Bank E- 15" Name="TrilStr JL" ProgramChange="15" />
+			<Patch Number="Singles Bank E- 16" Name="Tarkus  JL" ProgramChange="16" />
+			<Patch Number="Singles Bank E- 17" Name="ComMan  JL" ProgramChange="17" />
+			<Patch Number="Singles Bank E- 18" Name="Slicey  JL" ProgramChange="18" />
+			<Patch Number="Singles Bank E- 19" Name="Squba   JL" ProgramChange="19" />
+			<Patch Number="Singles Bank E- 20" Name="Mystic  JL" ProgramChange="20" />
+			<Patch Number="Singles Bank E- 21" Name="Morse   JL" ProgramChange="21" />
+			<Patch Number="Singles Bank E- 22" Name="Jeruslm JL" ProgramChange="22" />
+			<Patch Number="Singles Bank E- 23" Name="KE9Lead JL" ProgramChange="23" />
+			<Patch Number="Singles Bank E- 24" Name="Voyager JL" ProgramChange="24" />
+			<Patch Number="Singles Bank E- 25" Name="NghtTme JL" ProgramChange="25" />
+			<Patch Number="Singles Bank E- 26" Name="OfcHell JL" ProgramChange="26" />
+			<Patch Number="Singles Bank E- 27" Name="Tarkus2 JL" ProgramChange="27" />
+			<Patch Number="Singles Bank E- 28" Name="Hoedown JL" ProgramChange="28" />
+			<Patch Number="Singles Bank E- 29" Name="Rotary  JL" ProgramChange="29" />
+			<Patch Number="Singles Bank E- 30" Name="GrittyB JL" ProgramChange="30" />
+			<Patch Number="Singles Bank E- 31" Name="Feeder  JL" ProgramChange="31" />
+			<Patch Number="Singles Bank E- 32" Name="Elastic JL" ProgramChange="32" />
+			<Patch Number="Singles Bank E- 33" Name="Hoho.   JL" ProgramChange="33" />
+			<Patch Number="Singles Bank E- 34" Name="Chant   JL" ProgramChange="34" />
+			<Patch Number="Singles Bank E- 35" Name="Horror  JL" ProgramChange="35" />
+			<Patch Number="Singles Bank E- 36" Name="Padman  JL" ProgramChange="36" />
+			<Patch Number="Singles Bank E- 37" Name="HP SauceJL" ProgramChange="37" />
+			<Patch Number="Singles Bank E- 38" Name="Gimme5  JL" ProgramChange="38" />
+			<Patch Number="Singles Bank E- 39" Name="Positiv JL" ProgramChange="39" />
+			<Patch Number="Singles Bank E- 40" Name="Sub     JL" ProgramChange="40" />
+			<Patch Number="Singles Bank E- 41" Name="Hollow  JL" ProgramChange="41" />
+			<Patch Number="Singles Bank E- 42" Name="Acceler JL" ProgramChange="42" />
+			<Patch Number="Singles Bank E- 43" Name="HonkHonkJL" ProgramChange="43" />
+			<Patch Number="Singles Bank E- 44" Name="Clavish JL" ProgramChange="44" />
+			<Patch Number="Singles Bank E- 45" Name="Bone    JL" ProgramChange="45" />
+			<Patch Number="Singles Bank E- 46" Name="Train   JL" ProgramChange="46" />
+			<Patch Number="Singles Bank E- 47" Name="CupDrum JL" ProgramChange="47" />
+			<Patch Number="Singles Bank E- 48" Name="Super   JL" ProgramChange="48" />
+			<Patch Number="Singles Bank E- 49" Name="AccMW   JL" ProgramChange="49" />
+			<Patch Number="Singles Bank E- 50" Name="SplitPhtJL" ProgramChange="50" />
+			<Patch Number="Singles Bank E- 51" Name="TheWell JL" ProgramChange="51" />
+			<Patch Number="Singles Bank E- 52" Name="Benny B JL" ProgramChange="52" />
+			<Patch Number="Singles Bank E- 53" Name="KickO'  JL" ProgramChange="53" />
+			<Patch Number="Singles Bank E- 54" Name="Boring  JL" ProgramChange="54" />
+			<Patch Number="Singles Bank E- 55" Name="Shivers JL" ProgramChange="55" />
+			<Patch Number="Singles Bank E- 56" Name="Grose   JL" ProgramChange="56" />
+			<Patch Number="Singles Bank E- 57" Name="NintendoJL" ProgramChange="57" />
+			<Patch Number="Singles Bank E- 58" Name="SqrMdns JL" ProgramChange="58" />
+			<Patch Number="Singles Bank E- 59" Name="Nokia   JL" ProgramChange="59" />
+			<Patch Number="Singles Bank E- 60" Name="Moogish JL" ProgramChange="60" />
+			<Patch Number="Singles Bank E- 61" Name="HolyVrs JL" ProgramChange="61" />
+			<Patch Number="Singles Bank E- 62" Name="Howler  JL" ProgramChange="62" />
+			<Patch Number="Singles Bank E- 63" Name="Chunky  JL" ProgramChange="63" />
+			<Patch Number="Singles Bank E- 64" Name="SwirlPadJL" ProgramChange="64" />
+			<Patch Number="Singles Bank E- 65" Name="ArtifactJL" ProgramChange="65" />
+			<Patch Number="Singles Bank E- 66" Name="Horny   JL" ProgramChange="66" />
+			<Patch Number="Singles Bank E- 67" Name="WideBassJL" ProgramChange="67" />
+			<Patch Number="Singles Bank E- 68" Name="ArpBass JL" ProgramChange="68" />
+			<Patch Number="Singles Bank E- 69" Name="ArpBass2JL" ProgramChange="69" />
+			<Patch Number="Singles Bank E- 70" Name="Crowd   JL" ProgramChange="70" />
+			<Patch Number="Singles Bank E- 71" Name="BowlerOpJL" ProgramChange="71" />
+			<Patch Number="Singles Bank E- 72" Name="BowlerClJL" ProgramChange="72" />
+			<Patch Number="Singles Bank E- 73" Name="RandomLdJL" ProgramChange="73" />
+			<Patch Number="Singles Bank E- 74" Name="NiceBassJL" ProgramChange="74" />
+			<Patch Number="Singles Bank E- 75" Name="Dizzy   JL" ProgramChange="75" />
+			<Patch Number="Singles Bank E- 76" Name="Zaphod  JL" ProgramChange="76" />
+			<Patch Number="Singles Bank E- 77" Name="Spirits JL" ProgramChange="77" />
+			<Patch Number="Singles Bank E- 78" Name="Heaven  JL" ProgramChange="78" />
+			<Patch Number="Singles Bank E- 79" Name="Matter  JL" ProgramChange="79" />
+			<Patch Number="Singles Bank E- 80" Name="DoomBellJL" ProgramChange="80" />
+			<Patch Number="Singles Bank E- 81" Name="BraveHrtJL" ProgramChange="81" />
+			<Patch Number="Singles Bank E- 82" Name="Singing JL" ProgramChange="82" />
+			<Patch Number="Singles Bank E- 83" Name="ThickSawJL" ProgramChange="83" />
+			<Patch Number="Singles Bank E- 84" Name="NotPad  JL" ProgramChange="84" />
+			<Patch Number="Singles Bank E- 85" Name="SpcMonkyJL" ProgramChange="85" />
+			<Patch Number="Singles Bank E- 86" Name="VilePad JL" ProgramChange="86" />
+			<Patch Number="Singles Bank E- 87" Name="AgressivJL" ProgramChange="87" />
+			<Patch Number="Singles Bank E- 88" Name="RndAgresJL" ProgramChange="88" />
+			<Patch Number="Singles Bank E- 89" Name="SurfMstrJL" ProgramChange="89" />
+			<Patch Number="Singles Bank E- 90" Name="ColdStelJL" ProgramChange="90" />
+			<Patch Number="Singles Bank E- 91" Name="Sheva   JL" ProgramChange="91" />
+			<Patch Number="Singles Bank E- 92" Name="SinisterJL" ProgramChange="92" />
+			<Patch Number="Singles Bank E- 93" Name="Bulk    JL" ProgramChange="93" />
+			<Patch Number="Singles Bank E- 94" Name="FelxDmstJL" ProgramChange="94" />
+			<Patch Number="Singles Bank E- 95" Name="SlicyBasJL" ProgramChange="95" />
+			<Patch Number="Singles Bank E- 96" Name="DeepSwllJL" ProgramChange="96" />
+			<Patch Number="Singles Bank E- 97" Name="BeautiflJL" ProgramChange="97" />
+			<Patch Number="Singles Bank E- 98" Name="DefectedJL" ProgramChange="98" />
+			<Patch Number="Singles Bank E- 99" Name="AstralPdJL" ProgramChange="99" />
+			<Patch Number="Singles Bank E-100" Name="Warped  JL" ProgramChange="100" />
+			<Patch Number="Singles Bank E-101" Name="Birds   JL" ProgramChange="101" />
+			<Patch Number="Singles Bank E-102" Name="SynthPnoJL" ProgramChange="102" />
+			<Patch Number="Singles Bank E-103" Name="MthrTrcrJL" ProgramChange="103" />
+			<Patch Number="Singles Bank E-104" Name="Sitar   JL" ProgramChange="104" />
+			<Patch Number="Singles Bank E-105" Name="FftyFftyJL" ProgramChange="105" />
+			<Patch Number="Singles Bank E-106" Name="Warble  JL" ProgramChange="106" />
+			<Patch Number="Singles Bank E-107" Name="SplddVOCJL" ProgramChange="107" />
+			<Patch Number="Singles Bank E-108" Name="MntnFlutJL" ProgramChange="108" />
+			<Patch Number="Singles Bank E-109" Name="MorpheusJL" ProgramChange="109" />
+			<Patch Number="Singles Bank E-110" Name="NotPad2 JL" ProgramChange="110" />
+			<Patch Number="Singles Bank E-111" Name="Didgeri JL" ProgramChange="111" />
+			<Patch Number="Singles Bank E-112" Name="BigBoy  JL" ProgramChange="112" />
+			<Patch Number="Singles Bank E-113" Name="ImFrenchJL" ProgramChange="113" />
+			<Patch Number="Singles Bank E-114" Name="Vry'eavyJL" ProgramChange="114" />
+			<Patch Number="Singles Bank E-115" Name="WarpHov JL" ProgramChange="115" />
+			<Patch Number="Singles Bank E-116" Name="SyncSyncJL" ProgramChange="116" />
+			<Patch Number="Singles Bank E-117" Name="WoodenMnJL" ProgramChange="117" />
+			<Patch Number="Singles Bank E-118" Name="Guitar  JL" ProgramChange="118" />
+			<Patch Number="Singles Bank E-119" Name="KnockersJL" ProgramChange="119" />
+			<Patch Number="Singles Bank E-120" Name="PawnBassJL" ProgramChange="120" />
+			<Patch Number="Singles Bank E-121" Name="Juho L'sJL" ProgramChange="121" />
+			<Patch Number="Singles Bank E-122" Name="Block   JL" ProgramChange="122" />
+			<Patch Number="Singles Bank E-123" Name="NaukuMstJL" ProgramChange="123" />
+			<Patch Number="Singles Bank E-124" Name="AhaaDistJL" ProgramChange="124" />
+			<Patch Number="Singles Bank E-125" Name="MrKitinaJL" ProgramChange="125" />
+			<Patch Number="Singles Bank E-126" Name="Quantum JL" ProgramChange="126" />
+			<Patch Number="Singles Bank E-127" Name="Vacuum  JL" ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Singles Bank F">
+			<Patch Number="Singles Bank F-  0" Name="80'sStabBC" ProgramChange="0" />
+			<Patch Number="Singles Bank F-  1" Name="AmbienceBC" ProgramChange="1" />
+			<Patch Number="Singles Bank F-  2" Name="BanjArp BC" ProgramChange="2" />
+			<Patch Number="Singles Bank F-  3" Name="BassArp BC" ProgramChange="3" />
+			<Patch Number="Singles Bank F-  4" Name="BassMan1BC" ProgramChange="4" />
+			<Patch Number="Singles Bank F-  5" Name="BassMan2BC" ProgramChange="5" />
+			<Patch Number="Singles Bank F-  6" Name="Beans   BC" ProgramChange="6" />
+			<Patch Number="Singles Bank F-  7" Name="BigLead BC" ProgramChange="7" />
+			<Patch Number="Singles Bank F-  8" Name="Bite Me BC" ProgramChange="8" />
+			<Patch Number="Singles Bank F-  9" Name="BluBotl BC" ProgramChange="9" />
+			<Patch Number="Singles Bank F- 10" Name="BottlPadBC" ProgramChange="10" />
+			<Patch Number="Singles Bank F- 11" Name="BriteArpBC" ProgramChange="11" />
+			<Patch Number="Singles Bank F- 12" Name="Burbler BC" ProgramChange="12" />
+			<Patch Number="Singles Bank F- 13" Name="BuzzBassBC" ProgramChange="13" />
+			<Patch Number="Singles Bank F- 14" Name="CellStabBC" ProgramChange="14" />
+			<Patch Number="Singles Bank F- 15" Name="CheezMe BC" ProgramChange="15" />
+			<Patch Number="Singles Bank F- 16" Name="ClaviKeyBC" ProgramChange="16" />
+			<Patch Number="Singles Bank F- 17" Name="CompressBC" ProgramChange="17" />
+			<Patch Number="Singles Bank F- 18" Name="DelivrncBC" ProgramChange="18" />
+			<Patch Number="Singles Bank F- 19" Name="DesolateBC" ProgramChange="19" />
+			<Patch Number="Singles Bank F- 20" Name="DigiSaw BC" ProgramChange="20" />
+			<Patch Number="Singles Bank F- 21" Name="DirtLeadBC" ProgramChange="21" />
+			<Patch Number="Singles Bank F- 22" Name="DublArp BC" ProgramChange="22" />
+			<Patch Number="Singles Bank F- 23" Name="Electro1BC" ProgramChange="23" />
+			<Patch Number="Singles Bank F- 24" Name="ElectrR1BC" ProgramChange="24" />
+			<Patch Number="Singles Bank F- 25" Name="ElectrR2BC" ProgramChange="25" />
+			<Patch Number="Singles Bank F- 26" Name="Epitaph BC" ProgramChange="26" />
+			<Patch Number="Singles Bank F- 27" Name="FlwLead BC" ProgramChange="27" />
+			<Patch Number="Singles Bank F- 28" Name="FlydCoptBC" ProgramChange="28" />
+			<Patch Number="Singles Bank F- 29" Name="Fritter BC" ProgramChange="29" />
+			<Patch Number="Singles Bank F- 30" Name="FunkMamaBC" ProgramChange="30" />
+			<Patch Number="Singles Bank F- 31" Name="FunnyLd BC" ProgramChange="31" />
+			<Patch Number="Singles Bank F- 32" Name="FuzzFM  BC" ProgramChange="32" />
+			<Patch Number="Singles Bank F- 33" Name="GritBas1BC" ProgramChange="33" />
+			<Patch Number="Singles Bank F- 34" Name="GritBas2BC" ProgramChange="34" />
+			<Patch Number="Singles Bank F- 35" Name="HardBassBC" ProgramChange="35" />
+			<Patch Number="Singles Bank F- 36" Name="HardLeadBC" ProgramChange="36" />
+			<Patch Number="Singles Bank F- 37" Name="HarshArpBC" ProgramChange="37" />
+			<Patch Number="Singles Bank F- 38" Name="HedHuntrBC" ProgramChange="38" />
+			<Patch Number="Singles Bank F- 39" Name="HoloArp BC" ProgramChange="39" />
+			<Patch Number="Singles Bank F- 40" Name="HoloBassBC" ProgramChange="40" />
+			<Patch Number="Singles Bank F- 41" Name="Korgi   BC" ProgramChange="41" />
+			<Patch Number="Singles Bank F- 42" Name="KraftAr1BC" ProgramChange="42" />
+			<Patch Number="Singles Bank F- 43" Name="KraftAr2BC" ProgramChange="43" />
+			<Patch Number="Singles Bank F- 44" Name="KraftAr3BC" ProgramChange="44" />
+			<Patch Number="Singles Bank F- 45" Name="KraftAr4BC" ProgramChange="45" />
+			<Patch Number="Singles Bank F- 46" Name="KraftAr5BC" ProgramChange="46" />
+			<Patch Number="Singles Bank F- 47" Name="KraftAr6BC" ProgramChange="47" />
+			<Patch Number="Singles Bank F- 48" Name="LktroArpBC" ProgramChange="48" />
+			<Patch Number="Singles Bank F- 49" Name="LktroPlkBC" ProgramChange="49" />
+			<Patch Number="Singles Bank F- 50" Name="Monday  BC" ProgramChange="50" />
+			<Patch Number="Singles Bank F- 51" Name="Mooky   BC" ProgramChange="51" />
+			<Patch Number="Singles Bank F- 52" Name="MPScreamBC" ProgramChange="52" />
+			<Patch Number="Singles Bank F- 53" Name="MuteArp BC" ProgramChange="53" />
+			<Patch Number="Singles Bank F- 54" Name="MWBrass BC" ProgramChange="54" />
+			<Patch Number="Singles Bank F- 55" Name="Navel   BC" ProgramChange="55" />
+			<Patch Number="Singles Bank F- 56" Name="NewGBassBC" ProgramChange="56" />
+			<Patch Number="Singles Bank F- 57" Name="NiceKeysBC" ProgramChange="57" />
+			<Patch Number="Singles Bank F- 58" Name="NotchPlsBC" ProgramChange="58" />
+			<Patch Number="Singles Bank F- 59" Name="NotchSawBC" ProgramChange="59" />
+			<Patch Number="Singles Bank F- 60" Name="Ocean  BC " ProgramChange="60" />
+			<Patch Number="Singles Bank F- 61" Name="OnRun   BC" ProgramChange="61" />
+			<Patch Number="Singles Bank F- 62" Name="PercArp1BC" ProgramChange="62" />
+			<Patch Number="Singles Bank F- 63" Name="PercArp2BC" ProgramChange="63" />
+			<Patch Number="Singles Bank F- 64" Name="PercArp3BC" ProgramChange="64" />
+			<Patch Number="Singles Bank F- 65" Name="PlukArp1BC" ProgramChange="65" />
+			<Patch Number="Singles Bank F- 66" Name="PlukArp2BC" ProgramChange="66" />
+			<Patch Number="Singles Bank F- 67" Name="PlukTremBC" ProgramChange="67" />
+			<Patch Number="Singles Bank F- 68" Name="PPGdual BC" ProgramChange="68" />
+			<Patch Number="Singles Bank F- 69" Name="Randy   BC" ProgramChange="69" />
+			<Patch Number="Singles Bank F- 70" Name="RezArp1 BC" ProgramChange="70" />
+			<Patch Number="Singles Bank F- 71" Name="RezArp2 BC" ProgramChange="71" />
+			<Patch Number="Singles Bank F- 72" Name="RingLedrBC" ProgramChange="72" />
+			<Patch Number="Singles Bank F- 73" Name="Saucer  BC" ProgramChange="73" />
+			<Patch Number="Singles Bank F- 74" Name="SawMorf BC" ProgramChange="74" />
+			<Patch Number="Singles Bank F- 75" Name="Sear    BC" ProgramChange="75" />
+			<Patch Number="Singles Bank F- 76" Name="ShortBasBC" ProgramChange="76" />
+			<Patch Number="Singles Bank F- 77" Name="ShortSawBC" ProgramChange="77" />
+			<Patch Number="Singles Bank F- 78" Name="Sighing BC" ProgramChange="78" />
+			<Patch Number="Singles Bank F- 79" Name="SoftArp1BC" ProgramChange="79" />
+			<Patch Number="Singles Bank F- 80" Name="SoftArp2BC" ProgramChange="80" />
+			<Patch Number="Singles Bank F- 81" Name="SoftArp3BC" ProgramChange="81" />
+			<Patch Number="Singles Bank F- 82" Name="StacArp1BC" ProgramChange="82" />
+			<Patch Number="Singles Bank F- 83" Name="StacArp2BC" ProgramChange="83" />
+			<Patch Number="Singles Bank F- 84" Name="SweetFA BC" ProgramChange="84" />
+			<Patch Number="Singles Bank F- 85" Name="Sweptre BC" ProgramChange="85" />
+			<Patch Number="Singles Bank F- 86" Name="SyncArp1BC" ProgramChange="86" />
+			<Patch Number="Singles Bank F- 87" Name="ThickPadBC" ProgramChange="87" />
+			<Patch Number="Singles Bank F- 88" Name="ThinPad BC" ProgramChange="88" />
+			<Patch Number="Singles Bank F- 89" Name="TremStabBC" ProgramChange="89" />
+			<Patch Number="Singles Bank F- 90" Name="VA1     BC" ProgramChange="90" />
+			<Patch Number="Singles Bank F- 91" Name="VA2     BC" ProgramChange="91" />
+			<Patch Number="Singles Bank F- 92" Name="VA3     BC" ProgramChange="92" />
+			<Patch Number="Singles Bank F- 93" Name="VA4     BC" ProgramChange="93" />
+			<Patch Number="Singles Bank F- 94" Name="VanOrch BC" ProgramChange="94" />
+			<Patch Number="Singles Bank F- 95" Name="VC ACID BC" ProgramChange="95" />
+			<Patch Number="Singles Bank F- 96" Name="VoxOct  BC" ProgramChange="96" />
+			<Patch Number="Singles Bank F- 97" Name="VoxWave BC" ProgramChange="97" />
+			<Patch Number="Singles Bank F- 98" Name="WarmUp  BC" ProgramChange="98" />
+			<Patch Number="Singles Bank F- 99" Name="WarpLeadBC" ProgramChange="99" />
+			<Patch Number="Singles Bank F-100" Name="WetArp  BC" ProgramChange="100" />
+			<Patch Number="Singles Bank F-101" Name="WetBass BC" ProgramChange="101" />
+			<Patch Number="Singles Bank F-102" Name="Whistle BC" ProgramChange="102" />
+			<Patch Number="Singles Bank F-103" Name="Zappy   BC" ProgramChange="103" />
+			<Patch Number="Singles Bank F-104" Name="PhatKickBC" ProgramChange="104" />
+			<Patch Number="Singles Bank F-105" Name="SatKick BC" ProgramChange="105" />
+			<Patch Number="Singles Bank F-106" Name="DistKickBC" ProgramChange="106" />
+			<Patch Number="Singles Bank F-107" Name="SnareMrfBC" ProgramChange="107" />
+			<Patch Number="Singles Bank F-108" Name="AutoHat BC" ProgramChange="108" />
+			<Patch Number="Singles Bank F-109" Name="TinFoil BC" ProgramChange="109" />
+			<Patch Number="Singles Bank F-110" Name="HldPdHatBC" ProgramChange="110" />
+			<Patch Number="Singles Bank F-111" Name="808 Cow BC" ProgramChange="111" />
+			<Patch Number="Singles Bank F-112" Name="PercMorfBC" ProgramChange="112" />
+			<Patch Number="Singles Bank F-113" Name="PercMrf2BC" ProgramChange="113" />
+			<Patch Number="Singles Bank F-114" Name="RezDrum BC" ProgramChange="114" />
+			<Patch Number="Singles Bank F-115" Name="RezPerc BC" ProgramChange="115" />
+			<Patch Number="Singles Bank F-116" Name="Claps 1 BC" ProgramChange="116" />
+			<Patch Number="Singles Bank F-117" Name="Claps 2 BC" ProgramChange="117" />
+			<Patch Number="Singles Bank F-118" Name="PanLid1 BC" ProgramChange="118" />
+			<Patch Number="Singles Bank F-119" Name="PanLid2 BC" ProgramChange="119" />
+			<Patch Number="Singles Bank F-120" Name="AutoShkeBC" ProgramChange="120" />
+			<Patch Number="Singles Bank F-121" Name="SineDiveBC" ProgramChange="121" />
+			<Patch Number="Singles Bank F-122" Name="Klunk   BC" ProgramChange="122" />
+			<Patch Number="Singles Bank F-123" Name="Klang   BC" ProgramChange="123" />
+			<Patch Number="Singles Bank F-124" Name="Stick   BC" ProgramChange="124" />
+			<Patch Number="Singles Bank F-125" Name="Zap     BC" ProgramChange="125" />
+			<Patch Number="Singles Bank F-126" Name="LoFiHit BC" ProgramChange="126" />
+			<Patch Number="Singles Bank F-127" Name="V Dog   BC" ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Singles Bank G">
+			<Patch Number="Singles Bank G-  0" Name="UNDERWORLD" ProgramChange="0" />
+			<Patch Number="Singles Bank G-  1" Name="ACID LINE " ProgramChange="1" />
+			<Patch Number="Singles Bank G-  2" Name="MELT R\   " ProgramChange="2" />
+			<Patch Number="Singles Bank G-  3" Name="HARD HOUSE" ProgramChange="3" />
+			<Patch Number="Singles Bank G-  4" Name="PHASER ARP" ProgramChange="4" />
+			<Patch Number="Singles Bank G-  5" Name="MELT GROOV" ProgramChange="5" />
+			<Patch Number="Singles Bank G-  6" Name="MASSIVE   " ProgramChange="6" />
+			<Patch Number="Singles Bank G-  7" Name="CHEESEMAAS" ProgramChange="7" />
+			<Patch Number="Singles Bank G-  8" Name="GO GROOVE " ProgramChange="8" />
+			<Patch Number="Singles Bank G-  9" Name="BP PAD XM " ProgramChange="9" />
+			<Patch Number="Singles Bank G- 10" Name="ResoMelody" ProgramChange="10" />
+			<Patch Number="Singles Bank G- 11" Name="PHASERLEAD" ProgramChange="11" />
+			<Patch Number="Singles Bank G- 12" Name="CHEESELEAD" ProgramChange="12" />
+			<Patch Number="Singles Bank G- 13" Name="SIMULATOR " ProgramChange="13" />
+			<Patch Number="Singles Bank G- 14" Name="OL'SCOOOL " ProgramChange="14" />
+			<Patch Number="Singles Bank G- 15" Name="SAW COMM S" ProgramChange="15" />
+			<Patch Number="Singles Bank G- 16" Name="CYDONIA   " ProgramChange="16" />
+			<Patch Number="Singles Bank G- 17" Name="DIST ARP  " ProgramChange="17" />
+			<Patch Number="Singles Bank G- 18" Name="MAYHEM    " ProgramChange="18" />
+			<Patch Number="Singles Bank G- 19" Name="CHEESE ARP" ProgramChange="19" />
+			<Patch Number="Singles Bank G- 20" Name="KILLERS   " ProgramChange="20" />
+			<Patch Number="Singles Bank G- 21" Name="CYDONIAX  " ProgramChange="21" />
+			<Patch Number="Singles Bank G- 22" Name="1987EBM BA" ProgramChange="22" />
+			<Patch Number="Singles Bank G- 23" Name="ELECTRO LD" ProgramChange="23" />
+			<Patch Number="Singles Bank G- 24" Name="ANGST PAD " ProgramChange="24" />
+			<Patch Number="Singles Bank G- 25" Name="OH MY GOD " ProgramChange="25" />
+			<Patch Number="Singles Bank G- 26" Name="S9 GROOVE " ProgramChange="26" />
+			<Patch Number="Singles Bank G- 27" Name="87BASS   V" ProgramChange="27" />
+			<Patch Number="Singles Bank G- 28" Name="MELT BASS2" ProgramChange="28" />
+			<Patch Number="Singles Bank G- 29" Name="DIGISCREAM" ProgramChange="29" />
+			<Patch Number="Singles Bank G- 30" Name="TRANCEBASS" ProgramChange="30" />
+			<Patch Number="Singles Bank G- 31" Name="DIGGROOVE " ProgramChange="31" />
+			<Patch Number="Singles Bank G- 32" Name="IOC BASE  " ProgramChange="32" />
+			<Patch Number="Singles Bank G- 33" Name="DIST BASS " ProgramChange="33" />
+			<Patch Number="Singles Bank G- 34" Name="REZ STRING" ProgramChange="34" />
+			<Patch Number="Singles Bank G- 35" Name="OFF BASS  " ProgramChange="35" />
+			<Patch Number="Singles Bank G- 36" Name="SPACELAB }" ProgramChange="36" />
+			<Patch Number="Singles Bank G- 37" Name="TRANCE ARP" ProgramChange="37" />
+			<Patch Number="Singles Bank G- 38" Name="HPASS BASS" ProgramChange="38" />
+			<Patch Number="Singles Bank G- 39" Name="DIST REZ  " ProgramChange="39" />
+			<Patch Number="Singles Bank G- 40" Name="NITZER BAS" ProgramChange="40" />
+			<Patch Number="Singles Bank G- 41" Name="FPONT242pd" ProgramChange="41" />
+			<Patch Number="Singles Bank G- 42" Name="EVIL DEAD " ProgramChange="42" />
+			<Patch Number="Singles Bank G- 43" Name="BP GROOVE " ProgramChange="43" />
+			<Patch Number="Singles Bank G- 44" Name="ICON   ARP" ProgramChange="44" />
+			<Patch Number="Singles Bank G- 45" Name="FEEDED ARP" ProgramChange="45" />
+			<Patch Number="Singles Bank G- 46" Name="SCREAM ARP" ProgramChange="46" />
+			<Patch Number="Singles Bank G- 47" Name="PLAIN BASS" ProgramChange="47" />
+			<Patch Number="Singles Bank G- 48" Name="MELT INTRO" ProgramChange="48" />
+			<Patch Number="Singles Bank G- 49" Name="EBM BASS  " ProgramChange="49" />
+			<Patch Number="Singles Bank G- 50" Name="MELT INTRO" ProgramChange="50" />
+			<Patch Number="Singles Bank G- 51" Name="Sinus 9   " ProgramChange="51" />
+			<Patch Number="Singles Bank G- 52" Name="NEW IOC   " ProgramChange="52" />
+			<Patch Number="Singles Bank G- 53" Name="JMJ ARP   " ProgramChange="53" />
+			<Patch Number="Singles Bank G- 54" Name="SHALLOWBAS" ProgramChange="54" />
+			<Patch Number="Singles Bank G- 55" Name="NOIZE  BAS" ProgramChange="55" />
+			<Patch Number="Singles Bank G- 56" Name="MOON BASS " ProgramChange="56" />
+			<Patch Number="Singles Bank G- 57" Name="JEAN-LEAD " ProgramChange="57" />
+			<Patch Number="Singles Bank G- 58" Name="SQUARE ARP" ProgramChange="58" />
+			<Patch Number="Singles Bank G- 59" Name="NEW IOC   " ProgramChange="59" />
+			<Patch Number="Singles Bank G- 60" Name="REZ DELAY " ProgramChange="60" />
+			<Patch Number="Singles Bank G- 61" Name="PB ALIEN  " ProgramChange="61" />
+			<Patch Number="Singles Bank G- 62" Name="MOON LEAD " ProgramChange="62" />
+			<Patch Number="Singles Bank G- 63" Name="IOC BP BAS" ProgramChange="63" />
+			<Patch Number="Singles Bank G- 64" Name="MELODIBZ  " ProgramChange="64" />
+			<Patch Number="Singles Bank G- 65" Name="3/4 IOC   " ProgramChange="65" />
+			<Patch Number="Singles Bank G- 66" Name="FUTURE BAS" ProgramChange="66" />
+			<Patch Number="Singles Bank G- 67" Name="MELODTWBAS" ProgramChange="67" />
+			<Patch Number="Singles Bank G- 68" Name="SHOUTLEAD " ProgramChange="68" />
+			<Patch Number="Singles Bank G- 69" Name="EBM LEAD  " ProgramChange="69" />
+			<Patch Number="Singles Bank G- 70" Name="ORBITAL   " ProgramChange="70" />
+			<Patch Number="Singles Bank G- 71" Name="REZ ARP   " ProgramChange="71" />
+			<Patch Number="Singles Bank G- 72" Name="EVIL LEAD " ProgramChange="72" />
+			<Patch Number="Singles Bank G- 73" Name="INTENSE   " ProgramChange="73" />
+			<Patch Number="Singles Bank G- 74" Name="S9 GROOVG " ProgramChange="74" />
+			<Patch Number="Singles Bank G- 75" Name="TALKER    " ProgramChange="75" />
+			<Patch Number="Singles Bank G- 76" Name="FUTUTUREPP" ProgramChange="76" />
+			<Patch Number="Singles Bank G- 77" Name="OutThere  " ProgramChange="77" />
+			<Patch Number="Singles Bank G- 78" Name="DETUNER   " ProgramChange="78" />
+			<Patch Number="Singles Bank G- 79" Name="SQUARE ARP" ProgramChange="79" />
+			<Patch Number="Singles Bank G- 80" Name="U F O     " ProgramChange="80" />
+			<Patch Number="Singles Bank G- 81" Name="HPASS BASS" ProgramChange="81" />
+			<Patch Number="Singles Bank G- 82" Name="SYNTH POP " ProgramChange="82" />
+			<Patch Number="Singles Bank G- 83" Name="INCOMING  " ProgramChange="83" />
+			<Patch Number="Singles Bank G- 84" Name="ERROR     " ProgramChange="84" />
+			<Patch Number="Singles Bank G- 85" Name="XMORPHLEAD" ProgramChange="85" />
+			<Patch Number="Singles Bank G- 86" Name="PRO ONE FX" ProgramChange="86" />
+			<Patch Number="Singles Bank G- 87" Name="MOON ARP  " ProgramChange="87" />
+			<Patch Number="Singles Bank G- 88" Name="ABSINTH   " ProgramChange="88" />
+			<Patch Number="Singles Bank G- 89" Name="MELTSYNTH " ProgramChange="89" />
+			<Patch Number="Singles Bank G- 90" Name="DRUNKEN ET" ProgramChange="90" />
+			<Patch Number="Singles Bank G- 91" Name="MELT ARP  " ProgramChange="91" />
+			<Patch Number="Singles Bank G- 92" Name="3/4 BD    " ProgramChange="92" />
+			<Patch Number="Singles Bank G- 93" Name="KRAFT ARP " ProgramChange="93" />
+			<Patch Number="Singles Bank G- 94" Name="ARP SAW   " ProgramChange="94" />
+			<Patch Number="Singles Bank G- 95" Name="COME 1    " ProgramChange="95" />
+			<Patch Number="Singles Bank G- 96" Name="OSCILLATE " ProgramChange="96" />
+			<Patch Number="Singles Bank G- 97" Name="DISTORTION" ProgramChange="97" />
+			<Patch Number="Singles Bank G- 98" Name="DIST LEAD " ProgramChange="98" />
+			<Patch Number="Singles Bank G- 99" Name="C64 ERORR " ProgramChange="99" />
+			<Patch Number="Singles Bank G-100" Name=" VOCOD PAD" ProgramChange="100" />
+			<Patch Number="Singles Bank G-101" Name="HP BP EBM " ProgramChange="101" />
+			<Patch Number="Singles Bank G-102" Name="EVIL PAD  " ProgramChange="102" />
+			<Patch Number="Singles Bank G-103" Name="REZ PAD   " ProgramChange="103" />
+			<Patch Number="Singles Bank G-104" Name="8-BIT HELL" ProgramChange="104" />
+			<Patch Number="Singles Bank G-105" Name="8BIT PAD  " ProgramChange="105" />
+			<Patch Number="Singles Bank G-106" Name="DM MELO   " ProgramChange="106" />
+			<Patch Number="Singles Bank G-107" Name="MAD LFO   " ProgramChange="107" />
+			<Patch Number="Singles Bank G-108" Name="TRAIN MOD " ProgramChange="108" />
+			<Patch Number="Singles Bank G-109" Name="DRUNKSPACE" ProgramChange="109" />
+			<Patch Number="Singles Bank G-110" Name="DIST LEAD " ProgramChange="110" />
+			<Patch Number="Singles Bank G-111" Name="ALL AROUND" ProgramChange="111" />
+			<Patch Number="Singles Bank G-112" Name="SWEETSQUAR" ProgramChange="112" />
+			<Patch Number="Singles Bank G-113" Name="OffLoop   " ProgramChange="113" />
+			<Patch Number="Singles Bank G-114" Name="S9 Loop   " ProgramChange="114" />
+			<Patch Number="Singles Bank G-115" Name="XMORPHLOOP" ProgramChange="115" />
+			<Patch Number="Singles Bank G-116" Name=" SUB BASS " ProgramChange="116" />
+			<Patch Number="Singles Bank G-117" Name="IOC DEEPG#" ProgramChange="117" />
+			<Patch Number="Singles Bank G-118" Name="ENOY ME   " ProgramChange="118" />
+			<Patch Number="Singles Bank G-119" Name="SQUARE ARP" ProgramChange="119" />
+			<Patch Number="Singles Bank G-120" Name="BP/HP OSC " ProgramChange="120" />
+			<Patch Number="Singles Bank G-121" Name=" DIGERIDOO" ProgramChange="121" />
+			<Patch Number="Singles Bank G-122" Name="EBM SNARE " ProgramChange="122" />
+			<Patch Number="Singles Bank G-123" Name=" SQUAREBAS" ProgramChange="123" />
+			<Patch Number="Singles Bank G-124" Name="WET SQBASS" ProgramChange="124" />
+			<Patch Number="Singles Bank G-125" Name="DU HAST   " ProgramChange="125" />
+			<Patch Number="Singles Bank G-126" Name="MELLOW    " ProgramChange="126" />
+			<Patch Number="Singles Bank G-127" Name="GROOVE 7TH" ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Singles Bank H">
+			<Patch Number="Singles Bank H-  0" Name="Boombatcha" ProgramChange="0" />
+			<Patch Number="Singles Bank H-  1" Name="Bass3 BB  " ProgramChange="1" />
+			<Patch Number="Singles Bank H-  2" Name="Bass4 BB  " ProgramChange="2" />
+			<Patch Number="Singles Bank H-  3" Name="Bass5 BB  " ProgramChange="3" />
+			<Patch Number="Singles Bank H-  4" Name="Bass6 BB  " ProgramChange="4" />
+			<Patch Number="Singles Bank H-  5" Name="Bass7 BB  " ProgramChange="5" />
+			<Patch Number="Singles Bank H-  6" Name="Bass8 BB  " ProgramChange="6" />
+			<Patch Number="Singles Bank H-  7" Name="Bass9 BB  " ProgramChange="7" />
+			<Patch Number="Singles Bank H-  8" Name="FX1 BB    " ProgramChange="8" />
+			<Patch Number="Singles Bank H-  9" Name="FX3 BB    " ProgramChange="9" />
+			<Patch Number="Singles Bank H- 10" Name="FX4 BB    " ProgramChange="10" />
+			<Patch Number="Singles Bank H- 11" Name="FX5 BB    " ProgramChange="11" />
+			<Patch Number="Singles Bank H- 12" Name="TechpercBB" ProgramChange="12" />
+			<Patch Number="Singles Bank H- 13" Name="Transeq4BB" ProgramChange="13" />
+			<Patch Number="Singles Bank H- 14" Name="Spacey BB " ProgramChange="14" />
+			<Patch Number="Singles Bank H- 15" Name="Floppy BB " ProgramChange="15" />
+			<Patch Number="Singles Bank H- 16" Name="Pian BB   " ProgramChange="16" />
+			<Patch Number="Singles Bank H- 17" Name="Transeq1BB" ProgramChange="17" />
+			<Patch Number="Singles Bank H- 18" Name="GoldPad BB" ProgramChange="18" />
+			<Patch Number="Singles Bank H- 19" Name="HarmonicBB" ProgramChange="19" />
+			<Patch Number="Singles Bank H- 20" Name="TechpadBB " ProgramChange="20" />
+			<Patch Number="Singles Bank H- 21" Name="Tecky BB  " ProgramChange="21" />
+			<Patch Number="Singles Bank H- 22" Name="Transeq3BB" ProgramChange="22" />
+			<Patch Number="Singles Bank H- 23" Name="Spacey BB " ProgramChange="23" />
+			<Patch Number="Singles Bank H- 24" Name="Transeq2BB" ProgramChange="24" />
+			<Patch Number="Singles Bank H- 25" Name="SpacenapBB" ProgramChange="25" />
+			<Patch Number="Singles Bank H- 26" Name="Dirty BB  " ProgramChange="26" />
+			<Patch Number="Singles Bank H- 27" Name="Deep seqBB" ProgramChange="27" />
+			<Patch Number="Singles Bank H- 28" Name="DeepchorBB" ProgramChange="28" />
+			<Patch Number="Singles Bank H- 29" Name="Beatseq BB" ProgramChange="29" />
+			<Patch Number="Singles Bank H- 30" Name="ChordyBB  " ProgramChange="30" />
+			<Patch Number="Singles Bank H- 31" Name="BeatbassBB" ProgramChange="31" />
+			<Patch Number="Singles Bank H- 32" Name="DetunedBB " ProgramChange="32" />
+			<Patch Number="Singles Bank H- 33" Name="Perc1 BB  " ProgramChange="33" />
+			<Patch Number="Singles Bank H- 34" Name="Bass10 BB " ProgramChange="34" />
+			<Patch Number="Singles Bank H- 35" Name="FX2 BB    " ProgramChange="35" />
+			<Patch Number="Singles Bank H- 36" Name="Belly BB  " ProgramChange="36" />
+			<Patch Number="Singles Bank H- 37" Name="Perc2 BB  " ProgramChange="37" />
+			<Patch Number="Singles Bank H- 38" Name="Perc3 BB  " ProgramChange="38" />
+			<Patch Number="Singles Bank H- 39" Name="Perc4 BB  " ProgramChange="39" />
+			<Patch Number="Singles Bank H- 40" Name="Perc5 BB  " ProgramChange="40" />
+			<Patch Number="Singles Bank H- 41" Name="Perc6 BB  " ProgramChange="41" />
+			<Patch Number="Singles Bank H- 42" Name="Perc7 BB  " ProgramChange="42" />
+			<Patch Number="Singles Bank H- 43" Name=" KiaetixBB" ProgramChange="43" />
+			<Patch Number="Singles Bank H- 44" Name="Meldeep BB" ProgramChange="44" />
+			<Patch Number="Singles Bank H- 45" Name="BoomchrdBB" ProgramChange="45" />
+			<Patch Number="Singles Bank H- 46" Name="Nice BB   " ProgramChange="46" />
+			<Patch Number="Singles Bank H- 47" Name="DeepchrdBB" ProgramChange="47" />
+			<Patch Number="Singles Bank H- 48" Name="DeepBB    " ProgramChange="48" />
+			<Patch Number="Singles Bank H- 49" Name="Deep2 BB  " ProgramChange="49" />
+			<Patch Number="Singles Bank H- 50" Name="Deep3 BB  " ProgramChange="50" />
+			<Patch Number="Singles Bank H- 51" Name="Plastik BB" ProgramChange="51" />
+			<Patch Number="Singles Bank H- 52" Name="Tinkle BB " ProgramChange="52" />
+			<Patch Number="Singles Bank H- 53" Name="Arpy BB   " ProgramChange="53" />
+			<Patch Number="Singles Bank H- 54" Name="Rich BB   " ProgramChange="54" />
+			<Patch Number="Singles Bank H- 55" Name="Smooth BB " ProgramChange="55" />
+			<Patch Number="Singles Bank H- 56" Name="Lovely    " ProgramChange="56" />
+			<Patch Number="Singles Bank H- 57" Name="Bass10 BB " ProgramChange="57" />
+			<Patch Number="Singles Bank H- 58" Name="DeepvoidBB" ProgramChange="58" />
+			<Patch Number="Singles Bank H- 59" Name="DeepsprkBB" ProgramChange="59" />
+			<Patch Number="Singles Bank H- 60" Name="DrkcloudBB" ProgramChange="60" />
+			<Patch Number="Singles Bank H- 61" Name="Yes! BB   " ProgramChange="61" />
+			<Patch Number="Singles Bank H- 62" Name="What? BB  " ProgramChange="62" />
+			<Patch Number="Singles Bank H- 63" Name="Why? BB   " ProgramChange="63" />
+			<Patch Number="Singles Bank H- 64" Name="Yes! seqBB" ProgramChange="64" />
+			<Patch Number="Singles Bank H- 65" Name="YeahniceBB" ProgramChange="65" />
+			<Patch Number="Singles Bank H- 66" Name="Sadman BB " ProgramChange="66" />
+			<Patch Number="Singles Bank H- 67" Name="Motor BB  " ProgramChange="67" />
+			<Patch Number="Singles Bank H- 68" Name="Twangy BB " ProgramChange="68" />
+			<Patch Number="Singles Bank H- 69" Name="Heaven BB " ProgramChange="69" />
+			<Patch Number="Singles Bank H- 70" Name="ScreechyBB" ProgramChange="70" />
+			<Patch Number="Singles Bank H- 71" Name="Droplet BB" ProgramChange="71" />
+			<Patch Number="Singles Bank H- 72" Name="Goldkey BB" ProgramChange="72" />
+			<Patch Number="Singles Bank H- 73" Name="Baby !    " ProgramChange="73" />
+			<Patch Number="Singles Bank H- 74" Name="King BB   " ProgramChange="74" />
+			<Patch Number="Singles Bank H- 75" Name="Nearly! BB" ProgramChange="75" />
+			<Patch Number="Singles Bank H- 76" Name="Brief BB  " ProgramChange="76" />
+			<Patch Number="Singles Bank H- 77" Name="Hit BB    " ProgramChange="77" />
+			<Patch Number="Singles Bank H- 78" Name="Squeel BB " ProgramChange="78" />
+			<Patch Number="Singles Bank H- 79" Name="Rude! BB  " ProgramChange="79" />
+			<Patch Number="Singles Bank H- 80" Name="Rich BB   " ProgramChange="80" />
+			<Patch Number="Singles Bank H- 81" Name="Letitgo BB" ProgramChange="81" />
+			<Patch Number="Singles Bank H- 82" Name="Rough BB  " ProgramChange="82" />
+			<Patch Number="Singles Bank H- 83" Name="Updown BB " ProgramChange="83" />
+			<Patch Number="Singles Bank H- 84" Name="Kind BB   " ProgramChange="84" />
+			<Patch Number="Singles Bank H- 85" Name="HarmonicBB" ProgramChange="85" />
+			<Patch Number="Singles Bank H- 86" Name="Smoothy BB" ProgramChange="86" />
+			<Patch Number="Singles Bank H- 87" Name="Thin BB   " ProgramChange="87" />
+			<Patch Number="Singles Bank H- 88" Name="Thud BB   " ProgramChange="88" />
+			<Patch Number="Singles Bank H- 89" Name="SlapitupBB" ProgramChange="89" />
+			<Patch Number="Singles Bank H- 90" Name="Hap E BB  " ProgramChange="90" />
+			<Patch Number="Singles Bank H- 91" Name="2 stage BB" ProgramChange="91" />
+			<Patch Number="Singles Bank H- 92" Name="Tecky BB  " ProgramChange="92" />
+			<Patch Number="Singles Bank H- 93" Name="Fresh BB  " ProgramChange="93" />
+			<Patch Number="Singles Bank H- 94" Name="Hope BB   " ProgramChange="94" />
+			<Patch Number="Singles Bank H- 95" Name="Nicely BB " ProgramChange="95" />
+			<Patch Number="Singles Bank H- 96" Name="Notbad BB " ProgramChange="96" />
+			<Patch Number="Singles Bank H- 97" Name="Chaud BB  " ProgramChange="97" />
+			<Patch Number="Singles Bank H- 98" Name="Chaud2 BB " ProgramChange="98" />
+			<Patch Number="Singles Bank H- 99" Name="AngelkeyBB" ProgramChange="99" />
+			<Patch Number="Singles Bank H-100" Name="Newkeys BB" ProgramChange="100" />
+			<Patch Number="Singles Bank H-101" Name="Orgy BB   " ProgramChange="101" />
+			<Patch Number="Singles Bank H-102" Name="Martian BB" ProgramChange="102" />
+			<Patch Number="Singles Bank H-103" Name="DeeprezBB " ProgramChange="103" />
+			<Patch Number="Singles Bank H-104" Name="Silky BB  " ProgramChange="104" />
+			<Patch Number="Singles Bank H-105" Name="OrgydeepBB" ProgramChange="105" />
+			<Patch Number="Singles Bank H-106" Name="Popy BB   " ProgramChange="106" />
+			<Patch Number="Singles Bank H-107" Name="Floaty BB " ProgramChange="107" />
+			<Patch Number="Singles Bank H-108" Name="Rezzy BB  " ProgramChange="108" />
+			<Patch Number="Singles Bank H-109" Name="Ringy BB  " ProgramChange="109" />
+			<Patch Number="Singles Bank H-110" Name="Boombatch2" ProgramChange="110" />
+			<Patch Number="Singles Bank H-111" Name="Twangy2 BB" ProgramChange="111" />
+			<Patch Number="Singles Bank H-112" Name="Nicely BB " ProgramChange="112" />
+			<Patch Number="Singles Bank H-113" Name="Starcld BB" ProgramChange="113" />
+			<Patch Number="Singles Bank H-114" Name="N.D.E. BB " ProgramChange="114" />
+			<Patch Number="Singles Bank H-115" Name="Dynamic BB" ProgramChange="115" />
+			<Patch Number="Singles Bank H-116" Name="LovekeysBB" ProgramChange="116" />
+			<Patch Number="Singles Bank H-117" Name="VelchordBB" ProgramChange="117" />
+			<Patch Number="Singles Bank H-118" Name="Bass1 BB  " ProgramChange="118" />
+			<Patch Number="Singles Bank H-119" Name="Hotspa BB " ProgramChange="119" />
+			<Patch Number="Singles Bank H-120" Name="Transeq5BB" ProgramChange="120" />
+			<Patch Number="Singles Bank H-121" Name="Bass10 BB " ProgramChange="121" />
+			<Patch Number="Singles Bank H-122" Name="Bass11 BB " ProgramChange="122" />
+			<Patch Number="Singles Bank H-123" Name="Bass12 BB " ProgramChange="123" />
+			<Patch Number="Singles Bank H-124" Name="Bass13 BB " ProgramChange="124" />
+			<Patch Number="Singles Bank H-125" Name="Bass14 BB " ProgramChange="125" />
+			<Patch Number="Singles Bank H-126" Name="Bass15 BB " ProgramChange="126" />
+			<Patch Number="Singles Bank H-127" Name="Bass16 BB " ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Multi Bank">
+			<Patch Number="Multi Bank-  0" Name="Multi     " ProgramChange="0" />
+			<Patch Number="Multi Bank-  1" Name="Welcome   " ProgramChange="1" />
+			<Patch Number="Multi Bank-  2" Name="Waterworld" ProgramChange="2" />
+			<Patch Number="Multi Bank-  3" Name="CanUPegIt?" ProgramChange="3" />
+			<Patch Number="Multi Bank-  4" Name="M25 Orbit " ProgramChange="4" />
+			<Patch Number="Multi Bank-  5" Name="OrganicLab" ProgramChange="5" />
+			<Patch Number="Multi Bank-  6" Name="Sub Bands " ProgramChange="6" />
+			<Patch Number="Multi Bank-  7" Name="Abyssus   " ProgramChange="7" />
+			<Patch Number="Multi Bank-  8" Name="Phenomena " ProgramChange="8" />
+			<Patch Number="Multi Bank-  9" Name="Nightshift" ProgramChange="9" />
+			<Patch Number="Multi Bank- 10" Name="Eclectic  " ProgramChange="10" />
+			<Patch Number="Multi Bank- 11" Name="Multi     " ProgramChange="11" />
+			<Patch Number="Multi Bank- 12" Name="Multi     " ProgramChange="12" />
+			<Patch Number="Multi Bank- 13" Name="Multi     " ProgramChange="13" />
+			<Patch Number="Multi Bank- 14" Name="Multi     " ProgramChange="14" />
+			<Patch Number="Multi Bank- 15" Name="Multi     " ProgramChange="15" />
+			<Patch Number="Multi Bank- 16" Name="Multi     " ProgramChange="16" />
+			<Patch Number="Multi Bank- 17" Name="Multi     " ProgramChange="17" />
+			<Patch Number="Multi Bank- 18" Name="Multi     " ProgramChange="18" />
+			<Patch Number="Multi Bank- 19" Name="Multi     " ProgramChange="19" />
+			<Patch Number="Multi Bank- 20" Name="Multi     " ProgramChange="20" />
+			<Patch Number="Multi Bank- 21" Name="Multi     " ProgramChange="21" />
+			<Patch Number="Multi Bank- 22" Name="Multi     " ProgramChange="22" />
+			<Patch Number="Multi Bank- 23" Name="Multi     " ProgramChange="23" />
+			<Patch Number="Multi Bank- 24" Name="Multi     " ProgramChange="24" />
+			<Patch Number="Multi Bank- 25" Name="Multi     " ProgramChange="25" />
+			<Patch Number="Multi Bank- 26" Name="Multi     " ProgramChange="26" />
+			<Patch Number="Multi Bank- 27" Name="Multi     " ProgramChange="27" />
+			<Patch Number="Multi Bank- 28" Name="Multi     " ProgramChange="28" />
+			<Patch Number="Multi Bank- 29" Name="Multi     " ProgramChange="29" />
+			<Patch Number="Multi Bank- 30" Name="Multi     " ProgramChange="30" />
+			<Patch Number="Multi Bank- 31" Name="Multi     " ProgramChange="31" />
+			<Patch Number="Multi Bank- 32" Name="Multi     " ProgramChange="32" />
+			<Patch Number="Multi Bank- 33" Name="Multi     " ProgramChange="33" />
+			<Patch Number="Multi Bank- 34" Name="Multi     " ProgramChange="34" />
+			<Patch Number="Multi Bank- 35" Name="Multi     " ProgramChange="35" />
+			<Patch Number="Multi Bank- 36" Name="Multi     " ProgramChange="36" />
+			<Patch Number="Multi Bank- 37" Name="Multi     " ProgramChange="37" />
+			<Patch Number="Multi Bank- 38" Name="Multi     " ProgramChange="38" />
+			<Patch Number="Multi Bank- 39" Name="KexX!e    " ProgramChange="39" />
+			<Patch Number="Multi Bank- 40" Name="Multi     " ProgramChange="40" />
+			<Patch Number="Multi Bank- 41" Name="Multi     " ProgramChange="41" />
+			<Patch Number="Multi Bank- 42" Name="Multi     " ProgramChange="42" />
+			<Patch Number="Multi Bank- 43" Name="Multi     " ProgramChange="43" />
+			<Patch Number="Multi Bank- 44" Name="Multi     " ProgramChange="44" />
+			<Patch Number="Multi Bank- 45" Name="Multi     " ProgramChange="45" />
+			<Patch Number="Multi Bank- 46" Name="Multi     " ProgramChange="46" />
+			<Patch Number="Multi Bank- 47" Name="Multi     " ProgramChange="47" />
+			<Patch Number="Multi Bank- 48" Name="Multi     " ProgramChange="48" />
+			<Patch Number="Multi Bank- 49" Name="Multi     " ProgramChange="49" />
+			<Patch Number="Multi Bank- 50" Name="Multi     " ProgramChange="50" />
+			<Patch Number="Multi Bank- 51" Name="Multi     " ProgramChange="51" />
+			<Patch Number="Multi Bank- 52" Name="Multi     " ProgramChange="52" />
+			<Patch Number="Multi Bank- 53" Name="Multi     " ProgramChange="53" />
+			<Patch Number="Multi Bank- 54" Name="Multi     " ProgramChange="54" />
+			<Patch Number="Multi Bank- 55" Name="Multi     " ProgramChange="55" />
+			<Patch Number="Multi Bank- 56" Name="Multi     " ProgramChange="56" />
+			<Patch Number="Multi Bank- 57" Name="Multi     " ProgramChange="57" />
+			<Patch Number="Multi Bank- 58" Name="Multi     " ProgramChange="58" />
+			<Patch Number="Multi Bank- 59" Name="Multi     " ProgramChange="59" />
+			<Patch Number="Multi Bank- 60" Name="Multi     " ProgramChange="60" />
+			<Patch Number="Multi Bank- 61" Name="Multi     " ProgramChange="61" />
+			<Patch Number="Multi Bank- 62" Name="Multi     " ProgramChange="62" />
+			<Patch Number="Multi Bank- 63" Name="Multi     " ProgramChange="63" />
+			<Patch Number="Multi Bank- 64" Name="Multi     " ProgramChange="64" />
+			<Patch Number="Multi Bank- 65" Name="Multi     " ProgramChange="65" />
+			<Patch Number="Multi Bank- 66" Name="Multi     " ProgramChange="66" />
+			<Patch Number="Multi Bank- 67" Name="Multi     " ProgramChange="67" />
+			<Patch Number="Multi Bank- 68" Name="Multi     " ProgramChange="68" />
+			<Patch Number="Multi Bank- 69" Name="Multi     " ProgramChange="69" />
+			<Patch Number="Multi Bank- 70" Name="Multi     " ProgramChange="70" />
+			<Patch Number="Multi Bank- 71" Name="Multi     " ProgramChange="71" />
+			<Patch Number="Multi Bank- 72" Name="Multi     " ProgramChange="72" />
+			<Patch Number="Multi Bank- 73" Name="Multi     " ProgramChange="73" />
+			<Patch Number="Multi Bank- 74" Name="Multi     " ProgramChange="74" />
+			<Patch Number="Multi Bank- 75" Name="Multi     " ProgramChange="75" />
+			<Patch Number="Multi Bank- 76" Name="Multi     " ProgramChange="76" />
+			<Patch Number="Multi Bank- 77" Name="Multi     " ProgramChange="77" />
+			<Patch Number="Multi Bank- 78" Name="Multi     " ProgramChange="78" />
+			<Patch Number="Multi Bank- 79" Name="Multi     " ProgramChange="79" />
+			<Patch Number="Multi Bank- 80" Name="Multi     " ProgramChange="80" />
+			<Patch Number="Multi Bank- 81" Name="Multi     " ProgramChange="81" />
+			<Patch Number="Multi Bank- 82" Name="Multi     " ProgramChange="82" />
+			<Patch Number="Multi Bank- 83" Name="Multi     " ProgramChange="83" />
+			<Patch Number="Multi Bank- 84" Name="Multi     " ProgramChange="84" />
+			<Patch Number="Multi Bank- 85" Name="Multi     " ProgramChange="85" />
+			<Patch Number="Multi Bank- 86" Name="Multi     " ProgramChange="86" />
+			<Patch Number="Multi Bank- 87" Name="Multi     " ProgramChange="87" />
+			<Patch Number="Multi Bank- 88" Name="Multi     " ProgramChange="88" />
+			<Patch Number="Multi Bank- 89" Name="Multi     " ProgramChange="89" />
+			<Patch Number="Multi Bank- 90" Name="Multi     " ProgramChange="90" />
+			<Patch Number="Multi Bank- 91" Name="Multi     " ProgramChange="91" />
+			<Patch Number="Multi Bank- 92" Name="Multi     " ProgramChange="92" />
+			<Patch Number="Multi Bank- 93" Name="Multi     " ProgramChange="93" />
+			<Patch Number="Multi Bank- 94" Name="Multi     " ProgramChange="94" />
+			<Patch Number="Multi Bank- 95" Name="Multi     " ProgramChange="95" />
+			<Patch Number="Multi Bank- 96" Name="Multi     " ProgramChange="96" />
+			<Patch Number="Multi Bank- 97" Name="Multi     " ProgramChange="97" />
+			<Patch Number="Multi Bank- 98" Name="Multi     " ProgramChange="98" />
+			<Patch Number="Multi Bank- 99" Name="Multi     " ProgramChange="99" />
+			<Patch Number="Multi Bank-100" Name="Multi     " ProgramChange="100" />
+			<Patch Number="Multi Bank-101" Name="Multi     " ProgramChange="101" />
+			<Patch Number="Multi Bank-102" Name="Multi     " ProgramChange="102" />
+			<Patch Number="Multi Bank-103" Name="Multi     " ProgramChange="103" />
+			<Patch Number="Multi Bank-104" Name="Multi     " ProgramChange="104" />
+			<Patch Number="Multi Bank-105" Name="Multi     " ProgramChange="105" />
+			<Patch Number="Multi Bank-106" Name="Multi     " ProgramChange="106" />
+			<Patch Number="Multi Bank-107" Name="Multi     " ProgramChange="107" />
+			<Patch Number="Multi Bank-108" Name="Multi     " ProgramChange="108" />
+			<Patch Number="Multi Bank-109" Name="Multi     " ProgramChange="109" />
+			<Patch Number="Multi Bank-110" Name="Multi     " ProgramChange="110" />
+			<Patch Number="Multi Bank-111" Name="Multi     " ProgramChange="111" />
+			<Patch Number="Multi Bank-112" Name="Multi     " ProgramChange="112" />
+			<Patch Number="Multi Bank-113" Name="Multi     " ProgramChange="113" />
+			<Patch Number="Multi Bank-114" Name="Multi     " ProgramChange="114" />
+			<Patch Number="Multi Bank-115" Name="Multi     " ProgramChange="115" />
+			<Patch Number="Multi Bank-116" Name="Multi     " ProgramChange="116" />
+			<Patch Number="Multi Bank-117" Name="Multi     " ProgramChange="117" />
+			<Patch Number="Multi Bank-118" Name="Multi     " ProgramChange="118" />
+			<Patch Number="Multi Bank-119" Name="Multi     " ProgramChange="119" />
+			<Patch Number="Multi Bank-120" Name="Multi     " ProgramChange="120" />
+			<Patch Number="Multi Bank-121" Name="Multi     " ProgramChange="121" />
+			<Patch Number="Multi Bank-122" Name="Multi     " ProgramChange="122" />
+			<Patch Number="Multi Bank-123" Name="Multi     " ProgramChange="123" />
+			<Patch Number="Multi Bank-124" Name="Multi     " ProgramChange="124" />
+			<Patch Number="Multi Bank-125" Name="Multi     " ProgramChange="125" />
+			<Patch Number="Multi Bank-126" Name="Multi     " ProgramChange="126" />
+			<Patch Number="Multi Bank-127" Name="Multi     " ProgramChange="127" />
+		</PatchNameList>
+
+	</MasterDeviceNames>
+</MIDINameDocument>
+
