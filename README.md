@@ -47,8 +47,8 @@ MIDISTAGE is primarily developed and tested in the following environment:
   Node.js v24
 
 - **Development workstation**:
-  Apple MacBook Pro M2 16 GB
-  Visual Studio Code (via SSH)
+    Apple MacBook Pro M2 16 GB
+    Visual Studio Code (via SSH)
 
 - **Remote terminal access**:  
   Lenovo S10-3t using **PuTTY** on Windows 7
