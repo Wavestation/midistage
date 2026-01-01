@@ -81,7 +81,54 @@
     {
       "id": "sl_5843e77461b3",
       "name": "Live Diokan",
-      "entries": []
+      "entries": [
+        {
+          "id": "e_d4ffe5377ae7",
+          "name": "Dream of Diokan",
+          "routes": [
+            {
+              "machineId": "m_korgtr_ch5",
+              "midnamFile": "TR-Rack.midnam",
+              "deviceName": "Korg TR-Rack",
+              "bankName": "Program Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 19,
+              "patchName": "Breath of Life"
+            },
+            {
+              "machineId": "m_d0daaba01f95",
+              "midnamFile": "MOTIF ES 6^7^8.midnam",
+              "deviceName": "Yamaha",
+              "bankName": "Preset Voice Bank 4",
+              "msb": 63,
+              "lsb": 3,
+              "program": 44,
+              "patchName": "AngelVoice"
+            },
+            {
+              "machineId": "m_b387d1c5be6e",
+              "midnamFile": "JV-2080.midnam",
+              "deviceName": "Roland JV-2080",
+              "bankName": "Patch Bank PR-E",
+              "msb": 81,
+              "lsb": 4,
+              "program": 90,
+              "patchName": "Enlighten"
+            },
+            {
+              "machineId": "m_9b657df5d442",
+              "midnamFile": "K2500(R).midnam",
+              "deviceName": "Kurzweil",
+              "bankName": "Bank 1",
+              "msb": null,
+              "lsb": 1,
+              "program": 51,
+              "patchName": "Passion Source"
+            }
+          ]
+        }
+      ]
     }
   ],
   "activeId": "sl_123abc"
