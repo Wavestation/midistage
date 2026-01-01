@@ -166,16 +166,16 @@ module.exports = function startApp(midnamDir, io)
       width: "100%",
       height: "100%",
       border: "line",
-      label: " MIDISTAGE -- (C) DEC 2025 MASAMI KOMURO ~ FELONIA SOFTWARE ",
+      label: " MIDISTAGE -- 2025~2026 MASAMI KOMURO @ FELONIA SOFTWARE ",
       style: { border: THEME.frame.border }
     });
 
     const header = blessed.box({
       parent: frame,
       top: 0,
-      left: 1,
-      height: 3,
-      width: "100%-2",
+      left: 0,              // FIX
+      right: 0,
+      height: 1,
       tags: true,
       style: THEME.header,
       content:
@@ -689,9 +689,9 @@ module.exports = function startApp(midnamDir, io)
     const header = blessed.box({
       parent: frame,
       top: 0,
-      left: 1,
-      height: 3,
-      width: "100%-2",
+      left: 0,              // FIX
+      right: 0,
+      height: 1,
       tags: true,
       style: THEME.header,
       content:
@@ -1507,9 +1507,9 @@ module.exports = function startApp(midnamDir, io)
     const header = blessed.box({
       parent: frame,
       top: 0,
-      left: 1,
-      height: 3,
-      width: "100%-2",
+      left: 0,              // FIX
+      right: 0,
+      height: 1,
       tags: true,
       style: THEME.header,
       content:
