@@ -42,12 +42,12 @@ The UI runs locally or remotely over Telnet / serial TTY (RS-232).
 MIDISTAGE is primarily developed and tested in the following environment:
 
 - **Main runtime machine**:  
-  Raspberry Pi 4 Model B (8 GB RAM)  
+  Raspberry Pi 4 Model B 8 GB
   Debian Trixie 64-bit  
   Node.js v24
 
 - **Development workstation**:
-  Apple MacBook Pro M2
+  Apple MacBook Pro M2 16 GB
   Visual Studio Code (via SSH)
 
 - **Remote terminal access**:  
