@@ -289,6 +289,25 @@ class SetlistsStore
         return true;
     }
 
+    duplicateEntry(setlistId, entryId, newName)
+    {
+        const s = this.getById(setlistId);
+        if (!s) return null;
+
+        const src = s.entries.find(e => e.id === entryId);
+        if (!src) return null;
+
+        const copy = normalizeEntry({
+        name: newName || (src.name + " (copy)"),
+        routes: (src.routes || []).map(r => ({ ...r })) // shallow OK ici (valeurs primitives)
+        });
+
+        s.entries.push(copy);
+        this.save();
+        return copy;
+    }
+
+
     // ----- Routes -----
 
     upsertRoute(setlistId, entryId, route)

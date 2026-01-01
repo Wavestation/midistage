@@ -139,6 +139,40 @@ class Model
         return this.setlists.removeSetlist(id);
     }
 
+    updateEntryRouteFromDraft(entryId, machineId)
+    {
+        const s = this.getActiveSetlist();
+        if (!s) return { ok: false, message: "No active setlist." };
+
+        const r = this.draft.routes.find(x => x.machineId === machineId);
+        if (!r) return { ok: false, message: "Draft has no route for that machine." };
+
+        const ok = this.setlists.upsertRoute(s.id, entryId, r);
+        return { ok, message: ok ? "Route updated from draft." : "Route update failed." };
+    }
+
+    removeEntryRoute(entryId, machineId)
+    {
+        const s = this.getActiveSetlist();
+        if (!s) return false;
+        return this.setlists.removeRoute(s.id, entryId, machineId);
+    }
+
+    duplicateEntry(entryId, newName)
+    {
+        const s = this.getActiveSetlist();
+        if (!s) return null;
+        return this.setlists.duplicateEntry(s.id, entryId, newName);
+    }
+
+    moveEntry(entryId, delta)
+    {
+        const s = this.getActiveSetlist();
+        if (!s) return false;
+        return this.setlists.moveEntry(s.id, entryId, delta);
+    }
+
+
     // ---------- Midnam helpers ----------
 
     peekMidnamDeviceName(fileName)
@@ -325,7 +359,9 @@ class Model
 
         try
         {
+
             const msg = midiDriver.sendPatch(machine, bank, patch);
+            this.logSend("BROWSE_SEND", machine, bank, patch);
             return { ok: true, message: `Device: ${m.deviceName}\n${msg}` };
         }
         catch (e)
@@ -509,6 +545,7 @@ class Model
             try
             {
                 midiDriver.sendPatch(machine, bank, patch);
+                this.logSend("SETLIST_RECALL", machine, bank, patch);
                 lines.push(`${machine.name || machine.id} -> ${bank.name} ${patch.program} ${patch.name}`);
             }
             catch (ex)
@@ -586,6 +623,33 @@ class Model
             return { ok: false, message: `Erreur midnam (${m.midnamFile}):\n${e.message}` };
         }
     }
+
+    // Logging helpers
+    _nowStamp()
+    {
+        const d = new Date();
+        const pad = (n) => String(n).padStart(2, "0");
+        return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    }
+
+    logSend(action, machine, bank, patch)
+    {
+        const out = machine?.out || "default";
+        const ch  = machine?.channel || "?";
+        const mname = machine?.name || machine?.id || "?";
+
+        const bname = bank?.name || "Bank";
+        const msb = (bank?.msb == null) ? "-" : bank.msb;
+        const lsb = (bank?.lsb == null) ? "-" : bank.lsb;
+
+        const pc = (patch?.program == null) ? "?" : patch.program;
+        const pname = patch?.name || "Patch";
+
+        console.log(
+        `[MIDISTAGE] ${this._nowStamp()} | ${action} | ${mname} | out=${out} ch=${ch} | ${bname} msb=${msb} lsb=${lsb} | pc=${pc} | ${pname}`
+        );
+    }
+
 
 }
 

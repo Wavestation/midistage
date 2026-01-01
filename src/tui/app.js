@@ -1513,7 +1513,8 @@ module.exports = function startApp(midnamDir, io)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}a{/bold} save draft | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | \n{bold}n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist | {bold}q{/bold} back"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}a{/bold} save draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move\n" +
+        "{bold}n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist | {bold}q{/bold} back"
     });
 
     const setlistInfo = blessed.box({
@@ -1585,6 +1586,8 @@ module.exports = function startApp(midnamDir, io)
       padding: { left: 1, right: 1 },
       content: "Setlist mode."
     });
+
+    // ------- Input modal (generic) -------
 
     const inputModal = blessed.box({
       parent: frame,
@@ -1668,6 +1671,171 @@ module.exports = function startApp(midnamDir, io)
 
     inputBox.on("submit", (value) => closeInputModal(false, value));
     inputBox.key(["escape"], () => closeInputModal(true, null));
+
+    // ------- Routes editor modal -------
+
+    const routesModal = blessed.box({
+      parent: frame,
+      top: "center",
+      left: "center",
+      width: "80%",
+      height: "70%",
+      border: "line",
+      label: " Routes ",
+      tags: true,
+      hidden: true,
+      style: THEME.modal,
+      padding: { left: 1, right: 1 }
+    });
+
+    const routesTitle = blessed.box({
+      parent: routesModal,
+      top: 0,
+      left: 0,
+      height: 2,
+      width: "100%",
+      tags: true,
+      content: ""
+    });
+
+    const routesList = blessed.list({
+      parent: routesModal,
+      top: 2,
+      left: 0,
+      width: "100%",
+      height: "100%-4",
+      border: "line",
+      keys: true,
+      vi: true,
+      tags: true,
+      style: THEME.list
+    });
+
+    blessed.box({
+      parent: routesModal,
+      bottom: 0,
+      left: 0,
+      height: 2,
+      width: "100%",
+      tags: true,
+      content: "{bold}↑↓{/bold} select | {bold}Enter{/bold} replace from Draft | {bold}Del{/bold} remove route | {bold}Esc{/bold} close"
+    });
+
+    let _routesEntryId = null;
+
+    function formatRouteLine(r)
+    {
+      const m = model.machines.getById(r.machineId);
+      const mName = (m && m.name) ? m.name : r.machineId;
+
+      const out = (m && m.out) ? m.out : "default";
+      const ch = (m && m.channel) ? `CH${m.channel}` : "CH?";
+
+      const bank = r.bankName || "Bank";
+      const msb = (r.msb == null) ? "-" : String(r.msb);
+      const lsb = (r.lsb == null) ? "-" : String(r.lsb);
+      const pc  = (r.program == null) ? "?" : String(r.program);
+      const p   = r.patchName || "Patch";
+
+      return (
+        `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${out} ${ch}]{/gray-fg}  ` +
+        `{yellow-fg}${bank}{/yellow-fg} {gray-fg}(MSB ${msb} / LSB ${lsb}){/gray-fg}  ` +
+        `{magenta-fg}PC ${pc}{/magenta-fg}  ` +
+        `{white-fg}${p}{/white-fg}`
+      );
+    }
+
+    function openRoutesEditor(entryId)
+    {
+      const e = (entriesList._entries || []).find(x => x.id === entryId) || getSelectedEntry();
+      if (!e)
+      {
+        setStatus("No entry.", "warn");
+        return;
+      }
+
+      _routesEntryId = e.id;
+
+      routesTitle.setContent(
+        `{bold}${e.name}{/bold}\n` +
+        `{gray-fg}Tip: build Draft in Browse (a), then Enter here to apply per machine.{/gray-fg}`
+      );
+
+      const routes = Array.isArray(e.routes) ? e.routes : [];
+      routesList._routes = routes;
+
+      const items = routes.length ? routes.map(formatRouteLine) : ["<no routes>"];
+      routesList.setItems(items);
+      routesList.select(0);
+
+      routesModal.setLabel(` Routes {gray-fg}(${routes.length}){/gray-fg} `);
+      routesModal.show();
+      routesList.focus();
+      screen.render();
+    }
+
+    function closeRoutesEditor()
+    {
+      _routesEntryId = null;
+      try { routesModal.hide(); } catch { }
+      try { entriesList.focus(); } catch { }
+      screen.render();
+    }
+
+    routesList.key(["escape"], () => closeRoutesEditor());
+
+    routesList.key(["enter"], () =>
+    {
+      const entryId = _routesEntryId;
+      const routes = routesList._routes || [];
+      const r = routes[routesList.selected];
+
+      if (!entryId || !r)
+      {
+        setStatus("No route selected.", "warn");
+        return;
+      }
+
+      if (!model.updateEntryRouteFromDraft)
+      {
+        setStatus("Missing model.updateEntryRouteFromDraft().", "err");
+        return;
+      }
+
+      const res = model.updateEntryRouteFromDraft(entryId, r.machineId);
+      setStatus(res && res.message ? res.message : (res?.ok ? "Route updated." : "Route update failed."), res?.ok ? "ok" : "err");
+
+      // refresh entry list & preview and reopen modal on same entry
+      refreshEntries(entryId);
+      openRoutesEditor(entryId);
+    });
+
+    routesList.key(["delete", "backspace"], () =>
+    {
+      const entryId = _routesEntryId;
+      const routes = routesList._routes || [];
+      const r = routes[routesList.selected];
+
+      if (!entryId || !r)
+      {
+        setStatus("No route selected.", "warn");
+        return;
+      }
+
+      if (!model.removeEntryRoute)
+      {
+        setStatus("Missing model.removeEntryRoute().", "err");
+        return;
+      }
+
+      const ok = model.removeEntryRoute(entryId, r.machineId);
+      setStatus(ok ? "Route removed." : "Route remove failed.", ok ? "ok" : "err");
+
+      refreshEntries(entryId);
+      openRoutesEditor(entryId);
+    });
+
+    // ------- Common helpers -------
 
     function setStatus(text, level)
     {
@@ -1760,22 +1928,34 @@ module.exports = function startApp(midnamDir, io)
         const m = model.machines.getById(r.machineId);
         const mName = (m && m.name) ? m.name : r.machineId;
 
+        const out = (m && m.out) ? m.out : "default";
+        const ch  = (m && m.channel) ? `CH${m.channel}` : "CH?";
+
         const b = r.bankName || "Bank";
+        const msb = (r.msb == null) ? "-" : String(r.msb);
+        const lsb = (r.lsb == null) ? "-" : String(r.lsb);
+
         const pc = (r.program == null) ? "?" : String(r.program);
         const p = r.patchName || "Patch";
 
-        lines.push(`${mName}  ->  ${b}  ${pc}  ${p}`);
+        lines.push(
+          `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${out} ${ch}]{/gray-fg}  \n` +
+          `{yellow-fg}${b}{/yellow-fg} {gray-fg}(MSB ${msb} / LSB ${lsb}){/gray-fg}  \n` +
+          `{magenta-fg}PC ${pc}{/magenta-fg}  ` +
+          `{white-fg}${p}{/white-fg}` + 
+          `\n`
+        );
       });
 
       preview.setContent(lines.join("\n"));
       screen.render();
     }
 
-    function refreshEntries()
+    function refreshEntries(keepEntryId)
     {
       const prevEntries = entriesList._entries || [];
       const prev = prevEntries[entriesList.selected];
-      const prevId = prev ? prev.id : null;
+      const prevId = keepEntryId || (prev ? prev.id : null);
 
       const entries = model.listEntries();
       const items = entries.map((e, i) => entryToLine(e, i));
@@ -1809,6 +1989,9 @@ module.exports = function startApp(midnamDir, io)
 
     kb.bindKey(["tab"], () =>
     {
+      if (!routesModal.hidden) return;
+      if (!inputModal.hidden) return;
+
       focusIndex = (focusIndex + 1) % focusables.length;
       focusables[focusIndex].focus();
       screen.render();
@@ -1816,6 +1999,9 @@ module.exports = function startApp(midnamDir, io)
 
     kb.bindKey(["S-tab"], () =>
     {
+      if (!routesModal.hidden) return;
+      if (!inputModal.hidden) return;
+
       focusIndex = (focusIndex - 1 + focusables.length) % focusables.length;
       focusables[focusIndex].focus();
       screen.render();
@@ -1824,6 +2010,8 @@ module.exports = function startApp(midnamDir, io)
     // Events: setlists
     setlistsList.key(["enter"], () =>
     {
+      if (!routesModal.hidden) return;
+
       const s = getSelectedSetlist();
       if (!s)
       {
@@ -1839,7 +2027,7 @@ module.exports = function startApp(midnamDir, io)
       }
 
       setStatus(`Active setlist: ${s.name}`, "ok");
-      refreshEntries();
+      refreshEntries(null);
       entriesList.focus();
     });
 
@@ -1849,6 +2037,8 @@ module.exports = function startApp(midnamDir, io)
 
     entriesList.key(["enter"], () =>
     {
+      if (!routesModal.hidden) return;
+
       const e = getSelectedEntry();
       if (!e)
       {
@@ -1858,12 +2048,14 @@ module.exports = function startApp(midnamDir, io)
 
       const r = model.recallEntry(e.id);
       setStatus(r.message, r.ok ? "ok" : "err");
-      refreshEntries();
+      refreshEntries(e.id);
     });
 
     // Entry: add from draft
     kb.bindKey(["a"], () =>
     {
+      if (!routesModal.hidden) return;
+
       if (!model.draft.routes.length)
       {
         setStatus("Draft is empty: use Browse + a to add routes.", "warn");
@@ -1876,13 +2068,65 @@ module.exports = function startApp(midnamDir, io)
 
         const r = model.commitDraftAsEntry(String(value || "").trim() || "Entry");
         setStatus(r.message, r.ok ? "ok" : "err");
-        refreshEntries();
+        refreshEntries(null);
+      });
+    });
+
+    // Entry: edit routes (modal)
+    kb.bindKey(["e"], () =>
+    {
+      if (!routesModal.hidden) return;
+      const e = getSelectedEntry();
+      if (!e)
+      {
+        setStatus("No entry.", "warn");
+        return;
+      }
+      openRoutesEditor(e.id);
+    });
+
+    // Entry: duplicate/copy
+    kb.bindKey(["c"], () =>
+    {
+      if (!routesModal.hidden) return;
+
+      const e = getSelectedEntry();
+      if (!e)
+      {
+        setStatus("No entry.", "warn");
+        return;
+      }
+
+      if (!model.duplicateEntry)
+      {
+        setStatus("Cannot copy entry (missing model.duplicateEntry?).", "err");
+        return;
+      }
+
+      const suggested = `${e.name} (copy)`;
+      askInput("Copy entry: new name?", suggested, (err, value) =>
+      {
+        if (err) return;
+        const name = String(value || "").trim() || suggested;
+
+        const created = model.duplicateEntry(e.id, name);
+        if (!created)
+        {
+          setStatus("Copy failed.", "err");
+          return;
+        }
+
+        setStatus(`Copied: ${name}`, "ok");
+        // try select the new one
+        refreshEntries(created.id || null);
       });
     });
 
     // Entry: rename
     kb.bindKey(["r"], () =>
     {
+      if (!routesModal.hidden) return;
+
       const e = getSelectedEntry();
       if (!e)
       {
@@ -1903,13 +2147,15 @@ module.exports = function startApp(midnamDir, io)
 
         const ok = model.renameEntry(e.id, name);
         setStatus(ok ? "Renamed." : "Rename error.", ok ? "ok" : "err");
-        refreshEntries();
+        refreshEntries(e.id);
       });
     });
 
     // Entry: delete
     kb.bindKey(["d"], () =>
     {
+      if (!routesModal.hidden) return;
+
       const e = getSelectedEntry();
       if (!e)
       {
@@ -1930,13 +2176,50 @@ module.exports = function startApp(midnamDir, io)
 
         const ok = model.deleteEntry(e.id);
         setStatus(ok ? "Deleted." : "Delete error.", ok ? "ok" : "err");
-        refreshEntries();
+        refreshEntries(null);
       });
+    });
+
+    // Entry: move up/down
+    kb.bindKey(["v"], () =>
+    {
+      if (!routesModal.hidden) return;
+      const e = getSelectedEntry();
+      if (!e) return;
+
+      if (!model.moveEntry)
+      {
+        setStatus("Missing model.moveEntry().", "err");
+        return;
+      }
+
+      const ok = model.moveEntry(e.id, -1);
+      if (!ok) setStatus("Move failed.", "err");
+      refreshEntries(e.id);
+    });
+
+    kb.bindKey(["b"], () =>
+    {
+      if (!routesModal.hidden) return;
+      const e = getSelectedEntry();
+      if (!e) return;
+
+      if (!model.moveEntry)
+      {
+        setStatus("Missing model.moveEntry().", "err");
+        return;
+      }
+
+      const ok = model.moveEntry(e.id, +1);
+      if (!ok) setStatus("Move failed.", "err");
+      refreshEntries(e.id);
     });
 
     // Setlist: create
     kb.bindKey(["n"], () =>
     {
+      if (!routesModal.hidden) return;
+
       askInput("New setlist name?", "", (err, value) =>
       {
         if (err) return;
@@ -1950,7 +2233,7 @@ module.exports = function startApp(midnamDir, io)
 
         model.addSetlist(name);
         setStatus(`Setlist created: ${name}`, "ok");
-        refreshEntries();
+        refreshEntries(null);
         setlistsList.focus();
       });
     });
@@ -1958,6 +2241,8 @@ module.exports = function startApp(midnamDir, io)
     // Setlist: rename
     kb.bindKey(["x"], () =>
     {
+      if (!routesModal.hidden) return;
+
       const s = getSelectedSetlist() || model.getActiveSetlist();
       if (!s)
       {
@@ -1984,13 +2269,15 @@ module.exports = function startApp(midnamDir, io)
 
         const ok = model.renameSetlist(s.id, name);
         setStatus(ok ? "Setlist renamed." : "Rename error.", ok ? "ok" : "err");
-        refreshEntries();
+        refreshEntries(null);
       });
     });
 
     // Setlist: delete
     kb.bindKey(["w"], () =>
     {
+      if (!routesModal.hidden) return;
+
       const s = getSelectedSetlist() || model.getActiveSetlist();
       if (!s)
       {
@@ -2017,17 +2304,28 @@ module.exports = function startApp(midnamDir, io)
 
         const ok = model.deleteSetlist(s.id);
         setStatus(ok ? "Setlist deleted." : "Delete error.", ok ? "ok" : "err");
-        refreshEntries();
+        refreshEntries(null);
         setlistsList.focus();
       });
     });
 
-    kb.bindKey(["q", "escape"], () => switchPage("browse"));
+    kb.bindKey(["q"], () =>
+    {
+      if (!routesModal.hidden) { closeRoutesEditor(); return; }
+      switchPage("browse");
+    });
+
+    kb.bindKey(["escape"], () =>
+    {
+      if (!routesModal.hidden) { closeRoutesEditor(); return; }
+      switchPage("browse");
+    });
+
     kb.bindKey(["C-c"], () => quit());
 
     refreshSetlistHeader();
     refreshSetlists();
-    refreshEntries();
+    refreshEntries(null);
 
     setlistsList.focus();
     screen.render();
@@ -2036,6 +2334,7 @@ module.exports = function startApp(midnamDir, io)
     {
       kb.unbindAllKeys();
       try { inputModal.hide(); } catch { }
+      try { routesModal.hide(); } catch { }
     };
   }
 
