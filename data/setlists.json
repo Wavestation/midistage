@@ -2,7 +2,7 @@
   "setlists": [
     {
       "id": "sl_123abc",
-      "name": "Default",
+      "name": "Maison",
       "entries": [
         {
           "id": "e_251c6475101c",
@@ -77,6 +77,11 @@
           ]
         }
       ]
+    },
+    {
+      "id": "sl_5843e77461b3",
+      "name": "Live Diokan",
+      "entries": []
     }
   ],
   "activeId": "sl_123abc"

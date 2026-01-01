@@ -1,3 +1,5 @@
+// setlists.js
+
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
@@ -205,6 +207,20 @@ class SetlistsStore
         this.save();
         return true;
     }
+
+    renameSetlist(id, name)
+    {
+        const s = this.getById(id);
+        if (!s) return false;
+
+        const n = String(name || "").trim();
+        if (!n) return false;
+
+        s.name = n;
+        this.save();
+        return true;
+    }
+
 
     // ----- Entries -----
 

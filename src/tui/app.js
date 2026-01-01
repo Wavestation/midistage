@@ -10,7 +10,7 @@ module.exports = function startApp(midnamDir, io)
 {
   const screen = blessed.screen({
     smartCSR: true,
-    title: "MIDISTAGE 26+",
+    title: "MIDISTAGE :)",
     // blessed varies by version. Force stable behavior.
     unicode: (io && typeof io.unicode === "boolean") ? io.unicode : true,
     fullUnicode: (io && typeof io.unicode === "boolean") ? io.unicode : true,
@@ -1509,11 +1509,11 @@ module.exports = function startApp(midnamDir, io)
       top: 0,
       left: 0,              // FIX
       right: 0,
-      height: 1,
+      height: 2,
       tags: true,
       style: THEME.header,
       content:
-        "{bold}↑↓{/bold} select | {bold}Enter{/bold} recall | {bold}a{/bold} save draft | {bold}r{/bold} rename | {bold}d{/bold} delete | {bold}q{/bold} back"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}a{/bold} save draft | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | \n{bold}n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist | {bold}q{/bold} back"
     });
 
     const setlistInfo = blessed.box({
@@ -1528,11 +1528,25 @@ module.exports = function startApp(midnamDir, io)
       style: { border: THEME.panel.border }
     });
 
-    const entriesList = blessed.list({
+    const setlistsList = blessed.list({
       parent: frame,
       top: 6,
       left: 1,
-      width: "50%-1",
+      width: "25%-1",
+      height: "100%-10",
+      border: "line",
+      label: " Setlists ",
+      keys: true,
+      vi: true,
+      tags: true,
+      style: THEME.list
+    });
+
+    const entriesList = blessed.list({
+      parent: frame,
+      top: 6,
+      left: "25%",
+      width: "35%-1",
       height: "100%-10",
       border: "line",
       label: " Entries ",
@@ -1545,8 +1559,8 @@ module.exports = function startApp(midnamDir, io)
     const preview = blessed.box({
       parent: frame,
       top: 6,
-      left: "50%",
-      width: "50%-2",
+      left: "60%",
+      width: "40%-2",
       height: "100%-10",
       border: "line",
       label: " Preview ",
@@ -1672,6 +1686,45 @@ module.exports = function startApp(midnamDir, io)
       setlistInfo.setContent(`Active: {bold}${name}{/bold}\n${model.draftGetSummary()}`);
     }
 
+    function setlistToLine(s)
+    {
+      const n = s.entries ? s.entries.length : 0;
+      const active = model.getActiveSetlist();
+      const isActive = active && active.id === s.id;
+      const mark = isActive ? "{cyan-fg}◆{/cyan-fg} " : "  ";
+      return `${mark}${s.name}  {gray-fg}[${n} entries]{/gray-fg}`;
+    }
+
+    function refreshSetlists()
+    {
+      const list = model.listSetlists ? model.listSetlists() : [];
+      setlistsList._setlists = list;
+
+      if (!list.length)
+      {
+        setlistsList.setItems(["<no setlists>"]);
+        setlistsList.select(0);
+        return;
+      }
+
+      setlistsList.setItems(list.map(setlistToLine));
+
+      const active = model.getActiveSetlist();
+      let idx = 0;
+      if (active)
+      {
+        const found = list.findIndex(x => x.id === active.id);
+        if (found >= 0) idx = found;
+      }
+      setlistsList.select(idx);
+    }
+
+    function getSelectedSetlist()
+    {
+      const list = setlistsList._setlists || [];
+      return list[setlistsList.selected] || null;
+    }
+
     function entryToLine(e, idx)
     {
       const n = e.routes ? e.routes.length : 0;
@@ -1741,6 +1794,7 @@ module.exports = function startApp(midnamDir, io)
 
       refreshPreview();
       refreshSetlistHeader();
+      refreshSetlists();
     }
 
     function getSelectedEntry()
@@ -1749,7 +1803,47 @@ module.exports = function startApp(midnamDir, io)
       return entries[entriesList.selected] || null;
     }
 
-    // Events
+    // Focus management for Setlist page
+    const focusables = [setlistsList, entriesList];
+    let focusIndex = 0;
+
+    kb.bindKey(["tab"], () =>
+    {
+      focusIndex = (focusIndex + 1) % focusables.length;
+      focusables[focusIndex].focus();
+      screen.render();
+    });
+
+    kb.bindKey(["S-tab"], () =>
+    {
+      focusIndex = (focusIndex - 1 + focusables.length) % focusables.length;
+      focusables[focusIndex].focus();
+      screen.render();
+    });
+
+    // Events: setlists
+    setlistsList.key(["enter"], () =>
+    {
+      const s = getSelectedSetlist();
+      if (!s)
+      {
+        setStatus("No setlist.", "warn");
+        return;
+      }
+
+      const ok = model.setActiveSetlist ? model.setActiveSetlist(s.id) : false;
+      if (!ok)
+      {
+        setStatus("Cannot activate setlist (missing model.setActiveSetlist?).", "err");
+        return;
+      }
+
+      setStatus(`Active setlist: ${s.name}`, "ok");
+      refreshEntries();
+      entriesList.focus();
+    });
+
+    // Events: entries
     entriesList.on("highlight", () => refreshPreview());
     entriesList.key(["up", "down", "k", "j", "pageup", "pagedown"], () => refreshPreview());
 
@@ -1767,6 +1861,7 @@ module.exports = function startApp(midnamDir, io)
       refreshEntries();
     });
 
+    // Entry: add from draft
     kb.bindKey(["a"], () =>
     {
       if (!model.draft.routes.length)
@@ -1785,6 +1880,7 @@ module.exports = function startApp(midnamDir, io)
       });
     });
 
+    // Entry: rename
     kb.bindKey(["r"], () =>
     {
       const e = getSelectedEntry();
@@ -1811,6 +1907,7 @@ module.exports = function startApp(midnamDir, io)
       });
     });
 
+    // Entry: delete
     kb.bindKey(["d"], () =>
     {
       const e = getSelectedEntry();
@@ -1837,13 +1934,102 @@ module.exports = function startApp(midnamDir, io)
       });
     });
 
+    // Setlist: create
+    kb.bindKey(["n"], () =>
+    {
+      askInput("New setlist name?", "", (err, value) =>
+      {
+        if (err) return;
+
+        const name = String(value || "").trim() || "Setlist";
+        if (!model.addSetlist)
+        {
+          setStatus("Cannot create setlist (missing model.addSetlist?).", "err");
+          return;
+        }
+
+        model.addSetlist(name);
+        setStatus(`Setlist created: ${name}`, "ok");
+        refreshEntries();
+        setlistsList.focus();
+      });
+    });
+
+    // Setlist: rename
+    kb.bindKey(["x"], () =>
+    {
+      const s = getSelectedSetlist() || model.getActiveSetlist();
+      if (!s)
+      {
+        setStatus("No setlist.", "warn");
+        return;
+      }
+
+      askInput("Rename setlist:", s.name, (err, value) =>
+      {
+        if (err) return;
+
+        const name = String(value || "").trim();
+        if (!name)
+        {
+          setStatus("Empty name: cancelled.", "warn");
+          return;
+        }
+
+        if (!model.renameSetlist)
+        {
+          setStatus("Cannot rename setlist (missing model.renameSetlist?).", "err");
+          return;
+        }
+
+        const ok = model.renameSetlist(s.id, name);
+        setStatus(ok ? "Setlist renamed." : "Rename error.", ok ? "ok" : "err");
+        refreshEntries();
+      });
+    });
+
+    // Setlist: delete
+    kb.bindKey(["w"], () =>
+    {
+      const s = getSelectedSetlist() || model.getActiveSetlist();
+      if (!s)
+      {
+        setStatus("No setlist.", "warn");
+        return;
+      }
+
+      askInput(`Delete setlist "${s.name}"? Type "yes"`, "", (err, value) =>
+      {
+        if (err) return;
+
+        const v = String(value || "").trim().toLowerCase();
+        if (v !== "yes")
+        {
+          setStatus("Cancelled.", "warn");
+          return;
+        }
+
+        if (!model.deleteSetlist)
+        {
+          setStatus("Cannot delete setlist (missing model.deleteSetlist?).", "err");
+          return;
+        }
+
+        const ok = model.deleteSetlist(s.id);
+        setStatus(ok ? "Setlist deleted." : "Delete error.", ok ? "ok" : "err");
+        refreshEntries();
+        setlistsList.focus();
+      });
+    });
+
     kb.bindKey(["q", "escape"], () => switchPage("browse"));
     kb.bindKey(["C-c"], () => quit());
 
     refreshSetlistHeader();
+    refreshSetlists();
     refreshEntries();
 
-    entriesList.focus();
+    setlistsList.focus();
     screen.render();
 
     return function cleanup()

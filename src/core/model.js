@@ -1,3 +1,5 @@
+// model.js
+
 const path = require("path");
 const { parseMidnamFile } = require("../midnam/parseMidnam");
 const midiDriver = require("../midi/driver");
@@ -106,6 +108,35 @@ class Model
         const s = this.getActiveSetlist();
         if (!s) return null;
         return s.entries.find(e => e.id === entryId) || null;
+    }
+
+
+    listSetlists()
+    {
+        return this.setlists.list();
+    }
+
+    setActiveSetlist(id)
+    {
+        return this.setlists.setActive(id);
+    }
+
+    addSetlist(name)
+    {
+        const s = this.setlists.addSetlist(String(name || "").trim() || "Setlist");
+        // Optionnel: rendre active la nouvelle setlist directement
+        this.setlists.setActive(s.id);
+        return s;
+    }
+
+    renameSetlist(id, name)
+    {
+        return this.setlists.renameSetlist(id, name);
+    }
+
+    deleteSetlist(id)
+    {
+        return this.setlists.removeSetlist(id);
     }
 
     // ---------- Midnam helpers ----------
