@@ -29,15 +29,15 @@ function safeWriteJson(filePath, obj)
 
 function normalizeMachine(m)
 {
-    const midnamFile = m.midnamFile ?? m.midnam ?? null;
     return {
         id: String(m.id || makeId()),
         name: String(m.name || "Machine"),
+        midnamFile: m.midnamFile == null ? null : String(m.midnamFile), // <-- AJOUT
         out: m.out == null ? null : String(m.out), // ex: "USB MIDI 1" / "rtp:studio" / null
-        channel: Number.isFinite(m.channel) ? Math.min(16, Math.max(1, m.channel)) : 1,
-        midnamFile: m.midnamFile == null ? null : String(m.midnamFile)
+        channel: Number.isFinite(m.channel) ? Math.min(16, Math.max(1, m.channel)) : 1
     };
 }
+
 
 class MachinesStore
 {
@@ -48,7 +48,7 @@ class MachinesStore
         this.load();
         if (!this.data.machines.length)
         {
-            const d = normalizeMachine({ id: "default", name: "Machine", out: null, channel: 1 });
+            const d = normalizeMachine({ id: "default", name: "Machine", midnamFile: null, out: null, channel: 1 });
             this.data.machines.push(d);
             this.data.activeId = d.id;
             this.save();

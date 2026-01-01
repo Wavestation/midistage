@@ -1,40 +1,47 @@
 {
-  "activeId": "m_efma",
+  "activeId": "m_1f5d2e0686aa",
   "machines": [
     {
       "id": "m_korgt1_ch3",
       "name": "Korg T1",
-      "out": "USB MIDI 1",
-      "channel": 3,
-      "midnamFile": "T1.midnam"
+      "midnamFile": "T1.midnam",
+      "out": "rtpmidid:mioXL 29A-02 128:2",
+      "channel": 3
     },
     {
       "id": "m_korgtr_ch5",
       "name": "Korg TR-Rack",
-      "out": "USB MIDI 1",
-      "channel": 5,
-      "midnamFile": "TR-Rack.midnam"
+      "midnamFile": "TR-Rack.midnam",
+      "out": "rtpmidid:mioXL 29A-03 128:3",
+      "channel": 5
     },
     {
       "id": "m_k2600",
       "name": "Kurzweil K2600",
-      "out": "USB MIDI 2",
-      "channel": 1,
-      "midnamFile": "K2600.midnam"
+      "midnamFile": "K2600.midnam",
+      "out": "rtpmidid:mioXL 29A-04 128:4",
+      "channel": 1
     },
     {
       "id": "m_pc3k",
       "name": "Kurzweil PC3K",
-      "out": "USB MIDI 5",
-      "channel": 1,
-      "midnamFile": "PC3K.midnam"
+      "midnamFile": "PC3K.midnam",
+      "out": "rtpmidid:mioXL 29A-05 128:5",
+      "channel": 1
     },
     {
       "id": "m_efma",
       "name": "Kodamo EFM",
-      "out": "USB MIDI 1",
-      "channel": 1,
-      "midnamFile": "Essence FM.midnam"
+      "midnamFile": "Essence FM.midnam",
+      "out": "rtpmidid:mioXL 29A-07 128:7",
+      "channel": 1
+    },
+    {
+      "id": "m_1f5d2e0686aa",
+      "name": "XV-5080",
+      "midnamFile": "XV-5080.midnam",
+      "out": "rtpmidid:mioXL 29A-06 128:6",
+      "channel": 15
     }
   ]
 }

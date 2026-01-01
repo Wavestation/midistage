@@ -60,6 +60,7 @@ else if (process.argv.includes("--serial"))
 
   const shutdown = () => {
     try { srv.close(); } catch {}
+    try { require("./src/midi/driver").closeAll(); } catch {}
     process.exit(0);
   };
   process.on("SIGINT", shutdown);
