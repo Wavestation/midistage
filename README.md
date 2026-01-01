@@ -5,6 +5,8 @@ MIDISTAGE is a Node.js terminal tool for managing hardware synth patches and rec
 It reads MIDINameDocument (.midnam) files to display banks/patch names, lets you map them to your real MIDI outputs and channels (“machines”), and builds setlists so you can recall patches instantly via MIDI Program Change (and bank selection when needed).  
 The UI runs locally or remotely over Telnet / serial TTY (RS-232).
 
+![Main Menu](https://raw.githubusercontent.com/Wavestation/midistage/goodies/main-menu.png)
+
 ## Features
 
 - **TUI (terminal UI)** with lists for Machines / Banks / Patches and a status console.
@@ -55,3 +57,8 @@ MIDISTAGE is primarily developed and tested in the following environment:
   RTP stack: [`rtpmidid` by David Moreno](https://github.com/davidmoreno/rtpmidid)
 
 This setup allows MIDISTAGE to run headless on the Raspberry Pi while being fully controlled remotely from a terminal, with low-latency MIDI routing over the network.
+
+## Screenshots
+
+![Setlist](https://raw.githubusercontent.com/Wavestation/midistage/goodies/setlist.png)
+![Machines Menu](https://raw.githubusercontent.com/Wavestation/midistage/goodies/machine-menu.png)
