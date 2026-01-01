@@ -3,7 +3,80 @@
     {
       "id": "sl_123abc",
       "name": "Default",
-      "entries": []
+      "entries": [
+        {
+          "id": "e_251c6475101c",
+          "name": "Piano Pad Voix",
+          "routes": [
+            {
+              "machineId": "m_9b657df5d442",
+              "midnamFile": "K2500(R).midnam",
+              "deviceName": "Kurzweil",
+              "bankName": "Bank 1",
+              "msb": null,
+              "lsb": 1,
+              "program": 18,
+              "patchName": "Cathedral Choir"
+            },
+            {
+              "machineId": "m_b387d1c5be6e",
+              "midnamFile": "JV-2080.midnam",
+              "deviceName": "Roland JV-2080",
+              "bankName": "Patch Bank PR-E",
+              "msb": 81,
+              "lsb": 4,
+              "program": 99,
+              "patchName": "Gluey Pad"
+            },
+            {
+              "machineId": "m_d0daaba01f95",
+              "midnamFile": "MOTIF ES 6^7^8.midnam",
+              "deviceName": "Yamaha",
+              "bankName": "Preset Voice Bank 1",
+              "msb": 63,
+              "lsb": 0,
+              "program": 0,
+              "patchName": "Full Grand"
+            }
+          ]
+        },
+        {
+          "id": "e_03dd5400118e",
+          "name": "EP Nativity",
+          "routes": [
+            {
+              "machineId": "m_d0daaba01f95",
+              "midnamFile": "MOTIF ES 6^7^8.midnam",
+              "deviceName": "Yamaha",
+              "bankName": "Preset Voice Bank 4",
+              "msb": 63,
+              "lsb": 3,
+              "program": 42,
+              "patchName": "Nativity"
+            },
+            {
+              "machineId": "m_9b657df5d442",
+              "midnamFile": "K2500(R).midnam",
+              "deviceName": "Kurzweil",
+              "bankName": "Bank 7",
+              "msb": null,
+              "lsb": 7,
+              "program": 75,
+              "patchName": "Concert Piano 2"
+            },
+            {
+              "machineId": "m_b387d1c5be6e",
+              "midnamFile": "JV-2080.midnam",
+              "deviceName": "Roland JV-2080",
+              "bankName": "Patch Bank PR-E",
+              "msb": 81,
+              "lsb": 4,
+              "program": 2,
+              "patchName": "RD-1000"
+            }
+          ]
+        }
+      ]
     }
   ],
   "activeId": "sl_123abc"
