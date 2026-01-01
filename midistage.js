@@ -25,6 +25,8 @@ if (process.argv.includes("--telnet"))
   // Telnet
   const port = parseInt(getArg("--port", "2323"), 10);
 
+  console.log("Starting Telnet on port " + port + " ...");
+
   startTelnetServer((io) => startApp(MIDNAM_DIR, io), port, {
     //terminal: "ansi",
     terminal: "xterm-256color",

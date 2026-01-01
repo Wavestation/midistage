@@ -299,6 +299,14 @@ class Model
         }
         catch (e)
         {
+            console.log("SendPatch FAILED", {
+                machine,
+                bank,
+                patchProgram: patch?.program,
+                patch,
+                err: e?.stack || e
+            });
+            
             return { ok: false, message: `Send error:\n${e.message}` };
         }
     }

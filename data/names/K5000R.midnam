@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MIDINameDocument PUBLIC "-//MIDI Manufacturers Association//DTD MIDINameDocument 0.7//EN" "http://www.sonosphere.com/dtds/MIDINameDocument.dtd">
+
+<MIDINameDocument>
+	<Author>Masami Komuro</Author>
+	<MasterDeviceNames>
+		<Manufacturer>Kawai</Manufacturer>
+		<Model>K5000R</Model>
+		<CustomDeviceMode Name="Mode 1" >
+			<ChannelNameSetAssignments>
+				<ChannelNameSetAssign Channel="1" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="2" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="3" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="4" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="5" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="6" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="7" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="8" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="9" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="10" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="11" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="12" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="13" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="14" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="15" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="16" NameSet="Presets" />
+			</ChannelNameSetAssignments>
+		</CustomDeviceMode>
+		<ChannelNameSet Name="Presets" >
+			<AvailableForChannels>
+				<AvailableChannel Channel="1" Available="true" />
+				<AvailableChannel Channel="2" Available="true" />
+				<AvailableChannel Channel="3" Available="true" />
+				<AvailableChannel Channel="4" Available="true" />
+				<AvailableChannel Channel="5" Available="true" />
+				<AvailableChannel Channel="6" Available="true" />
+				<AvailableChannel Channel="7" Available="true" />
+				<AvailableChannel Channel="8" Available="true" />
+				<AvailableChannel Channel="9" Available="true" />
+				<AvailableChannel Channel="10" Available="true" />
+				<AvailableChannel Channel="11" Available="true" />
+				<AvailableChannel Channel="12" Available="true" />
+				<AvailableChannel Channel="13" Available="true" />
+				<AvailableChannel Channel="14" Available="true" />
+				<AvailableChannel Channel="15" Available="true" />
+				<AvailableChannel Channel="16" Available="true" />
+			</AvailableForChannels>
+			
+			<PatchBank Name="BANK A" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="100" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="1" Name="TH and Time "  ProgramChange="0" />
+					<Patch Number="2" Name="Julo TH "  ProgramChange="1" />
+					<Patch Number="3" Name="Cris TH "  ProgramChange="2" />
+					<Patch Number="4" Name="Pad1 TH "  ProgramChange="3" />
+					<Patch Number="5" Name="AntarTH "  ProgramChange="4" />
+					<Patch Number="6" Name="LactisTH"  ProgramChange="5" />
+					<Patch Number="7" Name="StarisTH"  ProgramChange="6" />
+					<Patch Number="8" Name="DropsTH "  ProgramChange="7" />
+					<Patch Number="9" Name="Bi-Iltis"  ProgramChange="8" />
+					<Patch Number="10" Name="Gregoria"  ProgramChange="9" />
+					<Patch Number="11" Name="IcyPadTH"  ProgramChange="10" />
+					<Patch Number="12" Name="AraxTH  "  ProgramChange="11" />
+					<Patch Number="13" Name="Voic1TH "  ProgramChange="12" />
+					<Patch Number="14" Name="SpatzTH "  ProgramChange="13" />
+					<Patch Number="15" Name="LarStrTH"  ProgramChange="14" />
+					<Patch Number="16" Name="PercDTH "  ProgramChange="15" />
+					<Patch Number="17" Name="HarpTH  "  ProgramChange="16" />
+					<Patch Number="18" Name="RainNoir"  ProgramChange="17" />
+					<Patch Number="19" Name="WhispdTH"  ProgramChange="18" />
+					<Patch Number="20" Name="PolaPDTH"  ProgramChange="19" />
+					<Patch Number="21" Name="Marais  "  ProgramChange="20" />
+					<Patch Number="22" Name="VaohlTH "  ProgramChange="21" />
+					<Patch Number="23" Name="SloPolTH"  ProgramChange="22" />
+					<Patch Number="24" Name="JolResTH"  ProgramChange="23" />
+					<Patch Number="25" Name="TH and Time "  ProgramChange="24" />
+					<Patch Number="26" Name="Init    "  ProgramChange="25" />
+					<Patch Number="27" Name="Past TH "  ProgramChange="26" />
+					<Patch Number="28" Name="Inpro   "  ProgramChange="27" />
+					<Patch Number="29" Name="AddVocTH"  ProgramChange="28" />
+					<Patch Number="30" Name="90sVocTH"  ProgramChange="29" />
+					<Patch Number="31" Name="SunsetNK"  ProgramChange="30" />
+					<Patch Number="32" Name="--------"  ProgramChange="31" />
+					<Patch Number="33" Name="--------"  ProgramChange="32" />
+					<Patch Number="34" Name="--------"  ProgramChange="33" />
+					<Patch Number="35" Name="--------"  ProgramChange="34" />
+					<Patch Number="36" Name="--------"  ProgramChange="35" />
+					<Patch Number="37" Name="--------"  ProgramChange="36" />
+					<Patch Number="38" Name="--------"  ProgramChange="37" />
+					<Patch Number="39" Name="--------"  ProgramChange="38" />
+					<Patch Number="40" Name="--------"  ProgramChange="39" />
+					<Patch Number="41" Name="--------"  ProgramChange="40" />
+					<Patch Number="42" Name="--------"  ProgramChange="41" />
+					<Patch Number="43" Name="--------"  ProgramChange="42" />
+					<Patch Number="44" Name="--------"  ProgramChange="43" />
+					<Patch Number="45" Name="--------"  ProgramChange="44" />
+					<Patch Number="46" Name="--------"  ProgramChange="45" />
+					<Patch Number="47" Name="--------"  ProgramChange="46" />
+					<Patch Number="48" Name="--------"  ProgramChange="47" />
+					<Patch Number="49" Name="--------"  ProgramChange="48" />
+					<Patch Number="50" Name="--------"  ProgramChange="49" />
+					<Patch Number="51" Name="--------"  ProgramChange="50" />
+					<Patch Number="52" Name="--------"  ProgramChange="51" />
+					<Patch Number="53" Name="MicroVox"  ProgramChange="52" />
+					<Patch Number="54" Name="Cumos   "  ProgramChange="53" />
+					<Patch Number="55" Name="Dusk    "  ProgramChange="54" />
+					<Patch Number="56" Name="Tronica "  ProgramChange="55" />
+					<Patch Number="57" Name="AnvilBas"  ProgramChange="56" />
+					<Patch Number="58" Name="Trolddom"  ProgramChange="57" />
+					<Patch Number="59" Name="KemiKali"  ProgramChange="58" />
+					<Patch Number="60" Name="TeraModu"  ProgramChange="59" />
+					<Patch Number="61" Name="Skeleton"  ProgramChange="60" />
+					<Patch Number="62" Name="PBminmaj"  ProgramChange="61" />
+					<Patch Number="63" Name="Lorrain "  ProgramChange="62" />
+					<Patch Number="64" Name="MetalCmp"  ProgramChange="63" />
+					<Patch Number="65" Name="Comatose"  ProgramChange="64" />
+					<Patch Number="66" Name="DarkPuls"  ProgramChange="65" />
+					<Patch Number="67" Name="PwerPulp"  ProgramChange="66" />
+					<Patch Number="68" Name="Pinor   "  ProgramChange="67" />
+					<Patch Number="69" Name="Craaazy "  ProgramChange="68" />
+					<Patch Number="70" Name="Rechner "  ProgramChange="69" />
+					<Patch Number="71" Name="Keybolon"  ProgramChange="70" />
+					<Patch Number="72" Name="Gruppen "  ProgramChange="71" />
+					<Patch Number="73" Name="AnvilBas"  ProgramChange="72" />
+					<Patch Number="74" Name="Organica"  ProgramChange="73" />
+					<Patch Number="75" Name="RevChina"  ProgramChange="74" />
+					<Patch Number="76" Name="Limbourg"  ProgramChange="75" />
+					<Patch Number="77" Name="Melankol"  ProgramChange="76" />
+					<Patch Number="78" Name="SoftEp  "  ProgramChange="77" />
+					<Patch Number="79" Name="Homer   "  ProgramChange="78" />
+					<Patch Number="80" Name="Ginza   "  ProgramChange="79" />
+					<Patch Number="81" Name="Pulse   "  ProgramChange="80" />
+					<Patch Number="82" Name="Gleamer "  ProgramChange="81" />
+					<Patch Number="83" Name="Harvey  "  ProgramChange="82" />
+					<Patch Number="84" Name="Marais  "  ProgramChange="83" />
+					<Patch Number="85" Name="Micron  "  ProgramChange="84" />
+					<Patch Number="86" Name="Octavia "  ProgramChange="85" />
+					<Patch Number="87" Name="IceDust "  ProgramChange="86" />
+					<Patch Number="88" Name="Sphyx   "  ProgramChange="87" />
+					<Patch Number="89" Name="Teisco  "  ProgramChange="88" />
+					<Patch Number="90" Name="Big Red "  ProgramChange="89" />
+					<Patch Number="91" Name="Planet  "  ProgramChange="90" />
+					<Patch Number="92" Name="Santa   "  ProgramChange="91" />
+					<Patch Number="93" Name="BlowAway"  ProgramChange="92" />
+					<Patch Number="94" Name="BlurrPad"  ProgramChange="93" />
+					<Patch Number="95" Name="Morfolog"  ProgramChange="94" />
+					<Patch Number="96" Name="Heater  "  ProgramChange="95" />
+					<Patch Number="97" Name="WarmBass"  ProgramChange="96" />
+					<Patch Number="98" Name="PWMbass "  ProgramChange="97" />
+					<Patch Number="99" Name="MarsNK  "  ProgramChange="98" />
+					<Patch Number="100" Name="Solaris "  ProgramChange="99" />
+					<Patch Number="101" Name="@Vocodor"  ProgramChange="100" />
+					<Patch Number="102" Name="Morph064"  ProgramChange="101" />
+					<Patch Number="103" Name="LinearNK"  ProgramChange="102" />
+					<Patch Number="104" Name="Frogs   "  ProgramChange="103" />
+					<Patch Number="105" Name="Equinox "  ProgramChange="104" />
+					<Patch Number="106" Name="Frogs   "  ProgramChange="105" />
+					<Patch Number="107" Name="Frogs   "  ProgramChange="106" />
+					<Patch Number="108" Name="Frogs   "  ProgramChange="107" />
+					<Patch Number="109" Name="Frogs   "  ProgramChange="108" />
+					<Patch Number="110" Name="Frogs   "  ProgramChange="109" />
+					<Patch Number="111" Name="Frogs   "  ProgramChange="110" />
+					<Patch Number="112" Name="HealerNK"  ProgramChange="111" />
+					<Patch Number="113" Name="OnMoonNK"  ProgramChange="112" />
+					<Patch Number="114" Name="Worm Pad"  ProgramChange="113" />
+					<Patch Number="115" Name="Morph066"  ProgramChange="114" />
+					<Patch Number="116" Name="Morph068"  ProgramChange="115" />
+					<Patch Number="117" Name="Morph069"  ProgramChange="116" />
+					<Patch Number="118" Name="Morph070"  ProgramChange="117" />
+					<Patch Number="119" Name="Morph071"  ProgramChange="118" />
+					<Patch Number="120" Name="MystStTH"  ProgramChange="119" />
+					<Patch Number="121" Name="Morph073"  ProgramChange="120" />
+					<Patch Number="122" Name="Morph074"  ProgramChange="121" />
+					<Patch Number="123" Name="Morph075"  ProgramChange="122" />
+					<Patch Number="124" Name="Morph076"  ProgramChange="123" />
+					<Patch Number="125" Name="Morph077"  ProgramChange="124" />
+					<Patch Number="126" Name="Morph078"  ProgramChange="125" />
+					<Patch Number="127" Name="Morph079"  ProgramChange="126" />
+					<Patch Number="128" Name="MixAl026"  ProgramChange="127" />
+				</PatchNameList>
+			</PatchBank>
+			<PatchBank Name="BANK D" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="102" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="1" Name="Heaven  "  ProgramChange="0" />
+					<Patch Number="2" Name="Lush Pad"  ProgramChange="1" />
+					<Patch Number="3" Name="4thPlane"  ProgramChange="2" />
+					<Patch Number="4" Name="Solaris "  ProgramChange="3" />
+					<Patch Number="5" Name="@Vocodor"  ProgramChange="4" />
+					<Patch Number="6" Name="@VoltAge"  ProgramChange="5" />
+					<Patch Number="7" Name="EnsembTH"  ProgramChange="6" />
+					<Patch Number="8" Name="ADDpegio"  ProgramChange="7" />
+					<Patch Number="9" Name="Gregoria"  ProgramChange="8" />
+					<Patch Number="10" Name="Bi-Iltis"  ProgramChange="9" />
+					<Patch Number="11" Name="Equinox "  ProgramChange="10" />
+					<Patch Number="12" Name="Ethane  "  ProgramChange="11" />
+					<Patch Number="13" Name="Haleluya"  ProgramChange="12" />
+					<Patch Number="14" Name="GlasRain"  ProgramChange="13" />
+					<Patch Number="15" Name="Formanta"  ProgramChange="14" />
+					<Patch Number="16" Name="NK Lense"  ProgramChange="15" />
+					<Patch Number="17" Name="NK Earth"  ProgramChange="16" />
+					<Patch Number="18" Name="NK Stars"  ProgramChange="17" />
+					<Patch Number="19" Name="NK Child"  ProgramChange="18" />
+					<Patch Number="20" Name="NK Saint"  ProgramChange="19" />
+					<Patch Number="21" Name="NK Jitte"  ProgramChange="20" />
+					<Patch Number="22" Name="NK Hypno"  ProgramChange="21" />
+					<Patch Number="23" Name="NK ADPad"  ProgramChange="22" />
+					<Patch Number="24" Name="NK AgePD"  ProgramChange="23" />
+					<Patch Number="25" Name="NK Reena"  ProgramChange="24" />
+					<Patch Number="26" Name="NKForest"  ProgramChange="25" />
+					<Patch Number="27" Name="NK Lost "  ProgramChange="26" />
+					<Patch Number="28" Name="NK MoSs "  ProgramChange="27" />
+					<Patch Number="29" Name="NKVintag"  ProgramChange="28" />
+					<Patch Number="30" Name="NK Riser"  ProgramChange="29" />
+					<Patch Number="31" Name="NKTimes "  ProgramChange="30" />
+					<Patch Number="32" Name="NK Lotos"  ProgramChange="31" />
+					<Patch Number="33" Name="NK Silk "  ProgramChange="32" />
+					<Patch Number="34" Name="NK Rules"  ProgramChange="33" />
+					<Patch Number="35" Name="NK Steel"  ProgramChange="34" />
+					<Patch Number="36" Name="NK Trail"  ProgramChange="35" />
+					<Patch Number="37" Name="NK Still"  ProgramChange="36" />
+					<Patch Number="38" Name="NK Truth"  ProgramChange="37" />
+					<Patch Number="39" Name="NK Iron "  ProgramChange="38" />
+					<Patch Number="40" Name="NK Spore"  ProgramChange="39" />
+					<Patch Number="41" Name="NK Pluto"  ProgramChange="40" />
+					<Patch Number="42" Name="NK Lost "  ProgramChange="41" />
+					<Patch Number="43" Name="NKSympho"  ProgramChange="42" />
+					<Patch Number="44" Name="NKMystic"  ProgramChange="43" />
+					<Patch Number="45" Name="NKProtos"  ProgramChange="44" />
+					<Patch Number="46" Name="--------"  ProgramChange="45" />
+					<Patch Number="47" Name="--------"  ProgramChange="46" />
+					<Patch Number="48" Name="--------"  ProgramChange="47" />
+					<Patch Number="49" Name="--------"  ProgramChange="48" />
+					<Patch Number="50" Name="--------"  ProgramChange="49" />
+					<Patch Number="51" Name="--------"  ProgramChange="50" />
+					<Patch Number="52" Name="--------"  ProgramChange="51" />
+					<Patch Number="53" Name="--------"  ProgramChange="52" />
+					<Patch Number="54" Name="--------"  ProgramChange="53" />
+					<Patch Number="55" Name="--------"  ProgramChange="54" />
+					<Patch Number="56" Name="--------"  ProgramChange="55" />
+					<Patch Number="57" Name="--------"  ProgramChange="56" />
+					<Patch Number="58" Name="--------"  ProgramChange="57" />
+					<Patch Number="59" Name="--------"  ProgramChange="58" />
+					<Patch Number="60" Name="--------"  ProgramChange="59" />
+					<Patch Number="61" Name="--------"  ProgramChange="60" />
+					<Patch Number="62" Name="--------"  ProgramChange="61" />
+					<Patch Number="63" Name="--------"  ProgramChange="62" />
+					<Patch Number="64" Name="--------"  ProgramChange="63" />
+					<Patch Number="65" Name="--------"  ProgramChange="64" />
+					<Patch Number="66" Name="--------"  ProgramChange="65" />
+					<Patch Number="67" Name="--------"  ProgramChange="66" />
+					<Patch Number="68" Name="--------"  ProgramChange="67" />
+					<Patch Number="69" Name="--------"  ProgramChange="68" />
+					<Patch Number="70" Name="--------"  ProgramChange="69" />
+					<Patch Number="71" Name="--------"  ProgramChange="70" />
+					<Patch Number="72" Name="--------"  ProgramChange="71" />
+					<Patch Number="73" Name="--------"  ProgramChange="72" />
+					<Patch Number="74" Name="--------"  ProgramChange="73" />
+					<Patch Number="75" Name="--------"  ProgramChange="74" />
+					<Patch Number="76" Name="--------"  ProgramChange="75" />
+					<Patch Number="77" Name="--------"  ProgramChange="76" />
+					<Patch Number="78" Name="--------"  ProgramChange="77" />
+					<Patch Number="79" Name="--------"  ProgramChange="78" />
+					<Patch Number="80" Name="--------"  ProgramChange="79" />
+					<Patch Number="81" Name="--------"  ProgramChange="80" />
+					<Patch Number="82" Name="--------"  ProgramChange="81" />
+					<Patch Number="83" Name="--------"  ProgramChange="82" />
+					<Patch Number="84" Name="--------"  ProgramChange="83" />
+					<Patch Number="85" Name="--------"  ProgramChange="84" />
+					<Patch Number="86" Name="--------"  ProgramChange="85" />
+					<Patch Number="87" Name="--------"  ProgramChange="86" />
+					<Patch Number="88" Name="--------"  ProgramChange="87" />
+					<Patch Number="89" Name="--------"  ProgramChange="88" />
+					<Patch Number="90" Name="--------"  ProgramChange="89" />
+					<Patch Number="91" Name="--------"  ProgramChange="90" />
+					<Patch Number="92" Name="--------"  ProgramChange="91" />
+					<Patch Number="93" Name="--------"  ProgramChange="92" />
+					<Patch Number="94" Name="--------"  ProgramChange="93" />
+					<Patch Number="95" Name="--------"  ProgramChange="94" />
+					<Patch Number="96" Name="--------"  ProgramChange="95" />
+					<Patch Number="97" Name="--------"  ProgramChange="96" />
+					<Patch Number="98" Name="--------"  ProgramChange="97" />
+					<Patch Number="99" Name="--------"  ProgramChange="98" />
+					<Patch Number="100" Name="--------"  ProgramChange="99" />
+					<Patch Number="101" Name="--------"  ProgramChange="100" />
+					<Patch Number="102" Name="--------"  ProgramChange="101" />
+					<Patch Number="103" Name="--------"  ProgramChange="102" />
+					<Patch Number="104" Name="--------"  ProgramChange="103" />
+					<Patch Number="105" Name="--------"  ProgramChange="104" />
+					<Patch Number="106" Name="--------"  ProgramChange="105" />
+					<Patch Number="107" Name="--------"  ProgramChange="106" />
+					<Patch Number="108" Name="--------"  ProgramChange="107" />
+					<Patch Number="109" Name="--------"  ProgramChange="108" />
+					<Patch Number="110" Name="--------"  ProgramChange="109" />
+					<Patch Number="111" Name="--------"  ProgramChange="110" />
+					<Patch Number="112" Name="--------"  ProgramChange="111" />
+					<Patch Number="113" Name="--------"  ProgramChange="112" />
+					<Patch Number="114" Name="--------"  ProgramChange="113" />
+					<Patch Number="115" Name="--------"  ProgramChange="114" />
+					<Patch Number="116" Name="--------"  ProgramChange="115" />
+					<Patch Number="117" Name="--------"  ProgramChange="116" />
+					<Patch Number="118" Name="--------"  ProgramChange="117" />
+					<Patch Number="119" Name="--------"  ProgramChange="118" />
+					<Patch Number="120" Name="--------"  ProgramChange="119" />
+					<Patch Number="121" Name="--------"  ProgramChange="120" />
+					<Patch Number="122" Name="--------"  ProgramChange="121" />
+					<Patch Number="123" Name="--------"  ProgramChange="122" />
+					<Patch Number="124" Name="--------"  ProgramChange="123" />
+					<Patch Number="125" Name="--------"  ProgramChange="124" />
+					<Patch Number="126" Name="--------"  ProgramChange="125" />
+					<Patch Number="127" Name="--------"  ProgramChange="126" />
+					<Patch Number="128" Name="--------"  ProgramChange="127" />
+				</PatchNameList>
+			</PatchBank>
+		</ChannelNameSet>
+	</MasterDeviceNames>
+</MIDINameDocument>

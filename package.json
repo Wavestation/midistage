@@ -8,7 +8,7 @@
   "main": "midistage.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node . --telnet --port 3939"
+    "start": "node . --telnet --port 2339"
   },
   "dependencies": {
     "blessed": "^0.1.81",

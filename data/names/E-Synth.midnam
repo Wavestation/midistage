@@ -1,0 +1,1406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MIDINameDocument PUBLIC "-//MIDI Manufacturers Association//DTD MIDINameDocument 0.7//EN" "http://www.sonosphere.com/dtds/MIDINameDocument.dtd">
+
+<MIDINameDocument>
+	<Author>Masami Komuro</Author>
+	<MasterDeviceNames>
+		<Manufacturer>E-mu Systems</Manufacturer>
+		<Model>E-Synth</Model>
+		<CustomDeviceMode Name="Mode 1" >
+			<ChannelNameSetAssignments>
+				<ChannelNameSetAssign Channel="1" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="2" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="3" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="4" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="5" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="6" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="7" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="8" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="9" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="10" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="11" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="12" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="13" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="14" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="15" NameSet="Presets" />
+				<ChannelNameSetAssign Channel="16" NameSet="Presets" />
+			</ChannelNameSetAssignments>
+		</CustomDeviceMode>
+		<ChannelNameSet Name="Presets" >
+			<AvailableForChannels>
+				<AvailableChannel Channel="1" Available="true" />
+				<AvailableChannel Channel="2" Available="true" />
+				<AvailableChannel Channel="3" Available="true" />
+				<AvailableChannel Channel="4" Available="true" />
+				<AvailableChannel Channel="5" Available="true" />
+				<AvailableChannel Channel="6" Available="true" />
+				<AvailableChannel Channel="7" Available="true" />
+				<AvailableChannel Channel="8" Available="true" />
+				<AvailableChannel Channel="9" Available="true" />
+				<AvailableChannel Channel="10" Available="true" />
+				<AvailableChannel Channel="11" Available="true" />
+				<AvailableChannel Channel="12" Available="true" />
+				<AvailableChannel Channel="13" Available="true" />
+				<AvailableChannel Channel="14" Available="true" />
+				<AvailableChannel Channel="15" Available="true" />
+				<AvailableChannel Channel="16" Available="true" />
+			</AvailableForChannels>
+			<PatchBank Name="E-Synth RAM 0-127" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="P0" Name="Empty Preset"  ProgramChange="0" />
+					<Patch Number="P1" Name="Empty Preset"  ProgramChange="1" />
+					<Patch Number="P2" Name="Empty Preset"  ProgramChange="2" />
+					<Patch Number="P3" Name="Empty Preset"  ProgramChange="3" />
+					<Patch Number="P4" Name="Empty Preset"  ProgramChange="4" />
+					<Patch Number="P5" Name="Empty Preset"  ProgramChange="5" />
+					<Patch Number="P6" Name="Empty Preset"  ProgramChange="6" />
+					<Patch Number="P7" Name="Empty Preset"  ProgramChange="7" />
+					<Patch Number="P8" Name="Empty Preset"  ProgramChange="8" />
+					<Patch Number="P9" Name="Empty Preset"  ProgramChange="9" />
+					<Patch Number="P10" Name="Empty Preset"  ProgramChange="10" />
+					<Patch Number="P11" Name="Empty Preset"  ProgramChange="11" />
+					<Patch Number="P12" Name="Empty Preset"  ProgramChange="12" />
+					<Patch Number="P13" Name="Empty Preset"  ProgramChange="13" />
+					<Patch Number="P14" Name="Empty Preset"  ProgramChange="14" />
+					<Patch Number="P15" Name="Empty Preset"  ProgramChange="15" />
+					<Patch Number="P16" Name="Empty Preset"  ProgramChange="16" />
+					<Patch Number="P17" Name="Empty Preset"  ProgramChange="17" />
+					<Patch Number="P18" Name="Empty Preset"  ProgramChange="18" />
+					<Patch Number="P19" Name="Empty Preset"  ProgramChange="19" />
+					<Patch Number="P20" Name="Empty Preset"  ProgramChange="20" />
+					<Patch Number="P21" Name="Empty Preset"  ProgramChange="21" />
+					<Patch Number="P22" Name="Empty Preset"  ProgramChange="22" />
+					<Patch Number="P23" Name="Empty Preset"  ProgramChange="23" />
+					<Patch Number="P24" Name="Empty Preset"  ProgramChange="24" />
+					<Patch Number="P25" Name="Empty Preset"  ProgramChange="25" />
+					<Patch Number="P26" Name="Empty Preset"  ProgramChange="26" />
+					<Patch Number="P27" Name="Empty Preset"  ProgramChange="27" />
+					<Patch Number="P28" Name="Empty Preset"  ProgramChange="28" />
+					<Patch Number="P29" Name="Empty Preset"  ProgramChange="29" />
+					<Patch Number="P30" Name="Empty Preset"  ProgramChange="30" />
+					<Patch Number="P31" Name="Empty Preset"  ProgramChange="31" />
+					<Patch Number="P32" Name="Empty Preset"  ProgramChange="32" />
+					<Patch Number="P33" Name="Empty Preset"  ProgramChange="33" />
+					<Patch Number="P34" Name="Empty Preset"  ProgramChange="34" />
+					<Patch Number="P35" Name="Empty Preset"  ProgramChange="35" />
+					<Patch Number="P36" Name="Empty Preset"  ProgramChange="36" />
+					<Patch Number="P37" Name="Empty Preset"  ProgramChange="37" />
+					<Patch Number="P38" Name="Empty Preset"  ProgramChange="38" />
+					<Patch Number="P39" Name="Empty Preset"  ProgramChange="39" />
+					<Patch Number="P40" Name="Empty Preset"  ProgramChange="40" />
+					<Patch Number="P41" Name="Empty Preset"  ProgramChange="41" />
+					<Patch Number="P42" Name="Empty Preset"  ProgramChange="42" />
+					<Patch Number="P43" Name="Empty Preset"  ProgramChange="43" />
+					<Patch Number="P44" Name="Empty Preset"  ProgramChange="44" />
+					<Patch Number="P45" Name="Empty Preset"  ProgramChange="45" />
+					<Patch Number="P46" Name="Empty Preset"  ProgramChange="46" />
+					<Patch Number="P47" Name="Empty Preset"  ProgramChange="47" />
+					<Patch Number="P48" Name="Empty Preset"  ProgramChange="48" />
+					<Patch Number="P49" Name="Empty Preset"  ProgramChange="49" />
+					<Patch Number="P50" Name="Empty Preset"  ProgramChange="50" />
+					<Patch Number="P51" Name="Empty Preset"  ProgramChange="51" />
+					<Patch Number="P52" Name="Empty Preset"  ProgramChange="52" />
+					<Patch Number="P53" Name="Empty Preset"  ProgramChange="53" />
+					<Patch Number="P54" Name="Empty Preset"  ProgramChange="54" />
+					<Patch Number="P55" Name="Empty Preset"  ProgramChange="55" />
+					<Patch Number="P56" Name="Empty Preset"  ProgramChange="56" />
+					<Patch Number="P57" Name="Empty Preset"  ProgramChange="57" />
+					<Patch Number="P58" Name="Empty Preset"  ProgramChange="58" />
+					<Patch Number="P59" Name="Empty Preset"  ProgramChange="59" />
+					<Patch Number="P60" Name="Empty Preset"  ProgramChange="60" />
+					<Patch Number="P61" Name="Empty Preset"  ProgramChange="61" />
+					<Patch Number="P62" Name="Empty Preset"  ProgramChange="62" />
+					<Patch Number="P63" Name="Empty Preset"  ProgramChange="63" />
+					<Patch Number="P64" Name="Empty Preset"  ProgramChange="64" />
+					<Patch Number="P65" Name="Empty Preset"  ProgramChange="65" />
+					<Patch Number="P66" Name="Empty Preset"  ProgramChange="66" />
+					<Patch Number="P67" Name="Empty Preset"  ProgramChange="67" />
+					<Patch Number="P68" Name="Empty Preset"  ProgramChange="68" />
+					<Patch Number="P69" Name="Empty Preset"  ProgramChange="69" />
+					<Patch Number="P70" Name="Empty Preset"  ProgramChange="70" />
+					<Patch Number="P71" Name="Empty Preset"  ProgramChange="71" />
+					<Patch Number="P72" Name="Empty Preset"  ProgramChange="72" />
+					<Patch Number="P73" Name="Empty Preset"  ProgramChange="73" />
+					<Patch Number="P74" Name="Empty Preset"  ProgramChange="74" />
+					<Patch Number="P75" Name="Empty Preset"  ProgramChange="75" />
+					<Patch Number="P76" Name="Empty Preset"  ProgramChange="76" />
+					<Patch Number="P77" Name="Empty Preset"  ProgramChange="77" />
+					<Patch Number="P78" Name="Empty Preset"  ProgramChange="78" />
+					<Patch Number="P79" Name="Empty Preset"  ProgramChange="79" />
+					<Patch Number="P80" Name="Empty Preset"  ProgramChange="80" />
+					<Patch Number="P81" Name="Empty Preset"  ProgramChange="81" />
+					<Patch Number="P82" Name="Empty Preset"  ProgramChange="82" />
+					<Patch Number="P83" Name="Empty Preset"  ProgramChange="83" />
+					<Patch Number="P84" Name="Empty Preset"  ProgramChange="84" />
+					<Patch Number="P85" Name="Empty Preset"  ProgramChange="85" />
+					<Patch Number="P86" Name="Empty Preset"  ProgramChange="86" />
+					<Patch Number="P87" Name="Empty Preset"  ProgramChange="87" />
+					<Patch Number="P88" Name="Empty Preset"  ProgramChange="88" />
+					<Patch Number="P89" Name="Empty Preset"  ProgramChange="89" />
+					<Patch Number="P90" Name="Empty Preset"  ProgramChange="90" />
+					<Patch Number="P91" Name="Empty Preset"  ProgramChange="91" />
+					<Patch Number="P92" Name="Empty Preset"  ProgramChange="92" />
+					<Patch Number="P93" Name="Empty Preset"  ProgramChange="93" />
+					<Patch Number="P94" Name="Empty Preset"  ProgramChange="94" />
+					<Patch Number="P95" Name="Empty Preset"  ProgramChange="95" />
+					<Patch Number="P96" Name="Empty Preset"  ProgramChange="96" />
+					<Patch Number="P97" Name="Empty Preset"  ProgramChange="97" />
+					<Patch Number="P98" Name="Empty Preset"  ProgramChange="98" />
+					<Patch Number="P99" Name="Empty Preset"  ProgramChange="99" />
+					<Patch Number="P100" Name="Empty Preset"  ProgramChange="100" />
+					<Patch Number="P101" Name="Empty Preset"  ProgramChange="101" />
+					<Patch Number="P102" Name="Empty Preset"  ProgramChange="102" />
+					<Patch Number="P103" Name="Empty Preset"  ProgramChange="103" />
+					<Patch Number="P104" Name="Empty Preset"  ProgramChange="104" />
+					<Patch Number="P105" Name="Empty Preset"  ProgramChange="105" />
+					<Patch Number="P106" Name="Empty Preset"  ProgramChange="106" />
+					<Patch Number="P107" Name="Empty Preset"  ProgramChange="107" />
+					<Patch Number="P108" Name="Empty Preset"  ProgramChange="108" />
+					<Patch Number="P109" Name="Empty Preset"  ProgramChange="109" />
+					<Patch Number="P110" Name="Empty Preset"  ProgramChange="110" />
+					<Patch Number="P111" Name="Empty Preset"  ProgramChange="111" />
+					<Patch Number="P112" Name="Empty Preset"  ProgramChange="112" />
+					<Patch Number="P113" Name="Empty Preset"  ProgramChange="113" />
+					<Patch Number="P114" Name="Empty Preset"  ProgramChange="114" />
+					<Patch Number="P115" Name="Empty Preset"  ProgramChange="115" />
+					<Patch Number="P116" Name="Empty Preset"  ProgramChange="116" />
+					<Patch Number="P117" Name="Empty Preset"  ProgramChange="117" />
+					<Patch Number="P118" Name="Empty Preset"  ProgramChange="118" />
+					<Patch Number="P119" Name="Empty Preset"  ProgramChange="119" />
+					<Patch Number="P120" Name="Empty Preset"  ProgramChange="120" />
+					<Patch Number="P121" Name="Empty Preset"  ProgramChange="121" />
+					<Patch Number="P122" Name="Empty Preset"  ProgramChange="122" />
+					<Patch Number="P123" Name="Empty Preset"  ProgramChange="123" />
+					<Patch Number="P124" Name="Empty Preset"  ProgramChange="124" />
+					<Patch Number="P125" Name="Empty Preset"  ProgramChange="125" />
+					<Patch Number="P126" Name="Empty Preset"  ProgramChange="126" />
+					<Patch Number="P127" Name="Empty Preset"  ProgramChange="127" />
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth RAM 128-255" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="1" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="P128" Name="Empty Preset"  ProgramChange="0" />
+					<Patch Number="P129" Name="Empty Preset"  ProgramChange="1" />
+					<Patch Number="P130" Name="Empty Preset"  ProgramChange="2" />
+					<Patch Number="P131" Name="Empty Preset"  ProgramChange="3" />
+					<Patch Number="P132" Name="Empty Preset"  ProgramChange="4" />
+					<Patch Number="P133" Name="Empty Preset"  ProgramChange="5" />
+					<Patch Number="P134" Name="Empty Preset"  ProgramChange="6" />
+					<Patch Number="P135" Name="Empty Preset"  ProgramChange="7" />
+					<Patch Number="P136" Name="Empty Preset"  ProgramChange="8" />
+					<Patch Number="P137" Name="Empty Preset"  ProgramChange="9" />
+					<Patch Number="P138" Name="Empty Preset"  ProgramChange="10" />
+					<Patch Number="P139" Name="Empty Preset"  ProgramChange="11" />
+					<Patch Number="P140" Name="Empty Preset"  ProgramChange="12" />
+					<Patch Number="P141" Name="Empty Preset"  ProgramChange="13" />
+					<Patch Number="P142" Name="Empty Preset"  ProgramChange="14" />
+					<Patch Number="P143" Name="Empty Preset"  ProgramChange="15" />
+					<Patch Number="P144" Name="Empty Preset"  ProgramChange="16" />
+					<Patch Number="P145" Name="Empty Preset"  ProgramChange="17" />
+					<Patch Number="P146" Name="Empty Preset"  ProgramChange="18" />
+					<Patch Number="P147" Name="Empty Preset"  ProgramChange="19" />
+					<Patch Number="P148" Name="Empty Preset"  ProgramChange="20" />
+					<Patch Number="P149" Name="Empty Preset"  ProgramChange="21" />
+					<Patch Number="P150" Name="Empty Preset"  ProgramChange="22" />
+					<Patch Number="P151" Name="Empty Preset"  ProgramChange="23" />
+					<Patch Number="P152" Name="Empty Preset"  ProgramChange="24" />
+					<Patch Number="P153" Name="Empty Preset"  ProgramChange="25" />
+					<Patch Number="P154" Name="Empty Preset"  ProgramChange="26" />
+					<Patch Number="P155" Name="Empty Preset"  ProgramChange="27" />
+					<Patch Number="P156" Name="Empty Preset"  ProgramChange="28" />
+					<Patch Number="P157" Name="Empty Preset"  ProgramChange="29" />
+					<Patch Number="P158" Name="Empty Preset"  ProgramChange="30" />
+					<Patch Number="P159" Name="Empty Preset"  ProgramChange="31" />
+					<Patch Number="P160" Name="Empty Preset"  ProgramChange="32" />
+					<Patch Number="P161" Name="Empty Preset"  ProgramChange="33" />
+					<Patch Number="P162" Name="Empty Preset"  ProgramChange="34" />
+					<Patch Number="P163" Name="Empty Preset"  ProgramChange="35" />
+					<Patch Number="P164" Name="Empty Preset"  ProgramChange="36" />
+					<Patch Number="P165" Name="Empty Preset"  ProgramChange="37" />
+					<Patch Number="P166" Name="Empty Preset"  ProgramChange="38" />
+					<Patch Number="P167" Name="Empty Preset"  ProgramChange="39" />
+					<Patch Number="P168" Name="Empty Preset"  ProgramChange="40" />
+					<Patch Number="P169" Name="Empty Preset"  ProgramChange="41" />
+					<Patch Number="P170" Name="Empty Preset"  ProgramChange="42" />
+					<Patch Number="P171" Name="Empty Preset"  ProgramChange="43" />
+					<Patch Number="P172" Name="Empty Preset"  ProgramChange="44" />
+					<Patch Number="P173" Name="Empty Preset"  ProgramChange="45" />
+					<Patch Number="P174" Name="Empty Preset"  ProgramChange="46" />
+					<Patch Number="P175" Name="Empty Preset"  ProgramChange="47" />
+					<Patch Number="P176" Name="Empty Preset"  ProgramChange="48" />
+					<Patch Number="P177" Name="Empty Preset"  ProgramChange="49" />
+					<Patch Number="P178" Name="Empty Preset"  ProgramChange="50" />
+					<Patch Number="P179" Name="Empty Preset"  ProgramChange="51" />
+					<Patch Number="P180" Name="Empty Preset"  ProgramChange="52" />
+					<Patch Number="P181" Name="Empty Preset"  ProgramChange="53" />
+					<Patch Number="P182" Name="Empty Preset"  ProgramChange="54" />
+					<Patch Number="P183" Name="Empty Preset"  ProgramChange="55" />
+					<Patch Number="P184" Name="Empty Preset"  ProgramChange="56" />
+					<Patch Number="P185" Name="Empty Preset"  ProgramChange="57" />
+					<Patch Number="P186" Name="Empty Preset"  ProgramChange="58" />
+					<Patch Number="P187" Name="Empty Preset"  ProgramChange="59" />
+					<Patch Number="P188" Name="Empty Preset"  ProgramChange="60" />
+					<Patch Number="P189" Name="Empty Preset"  ProgramChange="61" />
+					<Patch Number="P190" Name="Empty Preset"  ProgramChange="62" />
+					<Patch Number="P191" Name="Empty Preset"  ProgramChange="63" />
+					<Patch Number="P192" Name="Empty Preset"  ProgramChange="64" />
+					<Patch Number="P193" Name="Empty Preset"  ProgramChange="65" />
+					<Patch Number="P194" Name="Empty Preset"  ProgramChange="66" />
+					<Patch Number="P195" Name="Empty Preset"  ProgramChange="67" />
+					<Patch Number="P196" Name="Empty Preset"  ProgramChange="68" />
+					<Patch Number="P197" Name="Empty Preset"  ProgramChange="69" />
+					<Patch Number="P198" Name="Empty Preset"  ProgramChange="70" />
+					<Patch Number="P199" Name="Empty Preset"  ProgramChange="71" />
+					<Patch Number="P200" Name="Empty Preset"  ProgramChange="72" />
+					<Patch Number="P201" Name="Empty Preset"  ProgramChange="73" />
+					<Patch Number="P202" Name="Empty Preset"  ProgramChange="74" />
+					<Patch Number="P203" Name="Empty Preset"  ProgramChange="75" />
+					<Patch Number="P204" Name="Empty Preset"  ProgramChange="76" />
+					<Patch Number="P205" Name="Empty Preset"  ProgramChange="77" />
+					<Patch Number="P206" Name="Empty Preset"  ProgramChange="78" />
+					<Patch Number="P207" Name="Empty Preset"  ProgramChange="79" />
+					<Patch Number="P208" Name="Empty Preset"  ProgramChange="80" />
+					<Patch Number="P209" Name="Empty Preset"  ProgramChange="81" />
+					<Patch Number="P210" Name="Empty Preset"  ProgramChange="82" />
+					<Patch Number="P211" Name="Empty Preset"  ProgramChange="83" />
+					<Patch Number="P212" Name="Empty Preset"  ProgramChange="84" />
+					<Patch Number="P213" Name="Empty Preset"  ProgramChange="85" />
+					<Patch Number="P214" Name="Empty Preset"  ProgramChange="86" />
+					<Patch Number="P215" Name="Empty Preset"  ProgramChange="87" />
+					<Patch Number="P216" Name="Empty Preset"  ProgramChange="88" />
+					<Patch Number="P217" Name="Empty Preset"  ProgramChange="89" />
+					<Patch Number="P218" Name="Empty Preset"  ProgramChange="90" />
+					<Patch Number="P219" Name="Empty Preset"  ProgramChange="91" />
+					<Patch Number="P220" Name="Empty Preset"  ProgramChange="92" />
+					<Patch Number="P221" Name="Empty Preset"  ProgramChange="93" />
+					<Patch Number="P222" Name="Empty Preset"  ProgramChange="94" />
+					<Patch Number="P223" Name="Empty Preset"  ProgramChange="95" />
+					<Patch Number="P224" Name="Empty Preset"  ProgramChange="96" />
+					<Patch Number="P225" Name="Empty Preset"  ProgramChange="97" />
+					<Patch Number="P226" Name="Empty Preset"  ProgramChange="98" />
+					<Patch Number="P227" Name="Empty Preset"  ProgramChange="99" />
+					<Patch Number="P228" Name="Empty Preset"  ProgramChange="100" />
+					<Patch Number="P229" Name="Empty Preset"  ProgramChange="101" />
+					<Patch Number="P230" Name="Empty Preset"  ProgramChange="102" />
+					<Patch Number="P231" Name="Empty Preset"  ProgramChange="103" />
+					<Patch Number="P232" Name="Empty Preset"  ProgramChange="104" />
+					<Patch Number="P233" Name="Empty Preset"  ProgramChange="105" />
+					<Patch Number="P234" Name="Empty Preset"  ProgramChange="106" />
+					<Patch Number="P235" Name="Empty Preset"  ProgramChange="107" />
+					<Patch Number="P236" Name="Empty Preset"  ProgramChange="108" />
+					<Patch Number="P237" Name="Empty Preset"  ProgramChange="109" />
+					<Patch Number="P238" Name="Empty Preset"  ProgramChange="110" />
+					<Patch Number="P239" Name="Empty Preset"  ProgramChange="111" />
+					<Patch Number="P240" Name="Empty Preset"  ProgramChange="112" />
+					<Patch Number="P241" Name="Empty Preset"  ProgramChange="113" />
+					<Patch Number="P242" Name="Empty Preset"  ProgramChange="114" />
+					<Patch Number="P243" Name="Empty Preset"  ProgramChange="115" />
+					<Patch Number="P244" Name="Empty Preset"  ProgramChange="116" />
+					<Patch Number="P245" Name="Empty Preset"  ProgramChange="117" />
+					<Patch Number="P246" Name="Empty Preset"  ProgramChange="118" />
+					<Patch Number="P247" Name="Empty Preset"  ProgramChange="119" />
+					<Patch Number="P248" Name="Empty Preset"  ProgramChange="120" />
+					<Patch Number="P249" Name="Empty Preset"  ProgramChange="121" />
+					<Patch Number="P250" Name="Empty Preset"  ProgramChange="122" />
+					<Patch Number="P251" Name="Empty Preset"  ProgramChange="123" />
+					<Patch Number="P252" Name="Empty Preset"  ProgramChange="124" />
+					<Patch Number="P253" Name="Empty Preset"  ProgramChange="125" />
+					<Patch Number="P254" Name="Empty Preset"  ProgramChange="126" />
+					<Patch Number="P255" Name="Empty Preset"  ProgramChange="127" />					
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth RAM 256-383" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="2" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="P256" Name="Empty Preset"  ProgramChange="0" />
+					<Patch Number="P257" Name="Empty Preset"  ProgramChange="1" />
+					<Patch Number="P258" Name="Empty Preset"  ProgramChange="2" />
+					<Patch Number="P259" Name="Empty Preset"  ProgramChange="3" />
+					<Patch Number="P260" Name="Empty Preset"  ProgramChange="4" />
+					<Patch Number="P261" Name="Empty Preset"  ProgramChange="5" />
+					<Patch Number="P262" Name="Empty Preset"  ProgramChange="6" />
+					<Patch Number="P263" Name="Empty Preset"  ProgramChange="7" />
+					<Patch Number="P264" Name="Empty Preset"  ProgramChange="8" />
+					<Patch Number="P265" Name="Empty Preset"  ProgramChange="9" />
+					<Patch Number="P266" Name="Empty Preset"  ProgramChange="10" />
+					<Patch Number="P267" Name="Empty Preset"  ProgramChange="11" />
+					<Patch Number="P268" Name="Empty Preset"  ProgramChange="12" />
+					<Patch Number="P269" Name="Empty Preset"  ProgramChange="13" />
+					<Patch Number="P270" Name="Empty Preset"  ProgramChange="14" />
+					<Patch Number="P271" Name="Empty Preset"  ProgramChange="15" />
+					<Patch Number="P272" Name="Empty Preset"  ProgramChange="16" />
+					<Patch Number="P273" Name="Empty Preset"  ProgramChange="17" />
+					<Patch Number="P274" Name="Empty Preset"  ProgramChange="18" />
+					<Patch Number="P275" Name="Empty Preset"  ProgramChange="19" />
+					<Patch Number="P276" Name="Empty Preset"  ProgramChange="20" />
+					<Patch Number="P277" Name="Empty Preset"  ProgramChange="21" />
+					<Patch Number="P278" Name="Empty Preset"  ProgramChange="22" />
+					<Patch Number="P279" Name="Empty Preset"  ProgramChange="23" />
+					<Patch Number="P280" Name="Empty Preset"  ProgramChange="24" />
+					<Patch Number="P281" Name="Empty Preset"  ProgramChange="25" />
+					<Patch Number="P282" Name="Empty Preset"  ProgramChange="26" />
+					<Patch Number="P283" Name="Empty Preset"  ProgramChange="27" />
+					<Patch Number="P284" Name="Empty Preset"  ProgramChange="28" />
+					<Patch Number="P285" Name="Empty Preset"  ProgramChange="29" />
+					<Patch Number="P286" Name="Empty Preset"  ProgramChange="30" />
+					<Patch Number="P287" Name="Empty Preset"  ProgramChange="31" />
+					<Patch Number="P288" Name="Empty Preset"  ProgramChange="32" />
+					<Patch Number="P289" Name="Empty Preset"  ProgramChange="33" />
+					<Patch Number="P290" Name="Empty Preset"  ProgramChange="34" />
+					<Patch Number="P291" Name="Empty Preset"  ProgramChange="35" />
+					<Patch Number="P292" Name="Empty Preset"  ProgramChange="36" />
+					<Patch Number="P293" Name="Empty Preset"  ProgramChange="37" />
+					<Patch Number="P294" Name="Empty Preset"  ProgramChange="38" />
+					<Patch Number="P295" Name="Empty Preset"  ProgramChange="39" />
+					<Patch Number="P296" Name="Empty Preset"  ProgramChange="40" />
+					<Patch Number="P297" Name="Empty Preset"  ProgramChange="41" />
+					<Patch Number="P298" Name="Empty Preset"  ProgramChange="42" />
+					<Patch Number="P299" Name="Empty Preset"  ProgramChange="43" />
+					<Patch Number="P300" Name="Empty Preset"  ProgramChange="44" />
+					<Patch Number="P301" Name="Empty Preset"  ProgramChange="45" />
+					<Patch Number="P302" Name="Empty Preset"  ProgramChange="46" />
+					<Patch Number="P303" Name="Empty Preset"  ProgramChange="47" />
+					<Patch Number="P304" Name="Empty Preset"  ProgramChange="48" />
+					<Patch Number="P305" Name="Empty Preset"  ProgramChange="49" />
+					<Patch Number="P306" Name="Empty Preset"  ProgramChange="50" />
+					<Patch Number="P307" Name="Empty Preset"  ProgramChange="51" />
+					<Patch Number="P308" Name="Empty Preset"  ProgramChange="52" />
+					<Patch Number="P309" Name="Empty Preset"  ProgramChange="53" />
+					<Patch Number="P310" Name="Empty Preset"  ProgramChange="54" />
+					<Patch Number="P311" Name="Empty Preset"  ProgramChange="55" />
+					<Patch Number="P312" Name="Empty Preset"  ProgramChange="56" />
+					<Patch Number="P313" Name="Empty Preset"  ProgramChange="57" />
+					<Patch Number="P314" Name="Empty Preset"  ProgramChange="58" />
+					<Patch Number="P315" Name="Empty Preset"  ProgramChange="59" />
+					<Patch Number="P316" Name="Empty Preset"  ProgramChange="60" />
+					<Patch Number="P317" Name="Empty Preset"  ProgramChange="61" />
+					<Patch Number="P318" Name="Empty Preset"  ProgramChange="62" />
+					<Patch Number="P319" Name="Empty Preset"  ProgramChange="63" />
+					<Patch Number="P320" Name="Empty Preset"  ProgramChange="64" />
+					<Patch Number="P321" Name="Empty Preset"  ProgramChange="65" />
+					<Patch Number="P322" Name="Empty Preset"  ProgramChange="66" />
+					<Patch Number="P323" Name="Empty Preset"  ProgramChange="67" />
+					<Patch Number="P324" Name="Empty Preset"  ProgramChange="68" />
+					<Patch Number="P325" Name="Empty Preset"  ProgramChange="69" />
+					<Patch Number="P326" Name="Empty Preset"  ProgramChange="70" />
+					<Patch Number="P327" Name="Empty Preset"  ProgramChange="71" />
+					<Patch Number="P328" Name="Empty Preset"  ProgramChange="72" />
+					<Patch Number="P329" Name="Empty Preset"  ProgramChange="73" />
+					<Patch Number="P330" Name="Empty Preset"  ProgramChange="74" />
+					<Patch Number="P331" Name="Empty Preset"  ProgramChange="75" />
+					<Patch Number="P332" Name="Empty Preset"  ProgramChange="76" />
+					<Patch Number="P333" Name="Empty Preset"  ProgramChange="77" />
+					<Patch Number="P334" Name="Empty Preset"  ProgramChange="78" />
+					<Patch Number="P335" Name="Empty Preset"  ProgramChange="79" />
+					<Patch Number="P336" Name="Empty Preset"  ProgramChange="80" />
+					<Patch Number="P337" Name="Empty Preset"  ProgramChange="81" />
+					<Patch Number="P338" Name="Empty Preset"  ProgramChange="82" />
+					<Patch Number="P339" Name="Empty Preset"  ProgramChange="83" />
+					<Patch Number="P340" Name="Empty Preset"  ProgramChange="84" />
+					<Patch Number="P341" Name="Empty Preset"  ProgramChange="85" />
+					<Patch Number="P342" Name="Empty Preset"  ProgramChange="86" />
+					<Patch Number="P343" Name="Empty Preset"  ProgramChange="87" />
+					<Patch Number="P344" Name="Empty Preset"  ProgramChange="88" />
+					<Patch Number="P345" Name="Empty Preset"  ProgramChange="89" />
+					<Patch Number="P346" Name="Empty Preset"  ProgramChange="90" />
+					<Patch Number="P347" Name="Empty Preset"  ProgramChange="91" />
+					<Patch Number="P348" Name="Empty Preset"  ProgramChange="92" />
+					<Patch Number="P349" Name="Empty Preset"  ProgramChange="93" />
+					<Patch Number="P350" Name="Empty Preset"  ProgramChange="94" />
+					<Patch Number="P351" Name="Empty Preset"  ProgramChange="95" />
+					<Patch Number="P352" Name="Empty Preset"  ProgramChange="96" />
+					<Patch Number="P353" Name="Empty Preset"  ProgramChange="97" />
+					<Patch Number="P354" Name="Empty Preset"  ProgramChange="98" />
+					<Patch Number="P355" Name="Empty Preset"  ProgramChange="99" />
+					<Patch Number="P356" Name="Empty Preset"  ProgramChange="100" />
+					<Patch Number="P357" Name="Empty Preset"  ProgramChange="101" />
+					<Patch Number="P358" Name="Empty Preset"  ProgramChange="102" />
+					<Patch Number="P359" Name="Empty Preset"  ProgramChange="103" />
+					<Patch Number="P360" Name="Empty Preset"  ProgramChange="104" />
+					<Patch Number="P361" Name="Empty Preset"  ProgramChange="105" />
+					<Patch Number="P362" Name="Empty Preset"  ProgramChange="106" />
+					<Patch Number="P363" Name="Empty Preset"  ProgramChange="107" />
+					<Patch Number="P364" Name="Empty Preset"  ProgramChange="108" />
+					<Patch Number="P365" Name="Empty Preset"  ProgramChange="109" />
+					<Patch Number="P366" Name="Empty Preset"  ProgramChange="110" />
+					<Patch Number="P367" Name="Empty Preset"  ProgramChange="111" />
+					<Patch Number="P368" Name="Empty Preset"  ProgramChange="112" />
+					<Patch Number="P369" Name="Empty Preset"  ProgramChange="113" />
+					<Patch Number="P370" Name="Empty Preset"  ProgramChange="114" />
+					<Patch Number="P371" Name="Empty Preset"  ProgramChange="115" />
+					<Patch Number="P372" Name="Empty Preset"  ProgramChange="116" />
+					<Patch Number="P373" Name="Empty Preset"  ProgramChange="117" />
+					<Patch Number="P374" Name="Empty Preset"  ProgramChange="118" />
+					<Patch Number="P375" Name="Empty Preset"  ProgramChange="119" />
+					<Patch Number="P376" Name="Empty Preset"  ProgramChange="120" />
+					<Patch Number="P377" Name="Empty Preset"  ProgramChange="121" />
+					<Patch Number="P378" Name="Empty Preset"  ProgramChange="122" />
+					<Patch Number="P379" Name="Empty Preset"  ProgramChange="123" />
+					<Patch Number="P380" Name="Empty Preset"  ProgramChange="124" />
+					<Patch Number="P381" Name="Empty Preset"  ProgramChange="125" />
+					<Patch Number="P382" Name="Empty Preset"  ProgramChange="126" />
+					<Patch Number="P383" Name="Empty Preset"  ProgramChange="127" />
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth RAM 384-511" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="3" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="P384" Name="Empty Preset"  ProgramChange="0" />
+					<Patch Number="P385" Name="Empty Preset"  ProgramChange="1" />
+					<Patch Number="P386" Name="Empty Preset"  ProgramChange="2" />
+					<Patch Number="P387" Name="Empty Preset"  ProgramChange="3" />
+					<Patch Number="P388" Name="Empty Preset"  ProgramChange="4" />
+					<Patch Number="P389" Name="Empty Preset"  ProgramChange="5" />
+					<Patch Number="P390" Name="Empty Preset"  ProgramChange="6" />
+					<Patch Number="P391" Name="Empty Preset"  ProgramChange="7" />
+					<Patch Number="P392" Name="Empty Preset"  ProgramChange="8" />
+					<Patch Number="P393" Name="Empty Preset"  ProgramChange="9" />
+					<Patch Number="P394" Name="Empty Preset"  ProgramChange="10" />
+					<Patch Number="P395" Name="Empty Preset"  ProgramChange="11" />
+					<Patch Number="P396" Name="Empty Preset"  ProgramChange="12" />
+					<Patch Number="P397" Name="Empty Preset"  ProgramChange="13" />
+					<Patch Number="P398" Name="Empty Preset"  ProgramChange="14" />
+					<Patch Number="P399" Name="Empty Preset"  ProgramChange="15" />
+					<Patch Number="P400" Name="Empty Preset"  ProgramChange="16" />
+					<Patch Number="P401" Name="Empty Preset"  ProgramChange="17" />
+					<Patch Number="P402" Name="Empty Preset"  ProgramChange="18" />
+					<Patch Number="P403" Name="Empty Preset"  ProgramChange="19" />
+					<Patch Number="P404" Name="Empty Preset"  ProgramChange="20" />
+					<Patch Number="P405" Name="Empty Preset"  ProgramChange="21" />
+					<Patch Number="P406" Name="Empty Preset"  ProgramChange="22" />
+					<Patch Number="P407" Name="Empty Preset"  ProgramChange="23" />
+					<Patch Number="P408" Name="Empty Preset"  ProgramChange="24" />
+					<Patch Number="P409" Name="Empty Preset"  ProgramChange="25" />
+					<Patch Number="P410" Name="Empty Preset"  ProgramChange="26" />
+					<Patch Number="P411" Name="Empty Preset"  ProgramChange="27" />
+					<Patch Number="P412" Name="Empty Preset"  ProgramChange="28" />
+					<Patch Number="P413" Name="Empty Preset"  ProgramChange="29" />
+					<Patch Number="P414" Name="Empty Preset"  ProgramChange="30" />
+					<Patch Number="P415" Name="Empty Preset"  ProgramChange="31" />
+					<Patch Number="P416" Name="Empty Preset"  ProgramChange="32" />
+					<Patch Number="P417" Name="Empty Preset"  ProgramChange="33" />
+					<Patch Number="P418" Name="Empty Preset"  ProgramChange="34" />
+					<Patch Number="P419" Name="Empty Preset"  ProgramChange="35" />
+					<Patch Number="P420" Name="Empty Preset"  ProgramChange="36" />
+					<Patch Number="P421" Name="Empty Preset"  ProgramChange="37" />
+					<Patch Number="P422" Name="Empty Preset"  ProgramChange="38" />
+					<Patch Number="P423" Name="Empty Preset"  ProgramChange="39" />
+					<Patch Number="P424" Name="Empty Preset"  ProgramChange="40" />
+					<Patch Number="P425" Name="Empty Preset"  ProgramChange="41" />
+					<Patch Number="P426" Name="Empty Preset"  ProgramChange="42" />
+					<Patch Number="P427" Name="Empty Preset"  ProgramChange="43" />
+					<Patch Number="P428" Name="Empty Preset"  ProgramChange="44" />
+					<Patch Number="P429" Name="Empty Preset"  ProgramChange="45" />
+					<Patch Number="P430" Name="Empty Preset"  ProgramChange="46" />
+					<Patch Number="P431" Name="Empty Preset"  ProgramChange="47" />
+					<Patch Number="P432" Name="Empty Preset"  ProgramChange="48" />
+					<Patch Number="P433" Name="Empty Preset"  ProgramChange="49" />
+					<Patch Number="P434" Name="Empty Preset"  ProgramChange="50" />
+					<Patch Number="P435" Name="Empty Preset"  ProgramChange="51" />
+					<Patch Number="P436" Name="Empty Preset"  ProgramChange="52" />
+					<Patch Number="P437" Name="Empty Preset"  ProgramChange="53" />
+					<Patch Number="P438" Name="Empty Preset"  ProgramChange="54" />
+					<Patch Number="P439" Name="Empty Preset"  ProgramChange="55" />
+					<Patch Number="P440" Name="Empty Preset"  ProgramChange="56" />
+					<Patch Number="P441" Name="Empty Preset"  ProgramChange="57" />
+					<Patch Number="P442" Name="Empty Preset"  ProgramChange="58" />
+					<Patch Number="P443" Name="Empty Preset"  ProgramChange="59" />
+					<Patch Number="P444" Name="Empty Preset"  ProgramChange="60" />
+					<Patch Number="P445" Name="Empty Preset"  ProgramChange="61" />
+					<Patch Number="P446" Name="Empty Preset"  ProgramChange="62" />
+					<Patch Number="P447" Name="Empty Preset"  ProgramChange="63" />
+					<Patch Number="P448" Name="Empty Preset"  ProgramChange="64" />
+					<Patch Number="P449" Name="Empty Preset"  ProgramChange="65" />
+					<Patch Number="P450" Name="Empty Preset"  ProgramChange="66" />
+					<Patch Number="P451" Name="Empty Preset"  ProgramChange="67" />
+					<Patch Number="P452" Name="Empty Preset"  ProgramChange="68" />
+					<Patch Number="P453" Name="Empty Preset"  ProgramChange="69" />
+					<Patch Number="P454" Name="Empty Preset"  ProgramChange="70" />
+					<Patch Number="P455" Name="Empty Preset"  ProgramChange="71" />
+					<Patch Number="P456" Name="Empty Preset"  ProgramChange="72" />
+					<Patch Number="P457" Name="Empty Preset"  ProgramChange="73" />
+					<Patch Number="P458" Name="Empty Preset"  ProgramChange="74" />
+					<Patch Number="P459" Name="Empty Preset"  ProgramChange="75" />
+					<Patch Number="P460" Name="Empty Preset"  ProgramChange="76" />
+					<Patch Number="P461" Name="Empty Preset"  ProgramChange="77" />
+					<Patch Number="P462" Name="Empty Preset"  ProgramChange="78" />
+					<Patch Number="P463" Name="Empty Preset"  ProgramChange="79" />
+					<Patch Number="P464" Name="Empty Preset"  ProgramChange="80" />
+					<Patch Number="P465" Name="Empty Preset"  ProgramChange="81" />
+					<Patch Number="P466" Name="Empty Preset"  ProgramChange="82" />
+					<Patch Number="P467" Name="Empty Preset"  ProgramChange="83" />
+					<Patch Number="P468" Name="Empty Preset"  ProgramChange="84" />
+					<Patch Number="P469" Name="Empty Preset"  ProgramChange="85" />
+					<Patch Number="P470" Name="Empty Preset"  ProgramChange="86" />
+					<Patch Number="P471" Name="Empty Preset"  ProgramChange="87" />
+					<Patch Number="P472" Name="Empty Preset"  ProgramChange="88" />
+					<Patch Number="P473" Name="Empty Preset"  ProgramChange="89" />
+					<Patch Number="P474" Name="Empty Preset"  ProgramChange="90" />
+					<Patch Number="P475" Name="Empty Preset"  ProgramChange="91" />
+					<Patch Number="P476" Name="Empty Preset"  ProgramChange="92" />
+					<Patch Number="P477" Name="Empty Preset"  ProgramChange="93" />
+					<Patch Number="P478" Name="Empty Preset"  ProgramChange="94" />
+					<Patch Number="P479" Name="Empty Preset"  ProgramChange="95" />
+					<Patch Number="P480" Name="Empty Preset"  ProgramChange="96" />
+					<Patch Number="P481" Name="Empty Preset"  ProgramChange="97" />
+					<Patch Number="P482" Name="Empty Preset"  ProgramChange="98" />
+					<Patch Number="P483" Name="Empty Preset"  ProgramChange="99" />
+					<Patch Number="P484" Name="Empty Preset"  ProgramChange="100" />
+					<Patch Number="P485" Name="Empty Preset"  ProgramChange="101" />
+					<Patch Number="P486" Name="Empty Preset"  ProgramChange="102" />
+					<Patch Number="P487" Name="Empty Preset"  ProgramChange="103" />
+					<Patch Number="P488" Name="Empty Preset"  ProgramChange="104" />
+					<Patch Number="P489" Name="Empty Preset"  ProgramChange="105" />
+					<Patch Number="P490" Name="Empty Preset"  ProgramChange="106" />
+					<Patch Number="P491" Name="Empty Preset"  ProgramChange="107" />
+					<Patch Number="P492" Name="Empty Preset"  ProgramChange="108" />
+					<Patch Number="P493" Name="Empty Preset"  ProgramChange="109" />
+					<Patch Number="P494" Name="Empty Preset"  ProgramChange="110" />
+					<Patch Number="P495" Name="Empty Preset"  ProgramChange="111" />
+					<Patch Number="P496" Name="Empty Preset"  ProgramChange="112" />
+					<Patch Number="P497" Name="Empty Preset"  ProgramChange="113" />
+					<Patch Number="P498" Name="Empty Preset"  ProgramChange="114" />
+					<Patch Number="P499" Name="Empty Preset"  ProgramChange="115" />
+					<Patch Number="P500" Name="Empty Preset"  ProgramChange="116" />
+					<Patch Number="P501" Name="Empty Preset"  ProgramChange="117" />
+					<Patch Number="P502" Name="Empty Preset"  ProgramChange="118" />
+					<Patch Number="P503" Name="Empty Preset"  ProgramChange="119" />
+					<Patch Number="P504" Name="Empty Preset"  ProgramChange="120" />
+					<Patch Number="P505" Name="Empty Preset"  ProgramChange="121" />
+					<Patch Number="P506" Name="Empty Preset"  ProgramChange="122" />
+					<Patch Number="P507" Name="Empty Preset"  ProgramChange="123" />
+					<Patch Number="P508" Name="Empty Preset"  ProgramChange="124" />
+					<Patch Number="P509" Name="Empty Preset"  ProgramChange="125" />
+					<Patch Number="P510" Name="Empty Preset"  ProgramChange="126" />
+					<Patch Number="P511" Name="Empty Preset"  ProgramChange="127" />					
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth RAM 512-639" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="4" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="P512" Name="Empty Preset"  ProgramChange="0" />
+					<Patch Number="P513" Name="Empty Preset"  ProgramChange="1" />
+					<Patch Number="P514" Name="Empty Preset"  ProgramChange="2" />
+					<Patch Number="P515" Name="Empty Preset"  ProgramChange="3" />
+					<Patch Number="P516" Name="Empty Preset"  ProgramChange="4" />
+					<Patch Number="P517" Name="Empty Preset"  ProgramChange="5" />
+					<Patch Number="P518" Name="Empty Preset"  ProgramChange="6" />
+					<Patch Number="P519" Name="Empty Preset"  ProgramChange="7" />
+					<Patch Number="P520" Name="Empty Preset"  ProgramChange="8" />
+					<Patch Number="P521" Name="Empty Preset"  ProgramChange="9" />
+					<Patch Number="P522" Name="Empty Preset"  ProgramChange="10" />
+					<Patch Number="P523" Name="Empty Preset"  ProgramChange="11" />
+					<Patch Number="P524" Name="Empty Preset"  ProgramChange="12" />
+					<Patch Number="P525" Name="Empty Preset"  ProgramChange="13" />
+					<Patch Number="P526" Name="Empty Preset"  ProgramChange="14" />
+					<Patch Number="P527" Name="Empty Preset"  ProgramChange="15" />
+					<Patch Number="P528" Name="Empty Preset"  ProgramChange="16" />
+					<Patch Number="P529" Name="Empty Preset"  ProgramChange="17" />
+					<Patch Number="P530" Name="Empty Preset"  ProgramChange="18" />
+					<Patch Number="P531" Name="Empty Preset"  ProgramChange="19" />
+					<Patch Number="P532" Name="Empty Preset"  ProgramChange="20" />
+					<Patch Number="P533" Name="Empty Preset"  ProgramChange="21" />
+					<Patch Number="P534" Name="Empty Preset"  ProgramChange="22" />
+					<Patch Number="P535" Name="Empty Preset"  ProgramChange="23" />
+					<Patch Number="P536" Name="Empty Preset"  ProgramChange="24" />
+					<Patch Number="P537" Name="Empty Preset"  ProgramChange="25" />
+					<Patch Number="P538" Name="Empty Preset"  ProgramChange="26" />
+					<Patch Number="P539" Name="Empty Preset"  ProgramChange="27" />
+					<Patch Number="P540" Name="Empty Preset"  ProgramChange="28" />
+					<Patch Number="P541" Name="Empty Preset"  ProgramChange="29" />
+					<Patch Number="P542" Name="Empty Preset"  ProgramChange="30" />
+					<Patch Number="P543" Name="Empty Preset"  ProgramChange="31" />
+					<Patch Number="P544" Name="Empty Preset"  ProgramChange="32" />
+					<Patch Number="P545" Name="Empty Preset"  ProgramChange="33" />
+					<Patch Number="P546" Name="Empty Preset"  ProgramChange="34" />
+					<Patch Number="P547" Name="Empty Preset"  ProgramChange="35" />
+					<Patch Number="P548" Name="Empty Preset"  ProgramChange="36" />
+					<Patch Number="P549" Name="Empty Preset"  ProgramChange="37" />
+					<Patch Number="P550" Name="Empty Preset"  ProgramChange="38" />
+					<Patch Number="P551" Name="Empty Preset"  ProgramChange="39" />
+					<Patch Number="P552" Name="Empty Preset"  ProgramChange="40" />
+					<Patch Number="P553" Name="Empty Preset"  ProgramChange="41" />
+					<Patch Number="P554" Name="Empty Preset"  ProgramChange="42" />
+					<Patch Number="P555" Name="Empty Preset"  ProgramChange="43" />
+					<Patch Number="P556" Name="Empty Preset"  ProgramChange="44" />
+					<Patch Number="P557" Name="Empty Preset"  ProgramChange="45" />
+					<Patch Number="P558" Name="Empty Preset"  ProgramChange="46" />
+					<Patch Number="P559" Name="Empty Preset"  ProgramChange="47" />
+					<Patch Number="P560" Name="Empty Preset"  ProgramChange="48" />
+					<Patch Number="P561" Name="Empty Preset"  ProgramChange="49" />
+					<Patch Number="P562" Name="Empty Preset"  ProgramChange="50" />
+					<Patch Number="P563" Name="Empty Preset"  ProgramChange="51" />
+					<Patch Number="P564" Name="Empty Preset"  ProgramChange="52" />
+					<Patch Number="P565" Name="Empty Preset"  ProgramChange="53" />
+					<Patch Number="P566" Name="Empty Preset"  ProgramChange="54" />
+					<Patch Number="P567" Name="Empty Preset"  ProgramChange="55" />
+					<Patch Number="P568" Name="Empty Preset"  ProgramChange="56" />
+					<Patch Number="P569" Name="Empty Preset"  ProgramChange="57" />
+					<Patch Number="P570" Name="Empty Preset"  ProgramChange="58" />
+					<Patch Number="P571" Name="Empty Preset"  ProgramChange="59" />
+					<Patch Number="P572" Name="Empty Preset"  ProgramChange="60" />
+					<Patch Number="P573" Name="Empty Preset"  ProgramChange="61" />
+					<Patch Number="P574" Name="Empty Preset"  ProgramChange="62" />
+					<Patch Number="P575" Name="Empty Preset"  ProgramChange="63" />
+					<Patch Number="P576" Name="Empty Preset"  ProgramChange="64" />
+					<Patch Number="P577" Name="Empty Preset"  ProgramChange="65" />
+					<Patch Number="P578" Name="Empty Preset"  ProgramChange="66" />
+					<Patch Number="P579" Name="Empty Preset"  ProgramChange="67" />
+					<Patch Number="P580" Name="Empty Preset"  ProgramChange="68" />
+					<Patch Number="P581" Name="Empty Preset"  ProgramChange="69" />
+					<Patch Number="P582" Name="Empty Preset"  ProgramChange="70" />
+					<Patch Number="P583" Name="Empty Preset"  ProgramChange="71" />
+					<Patch Number="P584" Name="Empty Preset"  ProgramChange="72" />
+					<Patch Number="P585" Name="Empty Preset"  ProgramChange="73" />
+					<Patch Number="P586" Name="Empty Preset"  ProgramChange="74" />
+					<Patch Number="P587" Name="Empty Preset"  ProgramChange="75" />
+					<Patch Number="P588" Name="Empty Preset"  ProgramChange="76" />
+					<Patch Number="P589" Name="Empty Preset"  ProgramChange="77" />
+					<Patch Number="P590" Name="Empty Preset"  ProgramChange="78" />
+					<Patch Number="P591" Name="Empty Preset"  ProgramChange="79" />
+					<Patch Number="P592" Name="Empty Preset"  ProgramChange="80" />
+					<Patch Number="P593" Name="Empty Preset"  ProgramChange="81" />
+					<Patch Number="P594" Name="Empty Preset"  ProgramChange="82" />
+					<Patch Number="P595" Name="Empty Preset"  ProgramChange="83" />
+					<Patch Number="P596" Name="Empty Preset"  ProgramChange="84" />
+					<Patch Number="P597" Name="Empty Preset"  ProgramChange="85" />
+					<Patch Number="P598" Name="Empty Preset"  ProgramChange="86" />
+					<Patch Number="P599" Name="Empty Preset"  ProgramChange="87" />
+					<Patch Number="P600" Name="Empty Preset"  ProgramChange="88" />
+					<Patch Number="P601" Name="Empty Preset"  ProgramChange="89" />
+					<Patch Number="P602" Name="Empty Preset"  ProgramChange="90" />
+					<Patch Number="P603" Name="Empty Preset"  ProgramChange="91" />
+					<Patch Number="P604" Name="Empty Preset"  ProgramChange="92" />
+					<Patch Number="P605" Name="Empty Preset"  ProgramChange="93" />
+					<Patch Number="P606" Name="Empty Preset"  ProgramChange="94" />
+					<Patch Number="P607" Name="Empty Preset"  ProgramChange="95" />
+					<Patch Number="P608" Name="Empty Preset"  ProgramChange="96" />
+					<Patch Number="P609" Name="Empty Preset"  ProgramChange="97" />
+					<Patch Number="P610" Name="Empty Preset"  ProgramChange="98" />
+					<Patch Number="P611" Name="Empty Preset"  ProgramChange="99" />
+					<Patch Number="P612" Name="Empty Preset"  ProgramChange="100" />
+					<Patch Number="P613" Name="Empty Preset"  ProgramChange="101" />
+					<Patch Number="P614" Name="Empty Preset"  ProgramChange="102" />
+					<Patch Number="P615" Name="Empty Preset"  ProgramChange="103" />
+					<Patch Number="P616" Name="Empty Preset"  ProgramChange="104" />
+					<Patch Number="P617" Name="Empty Preset"  ProgramChange="105" />
+					<Patch Number="P618" Name="Empty Preset"  ProgramChange="106" />
+					<Patch Number="P619" Name="Empty Preset"  ProgramChange="107" />
+					<Patch Number="P620" Name="Empty Preset"  ProgramChange="108" />
+					<Patch Number="P621" Name="Empty Preset"  ProgramChange="109" />
+					<Patch Number="P622" Name="Empty Preset"  ProgramChange="110" />
+					<Patch Number="P623" Name="Empty Preset"  ProgramChange="111" />
+					<Patch Number="P624" Name="Empty Preset"  ProgramChange="112" />
+					<Patch Number="P625" Name="Empty Preset"  ProgramChange="113" />
+					<Patch Number="P626" Name="Empty Preset"  ProgramChange="114" />
+					<Patch Number="P627" Name="Empty Preset"  ProgramChange="115" />
+					<Patch Number="P628" Name="Empty Preset"  ProgramChange="116" />
+					<Patch Number="P629" Name="Empty Preset"  ProgramChange="117" />
+					<Patch Number="P630" Name="Empty Preset"  ProgramChange="118" />
+					<Patch Number="P631" Name="Empty Preset"  ProgramChange="119" />
+					<Patch Number="P632" Name="Empty Preset"  ProgramChange="120" />
+					<Patch Number="P633" Name="Empty Preset"  ProgramChange="121" />
+					<Patch Number="P634" Name="Empty Preset"  ProgramChange="122" />
+					<Patch Number="P635" Name="Empty Preset"  ProgramChange="123" />
+					<Patch Number="P636" Name="Empty Preset"  ProgramChange="124" />
+					<Patch Number="P637" Name="Empty Preset"  ProgramChange="125" />
+					<Patch Number="P638" Name="Empty Preset"  ProgramChange="126" />
+					<Patch Number="P639" Name="Empty Preset"  ProgramChange="127" />					
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth RAM 640-767" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="5" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="P640" Name="Empty Preset"  ProgramChange="0" />
+					<Patch Number="P641" Name="Empty Preset"  ProgramChange="1" />
+					<Patch Number="P642" Name="Empty Preset"  ProgramChange="2" />
+					<Patch Number="P643" Name="Empty Preset"  ProgramChange="3" />
+					<Patch Number="P644" Name="Empty Preset"  ProgramChange="4" />
+					<Patch Number="P645" Name="Empty Preset"  ProgramChange="5" />
+					<Patch Number="P646" Name="Empty Preset"  ProgramChange="6" />
+					<Patch Number="P647" Name="Empty Preset"  ProgramChange="7" />
+					<Patch Number="P648" Name="Empty Preset"  ProgramChange="8" />
+					<Patch Number="P649" Name="Empty Preset"  ProgramChange="9" />
+					<Patch Number="P650" Name="Empty Preset"  ProgramChange="10" />
+					<Patch Number="P651" Name="Empty Preset"  ProgramChange="11" />
+					<Patch Number="P652" Name="Empty Preset"  ProgramChange="12" />
+					<Patch Number="P653" Name="Empty Preset"  ProgramChange="13" />
+					<Patch Number="P654" Name="Empty Preset"  ProgramChange="14" />
+					<Patch Number="P655" Name="Empty Preset"  ProgramChange="15" />
+					<Patch Number="P656" Name="Empty Preset"  ProgramChange="16" />
+					<Patch Number="P657" Name="Empty Preset"  ProgramChange="17" />
+					<Patch Number="P658" Name="Empty Preset"  ProgramChange="18" />
+					<Patch Number="P659" Name="Empty Preset"  ProgramChange="19" />
+					<Patch Number="P660" Name="Empty Preset"  ProgramChange="20" />
+					<Patch Number="P661" Name="Empty Preset"  ProgramChange="21" />
+					<Patch Number="P662" Name="Empty Preset"  ProgramChange="22" />
+					<Patch Number="P663" Name="Empty Preset"  ProgramChange="23" />
+					<Patch Number="P664" Name="Empty Preset"  ProgramChange="24" />
+					<Patch Number="P665" Name="Empty Preset"  ProgramChange="25" />
+					<Patch Number="P666" Name="Empty Preset"  ProgramChange="26" />
+					<Patch Number="P667" Name="Empty Preset"  ProgramChange="27" />
+					<Patch Number="P668" Name="Empty Preset"  ProgramChange="28" />
+					<Patch Number="P669" Name="Empty Preset"  ProgramChange="29" />
+					<Patch Number="P670" Name="Empty Preset"  ProgramChange="30" />
+					<Patch Number="P671" Name="Empty Preset"  ProgramChange="31" />
+					<Patch Number="P672" Name="Empty Preset"  ProgramChange="32" />
+					<Patch Number="P673" Name="Empty Preset"  ProgramChange="33" />
+					<Patch Number="P674" Name="Empty Preset"  ProgramChange="34" />
+					<Patch Number="P675" Name="Empty Preset"  ProgramChange="35" />
+					<Patch Number="P676" Name="Empty Preset"  ProgramChange="36" />
+					<Patch Number="P677" Name="Empty Preset"  ProgramChange="37" />
+					<Patch Number="P678" Name="Empty Preset"  ProgramChange="38" />
+					<Patch Number="P679" Name="Empty Preset"  ProgramChange="39" />
+					<Patch Number="P680" Name="Empty Preset"  ProgramChange="40" />
+					<Patch Number="P681" Name="Empty Preset"  ProgramChange="41" />
+					<Patch Number="P682" Name="Empty Preset"  ProgramChange="42" />
+					<Patch Number="P683" Name="Empty Preset"  ProgramChange="43" />
+					<Patch Number="P684" Name="Empty Preset"  ProgramChange="44" />
+					<Patch Number="P685" Name="Empty Preset"  ProgramChange="45" />
+					<Patch Number="P686" Name="Empty Preset"  ProgramChange="46" />
+					<Patch Number="P687" Name="Empty Preset"  ProgramChange="47" />
+					<Patch Number="P688" Name="Empty Preset"  ProgramChange="48" />
+					<Patch Number="P689" Name="Empty Preset"  ProgramChange="49" />
+					<Patch Number="P690" Name="Empty Preset"  ProgramChange="50" />
+					<Patch Number="P691" Name="Empty Preset"  ProgramChange="51" />
+					<Patch Number="P692" Name="Empty Preset"  ProgramChange="52" />
+					<Patch Number="P693" Name="Empty Preset"  ProgramChange="53" />
+					<Patch Number="P694" Name="Empty Preset"  ProgramChange="54" />
+					<Patch Number="P695" Name="Empty Preset"  ProgramChange="55" />
+					<Patch Number="P696" Name="Empty Preset"  ProgramChange="56" />
+					<Patch Number="P697" Name="Empty Preset"  ProgramChange="57" />
+					<Patch Number="P698" Name="Empty Preset"  ProgramChange="58" />
+					<Patch Number="P699" Name="Empty Preset"  ProgramChange="59" />
+					<Patch Number="P700" Name="Empty Preset"  ProgramChange="60" />
+					<Patch Number="P701" Name="Empty Preset"  ProgramChange="61" />
+					<Patch Number="P702" Name="Empty Preset"  ProgramChange="62" />
+					<Patch Number="P703" Name="Empty Preset"  ProgramChange="63" />
+					<Patch Number="P704" Name="Empty Preset"  ProgramChange="64" />
+					<Patch Number="P705" Name="Empty Preset"  ProgramChange="65" />
+					<Patch Number="P706" Name="Empty Preset"  ProgramChange="66" />
+					<Patch Number="P707" Name="Empty Preset"  ProgramChange="67" />
+					<Patch Number="P708" Name="Empty Preset"  ProgramChange="68" />
+					<Patch Number="P709" Name="Empty Preset"  ProgramChange="69" />
+					<Patch Number="P710" Name="Empty Preset"  ProgramChange="70" />
+					<Patch Number="P711" Name="Empty Preset"  ProgramChange="71" />
+					<Patch Number="P712" Name="Empty Preset"  ProgramChange="72" />
+					<Patch Number="P713" Name="Empty Preset"  ProgramChange="73" />
+					<Patch Number="P714" Name="Empty Preset"  ProgramChange="74" />
+					<Patch Number="P715" Name="Empty Preset"  ProgramChange="75" />
+					<Patch Number="P716" Name="Empty Preset"  ProgramChange="76" />
+					<Patch Number="P717" Name="Empty Preset"  ProgramChange="77" />
+					<Patch Number="P718" Name="Empty Preset"  ProgramChange="78" />
+					<Patch Number="P719" Name="Empty Preset"  ProgramChange="79" />
+					<Patch Number="P720" Name="Empty Preset"  ProgramChange="80" />
+					<Patch Number="P721" Name="Empty Preset"  ProgramChange="81" />
+					<Patch Number="P722" Name="Empty Preset"  ProgramChange="82" />
+					<Patch Number="P723" Name="Empty Preset"  ProgramChange="83" />
+					<Patch Number="P724" Name="Empty Preset"  ProgramChange="84" />
+					<Patch Number="P725" Name="Empty Preset"  ProgramChange="85" />
+					<Patch Number="P726" Name="Empty Preset"  ProgramChange="86" />
+					<Patch Number="P727" Name="Empty Preset"  ProgramChange="87" />
+					<Patch Number="P728" Name="Empty Preset"  ProgramChange="88" />
+					<Patch Number="P729" Name="Empty Preset"  ProgramChange="89" />
+					<Patch Number="P730" Name="Empty Preset"  ProgramChange="90" />
+					<Patch Number="P731" Name="Empty Preset"  ProgramChange="91" />
+					<Patch Number="P732" Name="Empty Preset"  ProgramChange="92" />
+					<Patch Number="P733" Name="Empty Preset"  ProgramChange="93" />
+					<Patch Number="P734" Name="Empty Preset"  ProgramChange="94" />
+					<Patch Number="P735" Name="Empty Preset"  ProgramChange="95" />
+					<Patch Number="P736" Name="Empty Preset"  ProgramChange="96" />
+					<Patch Number="P737" Name="Empty Preset"  ProgramChange="97" />
+					<Patch Number="P738" Name="Empty Preset"  ProgramChange="98" />
+					<Patch Number="P739" Name="Empty Preset"  ProgramChange="99" />
+					<Patch Number="P740" Name="Empty Preset"  ProgramChange="100" />
+					<Patch Number="P741" Name="Empty Preset"  ProgramChange="101" />
+					<Patch Number="P742" Name="Empty Preset"  ProgramChange="102" />
+					<Patch Number="P743" Name="Empty Preset"  ProgramChange="103" />
+					<Patch Number="P744" Name="Empty Preset"  ProgramChange="104" />
+					<Patch Number="P745" Name="Empty Preset"  ProgramChange="105" />
+					<Patch Number="P746" Name="Empty Preset"  ProgramChange="106" />
+					<Patch Number="P747" Name="Empty Preset"  ProgramChange="107" />
+					<Patch Number="P748" Name="Empty Preset"  ProgramChange="108" />
+					<Patch Number="P749" Name="Empty Preset"  ProgramChange="109" />
+					<Patch Number="P750" Name="Empty Preset"  ProgramChange="110" />
+					<Patch Number="P751" Name="Empty Preset"  ProgramChange="111" />
+					<Patch Number="P752" Name="Empty Preset"  ProgramChange="112" />
+					<Patch Number="P753" Name="Empty Preset"  ProgramChange="113" />
+					<Patch Number="P754" Name="Empty Preset"  ProgramChange="114" />
+					<Patch Number="P755" Name="Empty Preset"  ProgramChange="115" />
+					<Patch Number="P756" Name="Empty Preset"  ProgramChange="116" />
+					<Patch Number="P757" Name="Empty Preset"  ProgramChange="117" />
+					<Patch Number="P758" Name="Empty Preset"  ProgramChange="118" />
+					<Patch Number="P759" Name="Empty Preset"  ProgramChange="119" />
+					<Patch Number="P760" Name="Empty Preset"  ProgramChange="120" />
+					<Patch Number="P761" Name="Empty Preset"  ProgramChange="121" />
+					<Patch Number="P762" Name="Empty Preset"  ProgramChange="122" />
+					<Patch Number="P763" Name="Empty Preset"  ProgramChange="123" />
+					<Patch Number="P764" Name="Empty Preset"  ProgramChange="124" />
+					<Patch Number="P765" Name="Empty Preset"  ProgramChange="125" />
+					<Patch Number="P766" Name="Empty Preset"  ProgramChange="126" />
+					<Patch Number="P767" Name="Empty Preset"  ProgramChange="127" />					
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth RAM 768-895" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="6" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="P640" Name="Empty Preset"  ProgramChange="0" />
+					<Patch Number="P641" Name="Empty Preset"  ProgramChange="1" />
+					<Patch Number="P642" Name="Empty Preset"  ProgramChange="2" />
+					<Patch Number="P643" Name="Empty Preset"  ProgramChange="3" />
+					<Patch Number="P644" Name="Empty Preset"  ProgramChange="4" />
+					<Patch Number="P645" Name="Empty Preset"  ProgramChange="5" />
+					<Patch Number="P646" Name="Empty Preset"  ProgramChange="6" />
+					<Patch Number="P647" Name="Empty Preset"  ProgramChange="7" />
+					<Patch Number="P648" Name="Empty Preset"  ProgramChange="8" />
+					<Patch Number="P649" Name="Empty Preset"  ProgramChange="9" />
+					<Patch Number="P650" Name="Empty Preset"  ProgramChange="10" />
+					<Patch Number="P651" Name="Empty Preset"  ProgramChange="11" />
+					<Patch Number="P652" Name="Empty Preset"  ProgramChange="12" />
+					<Patch Number="P653" Name="Empty Preset"  ProgramChange="13" />
+					<Patch Number="P654" Name="Empty Preset"  ProgramChange="14" />
+					<Patch Number="P655" Name="Empty Preset"  ProgramChange="15" />
+					<Patch Number="P656" Name="Empty Preset"  ProgramChange="16" />
+					<Patch Number="P657" Name="Empty Preset"  ProgramChange="17" />
+					<Patch Number="P658" Name="Empty Preset"  ProgramChange="18" />
+					<Patch Number="P659" Name="Empty Preset"  ProgramChange="19" />
+					<Patch Number="P660" Name="Empty Preset"  ProgramChange="20" />
+					<Patch Number="P661" Name="Empty Preset"  ProgramChange="21" />
+					<Patch Number="P662" Name="Empty Preset"  ProgramChange="22" />
+					<Patch Number="P663" Name="Empty Preset"  ProgramChange="23" />
+					<Patch Number="P664" Name="Empty Preset"  ProgramChange="24" />
+					<Patch Number="P665" Name="Empty Preset"  ProgramChange="25" />
+					<Patch Number="P666" Name="Empty Preset"  ProgramChange="26" />
+					<Patch Number="P667" Name="Empty Preset"  ProgramChange="27" />
+					<Patch Number="P668" Name="Empty Preset"  ProgramChange="28" />
+					<Patch Number="P669" Name="Empty Preset"  ProgramChange="29" />
+					<Patch Number="P670" Name="Empty Preset"  ProgramChange="30" />
+					<Patch Number="P671" Name="Empty Preset"  ProgramChange="31" />
+					<Patch Number="P672" Name="Empty Preset"  ProgramChange="32" />
+					<Patch Number="P673" Name="Empty Preset"  ProgramChange="33" />
+					<Patch Number="P674" Name="Empty Preset"  ProgramChange="34" />
+					<Patch Number="P675" Name="Empty Preset"  ProgramChange="35" />
+					<Patch Number="P676" Name="Empty Preset"  ProgramChange="36" />
+					<Patch Number="P677" Name="Empty Preset"  ProgramChange="37" />
+					<Patch Number="P678" Name="Empty Preset"  ProgramChange="38" />
+					<Patch Number="P679" Name="Empty Preset"  ProgramChange="39" />
+					<Patch Number="P680" Name="Empty Preset"  ProgramChange="40" />
+					<Patch Number="P681" Name="Empty Preset"  ProgramChange="41" />
+					<Patch Number="P682" Name="Empty Preset"  ProgramChange="42" />
+					<Patch Number="P683" Name="Empty Preset"  ProgramChange="43" />
+					<Patch Number="P684" Name="Empty Preset"  ProgramChange="44" />
+					<Patch Number="P685" Name="Empty Preset"  ProgramChange="45" />
+					<Patch Number="P686" Name="Empty Preset"  ProgramChange="46" />
+					<Patch Number="P687" Name="Empty Preset"  ProgramChange="47" />
+					<Patch Number="P688" Name="Empty Preset"  ProgramChange="48" />
+					<Patch Number="P689" Name="Empty Preset"  ProgramChange="49" />
+					<Patch Number="P690" Name="Empty Preset"  ProgramChange="50" />
+					<Patch Number="P691" Name="Empty Preset"  ProgramChange="51" />
+					<Patch Number="P692" Name="Empty Preset"  ProgramChange="52" />
+					<Patch Number="P693" Name="Empty Preset"  ProgramChange="53" />
+					<Patch Number="P694" Name="Empty Preset"  ProgramChange="54" />
+					<Patch Number="P695" Name="Empty Preset"  ProgramChange="55" />
+					<Patch Number="P696" Name="Empty Preset"  ProgramChange="56" />
+					<Patch Number="P697" Name="Empty Preset"  ProgramChange="57" />
+					<Patch Number="P698" Name="Empty Preset"  ProgramChange="58" />
+					<Patch Number="P699" Name="Empty Preset"  ProgramChange="59" />
+					<Patch Number="P700" Name="Empty Preset"  ProgramChange="60" />
+					<Patch Number="P701" Name="Empty Preset"  ProgramChange="61" />
+					<Patch Number="P702" Name="Empty Preset"  ProgramChange="62" />
+					<Patch Number="P703" Name="Empty Preset"  ProgramChange="63" />
+					<Patch Number="P704" Name="Empty Preset"  ProgramChange="64" />
+					<Patch Number="P705" Name="Empty Preset"  ProgramChange="65" />
+					<Patch Number="P706" Name="Empty Preset"  ProgramChange="66" />
+					<Patch Number="P707" Name="Empty Preset"  ProgramChange="67" />
+					<Patch Number="P708" Name="Empty Preset"  ProgramChange="68" />
+					<Patch Number="P709" Name="Empty Preset"  ProgramChange="69" />
+					<Patch Number="P710" Name="Empty Preset"  ProgramChange="70" />
+					<Patch Number="P711" Name="Empty Preset"  ProgramChange="71" />
+					<Patch Number="P712" Name="Empty Preset"  ProgramChange="72" />
+					<Patch Number="P713" Name="Empty Preset"  ProgramChange="73" />
+					<Patch Number="P714" Name="Empty Preset"  ProgramChange="74" />
+					<Patch Number="P715" Name="Empty Preset"  ProgramChange="75" />
+					<Patch Number="P716" Name="Empty Preset"  ProgramChange="76" />
+					<Patch Number="P717" Name="Empty Preset"  ProgramChange="77" />
+					<Patch Number="P718" Name="Empty Preset"  ProgramChange="78" />
+					<Patch Number="P719" Name="Empty Preset"  ProgramChange="79" />
+					<Patch Number="P720" Name="Empty Preset"  ProgramChange="80" />
+					<Patch Number="P721" Name="Empty Preset"  ProgramChange="81" />
+					<Patch Number="P722" Name="Empty Preset"  ProgramChange="82" />
+					<Patch Number="P723" Name="Empty Preset"  ProgramChange="83" />
+					<Patch Number="P724" Name="Empty Preset"  ProgramChange="84" />
+					<Patch Number="P725" Name="Empty Preset"  ProgramChange="85" />
+					<Patch Number="P726" Name="Empty Preset"  ProgramChange="86" />
+					<Patch Number="P727" Name="Empty Preset"  ProgramChange="87" />
+					<Patch Number="P728" Name="Empty Preset"  ProgramChange="88" />
+					<Patch Number="P729" Name="Empty Preset"  ProgramChange="89" />
+					<Patch Number="P730" Name="Empty Preset"  ProgramChange="90" />
+					<Patch Number="P731" Name="Empty Preset"  ProgramChange="91" />
+					<Patch Number="P732" Name="Empty Preset"  ProgramChange="92" />
+					<Patch Number="P733" Name="Empty Preset"  ProgramChange="93" />
+					<Patch Number="P734" Name="Empty Preset"  ProgramChange="94" />
+					<Patch Number="P735" Name="Empty Preset"  ProgramChange="95" />
+					<Patch Number="P736" Name="Empty Preset"  ProgramChange="96" />
+					<Patch Number="P737" Name="Empty Preset"  ProgramChange="97" />
+					<Patch Number="P738" Name="Empty Preset"  ProgramChange="98" />
+					<Patch Number="P739" Name="Empty Preset"  ProgramChange="99" />
+					<Patch Number="P740" Name="Empty Preset"  ProgramChange="100" />
+					<Patch Number="P741" Name="Empty Preset"  ProgramChange="101" />
+					<Patch Number="P742" Name="Empty Preset"  ProgramChange="102" />
+					<Patch Number="P743" Name="Empty Preset"  ProgramChange="103" />
+					<Patch Number="P744" Name="Empty Preset"  ProgramChange="104" />
+					<Patch Number="P745" Name="Empty Preset"  ProgramChange="105" />
+					<Patch Number="P746" Name="Empty Preset"  ProgramChange="106" />
+					<Patch Number="P747" Name="Empty Preset"  ProgramChange="107" />
+					<Patch Number="P748" Name="Empty Preset"  ProgramChange="108" />
+					<Patch Number="P749" Name="Empty Preset"  ProgramChange="109" />
+					<Patch Number="P750" Name="Empty Preset"  ProgramChange="110" />
+					<Patch Number="P751" Name="Empty Preset"  ProgramChange="111" />
+					<Patch Number="P752" Name="Empty Preset"  ProgramChange="112" />
+					<Patch Number="P753" Name="Empty Preset"  ProgramChange="113" />
+					<Patch Number="P754" Name="Empty Preset"  ProgramChange="114" />
+					<Patch Number="P755" Name="Empty Preset"  ProgramChange="115" />
+					<Patch Number="P756" Name="Empty Preset"  ProgramChange="116" />
+					<Patch Number="P757" Name="Empty Preset"  ProgramChange="117" />
+					<Patch Number="P758" Name="Empty Preset"  ProgramChange="118" />
+					<Patch Number="P759" Name="Empty Preset"  ProgramChange="119" />
+					<Patch Number="P760" Name="Empty Preset"  ProgramChange="120" />
+					<Patch Number="P761" Name="Empty Preset"  ProgramChange="121" />
+					<Patch Number="P762" Name="Empty Preset"  ProgramChange="122" />
+					<Patch Number="P763" Name="Empty Preset"  ProgramChange="123" />
+					<Patch Number="P764" Name="Empty Preset"  ProgramChange="124" />
+					<Patch Number="P765" Name="Empty Preset"  ProgramChange="125" />
+					<Patch Number="P766" Name="Empty Preset"  ProgramChange="126" />
+					<Patch Number="P767" Name="Empty Preset"  ProgramChange="127" />					
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth RAM 896-999" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="7" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="P896" Name="Empty Preset"  ProgramChange="0" />
+					<Patch Number="P897" Name="Empty Preset"  ProgramChange="1" />
+					<Patch Number="P898" Name="Empty Preset"  ProgramChange="2" />
+					<Patch Number="P899" Name="Empty Preset"  ProgramChange="3" />
+					<Patch Number="P900" Name="Empty Preset"  ProgramChange="4" />
+					<Patch Number="P901" Name="Empty Preset"  ProgramChange="5" />
+					<Patch Number="P902" Name="Empty Preset"  ProgramChange="6" />
+					<Patch Number="P903" Name="Empty Preset"  ProgramChange="7" />
+					<Patch Number="P904" Name="Empty Preset"  ProgramChange="8" />
+					<Patch Number="P905" Name="Empty Preset"  ProgramChange="9" />
+					<Patch Number="P906" Name="Empty Preset"  ProgramChange="10" />
+					<Patch Number="P907" Name="Empty Preset"  ProgramChange="11" />
+					<Patch Number="P908" Name="Empty Preset"  ProgramChange="12" />
+					<Patch Number="P909" Name="Empty Preset"  ProgramChange="13" />
+					<Patch Number="P910" Name="Empty Preset"  ProgramChange="14" />
+					<Patch Number="P911" Name="Empty Preset"  ProgramChange="15" />
+					<Patch Number="P912" Name="Empty Preset"  ProgramChange="16" />
+					<Patch Number="P913" Name="Empty Preset"  ProgramChange="17" />
+					<Patch Number="P914" Name="Empty Preset"  ProgramChange="18" />
+					<Patch Number="P915" Name="Empty Preset"  ProgramChange="19" />
+					<Patch Number="P916" Name="Empty Preset"  ProgramChange="20" />
+					<Patch Number="P917" Name="Empty Preset"  ProgramChange="21" />
+					<Patch Number="P918" Name="Empty Preset"  ProgramChange="22" />
+					<Patch Number="P919" Name="Empty Preset"  ProgramChange="23" />
+					<Patch Number="P920" Name="Empty Preset"  ProgramChange="24" />
+					<Patch Number="P921" Name="Empty Preset"  ProgramChange="25" />
+					<Patch Number="P922" Name="Empty Preset"  ProgramChange="26" />
+					<Patch Number="P923" Name="Empty Preset"  ProgramChange="27" />
+					<Patch Number="P924" Name="Empty Preset"  ProgramChange="28" />
+					<Patch Number="P925" Name="Empty Preset"  ProgramChange="29" />
+					<Patch Number="P926" Name="Empty Preset"  ProgramChange="30" />
+					<Patch Number="P927" Name="Empty Preset"  ProgramChange="31" />
+					<Patch Number="P928" Name="Empty Preset"  ProgramChange="32" />
+					<Patch Number="P929" Name="Empty Preset"  ProgramChange="33" />
+					<Patch Number="P930" Name="Empty Preset"  ProgramChange="34" />
+					<Patch Number="P931" Name="Empty Preset"  ProgramChange="35" />
+					<Patch Number="P932" Name="Empty Preset"  ProgramChange="36" />
+					<Patch Number="P933" Name="Empty Preset"  ProgramChange="37" />
+					<Patch Number="P934" Name="Empty Preset"  ProgramChange="38" />
+					<Patch Number="P935" Name="Empty Preset"  ProgramChange="39" />
+					<Patch Number="P936" Name="Empty Preset"  ProgramChange="40" />
+					<Patch Number="P937" Name="Empty Preset"  ProgramChange="41" />
+					<Patch Number="P938" Name="Empty Preset"  ProgramChange="42" />
+					<Patch Number="P939" Name="Empty Preset"  ProgramChange="43" />
+					<Patch Number="P940" Name="Empty Preset"  ProgramChange="44" />
+					<Patch Number="P941" Name="Empty Preset"  ProgramChange="45" />
+					<Patch Number="P942" Name="Empty Preset"  ProgramChange="46" />
+					<Patch Number="P943" Name="Empty Preset"  ProgramChange="47" />
+					<Patch Number="P944" Name="Empty Preset"  ProgramChange="48" />
+					<Patch Number="P945" Name="Empty Preset"  ProgramChange="49" />
+					<Patch Number="P946" Name="Empty Preset"  ProgramChange="50" />
+					<Patch Number="P947" Name="Empty Preset"  ProgramChange="51" />
+					<Patch Number="P948" Name="Empty Preset"  ProgramChange="52" />
+					<Patch Number="P949" Name="Empty Preset"  ProgramChange="53" />
+					<Patch Number="P950" Name="Empty Preset"  ProgramChange="54" />
+					<Patch Number="P951" Name="Empty Preset"  ProgramChange="55" />
+					<Patch Number="P952" Name="Empty Preset"  ProgramChange="56" />
+					<Patch Number="P953" Name="Empty Preset"  ProgramChange="57" />
+					<Patch Number="P954" Name="Empty Preset"  ProgramChange="58" />
+					<Patch Number="P955" Name="Empty Preset"  ProgramChange="59" />
+					<Patch Number="P956" Name="Empty Preset"  ProgramChange="60" />
+					<Patch Number="P957" Name="Empty Preset"  ProgramChange="61" />
+					<Patch Number="P958" Name="Empty Preset"  ProgramChange="62" />
+					<Patch Number="P959" Name="Empty Preset"  ProgramChange="63" />
+					<Patch Number="P960" Name="Empty Preset"  ProgramChange="64" />
+					<Patch Number="P961" Name="Empty Preset"  ProgramChange="65" />
+					<Patch Number="P962" Name="Empty Preset"  ProgramChange="66" />
+					<Patch Number="P963" Name="Empty Preset"  ProgramChange="67" />
+					<Patch Number="P964" Name="Empty Preset"  ProgramChange="68" />
+					<Patch Number="P965" Name="Empty Preset"  ProgramChange="69" />
+					<Patch Number="P966" Name="Empty Preset"  ProgramChange="70" />
+					<Patch Number="P967" Name="Empty Preset"  ProgramChange="71" />
+					<Patch Number="P968" Name="Empty Preset"  ProgramChange="72" />
+					<Patch Number="P969" Name="Empty Preset"  ProgramChange="73" />
+					<Patch Number="P970" Name="Empty Preset"  ProgramChange="74" />
+					<Patch Number="P971" Name="Empty Preset"  ProgramChange="75" />
+					<Patch Number="P972" Name="Empty Preset"  ProgramChange="76" />
+					<Patch Number="P973" Name="Empty Preset"  ProgramChange="77" />
+					<Patch Number="P974" Name="Empty Preset"  ProgramChange="78" />
+					<Patch Number="P975" Name="Empty Preset"  ProgramChange="79" />
+					<Patch Number="P976" Name="Empty Preset"  ProgramChange="80" />
+					<Patch Number="P977" Name="Empty Preset"  ProgramChange="81" />
+					<Patch Number="P978" Name="Empty Preset"  ProgramChange="82" />
+					<Patch Number="P979" Name="Empty Preset"  ProgramChange="83" />
+					<Patch Number="P980" Name="Empty Preset"  ProgramChange="84" />
+					<Patch Number="P981" Name="Empty Preset"  ProgramChange="85" />
+					<Patch Number="P982" Name="Empty Preset"  ProgramChange="86" />
+					<Patch Number="P983" Name="Empty Preset"  ProgramChange="87" />
+					<Patch Number="P984" Name="Empty Preset"  ProgramChange="88" />
+					<Patch Number="P985" Name="Empty Preset"  ProgramChange="89" />
+					<Patch Number="P986" Name="Empty Preset"  ProgramChange="90" />
+					<Patch Number="P987" Name="Empty Preset"  ProgramChange="91" />
+					<Patch Number="P988" Name="Empty Preset"  ProgramChange="92" />
+					<Patch Number="P989" Name="Empty Preset"  ProgramChange="93" />
+					<Patch Number="P990" Name="Empty Preset"  ProgramChange="94" />
+					<Patch Number="P991" Name="Empty Preset"  ProgramChange="95" />
+					<Patch Number="P992" Name="Empty Preset"  ProgramChange="96" />
+					<Patch Number="P993" Name="Empty Preset"  ProgramChange="97" />
+					<Patch Number="P994" Name="Empty Preset"  ProgramChange="98" />
+					<Patch Number="P995" Name="Empty Preset"  ProgramChange="99" />
+					<Patch Number="P996" Name="Empty Preset"  ProgramChange="100" />
+					<Patch Number="P997" Name="Empty Preset"  ProgramChange="101" />
+					<Patch Number="P998" Name="Empty Preset"  ProgramChange="102" />
+					<Patch Number="P999" Name="Empty Preset"  ProgramChange="103" />					
+				</PatchNameList>
+			</PatchBank>
+			
+			<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+			<PatchBank Name="E-Synth ROM 000-023" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="7" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="0" Name="Eosmosis"  ProgramChange="104" />
+					<Patch Number="1" Name="Piano and Strings"  ProgramChange="105" />
+					<Patch Number="2" Name="Eye Sham"  ProgramChange="106" />
+					<Patch Number="3" Name="Orchestra"  ProgramChange="107" />
+					<Patch Number="4" Name="OdetoYounI"  ProgramChange="108" />
+					<Patch Number="5" Name="Swingle Singers"  ProgramChange="109" />
+					<Patch Number="6" Name="Dyno Split"  ProgramChange="110" />
+					<Patch Number="7" Name="Jay Veeish"  ProgramChange="111" />
+					<Patch Number="8" Name="Diss Tort"  ProgramChange="112" />
+					<Patch Number="9" Name="Pulse Encounter"  ProgramChange="113" />
+					<Patch Number="10" Name="Big City Orch"  ProgramChange="114" />
+					<Patch Number="11" Name="Synth Orchestra"  ProgramChange="115" />
+					<Patch Number="12" Name="AcousticKits 1 and 2"  ProgramChange="116" />
+					<Patch Number="13" Name="Dance Kit 1"  ProgramChange="117" />
+					<Patch Number="14" Name="Ethnic Improv"  ProgramChange="118" />
+					<Patch Number="15" Name="LA Grand"  ProgramChange="119" />
+					<Patch Number="16" Name="Novaphone"  ProgramChange="120" />
+					<Patch Number="17" Name="Strings w Choir"  ProgramChange="121" />
+					<Patch Number="18" Name="Gothic Nature"  ProgramChange="122" />
+					<Patch Number="19" Name="Cape Fear"  ProgramChange="123" />
+					<Patch Number="20" Name="Stereo Grand 1"  ProgramChange="124" />
+					<Patch Number="21" Name="Stereo Grand 2"  ProgramChange="125" />
+					<Patch Number="22" Name="Stereo Grand 3"  ProgramChange="126" />
+					<Patch Number="23" Name="Grand Piano"  ProgramChange="127" />
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth ROM 024-151" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="8" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="24" Name="Piano and Vox"  ProgramChange="0" />
+					<Patch Number="25" Name="Piano and Pad"  ProgramChange="1" />
+					<Patch Number="26" Name="Percusive Piano"  ProgramChange="2" />
+					<Patch Number="27" Name="Dunked Piano"  ProgramChange="3" />
+					<Patch Number="28" Name="Piano Space"  ProgramChange="4" />
+					<Patch Number="29" Name="Grand Illusion"  ProgramChange="5" />
+					<Patch Number="30" Name="Jangle Keys"  ProgramChange="6" />
+					<Patch Number="31" Name="PianoWaveSurfer"  ProgramChange="7" />
+					<Patch Number="32" Name="Electric Piano 1"  ProgramChange="8" />
+					<Patch Number="33" Name="Electric Piano 2"  ProgramChange="9" />
+					<Patch Number="34" Name="Electric Piano 3"  ProgramChange="10" />
+					<Patch Number="35" Name="Electric Piano 4"  ProgramChange="11" />
+					<Patch Number="36" Name="Electric Piano 5"  ProgramChange="12" />
+					<Patch Number="37" Name="Electric Piano 6"  ProgramChange="13" />
+					<Patch Number="38" Name="Electric Piano 7"  ProgramChange="14" />
+					<Patch Number="39" Name="Electric Piano 8"  ProgramChange="15" />
+					<Patch Number="40" Name="Clavinet"  ProgramChange="16" />
+					<Patch Number="41" Name="Super Clav"  ProgramChange="17" />
+					<Patch Number="42" Name="Rezzo Clav"  ProgramChange="18" />
+					<Patch Number="43" Name="Phased Clav"  ProgramChange="19" />
+					<Patch Number="44" Name="Power Clav"  ProgramChange="20" />
+					<Patch Number="45" Name="FM and more FM"  ProgramChange="21" />
+					<Patch Number="46" Name="Stellar Keys"  ProgramChange="22" />
+					<Patch Number="47" Name="EP Fantasy"  ProgramChange="23" />
+					<Patch Number="48" Name="Dyna Perc Organ"  ProgramChange="24" />
+					<Patch Number="49" Name="B X-Session"  ProgramChange="25" />
+					<Patch Number="50" Name="Enhanced B"  ProgramChange="26" />
+					<Patch Number="51" Name="Smokin B"  ProgramChange="27" />
+					<Patch Number="52" Name="Tone Organ"  ProgramChange="28" />
+					<Patch Number="53" Name="Mega Drawbars"  ProgramChange="29" />
+					<Patch Number="54" Name="Perky SynthOrgan"  ProgramChange="30" />
+					<Patch Number="55" Name="B Jazz"  ProgramChange="31" />
+					<Patch Number="56" Name="Dawn Organ"  ProgramChange="32" />
+					<Patch Number="57" Name="Buzz Organ"  ProgramChange="33" />
+					<Patch Number="58" Name="Farfisa"  ProgramChange="34" />
+					<Patch Number="59" Name="Vox Organ"  ProgramChange="35" />
+					<Patch Number="60" Name="Phazi-Cheeze"  ProgramChange="36" />
+					<Patch Number="61" Name="Slap Pop Bass 1"  ProgramChange="37" />
+					<Patch Number="62" Name="Slap Pop Bass 2"  ProgramChange="38" />
+					<Patch Number="63" Name="Slap Pop Bass 3"  ProgramChange="39" />
+					<Patch Number="64" Name="Acoustic Bass 1"  ProgramChange="40" />
+					<Patch Number="65" Name="Acoustic Bass 2"  ProgramChange="41" />
+					<Patch Number="66" Name="Fretless 1"  ProgramChange="42" />
+					<Patch Number="67" Name="Fretless 2"  ProgramChange="43" />
+					<Patch Number="68" Name="FingBass1wHrm"  ProgramChange="44" />
+					<Patch Number="69" Name="Finger Bass 2"  ProgramChange="45" />
+					<Patch Number="70" Name="Picked Bass"  ProgramChange="46" />
+					<Patch Number="71" Name="Sub Fluff"  ProgramChange="47" />
+					<Patch Number="72" Name="Sitar Bass"  ProgramChange="48" />
+					<Patch Number="73" Name="Below Bass"  ProgramChange="49" />
+					<Patch Number="74" Name="Super Sub Bass"  ProgramChange="50" />
+					<Patch Number="75" Name="SE Bass"  ProgramChange="51" />
+					<Patch Number="76" Name="LoggerBass Harm"  ProgramChange="52" />
+					<Patch Number="77" Name="Touch Bass"  ProgramChange="53" />
+					<Patch Number="78" Name="Dyna Q Mini Bass"  ProgramChange="54" />
+					<Patch Number="79" Name="Fat Mini Bass"  ProgramChange="55" />
+					<Patch Number="80" Name="VP Bass"  ProgramChange="56" />
+					<Patch Number="81" Name="FiltDanceBass"  ProgramChange="57" />
+					<Patch Number="82" Name="House Bass"  ProgramChange="58" />
+					<Patch Number="83" Name="Dig Bass"  ProgramChange="59" />
+					<Patch Number="84" Name="Ambient Bass"  ProgramChange="60" />
+					<Patch Number="85" Name="Goliath Bass"  ProgramChange="61" />
+					<Patch Number="86" Name="Nylon Guitar"  ProgramChange="62" />
+					<Patch Number="87" Name="Steel String"  ProgramChange="63" />
+					<Patch Number="88" Name="NylonSteel Combo"  ProgramChange="64" />
+					<Patch Number="89" Name="Ambient Guitar"  ProgramChange="65" />
+					<Patch Number="90" Name="Acoustic Trails"  ProgramChange="66" />
+					<Patch Number="91" Name="A.Gtrs w MTap"  ProgramChange="67" />
+					<Patch Number="92" Name="12 StringShimmer"  ProgramChange="68" />
+					<Patch Number="93" Name="Jazz Guitar"  ProgramChange="69" />
+					<Patch Number="94" Name="Strategies"  ProgramChange="70" />
+					<Patch Number="95" Name="Too Teles"  ProgramChange="71" />
+					<Patch Number="96" Name="Xpressive E.Gtr"  ProgramChange="72" />
+					<Patch Number="97" Name="Guitar Chimes"  ProgramChange="73" />
+					<Patch Number="98" Name="GtrMute1or2"  ProgramChange="74" />
+					<Patch Number="99" Name="Gtr Mute Delays"  ProgramChange="75" />
+					<Patch Number="100" Name="Mutent Behavour"  ProgramChange="76" />
+					<Patch Number="101" Name="Bass and E.Guitar"  ProgramChange="77" />
+					<Patch Number="102" Name="Can Ya Bender"  ProgramChange="78" />
+					<Patch Number="103" Name="Brothers Lead"  ProgramChange="79" />
+					<Patch Number="104" Name="Stereo Strings"  ProgramChange="80" />
+					<Patch Number="105" Name="String Orchestra"  ProgramChange="81" />
+					<Patch Number="106" Name="Finale Strings"  ProgramChange="82" />
+					<Patch Number="107" Name="Viking Strings"  ProgramChange="83" />
+					<Patch Number="108" Name="Phase Strings"  ProgramChange="84" />
+					<Patch Number="109" Name="Flanger Strings"  ProgramChange="85" />
+					<Patch Number="110" Name="Stringed Voice"  ProgramChange="86" />
+					<Patch Number="111" Name="Tron Strings"  ProgramChange="87" />
+					<Patch Number="112" Name="Phase Tron"  ProgramChange="88" />
+					<Patch Number="113" Name="Quartet w Tron "  ProgramChange="89" />
+					<Patch Number="114" Name="Solo Strings"  ProgramChange="90" />
+					<Patch Number="115" Name="Chamber Group "  ProgramChange="91" />
+					<Patch Number="116" Name="Enhanced Quartet "  ProgramChange="92" />
+					<Patch Number="117" Name="PizzicatoStrings "  ProgramChange="93" />
+					<Patch Number="118" Name="Trumpet"  ProgramChange="94" />
+					<Patch Number="119" Name="Mute Trumpet "  ProgramChange="95" />
+					<Patch Number="120" Name="Dons Trumpet "  ProgramChange="96" />
+					<Patch Number="121" Name="Two Trumpets "  ProgramChange="97" />
+					<Patch Number="122" Name="Trombones "  ProgramChange="98" />
+					<Patch Number="123" Name="Tuba"  ProgramChange="99" />
+					<Patch Number="124" Name="Trumpet Trombone "  ProgramChange="100" />
+					<Patch Number="125" Name="Bone Over Brass "  ProgramChange="101" />
+					<Patch Number="126" Name="Brass Section"  ProgramChange="102" />
+					<Patch Number="127" Name="Brass Boys"  ProgramChange="103" />
+					<Patch Number="128" Name="Trump Tromb Sax "  ProgramChange="104" />
+					<Patch Number="129" Name="Big Top Brass "  ProgramChange="105" />
+					<Patch Number="130" Name="Horn Hits"  ProgramChange="106" />
+					<Patch Number="131" Name="Synthetic Brass "  ProgramChange="107" />
+					<Patch Number="132" Name="Synth Brass"  ProgramChange="108" />
+					<Patch Number="133" Name="Toot Aloos "  ProgramChange="109" />
+					<Patch Number="134" Name="Soprano Sax "  ProgramChange="110" />
+					<Patch Number="135" Name="Alto Sax"  ProgramChange="111" />
+					<Patch Number="136" Name="Tenor Sax "  ProgramChange="112" />
+					<Patch Number="137" Name="Baritone Sax"  ProgramChange="113" />
+					<Patch Number="138" Name="Saxtet"  ProgramChange="114" />
+					<Patch Number="139" Name="Sax Saxion"  ProgramChange="115" />
+					<Patch Number="140" Name="World O Sax"  ProgramChange="116" />
+					<Patch Number="141" Name="Flute"  ProgramChange="117" />
+					<Patch Number="142" Name="Flute Pudding"  ProgramChange="118" />
+					<Patch Number="143" Name="Earth Flute"  ProgramChange="119" />
+					<Patch Number="144" Name="Clarinet"  ProgramChange="120" />
+					<Patch Number="145" Name="Oboe"  ProgramChange="121" />
+					<Patch Number="146" Name="English Horn"  ProgramChange="122" />
+					<Patch Number="147" Name="Wind Section"  ProgramChange="123" />
+					<Patch Number="148" Name="Divertissement"  ProgramChange="124" />
+					<Patch Number="149" Name="Strings w Flute"  ProgramChange="125" />
+					<Patch Number="150" Name="Stereo Aahs"  ProgramChange="126" />
+					<Patch Number="151" Name="Stereo Oohs"  ProgramChange="127" />					
+				</PatchNameList>
+			</PatchBank>
+
+			<PatchBank Name="E-Synth ROM 152-255" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="9" />
+				</MIDICommands>
+				<PatchNameList>		
+					<Patch Number="152" Name="Big Voice"  ProgramChange="0" />
+					<Patch Number="153" Name="Phased Pop Ahhs"  ProgramChange="1" />
+					<Patch Number="154" Name="SynthVoiceSweep"  ProgramChange="2" />
+					<Patch Number="155" Name="Throater"  ProgramChange="3" />
+					<Patch Number="156" Name="Vocaleese"  ProgramChange="4" />
+					<Patch Number="157" Name="Ghost Comp"  ProgramChange="5" />
+					<Patch Number="158" Name="Air Pockets"  ProgramChange="6" />
+					<Patch Number="159" Name="Voice Of Its Own"  ProgramChange="7" />
+					<Patch Number="160" Name="Dangle Vox"  ProgramChange="8" />
+					<Patch Number="161" Name="Ohh Wash"  ProgramChange="9" />
+					<Patch Number="162" Name="Viper Drive"  ProgramChange="10" />
+					<Patch Number="163" Name="Waverider"  ProgramChange="11" />
+					<Patch Number="164" Name="Photosynthesis "  ProgramChange="12" />
+					<Patch Number="165" Name="Oasis II"  ProgramChange="13" />
+					<Patch Number="166" Name="Mean Machine "  ProgramChange="14" />
+					<Patch Number="167" Name="Resonant Texture "  ProgramChange="15" />
+					<Patch Number="168" Name="Key Sweeper"  ProgramChange="16" />
+					<Patch Number="169" Name="Emersonian"  ProgramChange="17" />
+					<Patch Number="170" Name="Synth Orchestra "  ProgramChange="18" />
+					<Patch Number="171" Name="Megatouch"  ProgramChange="19" />
+					<Patch Number="172" Name="Synth Superhero "  ProgramChange="20" />
+					<Patch Number="173" Name="Old Fifty Five"  ProgramChange="21" />
+					<Patch Number="174" Name="Punchy SawPulse "  ProgramChange="22" />
+					<Patch Number="175" Name="Touch Jumps"  ProgramChange="23" />
+					<Patch Number="176" Name="Sawy Putty"  ProgramChange="24" />
+					<Patch Number="177" Name="Basic Saw Synth "  ProgramChange="25" />
+					<Patch Number="178" Name="Saw Lead"  ProgramChange="26" />
+					<Patch Number="179" Name="Pulse Rave"  ProgramChange="27" />
+					<Patch Number="180" Name="Pulse Workshop "  ProgramChange="28" />
+					<Patch Number="181" Name="PWM Lead"  ProgramChange="29" />
+					<Patch Number="182" Name="Mini Square"  ProgramChange="30" />
+					<Patch Number="183" Name="Eraser Wave"  ProgramChange="31" />
+					<Patch Number="184" Name="Sax Wave Lead "  ProgramChange="32" />
+					<Patch Number="185" Name="Brazz Lead"  ProgramChange="33" />
+					<Patch Number="186" Name="Razorback Lead "  ProgramChange="34" />
+					<Patch Number="187" Name="Worm Lead"  ProgramChange="35" />
+					<Patch Number="188" Name="Triangle Lead "  ProgramChange="36" />
+					<Patch Number="189" Name="PWM Wash "  ProgramChange="37" />
+					<Patch Number="190" Name="Medicine Lead "  ProgramChange="38" />
+					<Patch Number="191" Name="Basic Pad"  ProgramChange="39" />
+					<Patch Number="192" Name="More Senses"  ProgramChange="40" />
+					<Patch Number="193" Name="Obylisk Serene "  ProgramChange="41" />
+					<Patch Number="194" Name="Misc. Percussion "  ProgramChange="42" />
+					<Patch Number="195" Name="AcousticKits 3and4 "  ProgramChange="43" />
+					<Patch Number="196" Name="Heavy Kit"  ProgramChange="44" />
+					<Patch Number="197" Name="Pop Kit"  ProgramChange="45" />
+					<Patch Number="198" Name="Dance Kit 2"  ProgramChange="46" />
+					<Patch Number="199" Name="808 Kit"  ProgramChange="47" />
+					<Patch Number="200" Name="Digits"  ProgramChange="48" />
+					<Patch Number="201" Name="Organic Keys"  ProgramChange="49" />
+					<Patch Number="202" Name="Langue d Amour "  ProgramChange="50" />
+					<Patch Number="203" Name="Saharan Night "  ProgramChange="51" />
+					<Patch Number="204" Name="Pleiades Wave "  ProgramChange="52" />
+					<Patch Number="205" Name="Vibraphone 1"  ProgramChange="53" />
+					<Patch Number="206" Name="Vibraphone 2"  ProgramChange="54" />
+					<Patch Number="207" Name="Marimba"  ProgramChange="55" />
+					<Patch Number="208" Name="Bright Xylophone "  ProgramChange="56" />
+					<Patch Number="209" Name="Kalimba"  ProgramChange="57" />
+					<Patch Number="210" Name="Kalimbex"  ProgramChange="58" />
+					<Patch Number="211" Name="Balirimba"  ProgramChange="59" />
+					<Patch Number="212" Name="Flexi Plexi"  ProgramChange="60" />
+					<Patch Number="213" Name="ShamItsa "  ProgramChange="61" />
+					<Patch Number="214" Name="Ethnexx "  ProgramChange="62" />
+					<Patch Number="215" Name="Kitatsu "  ProgramChange="63" />
+					<Patch Number="216" Name="Kotahh "  ProgramChange="64" />
+					<Patch Number="217" Name="Shamoto "  ProgramChange="65" />
+					<Patch Number="218" Name="Sitar"  ProgramChange="66" />
+					<Patch Number="219" Name="Intrigue"  ProgramChange="67" />
+					<Patch Number="220" Name="Eastwinds"  ProgramChange="68" />
+					<Patch Number="221" Name="Pan Ambient"  ProgramChange="69" />
+					<Patch Number="222" Name="Transworlds"  ProgramChange="70" />
+					<Patch Number="223" Name="Noo Bells"  ProgramChange="71" />
+					<Patch Number="224" Name="Bell Park"  ProgramChange="72" />
+					<Patch Number="225" Name="Vulcan Night"  ProgramChange="73" />
+					<Patch Number="226" Name="Baroque Dreams "  ProgramChange="74" />
+					<Patch Number="227" Name="Sax 5th Ave"  ProgramChange="75" />
+					<Patch Number="228" Name="Jazz Combo"  ProgramChange="76" />
+					<Patch Number="229" Name="Seabreeze"  ProgramChange="77" />
+					<Patch Number="230" Name="Sweegees"  ProgramChange="78" />
+					<Patch Number="231" Name="Dance Percussion "  ProgramChange="79" />
+					<Patch Number="232" Name="Drums and Timbale "  ProgramChange="80" />
+					<Patch Number="233" Name="Orch Percussion "  ProgramChange="81" />
+					<Patch Number="234" Name="Kick and Snares "  ProgramChange="82" />
+					<Patch Number="235" Name="High Hats All"  ProgramChange="83" />
+					<Patch Number="236" Name="Tommy Tom Tom "  ProgramChange="84" />
+					<Patch Number="237" Name="Tom Tom Club"  ProgramChange="85" />
+					<Patch Number="238" Name="Tumba Tone"  ProgramChange="86" />
+					<Patch Number="239" Name="DynamicPercushun "  ProgramChange="87" />
+					<Patch Number="240" Name="Bottle Lead"  ProgramChange="88" />
+					<Patch Number="241" Name="Vinyl Set"  ProgramChange="89" />
+					<Patch Number="242" Name="Scratch N Split "  ProgramChange="90" />
+					<Patch Number="243" Name="Metal Perc"  ProgramChange="91" />
+					<Patch Number="244" Name="Odd Percussion "  ProgramChange="92" />
+					<Patch Number="245" Name="Cymbolics"  ProgramChange="93" />
+					<Patch Number="246" Name="PostTekno Primal "  ProgramChange="94" />
+					<Patch Number="247" Name="Quizzical"  ProgramChange="95" />
+					<Patch Number="248" Name="Pulsar Noise Efx "  ProgramChange="96" />
+					<Patch Number="249" Name="Stepping Stones "  ProgramChange="97" />
+					<Patch Number="250" Name="Tibetan Mudra "  ProgramChange="98" />
+					<Patch Number="251" Name="Lucid Dream"  ProgramChange="99" />
+					<Patch Number="252" Name="Swamp Situation "  ProgramChange="100" />
+					<Patch Number="253" Name="Nightmare Train "  ProgramChange="101" />
+					<Patch Number="254" Name="Zoundscape"  ProgramChange="102" />
+					<Patch Number="255" Name="Departure"  ProgramChange="103" />					
+				</PatchNameList>
+			</PatchBank>
+		</ChannelNameSet>
+	</MasterDeviceNames>
+</MIDINameDocument>

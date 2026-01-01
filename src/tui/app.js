@@ -1,3 +1,6 @@
+// app.js
+"use strict";
+
 const fs = require("fs");
 const blessed = require("blessed");
 
@@ -8,9 +11,7 @@ module.exports = function startApp(midnamDir, io)
   const screen = blessed.screen({
     smartCSR: true,
     title: "MIDISTAGE 26+",
-
-    // IMPORTANT: blessed attend "unicode" / "fullUnicode" selon versions.
-    // On force un comportement stable: unicode = bool.
+    // blessed varie selon versions. On force un comportement stable.
     unicode: (io && typeof io.unicode === "boolean") ? io.unicode : true,
     fullUnicode: (io && typeof io.unicode === "boolean") ? io.unicode : true,
 
@@ -26,9 +27,7 @@ module.exports = function startApp(midnamDir, io)
     try
     {
       if (screen.program && typeof screen.program.resize === "function")
-      {
         screen.program.resize(io.cols, io.rows);
-      }
       else
       {
         screen.cols = io.cols;
@@ -45,9 +44,7 @@ module.exports = function startApp(midnamDir, io)
       try
       {
         if (screen.program && typeof screen.program.resize === "function")
-        {
           screen.program.resize(cols, rows);
-        }
         screen.render();
       }
       catch { }
@@ -84,11 +81,7 @@ module.exports = function startApp(midnamDir, io)
 
   function clearScreen()
   {
-    try
-    {
-      screen.children.forEach(c => c.destroy());
-    }
-    catch { }
+    try { screen.children.forEach(c => c.destroy()); } catch { }
   }
 
   function switchPage(name)
@@ -101,18 +94,9 @@ module.exports = function startApp(midnamDir, io)
 
     clearScreen();
 
-    if (name === "setlist")
-    {
-      currentCleanup = buildSetlistPage();
-    }
-    else if (name === "machines")
-    {
-      currentCleanup = buildMachinesPage();
-    }
-    else
-    {
-      currentCleanup = buildBrowsePage();
-    }
+    if (name === "setlist") currentCleanup = buildSetlistPage();
+    else if (name === "machines") currentCleanup = buildMachinesPage();
+    else currentCleanup = buildBrowsePage();
 
     screen.render();
   }
@@ -131,7 +115,6 @@ module.exports = function startApp(midnamDir, io)
     const kb = makeKeyBinder();
 
     const FOCUS_MARK = "◆";
-
     const THEME = {
       border: { fg: "white" },
       borderFocus: { fg: "cyan" }
@@ -171,10 +154,7 @@ module.exports = function startApp(midnamDir, io)
       keys: true,
       vi: true,
       tags: true,
-      style: {
-        border: THEME.border,
-        selected: { inverse: true }
-      }
+      style: { border: THEME.border, selected: { inverse: true } }
     });
 
     const banksList = blessed.list({
@@ -187,10 +167,7 @@ module.exports = function startApp(midnamDir, io)
       label: " Banks ",
       keys: true,
       vi: true,
-      style: {
-        border: THEME.border,
-        selected: { inverse: true }
-      }
+      style: { border: THEME.border, selected: { inverse: true } }
     });
 
     const patchesList = blessed.list({
@@ -203,10 +180,7 @@ module.exports = function startApp(midnamDir, io)
       label: " Patches ",
       keys: true,
       vi: true,
-      style: {
-        border: THEME.border,
-        selected: { inverse: true }
-      }
+      style: { border: THEME.border, selected: { inverse: true } }
     });
 
     const search = blessed.textbox({
@@ -235,16 +209,11 @@ module.exports = function startApp(midnamDir, io)
       style: { border: THEME.border }
     });
 
-    // -------- Helpers UI --------
-
     function setLabelWithFocus(widget, baseLabel, focused)
     {
       widget.setLabel(` ${focused ? FOCUS_MARK + " " : ""}${baseLabel} `);
       const borderStyle = focused ? THEME.borderFocus : THEME.border;
-      if (widget.style && widget.style.border)
-      {
-        widget.style.border = borderStyle;
-      }
+      if (widget.style && widget.style.border) widget.style.border = borderStyle;
     }
 
     function refreshFocusMarkers()
@@ -255,7 +224,6 @@ module.exports = function startApp(midnamDir, io)
       setLabelWithFocus(search, "Search", screen.focused === search);
       setLabelWithFocus(status, "Status", screen.focused === status);
 
-      // MIDI modal focus marker (only one modal remains on browse)
       if (!midiModal.hidden) midiModal.setLabel(` ${FOCUS_MARK} MIDI Outputs `);
       else midiModal.setLabel(" MIDI Outputs ");
     }
@@ -266,7 +234,6 @@ module.exports = function startApp(midnamDir, io)
       if (level === "ok") prefix = "{green-fg}[OK]{/green-fg} ";
       else if (level === "warn") prefix = "{yellow-fg}[WARN]{/yellow-fg} ";
       else if (level === "err") prefix = "{red-fg}[ERR]{/red-fg} ";
-
       status.setContent(prefix + text);
       screen.render();
     }
@@ -379,7 +346,6 @@ module.exports = function startApp(midnamDir, io)
       }
 
       model.machines.update(active.id, { out: p });
-
       const m2 = model.getActiveMachine();
       setStatus(`Port assigné.\nMachine: ${m2.name}\nMIDI out: ${m2.out}`, "ok");
 
@@ -401,17 +367,15 @@ module.exports = function startApp(midnamDir, io)
         return;
       }
 
-      filesList.setItems(list.map(m => machineToLine(m)));
+      filesList.setItems(list.map(machineToLine));
 
       const active = model.getActiveMachine();
       let idx = 0;
-
       if (active)
       {
         const found = list.findIndex(x => x.id === active.id);
         if (found >= 0) idx = found;
       }
-
       filesList.select(Math.max(0, idx));
     }
 
@@ -425,7 +389,6 @@ module.exports = function startApp(midnamDir, io)
 
       search.setValue("");
       model.setPatchFilter("");
-
       setStatus(msg || "Aucun instrument chargé.", "warn");
       screen.render();
     }
@@ -445,9 +408,7 @@ module.exports = function startApp(midnamDir, io)
 
       if (!m.midnamFile)
       {
-        clearLoadedInstrumentUI(
-          `Machine active: ${m.name}\n(midnam: none) | ${model.draftGetSummary()}`
-        );
+        clearLoadedInstrumentUI(`Machine active: ${m.name}\n(midnam: none) | ${model.draftGetSummary()}`);
         return;
       }
 
@@ -455,12 +416,7 @@ module.exports = function startApp(midnamDir, io)
       {
         const parsed = model.loadMidnam(m.midnamFile);
         search.setValue("");
-
-        setStatus(
-          `OK: ${parsed.deviceName}\nMachine: ${m.name} | ${model.draftGetSummary()}`,
-          "ok"
-        );
-
+        setStatus(`OK: ${parsed.deviceName}\nMachine: ${m.name} | ${model.draftGetSummary()}`, "ok");
         refreshAll();
       }
       catch (e)
@@ -477,25 +433,16 @@ module.exports = function startApp(midnamDir, io)
     function refreshBanks()
     {
       const b = model.getBanksView();
-
       banksList.setItems(b.items);
-      if (b.count > 0)
-      {
-        banksList.select(Math.min(model.state.bankIndex || 0, b.count - 1));
-      }
-      else
-      {
-        banksList.select(0);
-      }
+      if (b.count > 0) banksList.select(Math.min(model.state.bankIndex || 0, b.count - 1));
+      else banksList.select(0);
     }
 
     function refreshPatches()
     {
       const p = model.getPatchesView();
-
       patchesList.setItems(p.items);
       patchesList._midistageView = p;
-
       patchesList.select(0);
     }
 
@@ -518,10 +465,7 @@ module.exports = function startApp(midnamDir, io)
         refreshBanks();
         screen.render();
       }
-      else
-      {
-        setStatus(r.message, "err");
-      }
+      else setStatus(r.message, "err");
     }
 
     function addToDraft()
@@ -534,17 +478,13 @@ module.exports = function startApp(midnamDir, io)
         const m = model.getActiveMachine();
         setStatus(`Draft update.\nMachine: ${(m && m.name) ? m.name : "?"}\n${model.draftGetSummary()}`, "ok");
       }
-      else
-      {
-        setStatus(r.message, "err");
-      }
+      else setStatus(r.message, "err");
     }
 
     function clearSearchAndReturn()
     {
       model.setPatchFilter("");
       search.setValue("");
-
       refreshPatches();
       patchesList.focus();
       refreshFocusMarkers();
@@ -562,31 +502,24 @@ module.exports = function startApp(midnamDir, io)
       let next = patchesList.selected + delta;
       if (next < 0) next = count - 1;
       if (next >= count) next = 0;
-
       patchesList.select(next);
       screen.render();
     }
 
     // -------------------- Events --------------------
 
-    filesList.on("select", function ()
-    {
-      loadSelectedMachineInstrument();
-    });
+    filesList.on("select", () => loadSelectedMachineInstrument());
 
-    banksList.on("select", function ()
+    banksList.on("select", () =>
     {
       model.setBankIndex(banksList.selected);
       refreshPatches();
       screen.render();
     });
 
-    patchesList.key(["enter"], function ()
-    {
-      sendSelectedPatch();
-    });
+    patchesList.key(["enter"], () => sendSelectedPatch());
 
-    // Focus management (Tab n'inclut pas Search)
+    // Focus management
     const focusables = [filesList, banksList, patchesList];
     let focusIndex = 0;
 
@@ -606,7 +539,7 @@ module.exports = function startApp(midnamDir, io)
       screen.render();
     }
 
-    kb.bindKey(["tab"], function ()
+    kb.bindKey(["tab"], () =>
     {
       if (!midiModal.hidden) return;
 
@@ -620,7 +553,7 @@ module.exports = function startApp(midnamDir, io)
       focusNext();
     });
 
-    kb.bindKey(["S-tab"], function ()
+    kb.bindKey(["S-tab"], () =>
     {
       if (!midiModal.hidden) return;
 
@@ -636,12 +569,11 @@ module.exports = function startApp(midnamDir, io)
 
     [filesList, banksList, patchesList, search, status].forEach(w =>
     {
-      w.on("focus", function () { refreshFocusMarkers(); screen.render(); });
-      w.on("blur", function () { refreshFocusMarkers(); screen.render(); });
+      w.on("focus", () => { refreshFocusMarkers(); screen.render(); });
+      w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
     });
 
-    // Search open
-    kb.bindKey(["s"], function ()
+    kb.bindKey(["s"], () =>
     {
       if (!midiModal.hidden) return;
       search.focus();
@@ -649,8 +581,7 @@ module.exports = function startApp(midnamDir, io)
       screen.render();
     });
 
-    // Search submit
-    search.on("submit", function (value)
+    search.on("submit", (value) =>
     {
       model.setPatchFilter(value || "");
       refreshPatches();
@@ -659,48 +590,31 @@ module.exports = function startApp(midnamDir, io)
       screen.render();
     });
 
-    // Esc: close modals first, then search
-    kb.bindKey(["escape"], function ()
+    kb.bindKey(["escape"], () =>
     {
       if (!midiModal.hidden) { closeMidiPicker(patchesList); return; }
 
-      if (screen.focused === search)
-      {
-        clearSearchAndReturn();
-        return;
-      }
+      if (screen.focused === search) { clearSearchAndReturn(); return; }
 
       if (model.state.patchFilter && model.state.patchFilter.trim())
-      {
         clearSearchAndReturn();
-      }
     });
 
-    // Ctrl+N / Ctrl+P: next/prev selection
-    kb.bindKey(["C-n"], function () { moveSelection(+1); });
-    kb.bindKey(["C-p"], function () { moveSelection(-1); });
+    kb.bindKey(["C-n"], () => moveSelection(+1));
+    kb.bindKey(["C-p"], () => moveSelection(-1));
+    kb.bindKey(["a"], () => addToDraft());
 
-    // Add to draft
-    kb.bindKey(["a"], function () { addToDraft(); });
+    // Go to Machines page
+    kb.bindKey(["m"], () => switchPage("machines"));
 
-    // Machines page
-    kb.bindKey(["m"], function ()
-    {
-      if (!midiModal.hidden) return;
-      switchPage("machines");
-    });
-
-    // MIDI out modal (active machine)
-    kb.bindKey(["o"], function ()
-    {
-      openMidiPicker();
-    });
+    // MIDI out picker
+    kb.bindKey(["o"], () => openMidiPicker());
 
     // Go to Setlist page
-    kb.bindKey(["l"], function () { switchPage("setlist"); });
+    kb.bindKey(["l"], () => switchPage("setlist"));
 
     // Quit
-    kb.bindKey(["C-q", "C-c"], function () { quit(); });
+    kb.bindKey(["C-q", "C-c"], () => quit());
 
     // Init
     refreshMachinesList();
@@ -708,14 +622,8 @@ module.exports = function startApp(midnamDir, io)
     refreshFocusMarkers();
     screen.render();
 
-    if ((filesList._machines || []).length)
-    {
-      loadSelectedMachineInstrument();
-    }
-    else
-    {
-      clearLoadedInstrumentUI("Aucune machine dans machines.json.");
-    }
+    if ((filesList._machines || []).length) loadSelectedMachineInstrument();
+    else clearLoadedInstrumentUI("Aucune machine dans machines.json.");
 
     return function cleanup()
     {
@@ -731,10 +639,14 @@ module.exports = function startApp(midnamDir, io)
     const midiDriver = require("../midi/driver");
     const kb = makeKeyBinder();
 
+    const FOCUS_MARK = "◆";
     const THEME = {
       border: { fg: "white" },
       borderFocus: { fg: "cyan" }
     };
+
+    const MIDNAM_NONE = "<none>";
+    const OUT_NONE = "<none>";
 
     const frame = blessed.box({
       parent: screen,
@@ -755,7 +667,34 @@ module.exports = function startApp(midnamDir, io)
       width: "100%-2",
       tags: true,
       content:
-        "{bold}↑↓{/bold} select | {bold}Enter{/bold} set active | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}Ctrl+S{/bold} save | {bold}x{/bold} delete | {bold}q{/bold} back"
+        "{bold}↑↓{/bold} select | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}x{/bold} delete | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit | {bold}q{/bold} back"
+    });
+
+    const machinesList = blessed.list({
+      parent: frame,
+      top: 3,
+      left: 1,
+      width: "45%-2",
+      height: "100%-6",
+      border: "line",
+      label: " Machines ",
+      keys: true,
+      vi: true,
+      tags: true,
+      style: { border: THEME.border, selected: { inverse: true } }
+    });
+
+    const editor = blessed.box({
+      parent: frame,
+      top: 3,
+      left: "45%",
+      width: "55%-2",
+      height: "100%-6",
+      border: "line",
+      label: " Editor ",
+      tags: true,
+      style: { border: THEME.border },
+      padding: { left: 1, right: 1 }
     });
 
     const status = blessed.box({
@@ -766,182 +705,13 @@ module.exports = function startApp(midnamDir, io)
       width: "100%-2",
       border: "line",
       label: " Status ",
+      padding: { left: 1, right: 1 },
       tags: true,
       style: { border: THEME.border },
-      padding: { left: 1, right: 1 },
       content: "Machines."
     });
 
-    function setStatus(text, level)
-    {
-      let prefix = "";
-      if (level === "ok") prefix = "{green-fg}[OK]{/green-fg} ";
-      else if (level === "warn") prefix = "{yellow-fg}[WARN]{/yellow-fg} ";
-      else if (level === "err") prefix = "{red-fg}[ERR]{/red-fg} ";
-      status.setContent(prefix + text);
-      screen.render();
-    }
-
-    function listMidnamFiles()
-    {
-      try
-      {
-        return fs.readdirSync(midnamDir)
-          .filter(f => f.toLowerCase().endsWith(".midnam"))
-          .sort((a, b) => a.localeCompare(b));
-      }
-      catch { return []; }
-    }
-
-    function tryPeekDeviceName(midnamFile)
-    {
-      if (!midnamFile) return "<no midnam>";
-      try { return model.peekMidnamDeviceName(midnamFile); } catch { return "?"; }
-    }
-
-    function shouldAutofillName(currentName)
-    {
-      const n = String(currentName || "").trim().toLowerCase();
-      return !n || n === "nouvelle machine" || n === "machine" || n === "new machine";
-    }
-
-    function machineToLine(m, idx)
-    {
-      const out = m.out ? m.out : "default";
-      const ch = m.channel ? `CH${m.channel}` : "CH?";
-      const mid = m.midnamFile ? m.midnamFile : "<no midnam>";
-      const dev = tryPeekDeviceName(m.midnamFile);
-      return `${String(idx + 1).padStart(2, "0")} - ${m.name}  {gray-fg}[${out} / ${ch}]{/gray-fg}  {gray-fg}${dev}{/gray-fg}  {gray-fg}(${mid}){/gray-fg}  {gray-fg}(${m.id}){/gray-fg}`;
-    }
-
-    // -------- Left: Machines list --------
-    const machinesList = blessed.list({
-      parent: frame,
-      top: 3,
-      left: 1,
-      width: "45%-2",
-      height: "100%-7",
-      border: "line",
-      label: " Machines ",
-      keys: true,
-      vi: true,
-      tags: true,
-      style: { border: THEME.border, selected: { inverse: true } }
-    });
-
-    // -------- Right: Editor --------
-    const editor = blessed.box({
-      parent: frame,
-      top: 3,
-      left: "45%",
-      width: "55%-2",
-      height: "100%-7",
-      border: "line",
-      label: " Editor ",
-      style: { border: THEME.border }
-    });
-
-    const nameLabel = blessed.box({
-      parent: editor,
-      top: 0,
-      left: 1,
-      height: 1,
-      width: "100%-2",
-      tags: true,
-      content: "{bold}Nom convivial{/bold}"
-    });
-
-    const nameBox = blessed.textbox({
-      parent: editor,
-      top: 1,
-      left: 1,
-      height: 3,
-      width: "100%-2",
-      border: "line",
-      inputOnFocus: true,
-      keys: true,
-      vi: true
-    });
-
-    const midnamLabel = blessed.box({
-      parent: editor,
-      top: 4,
-      left: 1,
-      height: 1,
-      width: "50%-2",
-      tags: true,
-      content: "{bold}MIDNAM{/bold}"
-    });
-
-    const midnamList = blessed.list({
-      parent: editor,
-      top: 5,
-      left: 1,
-      width: "50%-2",
-      height: "50%-4",
-      border: "line",
-      keys: true,
-      vi: true,
-      tags: true,
-      style: { selected: { inverse: true } }
-    });
-
-    const outLabel = blessed.box({
-      parent: editor,
-      top: 4,
-      left: "50%",
-      height: 1,
-      width: "50%-2",
-      tags: true,
-      content: "{bold}MIDI Output{/bold}"
-    });
-
-    const outList = blessed.list({
-      parent: editor,
-      top: 5,
-      left: "50%",
-      width: "50%-2",
-      height: "50%-4",
-      border: "line",
-      keys: true,
-      vi: true,
-      tags: true,
-      style: { selected: { inverse: true } }
-    });
-
-    const chLabel = blessed.box({
-      parent: editor,
-      bottom: 6,
-      left: 1,
-      height: 1,
-      width: "50%-2",
-      tags: true,
-      content: "{bold}Canal MIDI (1..16){/bold}"
-    });
-
-    const chBox = blessed.textbox({
-      parent: editor,
-      bottom: 3,
-      left: 1,
-      height: 3,
-      width: "50%-2",
-      border: "line",
-      inputOnFocus: true,
-      keys: true,
-      vi: true
-    });
-
-    blessed.box({
-      parent: editor,
-      bottom: 0,
-      left: 1,
-      height: 2,
-      width: "100%-2",
-      tags: true,
-      content: "{bold}Tab{/bold} next | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit"
-    });
-
-    // -------- Confirm modal (local to Machines page) --------
+    // ---- Confirm modal (reusable) ----
     const confirmModal = blessed.box({
       parent: frame,
       top: "center",
@@ -999,6 +769,7 @@ module.exports = function startApp(midnamDir, io)
       confirmModal.show();
       confirmInput.focus();
       confirmInput.readInput();
+      refreshFocusMarkers();
       screen.render();
     }
 
@@ -1009,6 +780,7 @@ module.exports = function startApp(midnamDir, io)
       _confirmCb = null;
 
       try { machinesList.focus(); } catch { }
+      refreshFocusMarkers();
       screen.render();
 
       if (cb) cb(cancelled ? new Error("cancelled") : null, value);
@@ -1017,14 +789,142 @@ module.exports = function startApp(midnamDir, io)
     confirmInput.on("submit", (value) => closeConfirm(false, value));
     confirmInput.key(["escape"], () => closeConfirm(true, null));
 
-    // -------- Editor state --------
-    const MIDNAM_NONE = "<none>";
-    const OUT_NONE = "<none>";
+    // ---- Editor widgets ----
 
-    let _editMode = "view"; // view | create | edit
+    const nameLabel = blessed.box({
+      parent: editor,
+      top: 0,
+      left: 0,
+      height: 1,
+      width: "100%",
+      tags: true,
+      content: "{bold}Nom convivial{/bold}"
+    });
+
+    const nameBox = blessed.textbox({
+      parent: editor,
+      top: 1,
+      left: 0,
+      height: 3,
+      width: "100%",
+      border: "line",
+      inputOnFocus: true,
+      keys: true,
+      vi: true
+    });
+
+    const midnamLabel = blessed.box({
+      parent: editor,
+      top: 4,
+      left: 0,
+      height: 1,
+      width: "50%-1",
+      tags: true,
+      content: "{bold}MIDNAM{/bold}"
+    });
+
+    const midnamList = blessed.list({
+      parent: editor,
+      top: 5,
+      left: 0,
+      width: "50%-1",
+      height: "60%-7",
+      border: "line",
+      keys: true,
+      vi: true,
+      tags: true,
+      style: { selected: { inverse: true } }
+    });
+
+    const outLabel = blessed.box({
+      parent: editor,
+      top: 4,
+      left: "50%",
+      height: 1,
+      width: "50%-1",
+      tags: true,
+      content: "{bold}MIDI Output{/bold}"
+    });
+
+    const outList = blessed.list({
+      parent: editor,
+      top: 5,
+      left: "50%",
+      width: "50%-1",
+      height: "60%-7",
+      border: "line",
+      keys: true,
+      vi: true,
+      tags: true,
+      style: { selected: { inverse: true } }
+    });
+
+    const chLabel = blessed.box({
+      parent: editor,
+      bottom: 6,
+      left: 0,
+      height: 1,
+      width: "100%",
+      tags: true,
+      content: "{bold}Canal MIDI (1..16){/bold}"
+    });
+
+    const chBox = blessed.textbox({
+      parent: editor,
+      bottom: 3,
+      left: 0,
+      height: 3,
+      width: "50%-1",
+      border: "line",
+      inputOnFocus: true,
+      keys: true,
+      vi: true
+    });
+
+    const help = blessed.box({
+      parent: editor,
+      bottom: 0,
+      left: 0,
+      height: 3,
+      width: "100%",
+      tags: true,
+      content:
+        "{bold}Tab{/bold} suivant | {bold}Ctrl+S{/bold} sauver | {bold}Esc{/bold} annuler edit | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}x{/bold} delete"
+    });
+
+    // ---- Mode ----
+    // view = consultation, edit = modifie existant, create = nouvelle machine
+    let _editMode = "view";
     let _editId = null;
 
-    function loadEditorSources()
+    function setStatus(text, level)
+    {
+      let prefix = "";
+      if (level === "ok") prefix = "{green-fg}[OK]{/green-fg} ";
+      else if (level === "warn") prefix = "{yellow-fg}[WARN]{/yellow-fg} ";
+      else if (level === "err") prefix = "{red-fg}[ERR]{/red-fg} ";
+      status.setContent(prefix + text);
+      screen.render();
+    }
+
+    function shouldAutofillName(currentName)
+    {
+      const n = String(currentName || "").trim().toLowerCase();
+      return !n || n === "nouvelle machine" || n === "machine" || n === "new machine";
+    }
+
+    function listMidnamFiles()
+    {
+      try
+      {
+        return fs.readdirSync(midnamDir)
+          .filter(f => f.toLowerCase().endsWith(".midnam"))
+          .sort((a, b) => a.localeCompare(b));
+      }
+      catch { return []; }
+    }
+
+    function refreshMidnamAndOutLists()
     {
       const midnams = [MIDNAM_NONE].concat(listMidnamFiles());
       midnamList.setItems(midnams);
@@ -1035,18 +935,71 @@ module.exports = function startApp(midnamDir, io)
       outList._outs = outs;
     }
 
+    function machineToLine(m, withId)
+    {
+      const out = m.out ? m.out : "default";
+      const ch = m.channel ? `CH${m.channel}` : "CH?";
+      const mid = m.midnamFile ? m.midnamFile : "<no midnam>";
+      let dev = "?";
+      try { dev = model.peekMidnamDeviceName(m.midnamFile); } catch { dev = "?"; }
+
+      const idPart = withId ? `  {gray-fg}(${m.id}){/gray-fg}` : "";
+      return `${m.name}  {gray-fg}[${out} / ${ch}]{/gray-fg}  {gray-fg}${dev}{/gray-fg}  {gray-fg}(${mid}){/gray-fg}${idPart}`;
+    }
+
+    function refreshMachinesList(keepId)
+    {
+      const list = model.listMachines();
+      machinesList._machines = list;
+
+      if (!list.length)
+      {
+        machinesList.setItems(["<no machines>"]);
+        machinesList.select(0);
+        return;
+      }
+
+      machinesList.setItems(list.map(m => machineToLine(m, true)));
+
+      let idx = 0;
+
+      if (keepId)
+      {
+        const found = list.findIndex(x => x.id === keepId);
+        if (found >= 0) idx = found;
+      }
+      else
+      {
+        const active = model.getActiveMachine();
+        if (active)
+        {
+          const found = list.findIndex(x => x.id === active.id);
+          if (found >= 0) idx = found;
+        }
+      }
+
+      machinesList.select(Math.max(0, idx));
+    }
+
+    function getSelectedMachine()
+    {
+      const list = machinesList._machines || [];
+      return list[machinesList.selected] || null;
+    }
+
     function clearEditor(msg)
     {
       nameBox.setValue("");
       chBox.setValue("1");
       midnamList.select(0);
       outList.select(0);
-      _editMode = "view";
       _editId = null;
-      setStatus(msg || "Editor prêt.", "warn");
+      _editMode = "view";
+      setStatus(msg || "Editor reset.", "warn");
       screen.render();
     }
 
+    // IMPORTANT: ne pas toucher _editMode ici (sinon tu t’auto-sabotes).
     function fillEditorFromMachine(m)
     {
       if (!m) { clearEditor("Machine invalide."); return; }
@@ -1067,47 +1020,8 @@ module.exports = function startApp(midnamDir, io)
       if (oi < 0) oi = 0;
       outList.select(oi);
 
-      _editMode = "view";
       _editId = m.id;
       screen.render();
-    }
-
-    function getSelectedMachine()
-    {
-      const list = machinesList._machines || [];
-      return list[machinesList.selected] || null;
-    }
-
-    function refreshMachines(keepActive = true)
-    {
-      const list = model.listMachines();
-      machinesList._machines = list;
-
-      const items = list.map((m, i) => machineToLine(m, i));
-      machinesList.setItems(items.length ? items : ["<no machines>"]);
-
-      if (!list.length)
-      {
-        machinesList.select(0);
-        clearEditor("Aucune machine.");
-        return;
-      }
-
-      if (keepActive)
-      {
-        const active = model.getActiveMachine();
-        let idx = 0;
-        if (active)
-        {
-          const i = list.findIndex(x => x.id === active.id);
-          if (i >= 0) idx = i;
-        }
-        machinesList.select(idx);
-      }
-      else
-      {
-        machinesList.select(Math.min(machinesList.selected, list.length - 1));
-      }
     }
 
     function setActiveFromSelection()
@@ -1120,12 +1034,16 @@ module.exports = function startApp(midnamDir, io)
       }
 
       try { model.machines.setActive(m.id); } catch { }
+      _editMode = "view";
+      _editId = m.id;
       fillEditorFromMachine(m);
       setStatus(`Machine active: ${m.name}`, "ok");
     }
 
     function beginCreate()
     {
+      refreshMidnamAndOutLists();
+
       _editMode = "create";
       _editId = null;
 
@@ -1135,12 +1053,14 @@ module.exports = function startApp(midnamDir, io)
       outList.select(0);
 
       nameBox.focus();
-      setStatus("Création: remplis puis Ctrl+S pour sauver.", "ok");
+      setStatus("Création: renseigne puis Ctrl+S.", "ok");
       screen.render();
     }
 
     function beginEdit()
     {
+      refreshMidnamAndOutLists();
+
       const m = getSelectedMachine() || model.getActiveMachine();
       if (!m)
       {
@@ -1148,10 +1068,11 @@ module.exports = function startApp(midnamDir, io)
         return;
       }
 
-      _editMode = "edit";
       _editId = m.id;
-
       fillEditorFromMachine(m);
+
+      // IMPORTANT: après fill, sinon fill te flingue tout si tu remets des trucs plus tard
+      _editMode = "edit";
       nameBox.focus();
       setStatus(`Édition: ${m.name} (Ctrl+S pour sauver).`, "ok");
       screen.render();
@@ -1159,6 +1080,8 @@ module.exports = function startApp(midnamDir, io)
 
     function maybeAutofillNameFromMidnam()
     {
+      if (_editMode !== "edit" && _editMode !== "create") return;
+
       const midnams = midnamList._midnams || [];
       const sel = midnams[midnamList.selected] || MIDNAM_NONE;
       if (sel === MIDNAM_NONE) return;
@@ -1179,27 +1102,39 @@ module.exports = function startApp(midnamDir, io)
 
     function saveEditor()
     {
-      if (_editMode !== "create" && _editMode !== "edit")
+      if (_editMode !== "edit" && _editMode !== "create")
       {
         setStatus("Rien à sauver (mode view).", "warn");
         return;
       }
 
-      const name = String(nameBox.getValue() || "").trim() || "Machine";
       const midnams = midnamList._midnams || [MIDNAM_NONE];
       const outs = outList._outs || [OUT_NONE];
 
-      const mid = midnams[midnamList.selected] || MIDNAM_NONE;
-      const out = outs[outList.selected] || OUT_NONE;
+      const midSel = midnams[midnamList.selected] || MIDNAM_NONE;
+      const outSel = outs[outList.selected] || OUT_NONE;
 
       let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       if (!Number.isFinite(ch)) ch = 1;
       ch = Math.max(1, Math.min(16, ch));
 
-      const patch = {
+      let name = String(nameBox.getValue() || "").trim() || "Machine";
+
+      // Si le nom est générique, et qu’on a un MIDNAM, on “sauve” un nom propre.
+      if (shouldAutofillName(name) && midSel !== MIDNAM_NONE)
+      {
+        try
+        {
+          const dev = model.peekMidnamDeviceName(midSel);
+          if (dev) name = dev;
+        }
+        catch { }
+      }
+
+      const payload = {
         name,
-        midnamFile: (mid === MIDNAM_NONE ? null : mid),
-        out: (out === OUT_NONE ? null : out),
+        midnamFile: (midSel === MIDNAM_NONE ? null : midSel),
+        out: (outSel === OUT_NONE ? null : outSel),
         channel: ch
       };
 
@@ -1207,37 +1142,46 @@ module.exports = function startApp(midnamDir, io)
 
       if (_editMode === "edit" && _editId)
       {
-        saved = model.machines.update(_editId, patch);
+        saved = model.machines.update(_editId, payload);
         if (!saved)
         {
-          setStatus("Erreur update machine.", "err");
+          setStatus("Erreur: update machine impossible.", "err");
           return;
         }
+        model.machines.setActive(saved.id);
       }
       else
       {
-        saved = model.machines.add(patch);
+        saved = model.machines.add(payload);
         if (!saved)
         {
-          setStatus("Erreur add machine.", "err");
+          setStatus("Erreur: create machine impossible.", "err");
           return;
         }
+        model.machines.setActive(saved.id);
       }
 
-      model.machines.setActive(saved.id);
+      _editMode = "view";
+      _editId = saved.id;
 
-      refreshMachines(true);
+      refreshMachinesList(saved.id);
       fillEditorFromMachine(saved);
 
-      setStatus(`Machine sauvée: ${saved.name}\nMIDNAM=${saved.midnamFile || "-"} | OUT=${saved.out || "-"} | CH=${saved.channel}`, "ok");
+      setStatus(
+        `Machine sauvée: ${saved.name}\nMIDNAM=${saved.midnamFile || "-"} | OUT=${saved.out || "-"} | CH=${saved.channel}`,
+        "ok"
+      );
+
+      machinesList.focus();
+      screen.render();
     }
 
     function deleteSelectedMachine()
     {
-      const m = getSelectedMachine() || model.getActiveMachine();
+      const m = getSelectedMachine();
       if (!m)
       {
-        setStatus("Aucune machine.", "warn");
+        setStatus("Aucune machine à supprimer.", "warn");
         return;
       }
 
@@ -1259,100 +1203,213 @@ module.exports = function startApp(midnamDir, io)
           return;
         }
 
-        refreshMachines(false);
+        refreshMachinesList(null);
 
-        const active = model.getActiveMachine();
-        if (active) fillEditorFromMachine(active);
-        else clearEditor("Plus aucune machine.");
+        const list = model.listMachines();
+        if (list.length)
+        {
+          // réactive la sélection
+          setActiveFromSelection();
+        }
+        else
+        {
+          clearEditor("Plus aucune machine.");
+        }
 
         setStatus("Machine supprimée.", "ok");
       });
     }
 
-    // -------- Events --------
-    machinesList.on("select", function ()
+    function cancelEdit()
     {
-      // Select also sets active (consistent with browse experience)
+      if (_editMode === "create")
+      {
+        const active = model.getActiveMachine();
+        if (active)
+        {
+          _editMode = "view";
+          _editId = active.id;
+          fillEditorFromMachine(active);
+        }
+        else clearEditor("Aucune machine.");
+      }
+      else if (_editMode === "edit")
+      {
+        const m = _editId ? model.machines.getById(_editId) : model.getActiveMachine();
+        if (m)
+        {
+          _editMode = "view";
+          _editId = m.id;
+          fillEditorFromMachine(m);
+        }
+        else clearEditor("Machine introuvable.");
+      }
+
+      machinesList.focus();
+      setStatus("Édition annulée.", "warn");
+      screen.render();
+    }
+
+    function setLabelWithFocus(widget, baseLabel, focused)
+    {
+      widget.setLabel(` ${focused ? FOCUS_MARK + " " : ""}${baseLabel} `);
+      const borderStyle = focused ? THEME.borderFocus : THEME.border;
+      if (widget.style && widget.style.border) widget.style.border = borderStyle;
+    }
+
+    function refreshFocusMarkers()
+    {
+      setLabelWithFocus(machinesList, "Machines", screen.focused === machinesList);
+      setLabelWithFocus(editor, `Editor (${_editMode})`, screen.focused === editor);
+      setLabelWithFocus(status, "Status", screen.focused === status);
+
+      if (!confirmModal.hidden) confirmModal.setLabel(` ${FOCUS_MARK} Confirm `);
+      else confirmModal.setLabel(" Confirm ");
+    }
+
+    [machinesList, nameBox, midnamList, outList, chBox, status].forEach(w =>
+    {
+      w.on("focus", () => { refreshFocusMarkers(); screen.render(); });
+      w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
+    });
+
+    // Navigation TAB dans l’éditeur
+    const edFocusables = [nameBox, midnamList, outList, chBox];
+    let edFocusIndex = 0;
+
+    function edFocusNext()
+    {
+      edFocusIndex = (edFocusIndex + 1) % edFocusables.length;
+      edFocusables[edFocusIndex].focus();
+      screen.render();
+    }
+
+    // Events list
+    machinesList.on("select", () =>
+    {
+      if (_editMode === "edit" || _editMode === "create") return; // en plein edit, on ne touche pas
       setActiveFromSelection();
     });
 
-    machinesList.key(["enter"], function ()
+    machinesList.on("highlight", () =>
     {
+      if (_editMode === "edit" || _editMode === "create") return;
       setActiveFromSelection();
     });
 
-    // Tab cycle focus (list -> editor fields -> back)
-    const focusables = [machinesList, nameBox, midnamList, outList, chBox];
-    let focusIndex = 0;
-
-    kb.bindKey(["tab"], function ()
+    // Keys page
+    kb.bindKey(["q"], () =>
     {
       if (!confirmModal.hidden) return;
-      focusIndex = (focusIndex + 1) % focusables.length;
-      focusables[focusIndex].focus();
-      screen.render();
+      // Retour au browse (pas de drama)
+      switchPage("browse");
     });
 
-    kb.bindKey(["S-tab"], function ()
-    {
-      if (!confirmModal.hidden) return;
-      focusIndex = (focusIndex - 1 + focusables.length) % focusables.length;
-      focusables[focusIndex].focus();
-      screen.render();
-    });
-
-    kb.bindKey(["n"], function ()
+    kb.bindKey(["n"], () =>
     {
       if (!confirmModal.hidden) return;
       beginCreate();
     });
 
-    kb.bindKey(["e"], function ()
+    kb.bindKey(["e"], () =>
     {
       if (!confirmModal.hidden) return;
       beginEdit();
     });
 
-    kb.bindKey(["C-s"], function ()
+    kb.bindKey(["x", "delete"], () =>
+    {
+      if (!confirmModal.hidden) return;
+      if (_editMode === "edit" || _editMode === "create")
+      {
+        setStatus("Tu édites. Annule (Esc) ou sauve (Ctrl+S) d’abord.", "warn");
+        return;
+      }
+      deleteSelectedMachine();
+    });
+
+    kb.bindKey(["C-s"], () =>
     {
       if (!confirmModal.hidden) return;
       saveEditor();
     });
 
-    kb.bindKey(["x", "delete"], function ()
+    // TAB: si focus est dans l’éditeur, on tourne; sinon on bascule list/editor
+    kb.bindKey(["tab"], () =>
     {
       if (!confirmModal.hidden) return;
-      deleteSelectedMachine();
+
+      if (screen.focused === machinesList)
+      {
+        nameBox.focus();
+        edFocusIndex = 0;
+      }
+      else if (edFocusables.includes(screen.focused))
+      {
+        edFocusNext();
+      }
+      else
+      {
+        machinesList.focus();
+      }
+      refreshFocusMarkers();
+      screen.render();
     });
 
-    kb.bindKey(["q"], function ()
-    {
-      if (!confirmModal.hidden) return;
-      switchPage("browse");
-    });
+    // Enter: valide juste le champ (pas save)
+    nameBox.on("submit", () => edFocusNext());
+    chBox.on("submit", () => edFocusNext());
+    midnamList.key(["enter"], () => edFocusNext());
+    outList.key(["enter"], () => edFocusNext());
 
-    kb.bindKey(["escape"], function ()
+    // ESC = annuler edit seulement (+ confirmation)
+    kb.bindKey(["escape"], () =>
     {
       if (!confirmModal.hidden) { closeConfirm(true, null); return; }
-      // Escape cancels edit mode back to view of current active
-      const active = model.getActiveMachine();
-      if (active) fillEditorFromMachine(active);
-      else clearEditor("Aucune machine.");
-      machinesList.focus();
-      switchPage("browse");
+
+      if (_editMode === "view")
+      {
+        setStatus('Rien à annuler. Utilise "q" pour revenir.', "warn");
+        return;
+      }
+
+      askConfirm('Annuler les modifications ?\nTape "oui" pour confirmer.', function (err, value)
+      {
+        if (err) return;
+
+        const v = String(value || "").trim().toLowerCase();
+        if (v !== "oui")
+        {
+          setStatus("Annulé.", "warn");
+          return;
+        }
+
+        cancelEdit();
+      });
     });
 
-    kb.bindKey(["C-q", "C-c"], function () { quit(); });
+    // Quit hard
+    kb.bindKey(["C-c"], () => quit());
 
     // Init
-    loadEditorSources();
-    refreshMachines(true);
+    refreshMidnamAndOutLists();
+    refreshMachinesList(null);
 
-    const active = model.getActiveMachine();
-    if (active) fillEditorFromMachine(active);
+    // Active machine => editor view
+    if ((model.listMachines() || []).length)
+    {
+      const active = model.getActiveMachine() || getSelectedMachine();
+      if (active)
+      {
+        _editMode = "view";
+        _editId = active.id;
+        fillEditorFromMachine(active);
+      }
+    }
     else clearEditor("Aucune machine.");
 
     machinesList.focus();
+    refreshFocusMarkers();
     screen.render();
 
     return function cleanup()
@@ -1418,10 +1475,7 @@ module.exports = function startApp(midnamDir, io)
       keys: true,
       vi: true,
       tags: true,
-      style: {
-        border: THEME.border,
-        selected: { inverse: true }
-      }
+      style: { border: THEME.border, selected: { inverse: true } }
     });
 
     const preview = blessed.box({
@@ -1533,8 +1587,8 @@ module.exports = function startApp(midnamDir, io)
       if (cb) cb(cancelled ? new Error("cancelled") : null, value);
     }
 
-    inputBox.on("submit", function (value) { closeInputModal(false, value); });
-    inputBox.key(["escape"], function () { closeInputModal(true, null); });
+    inputBox.on("submit", (value) => closeInputModal(false, value));
+    inputBox.key(["escape"], () => closeInputModal(true, null));
 
     function setStatus(text, level)
     {
@@ -1631,10 +1685,10 @@ module.exports = function startApp(midnamDir, io)
     }
 
     // Events
-    entriesList.on("highlight", function () { refreshPreview(); });
-    entriesList.key(["up", "down", "k", "j", "pageup", "pagedown"], function () { refreshPreview(); });
+    entriesList.on("highlight", () => refreshPreview());
+    entriesList.key(["up", "down", "k", "j", "pageup", "pagedown"], () => refreshPreview());
 
-    entriesList.key(["enter"], function ()
+    entriesList.key(["enter"], () =>
     {
       const e = getSelectedEntry();
       if (!e)
@@ -1648,7 +1702,7 @@ module.exports = function startApp(midnamDir, io)
       refreshEntries();
     });
 
-    kb.bindKey(["a"], function ()
+    kb.bindKey(["a"], () =>
     {
       if (!model.draft.routes.length)
       {
@@ -1656,7 +1710,7 @@ module.exports = function startApp(midnamDir, io)
         return;
       }
 
-      askInput("Nom de l'entrée (cue) ?", "", function (err, value)
+      askInput("Nom de l'entrée (cue) ?", "", (err, value) =>
       {
         if (err) return;
 
@@ -1666,7 +1720,7 @@ module.exports = function startApp(midnamDir, io)
       });
     });
 
-    kb.bindKey(["r"], function ()
+    kb.bindKey(["r"], () =>
     {
       const e = getSelectedEntry();
       if (!e)
@@ -1675,7 +1729,7 @@ module.exports = function startApp(midnamDir, io)
         return;
       }
 
-      askInput("Nouveau nom ?", e.name, function (err, value)
+      askInput("Nouveau nom ?", e.name, (err, value) =>
       {
         if (err) return;
 
@@ -1692,7 +1746,7 @@ module.exports = function startApp(midnamDir, io)
       });
     });
 
-    kb.bindKey(["d"], function ()
+    kb.bindKey(["d"], () =>
     {
       const e = getSelectedEntry();
       if (!e)
@@ -1701,7 +1755,7 @@ module.exports = function startApp(midnamDir, io)
         return;
       }
 
-      askInput(`Supprimer "${e.name}" ? Tape "oui"`, "", function (err, value)
+      askInput(`Supprimer "${e.name}" ? Tape "oui"`, "", (err, value) =>
       {
         if (err) return;
 
@@ -1718,8 +1772,8 @@ module.exports = function startApp(midnamDir, io)
       });
     });
 
-    kb.bindKey(["q", "escape"], function () { switchPage("browse"); });
-    kb.bindKey(["C-c"], function () { quit(); });
+    kb.bindKey(["q", "escape"], () => switchPage("browse"));
+    kb.bindKey(["C-c"], () => quit());
 
     refreshSetlistHeader();
     refreshEntries();

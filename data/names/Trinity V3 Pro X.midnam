@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MIDINameDocument
+	PUBLIC "-//MIDI Manufacturers Association//DTD MIDINameDocument 0.7//EN"
+	"http://www.midi.org/dtds/MIDINameDocument10.dtd"
+	>
+
+<MIDINameDocument>
+	<Author>Sound Quest Inc.</Author>
+	<MasterDeviceNames>
+		<Manufacturer>Korg</Manufacturer>
+		<Model>Trinity V3 Pro X</Model>
+		<CustomDeviceMode Name="">
+			<ChannelNameSetAssignments>
+				<ChannelNameSetAssign Channel="1" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="2" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="3" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="4" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="5" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="6" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="7" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="8" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="9" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="10" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="11" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="12" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="13" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="14" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="15" NameSet="Patches" />
+				<ChannelNameSetAssign Channel="16" NameSet="Patches" />
+			</ChannelNameSetAssignments>
+		</CustomDeviceMode>
+
+		<ChannelNameSet Name="Patches">
+			<AvailableForChannels>
+				<AvailableChannel Channel="1" Available="true" />
+				<AvailableChannel Channel="2" Available="true" />
+				<AvailableChannel Channel="3" Available="true" />
+				<AvailableChannel Channel="4" Available="true" />
+				<AvailableChannel Channel="5" Available="true" />
+				<AvailableChannel Channel="6" Available="true" />
+				<AvailableChannel Channel="7" Available="true" />
+				<AvailableChannel Channel="8" Available="true" />
+				<AvailableChannel Channel="9" Available="true" />
+				<AvailableChannel Channel="10" Available="true" />
+				<AvailableChannel Channel="11" Available="true" />
+				<AvailableChannel Channel="12" Available="true" />
+				<AvailableChannel Channel="13" Available="true" />
+				<AvailableChannel Channel="14" Available="true" />
+				<AvailableChannel Channel="15" Available="true" />
+				<AvailableChannel Channel="16" Available="true" />
+			</AvailableForChannels>
+			<PatchBank Name="Patch Bank A" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Patch Bank A" />
+			</PatchBank>
+			<PatchBank Name="Patch Bank B" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="1" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Patch Bank B" />
+			</PatchBank>
+			<PatchBank Name="Patch Bank C" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="2" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Patch Bank C" />
+			</PatchBank>
+			<PatchBank Name="Patch Bank D" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="3" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Patch Bank D" />
+			</PatchBank>
+			<PatchBank Name="Patch Bank (Synth)" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="4" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Patch Bank (Synth)" />
+			</PatchBank>
+		</ChannelNameSet>
+
+		<ChannelNameSet Name="Combis">
+			<AvailableForChannels>
+				<AvailableChannel Channel="1" Available="true" />
+				<AvailableChannel Channel="2" Available="true" />
+				<AvailableChannel Channel="3" Available="true" />
+				<AvailableChannel Channel="4" Available="true" />
+				<AvailableChannel Channel="5" Available="true" />
+				<AvailableChannel Channel="6" Available="true" />
+				<AvailableChannel Channel="7" Available="true" />
+				<AvailableChannel Channel="8" Available="true" />
+				<AvailableChannel Channel="9" Available="true" />
+				<AvailableChannel Channel="10" Available="true" />
+				<AvailableChannel Channel="11" Available="true" />
+				<AvailableChannel Channel="12" Available="true" />
+				<AvailableChannel Channel="13" Available="true" />
+				<AvailableChannel Channel="14" Available="true" />
+				<AvailableChannel Channel="15" Available="true" />
+				<AvailableChannel Channel="16" Available="true" />
+			</AvailableForChannels>
+			<PatchBank Name="Combi Bank A" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Combi Bank A" />
+			</PatchBank>
+			<PatchBank Name="Combi Bank B" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="1" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Combi Bank B" />
+			</PatchBank>
+			<PatchBank Name="Combi Bank D" ROM="false">
+				<MIDICommands>
+					<ControlChange Control="0" Value="0" />
+					<ControlChange Control="32" Value="3" />
+				</MIDICommands>
+				<UsesPatchNameList Name="Combi Bank D" />
+			</PatchBank>
+		</ChannelNameSet>
+
+		<PatchNameList Name="Patch Bank A">
+			<Patch Number="Patch Bank A-  0" Name="Tsunami Warning " ProgramChange="0" />
+			<Patch Number="Patch Bank A-  1" Name="Acoustic Piano  " ProgramChange="1" />
+			<Patch Number="Patch Bank A-  2" Name="Alto Sax        " ProgramChange="2" />
+			<Patch Number="Patch Bank A-  3" Name="Take Voices     " ProgramChange="3" />
+			<Patch Number="Patch Bank A-  4" Name="Finger Pickin'  " ProgramChange="4" />
+			<Patch Number="Patch Bank A-  5" Name="VS Bell Boy     " ProgramChange="5" />
+			<Patch Number="Patch Bank A-  6" Name="Fretless Bass   " ProgramChange="6" />
+			<Patch Number="Patch Bank A-  7" Name="Stereo Strings  " ProgramChange="7" />
+			<Patch Number="Patch Bank A-  8" Name="Standard Kit    " ProgramChange="8" />
+			<Patch Number="Patch Bank A-  9" Name="Ultra Res. Sweep" ProgramChange="9" />
+			<Patch Number="Patch Bank A- 10" Name="Velocity Organ  " ProgramChange="10" />
+			<Patch Number="Patch Bank A- 11" Name="*Tingly* E.Piano" ProgramChange="11" />
+			<Patch Number="Patch Bank A- 12" Name="Stereo Brass    " ProgramChange="12" />
+			<Patch Number="Patch Bank A- 13" Name="Natural Kalimba " ProgramChange="13" />
+			<Patch Number="Patch Bank A- 14" Name="RibbonYoHeadOff!" ProgramChange="14" />
+			<Patch Number="Patch Bank A- 15" Name="Indian Duet     " ProgramChange="15" />
+			<Patch Number="Patch Bank A- 16" Name="Planet Of Funk  " ProgramChange="16" />
+			<Patch Number="Patch Bank A- 17" Name="Dyno-E.Piano    " ProgramChange="17" />
+			<Patch Number="Patch Bank A- 18" Name="SweetSilverFlute" ProgramChange="18" />
+			<Patch Number="Patch Bank A- 19" Name="Breath of Life  " ProgramChange="19" />
+			<Patch Number="Patch Bank A- 20" Name="Studio Strato   " ProgramChange="20" />
+			<Patch Number="Patch Bank A- 21" Name="Tubular Vibes   " ProgramChange="21" />
+			<Patch Number="Patch Bank A- 22" Name="Vinyl Rap Bass  " ProgramChange="22" />
+			<Patch Number="Patch Bank A- 23" Name="Solo String SW1 " ProgramChange="23" />
+			<Patch Number="Patch Bank A- 24" Name="Lethal Drum Hit " ProgramChange="24" />
+			<Patch Number="Patch Bank A- 25" Name="That Heaven Vibe" ProgramChange="25" />
+			<Patch Number="Patch Bank A- 26" Name="Rotary Organ    " ProgramChange="26" />
+			<Patch Number="Patch Bank A- 27" Name="Dreamy E.Piano  " ProgramChange="27" />
+			<Patch Number="Patch Bank A- 28" Name="Hard Trombone   " ProgramChange="28" />
+			<Patch Number="Patch Bank A- 29" Name="Mondo'Rimba     " ProgramChange="29" />
+			<Patch Number="Patch Bank A- 30" Name="Spectrum Lead   " ProgramChange="30" />
+			<Patch Number="Patch Bank A- 31" Name="Adieu Rainforest" ProgramChange="31" />
+			<Patch Number="Patch Bank A- 32" Name="Frozen Crystals " ProgramChange="32" />
+			<Patch Number="Patch Bank A- 33" Name=" | 90's Piano | " ProgramChange="33" />
+			<Patch Number="Patch Bank A- 34" Name="Clarinet        " ProgramChange="34" />
+			<Patch Number="Patch Bank A- 35" Name="Light Choir     " ProgramChange="35" />
+			<Patch Number="Patch Bank A- 36" Name="Nylon Guitar    " ProgramChange="36" />
+			<Patch Number="Patch Bank A- 37" Name="Sun Bells       " ProgramChange="37" />
+			<Patch Number="Patch Bank A- 38" Name="Acoustic Bass   " ProgramChange="38" />
+			<Patch Number="Patch Bank A- 39" Name="The Symphony    " ProgramChange="39" />
+			<Patch Number="Patch Bank A- 40" Name="!{Mega-Mix}! Kit" ProgramChange="40" />
+			<Patch Number="Patch Bank A- 41" Name="TECHNOphobic    " ProgramChange="41" />
+			<Patch Number="Patch Bank A- 42" Name="Pipe Tutti      " ProgramChange="42" />
+			<Patch Number="Patch Bank A- 43" Name="Night Tine EP   " ProgramChange="43" />
+			<Patch Number="Patch Bank A- 44" Name="Soft Trumpet    " ProgramChange="44" />
+			<Patch Number="Patch Bank A- 45" Name="Vibraphone      " ProgramChange="45" />
+			<Patch Number="Patch Bank A- 46" Name="Electric Lead   " ProgramChange="46" />
+			<Patch Number="Patch Bank A- 47" Name="Mandolin        " ProgramChange="47" />
+			<Patch Number="Patch Bank A- 48" Name="Moon Walking    " ProgramChange="48" />
+			<Patch Number="Patch Bank A- 49" Name="Electric Grand  " ProgramChange="49" />
+			<Patch Number="Patch Bank A- 50" Name="Oboe            " ProgramChange="50" />
+			<Patch Number="Patch Bank A- 51" Name="Harp Heaven     " ProgramChange="51" />
+			<Patch Number="Patch Bank A- 52" Name="Lead Guitar/JS-Y" ProgramChange="52" />
+			<Patch Number="Patch Bank A- 53" Name="*Bell * Arena*  " ProgramChange="53" />
+			<Patch Number="Patch Bank A- 54" Name="FM Bass         " ProgramChange="54" />
+			<Patch Number="Patch Bank A- 55" Name="Solo Violin     " ProgramChange="55" />
+			<Patch Number="Patch Bank A- 56" Name="Asian Gong      " ProgramChange="56" />
+			<Patch Number="Patch Bank A- 57" Name="Synth Orchestra " ProgramChange="57" />
+			<Patch Number="Patch Bank A- 58" Name="Jazz-Organ 2    " ProgramChange="58" />
+			<Patch Number="Patch Bank A- 59" Name="Future Synth    " ProgramChange="59" />
+			<Patch Number="Patch Bank A- 60" Name="Trombone Ens.   " ProgramChange="60" />
+			<Patch Number="Patch Bank A- 61" Name="Steel Drum      " ProgramChange="61" />
+			<Patch Number="Patch Bank A- 62" Name="SnoopDoggy Bass " ProgramChange="62" />
+			<Patch Number="Patch Bank A- 63" Name="Harp            " ProgramChange="63" />
+			<Patch Number="Patch Bank A- 64" Name="Dragon's Lair   " ProgramChange="64" />
+			<Patch Number="Patch Bank A- 65" Name="Clav Control    " ProgramChange="65" />
+			<Patch Number="Patch Bank A- 66" Name="Soprano Sax     " ProgramChange="66" />
+			<Patch Number="Patch Bank A- 67" Name="Analog Strings  " ProgramChange="67" />
+			<Patch Number="Patch Bank A- 68" Name="Power Chord Plus" ProgramChange="68" />
+			<Patch Number="Patch Bank A- 69" Name="Ancient Bells   " ProgramChange="69" />
+			<Patch Number="Patch Bank A- 70" Name="Mono Slap Bass  " ProgramChange="70" />
+			<Patch Number="Patch Bank A- 71" Name="Modern Strings  " ProgramChange="71" />
+			<Patch Number="Patch Bank A- 72" Name="Percussion Kit  " ProgramChange="72" />
+			<Patch Number="Patch Bank A- 73" Name="Synclav Pad     " ProgramChange="73" />
+			<Patch Number="Patch Bank A- 74" Name="Garage Organ    " ProgramChange="74" />
+			<Patch Number="Patch Bank A- 75" Name="Akkordeon/SW 1 2" ProgramChange="75" />
+			<Patch Number="Patch Bank A- 76" Name="French Horn Ens." ProgramChange="76" />
+			<Patch Number="Patch Bank A- 77" Name="Music Box / SW1 " ProgramChange="77" />
+			<Patch Number="Patch Bank A- 78" Name="30303 Square    " ProgramChange="78" />
+			<Patch Number="Patch Bank A- 79" Name="Koto            " ProgramChange="79" />
+			<Patch Number="Patch Bank A- 80" Name="Hard-Air Hit    " ProgramChange="80" />
+			<Patch Number="Patch Bank A- 81" Name="20,000 Fathoms  " ProgramChange="81" />
+			<Patch Number="Patch Bank A- 82" Name="Recorder        " ProgramChange="82" />
+			<Patch Number="Patch Bank A- 83" Name="Xylospectrum    " ProgramChange="83" />
+			<Patch Number="Patch Bank A- 84" Name="Tell A Caster   " ProgramChange="84" />
+			<Patch Number="Patch Bank A- 85" Name="Bell Angels     " ProgramChange="85" />
+			<Patch Number="Patch Bank A- 86" Name="30303 Mega Bass " ProgramChange="86" />
+			<Patch Number="Patch Bank A- 87" Name="Pizzicato Ens.  " ProgramChange="87" />
+			<Patch Number="Patch Bank A- 88" Name="Jazz/Brush Kits " ProgramChange="88" />
+			<Patch Number="Patch Bank A- 89" Name="Analog Power    " ProgramChange="89" />
+			<Patch Number="Patch Bank A- 90" Name="Super BX-3      " ProgramChange="90" />
+			<Patch Number="Patch Bank A- 91" Name="Musette / SW 1 2" ProgramChange="91" />
+			<Patch Number="Patch Bank A- 92" Name="Mute Trumpet    " ProgramChange="92" />
+			<Patch Number="Patch Bank A- 93" Name="African Log Drum" ProgramChange="93" />
+			<Patch Number="Patch Bank A- 94" Name="Mr. Nightmare   " ProgramChange="94" />
+			<Patch Number="Patch Bank A- 95" Name="Nylon Harmonics " ProgramChange="95" />
+			<Patch Number="Patch Bank A- 96" Name="Shape Shifter   " ProgramChange="96" />
+			<Patch Number="Patch Bank A- 97" Name="Breathy Layers  " ProgramChange="97" />
+			<Patch Number="Patch Bank A- 98" Name="Pan Flute       " ProgramChange="98" />
+			<Patch Number="Patch Bank A- 99" Name="Doo the Vibe Pad" ProgramChange="99" />
+			<Patch Number="Patch Bank A-100" Name="12 String Guitar" ProgramChange="100" />
+			<Patch Number="Patch Bank A-101" Name="Finger Cymbal   " ProgramChange="101" />
+			<Patch Number="Patch Bank A-102" Name="Finger Bass     " ProgramChange="102" />
+			<Patch Number="Patch Bank A-103" Name="Marcato Strings " ProgramChange="103" />
+			<Patch Number="Patch Bank A-104" Name="BassDrums Snares" ProgramChange="104" />
+			<Patch Number="Patch Bank A-105" Name="Rezpad          " ProgramChange="105" />
+			<Patch Number="Patch Bank A-106" Name="Gospel Organ    " ProgramChange="106" />
+			<Patch Number="Patch Bank A-107" Name="Brass Pad       " ProgramChange="107" />
+			<Patch Number="Patch Bank A-108" Name="Tuba            " ProgramChange="108" />
+			<Patch Number="Patch Bank A-109" Name="Staccato Hit!   " ProgramChange="109" />
+			<Patch Number="Patch Bank A-110" Name="Orbiting Probes " ProgramChange="110" />
+			<Patch Number="Patch Bank A-111" Name="Chorus E.Guitar " ProgramChange="111" />
+			<Patch Number="Patch Bank A-112" Name="Insectisuicides " ProgramChange="112" />
+			<Patch Number="Patch Bank A-113" Name="Custom Roads    " ProgramChange="113" />
+			<Patch Number="Patch Bank A-114" Name="The Sax Band    " ProgramChange="114" />
+			<Patch Number="Patch Bank A-115" Name="Martian Winds   " ProgramChange="115" />
+			<Patch Number="Patch Bank A-116" Name="Metal Maniac    " ProgramChange="116" />
+			<Patch Number="Patch Bank A-117" Name="Breathy Bells   " ProgramChange="117" />
+			<Patch Number="Patch Bank A-118" Name="Monster Bass    " ProgramChange="118" />
+			<Patch Number="Patch Bank A-119" Name="Solo Cello      " ProgramChange="119" />
+			<Patch Number="Patch Bank A-120" Name="01/W Total Kit  " ProgramChange="120" />
+			<Patch Number="Patch Bank A-121" Name="Flutepad        " ProgramChange="121" />
+			<Patch Number="Patch Bank A-122" Name="Pipe Positive   " ProgramChange="122" />
+			<Patch Number="Patch Bank A-123" Name="Shakuhachi      " ProgramChange="123" />
+			<Patch Number="Patch Bank A-124" Name="Velo Orchestra  " ProgramChange="124" />
+			<Patch Number="Patch Bank A-125" Name="Pop Bottle      " ProgramChange="125" />
+			<Patch Number="Patch Bank A-126" Name="The UFO Appears " ProgramChange="126" />
+			<Patch Number="Patch Bank A-127" Name="Hawaiian Glass  " ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Patch Bank B">
+			<Patch Number="Patch Bank B-  0" Name="Sky Diver...    " ProgramChange="0" />
+			<Patch Number="Patch Bank B-  1" Name="Compressed Piano" ProgramChange="1" />
+			<Patch Number="Patch Bank B-  2" Name="Growling Tenor  " ProgramChange="2" />
+			<Patch Number="Patch Bank B-  3" Name="Mixed Choir     " ProgramChange="3" />
+			<Patch Number="Patch Bank B-  4" Name="Steel String Gtr" ProgramChange="4" />
+			<Patch Number="Patch Bank B-  5" Name="Ensemble Bell   " ProgramChange="5" />
+			<Patch Number="Patch Bank B-  6" Name="Jacobass        " ProgramChange="6" />
+			<Patch Number="Patch Bank B-  7" Name="World Strings   " ProgramChange="7" />
+			<Patch Number="Patch Bank B-  8" Name="Processed Kit   " ProgramChange="8" />
+			<Patch Number="Patch Bank B-  9" Name="Mine Sweep      " ProgramChange="9" />
+			<Patch Number="Patch Bank B- 10" Name="Killer Organ    " ProgramChange="10" />
+			<Patch Number="Patch Bank B- 11" Name="Phantom Tines   " ProgramChange="11" />
+			<Patch Number="Patch Bank B- 12" Name="Grando Bando    " ProgramChange="12" />
+			<Patch Number="Patch Bank B- 13" Name="Xylophone       " ProgramChange="13" />
+			<Patch Number="Patch Bank B- 14" Name="Monster Lead    " ProgramChange="14" />
+			<Patch Number="Patch Bank B- 15" Name="Sitar           " ProgramChange="15" />
+			<Patch Number="Patch Bank B- 16" Name="Hands of Time   " ProgramChange="16" />
+			<Patch Number="Patch Bank B- 17" Name="Pro-Stage E.P.  " ProgramChange="17" />
+			<Patch Number="Patch Bank B- 18" Name="Piccolo         " ProgramChange="18" />
+			<Patch Number="Patch Bank B- 19" Name="BreathyLayerPad " ProgramChange="19" />
+			<Patch Number="Patch Bank B- 20" Name="Dynastrat       " ProgramChange="20" />
+			<Patch Number="Patch Bank B- 21" Name="Tubular Bell    " ProgramChange="21" />
+			<Patch Number="Patch Bank B- 22" Name="Dark SynBass    " ProgramChange="22" />
+			<Patch Number="Patch Bank B- 23" Name="Ensemble   Solo " ProgramChange="23" />
+			<Patch Number="Patch Bank B- 24" Name="Cyber-Impact/SW1" ProgramChange="24" />
+			<Patch Number="Patch Bank B- 25" Name="Solar Ghosts    " ProgramChange="25" />
+			<Patch Number="Patch Bank B- 26" Name="Perc Rock Organ " ProgramChange="26" />
+			<Patch Number="Patch Bank B- 27" Name="*Belliano*      " ProgramChange="27" />
+			<Patch Number="Patch Bank B- 28" Name="Soft Trombone   " ProgramChange="28" />
+			<Patch Number="Patch Bank B- 29" Name="Marimba         " ProgramChange="29" />
+			<Patch Number="Patch Bank B- 30" Name="Syn Pipes       " ProgramChange="30" />
+			<Patch Number="Patch Bank B- 31" Name="Mandolin Trem   " ProgramChange="31" />
+			<Patch Number="Patch Bank B- 32" Name="Aurora Borealis " ProgramChange="32" />
+			<Patch Number="Patch Bank B- 33" Name="Super Grand     " ProgramChange="33" />
+			<Patch Number="Patch Bank B- 34" Name="Bass Clarinet   " ProgramChange="34" />
+			<Patch Number="Patch Bank B- 35" Name="Boys Choir      " ProgramChange="35" />
+			<Patch Number="Patch Bank B- 36" Name="Dad's JazzGuitar" ProgramChange="36" />
+			<Patch Number="Patch Bank B- 37" Name="Pluck Bell      " ProgramChange="37" />
+			<Patch Number="Patch Bank B- 38" Name="Jazz Bass  SW1  " ProgramChange="38" />
+			<Patch Number="Patch Bank B- 39" Name="{Slow Strings}  " ProgramChange="39" />
+			<Patch Number="Patch Bank B- 40" Name="Psycho Kit      " ProgramChange="40" />
+			<Patch Number="Patch Bank B- 41" Name="Hit The Beast   " ProgramChange="41" />
+			<Patch Number="Patch Bank B- 42" Name="Pipe Mixture    " ProgramChange="42" />
+			<Patch Number="Patch Bank B- 43" Name="MIDI Ensemble   " ProgramChange="43" />
+			<Patch Number="Patch Bank B- 44" Name="Medium Trumpet  " ProgramChange="44" />
+			<Patch Number="Patch Bank B- 45" Name="Ribbon Rhythm   " ProgramChange="45" />
+			<Patch Number="Patch Bank B- 46" Name="Espresso Lead   " ProgramChange="46" />
+			<Patch Number="Patch Bank B- 47" Name="Hackbrett       " ProgramChange="47" />
+			<Patch Number="Patch Bank B- 48" Name="Random Dancer   " ProgramChange="48" />
+			<Patch Number="Patch Bank B- 49" Name="Super Whirly    " ProgramChange="49" />
+			<Patch Number="Patch Bank B- 50" Name="Bassoon         " ProgramChange="50" />
+			<Patch Number="Patch Bank B- 51" Name="Super Pad       " ProgramChange="51" />
+			<Patch Number="Patch Bank B- 52" Name="Stadium Guitar  " ProgramChange="52" />
+			<Patch Number="Patch Bank B- 53" Name="Solar Motion    " ProgramChange="53" />
+			<Patch Number="Patch Bank B- 54" Name="Euro 8va Bass   " ProgramChange="54" />
+			<Patch Number="Patch Bank B- 55" Name="Solo Viola      " ProgramChange="55" />
+			<Patch Number="Patch Bank B- 56" Name="Timpani         " ProgramChange="56" />
+			<Patch Number="Patch Bank B- 57" Name="Analog Pad      " ProgramChange="57" />
+			<Patch Number="Patch Bank B- 58" Name="Jazz-Organ 1    " ProgramChange="58" />
+			<Patch Number="Patch Bank B- 59" Name="Brite FM Roads  " ProgramChange="59" />
+			<Patch Number="Patch Bank B- 60" Name="Modern Brass    " ProgramChange="60" />
+			<Patch Number="Patch Bank B- 61" Name="Balaphone       " ProgramChange="61" />
+			<Patch Number="Patch Bank B- 62" Name="Square Wave Lead" ProgramChange="62" />
+			<Patch Number="Patch Bank B- 63" Name="Bouzouki        " ProgramChange="63" />
+			<Patch Number="Patch Bank B- 64" Name="Vocal Motion    " ProgramChange="64" />
+			<Patch Number="Patch Bank B- 65" Name="=Snappy= Clavi  " ProgramChange="65" />
+			<Patch Number="Patch Bank B- 66" Name="Baritone Sax    " ProgramChange="66" />
+			<Patch Number="Patch Bank B- 67" Name="Symphonic Pad   " ProgramChange="67" />
+			<Patch Number="Patch Bank B- 68" Name="Parker Piezo    " ProgramChange="68" />
+			<Patch Number="Patch Bank B- 69" Name="13 Bells Of Bali" ProgramChange="69" />
+			<Patch Number="Patch Bank B- 70" Name="Picked Bass     " ProgramChange="70" />
+			<Patch Number="Patch Bank B- 71" Name="ClassicalStrings" ProgramChange="71" />
+			<Patch Number="Patch Bank B- 72" Name="Orch/Ethnic Kits" ProgramChange="72" />
+			<Patch Number="Patch Bank B- 73" Name="Hybrid keys     " ProgramChange="73" />
+			<Patch Number="Patch Bank B- 74" Name="Big Old JazzOrg " ProgramChange="74" />
+			<Patch Number="Patch Bank B- 75" Name="Tango / SW 1 2  " ProgramChange="75" />
+			<Patch Number="Patch Bank B- 76" Name="Flugelhorn      " ProgramChange="76" />
+			<Patch Number="Patch Bank B- 77" Name="Glockenspiel    " ProgramChange="77" />
+			<Patch Number="Patch Bank B- 78" Name="Phat Synth Bass " ProgramChange="78" />
+			<Patch Number="Patch Bank B- 79" Name="Shamisen        " ProgramChange="79" />
+			<Patch Number="Patch Bank B- 80" Name="The Mind        " ProgramChange="80" />
+			<Patch Number="Patch Bank B- 81" Name="Harpsichord     " ProgramChange="81" />
+			<Patch Number="Patch Bank B- 82" Name="Tin Flute       " ProgramChange="82" />
+			<Patch Number="Patch Bank B- 83" Name="Air Thing       " ProgramChange="83" />
+			<Patch Number="Patch Bank B- 84" Name="ExpressmanShadow" ProgramChange="84" />
+			<Patch Number="Patch Bank B- 85" Name="FM Bells        " ProgramChange="85" />
+			<Patch Number="Patch Bank B- 86" Name="30303 Rez Bass  " ProgramChange="86" />
+			<Patch Number="Patch Bank B- 87" Name="Solo Pizzicato  " ProgramChange="87" />
+			<Patch Number="Patch Bank B- 88" Name="Analog/Club Kits" ProgramChange="88" />
+			<Patch Number="Patch Bank B- 89" Name="Synpiano        " ProgramChange="89" />
+			<Patch Number="Patch Bank B- 90" Name="Dark Old BX-3   " ProgramChange="90" />
+			<Patch Number="Patch Bank B- 91" Name="Jangle heart    " ProgramChange="91" />
+			<Patch Number="Patch Bank B- 92" Name="Mute Trombone   " ProgramChange="92" />
+			<Patch Number="Patch Bank B- 93" Name="Wooden Slit Drum" ProgramChange="93" />
+			<Patch Number="Patch Bank B- 94" Name="Pipe Reeds      " ProgramChange="94" />
+			<Patch Number="Patch Bank B- 95" Name="Banjo Andro     " ProgramChange="95" />
+			<Patch Number="Patch Bank B- 96" Name=" { Scanners }   " ProgramChange="96" />
+			<Patch Number="Patch Bank B- 97" Name="Power Piano     " ProgramChange="97" />
+			<Patch Number="Patch Bank B- 98" Name="Bottle          " ProgramChange="98" />
+			<Patch Number="Patch Bank B- 99" Name="City of Angels  " ProgramChange="99" />
+			<Patch Number="Patch Bank B-100" Name="Funkin' Guitar  " ProgramChange="100" />
+			<Patch Number="Patch Bank B-101" Name="Finger Gamelon  " ProgramChange="101" />
+			<Patch Number="Patch Bank B-102" Name="Electric Bass   " ProgramChange="102" />
+			<Patch Number="Patch Bank B-103" Name="Ribbon Strings  " ProgramChange="103" />
+			<Patch Number="Patch Bank B-104" Name="Toms   Cymbals  " ProgramChange="104" />
+			<Patch Number="Patch Bank B-105" Name="Aftermath       " ProgramChange="105" />
+			<Patch Number="Patch Bank B-106" Name="Full Organ      " ProgramChange="106" />
+			<Patch Number="Patch Bank B-107" Name="Pedal Steel     " ProgramChange="107" />
+			<Patch Number="Patch Bank B-108" Name="Hard Trumpet    " ProgramChange="108" />
+			<Patch Number="Patch Bank B-109" Name="Space Hatch     " ProgramChange="109" />
+			<Patch Number="Patch Bank B-110" Name="StadiumSW1=Shore" ProgramChange="110" />
+			<Patch Number="Patch Bank B-111" Name="Funky Strato    " ProgramChange="111" />
+			<Patch Number="Patch Bank B-112" Name="Out of the myst." ProgramChange="112" />
+			<Patch Number="Patch Bank B-113" Name="Birds   Bugs    " ProgramChange="113" />
+			<Patch Number="Patch Bank B-114" Name="Harmonica       " ProgramChange="114" />
+			<Patch Number="Patch Bank B-115" Name="Decaying Organ  " ProgramChange="115" />
+			<Patch Number="Patch Bank B-116" Name="TalkBox Gtr/JS-Y" ProgramChange="116" />
+			<Patch Number="Patch Bank B-117" Name="Pot Covers      " ProgramChange="117" />
+			<Patch Number="Patch Bank B-118" Name="Pull Me Please  " ProgramChange="118" />
+			<Patch Number="Patch Bank B-119" Name="Contrabass Cello" ProgramChange="119" />
+			<Patch Number="Patch Bank B-120" Name="Marc Tree       " ProgramChange="120" />
+			<Patch Number="Patch Bank B-121" Name="Classic Squares " ProgramChange="121" />
+			<Patch Number="Patch Bank B-122" Name="Pipe Tuentiana  " ProgramChange="122" />
+			<Patch Number="Patch Bank B-123" Name="Hover Craft     " ProgramChange="123" />
+			<Patch Number="Patch Bank B-124" Name="Band Hit!       " ProgramChange="124" />
+			<Patch Number="Patch Bank B-125" Name="Thunderstorm!!!!" ProgramChange="125" />
+			<Patch Number="Patch Bank B-126" Name="Bass go pop.    " ProgramChange="126" />
+			<Patch Number="Patch Bank B-127" Name="Mute Guitar     " ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Patch Bank C">
+			<Patch Number="Patch Bank C-  0" Name="Universe        " ProgramChange="0" />
+			<Patch Number="Patch Bank C-  1" Name="Piano 16'       " ProgramChange="1" />
+			<Patch Number="Patch Bank C-  2" Name="Brass 1         " ProgramChange="2" />
+			<Patch Number="Patch Bank C-  3" Name="Ooh/Aah         " ProgramChange="3" />
+			<Patch Number="Patch Bank C-  4" Name="Guitar 1        " ProgramChange="4" />
+			<Patch Number="Patch Bank C-  5" Name="BottleBell      " ProgramChange="5" />
+			<Patch Number="Patch Bank C-  6" Name="Fretless        " ProgramChange="6" />
+			<Patch Number="Patch Bank C-  7" Name="Symphonic       " ProgramChange="7" />
+			<Patch Number="Patch Bank C-  8" Name="Pan Flute       " ProgramChange="8" />
+			<Patch Number="Patch Bank C-  9" Name="Drums #1        " ProgramChange="9" />
+			<Patch Number="Patch Bank C- 10" Name="PanMallet       " ProgramChange="10" />
+			<Patch Number="Patch Bank C- 11" Name="E.Piano 1       " ProgramChange="11" />
+			<Patch Number="Patch Bank C- 12" Name="Trumpet         " ProgramChange="12" />
+			<Patch Number="Patch Bank C- 13" Name="Nimbus          " ProgramChange="13" />
+			<Patch Number="Patch Bank C- 14" Name="DistGuitar      " ProgramChange="14" />
+			<Patch Number="Patch Bank C- 15" Name="Vibes           " ProgramChange="15" />
+			<Patch Number="Patch Bank C- 16" Name="Pick Bass       " ProgramChange="16" />
+			<Patch Number="Patch Bank C- 17" Name="Organ 2         " ProgramChange="17" />
+			<Patch Number="Patch Bank C- 18" Name="Flute           " ProgramChange="18" />
+			<Patch Number="Patch Bank C- 19" Name="Pole            " ProgramChange="19" />
+			<Patch Number="Patch Bank C- 20" Name="Dream Pad       " ProgramChange="20" />
+			<Patch Number="Patch Bank C- 21" Name="MagicPiano      " ProgramChange="21" />
+			<Patch Number="Patch Bank C- 22" Name="Solo Sax        " ProgramChange="22" />
+			<Patch Number="Patch Bank C- 23" Name="Choir           " ProgramChange="23" />
+			<Patch Number="Patch Bank C- 24" Name="12-String       " ProgramChange="24" />
+			<Patch Number="Patch Bank C- 25" Name="Kalimba         " ProgramChange="25" />
+			<Patch Number="Patch Bank C- 26" Name="A.Bass          " ProgramChange="26" />
+			<Patch Number="Patch Bank C- 27" Name="Strings         " ProgramChange="27" />
+			<Patch Number="Patch Bank C- 28" Name="SynMallet       " ProgramChange="28" />
+			<Patch Number="Patch Bank C- 29" Name="Drums #2        " ProgramChange="29" />
+			<Patch Number="Patch Bank C- 30" Name="Lore            " ProgramChange="30" />
+			<Patch Number="Patch Bank C- 31" Name="Harpsichord     " ProgramChange="31" />
+			<Patch Number="Patch Bank C- 32" Name="Doublereed      " ProgramChange="32" />
+			<Patch Number="Patch Bank C- 33" Name="Bottles         " ProgramChange="33" />
+			<Patch Number="Patch Bank C- 34" Name="Koto Trem       " ProgramChange="34" />
+			<Patch Number="Patch Bank C- 35" Name="Bell Ring       " ProgramChange="35" />
+			<Patch Number="Patch Bank C- 36" Name="SynthBass1      " ProgramChange="36" />
+			<Patch Number="Patch Bank C- 37" Name="Timp Bells      " ProgramChange="37" />
+			<Patch Number="Patch Bank C- 38" Name="Solo Synth      " ProgramChange="38" />
+			<Patch Number="Patch Bank C- 39" Name="Pop             " ProgramChange="39" />
+			<Patch Number="Patch Bank C- 40" Name="Magician        " ProgramChange="40" />
+			<Patch Number="Patch Bank C- 41" Name="Piano 8'        " ProgramChange="41" />
+			<Patch Number="Patch Bank C- 42" Name="Overture        " ProgramChange="42" />
+			<Patch Number="Patch Bank C- 43" Name="Angels          " ProgramChange="43" />
+			<Patch Number="Patch Bank C- 44" Name="Sitar 1         " ProgramChange="44" />
+			<Patch Number="Patch Bank C- 45" Name="Tubular         " ProgramChange="45" />
+			<Patch Number="Patch Bank C- 46" Name="Slap Bass       " ProgramChange="46" />
+			<Patch Number="Patch Bank C- 47" Name="Pipe Organ      " ProgramChange="47" />
+			<Patch Number="Patch Bank C- 48" Name="Wire            " ProgramChange="48" />
+			<Patch Number="Patch Bank C- 49" Name="Drums #3        " ProgramChange="49" />
+			<Patch Number="Patch Bank C- 50" Name="Bambu Trem      " ProgramChange="50" />
+			<Patch Number="Patch Bank C- 51" Name="E.Piano 4       " ProgramChange="51" />
+			<Patch Number="Patch Bank C- 52" Name="Tubaflugel      " ProgramChange="52" />
+			<Patch Number="Patch Bank C- 53" Name="Voice Wave      " ProgramChange="53" />
+			<Patch Number="Patch Bank C- 54" Name="Guitar 2        " ProgramChange="54" />
+			<Patch Number="Patch Bank C- 55" Name="Metal Hit       " ProgramChange="55" />
+			<Patch Number="Patch Bank C- 56" Name="SynthBass2      " ProgramChange="56" />
+			<Patch Number="Patch Bank C- 57" Name="StringsRise     " ProgramChange="57" />
+			<Patch Number="Patch Bank C- 58" Name="Pan Wave        " ProgramChange="58" />
+			<Patch Number="Patch Bank C- 59" Name="Hammer          " ProgramChange="59" />
+			<Patch Number="Patch Bank C- 60" Name="Cloud Nine      " ProgramChange="60" />
+			<Patch Number="Patch Bank C- 61" Name="Clav            " ProgramChange="61" />
+			<Patch Number="Patch Bank C- 62" Name="Tenor Sax       " ProgramChange="62" />
+			<Patch Number="Patch Bank C- 63" Name="Voices          " ProgramChange="63" />
+			<Patch Number="Patch Bank C- 64" Name="Rock Guitar     " ProgramChange="64" />
+			<Patch Number="Patch Bank C- 65" Name="WindBells       " ProgramChange="65" />
+			<Patch Number="Patch Bank C- 66" Name="SynthBass3      " ProgramChange="66" />
+			<Patch Number="Patch Bank C- 67" Name="Organ 1         " ProgramChange="67" />
+			<Patch Number="Patch Bank C- 68" Name="Block           " ProgramChange="68" />
+			<Patch Number="Patch Bank C- 69" Name="FingerSnap      " ProgramChange="69" />
+			<Patch Number="Patch Bank C- 70" Name="MagicOrgan      " ProgramChange="70" />
+			<Patch Number="Patch Bank C- 71" Name="E.Piano 2       " ProgramChange="71" />
+			<Patch Number="Patch Bank C- 72" Name="Brass 2         " ProgramChange="72" />
+			<Patch Number="Patch Bank C- 73" Name="Fv Wave         " ProgramChange="73" />
+			<Patch Number="Patch Bank C- 74" Name="PickGuitar      " ProgramChange="74" />
+			<Patch Number="Patch Bank C- 75" Name="Digi-Bells      " ProgramChange="75" />
+			<Patch Number="Patch Bank C- 76" Name="AnalogBass      " ProgramChange="76" />
+			<Patch Number="Patch Bank C- 77" Name="Ping Wave       " ProgramChange="77" />
+			<Patch Number="Patch Bank C- 78" Name="Vibe Hit        " ProgramChange="78" />
+			<Patch Number="Patch Bank C- 79" Name="Pluck           " ProgramChange="79" />
+			<Patch Number="Patch Bank C- 80" Name="Good   Bad      " ProgramChange="80" />
+			<Patch Number="Patch Bank C- 81" Name="Digital 2       " ProgramChange="81" />
+			<Patch Number="Patch Bank C- 82" Name="Mute Trp.       " ProgramChange="82" />
+			<Patch Number="Patch Bank C- 83" Name="Stratos         " ProgramChange="83" />
+			<Patch Number="Patch Bank C- 84" Name="Sitar 2         " ProgramChange="84" />
+			<Patch Number="Patch Bank C- 85" Name="Flexatone       " ProgramChange="85" />
+			<Patch Number="Patch Bank C- 86" Name="Digital 4       " ProgramChange="86" />
+			<Patch Number="Patch Bank C- 87" Name="Soft Horns      " ProgramChange="87" />
+			<Patch Number="Patch Bank C- 88" Name="HellsBells      " ProgramChange="88" />
+			<Patch Number="Patch Bank C- 89" Name="Drop            " ProgramChange="89" />
+			<Patch Number="Patch Bank C- 90" Name="Zephyr          " ProgramChange="90" />
+			<Patch Number="Patch Bank C- 91" Name="E.Piano 3       " ProgramChange="91" />
+			<Patch Number="Patch Bank C- 92" Name="Synbrass        " ProgramChange="92" />
+			<Patch Number="Patch Bank C- 93" Name="Digital 5       " ProgramChange="93" />
+			<Patch Number="Patch Bank C- 94" Name="E.Guitar1       " ProgramChange="94" />
+			<Patch Number="Patch Bank C- 95" Name="Rhythm          " ProgramChange="95" />
+			<Patch Number="Patch Bank C- 96" Name="Mono Synth      " ProgramChange="96" />
+			<Patch Number="Patch Bank C- 97" Name="Hold......      " ProgramChange="97" />
+			<Patch Number="Patch Bank C- 98" Name="Wait......      " ProgramChange="98" />
+			<Patch Number="Patch Bank C- 99" Name="Surprise!!      " ProgramChange="99" />
+			<Patch Number="Patch Bank C-100" Name="Universe        " ProgramChange="100" />
+			<Patch Number="Patch Bank C-101" Name="Piano 16'       " ProgramChange="101" />
+			<Patch Number="Patch Bank C-102" Name="Brass 1         " ProgramChange="102" />
+			<Patch Number="Patch Bank C-103" Name="Ooh/Aah         " ProgramChange="103" />
+			<Patch Number="Patch Bank C-104" Name="Guitar 1        " ProgramChange="104" />
+			<Patch Number="Patch Bank C-105" Name="BottleBell      " ProgramChange="105" />
+			<Patch Number="Patch Bank C-106" Name="Fretless        " ProgramChange="106" />
+			<Patch Number="Patch Bank C-107" Name="Symphonic       " ProgramChange="107" />
+			<Patch Number="Patch Bank C-108" Name="Pan Flute       " ProgramChange="108" />
+			<Patch Number="Patch Bank C-109" Name="Drums #1        " ProgramChange="109" />
+			<Patch Number="Patch Bank C-110" Name="PanMallet       " ProgramChange="110" />
+			<Patch Number="Patch Bank C-111" Name="E.Piano 1       " ProgramChange="111" />
+			<Patch Number="Patch Bank C-112" Name="Trumpet         " ProgramChange="112" />
+			<Patch Number="Patch Bank C-113" Name="Nimbus          " ProgramChange="113" />
+			<Patch Number="Patch Bank C-114" Name="DistGuitar      " ProgramChange="114" />
+			<Patch Number="Patch Bank C-115" Name="Vibes           " ProgramChange="115" />
+			<Patch Number="Patch Bank C-116" Name="Pick Bass       " ProgramChange="116" />
+			<Patch Number="Patch Bank C-117" Name="Organ 2         " ProgramChange="117" />
+			<Patch Number="Patch Bank C-118" Name="Flute           " ProgramChange="118" />
+			<Patch Number="Patch Bank C-119" Name="Pole            " ProgramChange="119" />
+			<Patch Number="Patch Bank C-120" Name="Dream Pad       " ProgramChange="120" />
+			<Patch Number="Patch Bank C-121" Name="MagicPiano      " ProgramChange="121" />
+			<Patch Number="Patch Bank C-122" Name="Solo Sax        " ProgramChange="122" />
+			<Patch Number="Patch Bank C-123" Name="Choir           " ProgramChange="123" />
+			<Patch Number="Patch Bank C-124" Name="12-String       " ProgramChange="124" />
+			<Patch Number="Patch Bank C-125" Name="Kalimba         " ProgramChange="125" />
+			<Patch Number="Patch Bank C-126" Name="A.Bass          " ProgramChange="126" />
+			<Patch Number="Patch Bank C-127" Name="Strings         " ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Patch Bank D">
+			<Patch Number="Patch Bank D-  0" Name="Random Dancer   " ProgramChange="0" />
+			<Patch Number="Patch Bank D-  1" Name="Soft Ac. Piano  " ProgramChange="1" />
+			<Patch Number="Patch Bank D-  2" Name="Soprano Sax     " ProgramChange="2" />
+			<Patch Number="Patch Bank D-  3" Name="Mixed Choir     " ProgramChange="3" />
+			<Patch Number="Patch Bank D-  4" Name="Finger Pickin'  " ProgramChange="4" />
+			<Patch Number="Patch Bank D-  5" Name="VS Bell Boy     " ProgramChange="5" />
+			<Patch Number="Patch Bank D-  6" Name="Fretless Bass   " ProgramChange="6" />
+			<Patch Number="Patch Bank D-  7" Name="Stereo Strings  " ProgramChange="7" />
+			<Patch Number="Patch Bank D-  8" Name="Percussion Kit  " ProgramChange="8" />
+			<Patch Number="Patch Bank D-  9" Name="Ultra Res. Sweep" ProgramChange="9" />
+			<Patch Number="Patch Bank D- 10" Name="Modern Brass    " ProgramChange="10" />
+			<Patch Number="Patch Bank D- 11" Name="*Tingly* E.Piano" ProgramChange="11" />
+			<Patch Number="Patch Bank D- 12" Name="Mute Trumpet    " ProgramChange="12" />
+			<Patch Number="Patch Bank D- 13" Name="Piccolo         " ProgramChange="13" />
+			<Patch Number="Patch Bank D- 14" Name="RibbonYoHeadOff!" ProgramChange="14" />
+			<Patch Number="Patch Bank D- 15" Name="Indian Duet     " ProgramChange="15" />
+			<Patch Number="Patch Bank D- 16" Name="Hands of Time   " ProgramChange="16" />
+			<Patch Number="Patch Bank D- 17" Name="Jacobass        " ProgramChange="17" />
+			<Patch Number="Patch Bank D- 18" Name="SweetSilverFlute" ProgramChange="18" />
+			<Patch Number="Patch Bank D- 19" Name="Breath of Life  " ProgramChange="19" />
+			<Patch Number="Patch Bank D- 20" Name="Velo Orchestra  " ProgramChange="20" />
+			<Patch Number="Patch Bank D- 21" Name="Sky Diver...    " ProgramChange="21" />
+			<Patch Number="Patch Bank D- 22" Name="Dark SynBass    " ProgramChange="22" />
+			<Patch Number="Patch Bank D- 23" Name="Solo String SW1 " ProgramChange="23" />
+			<Patch Number="Patch Bank D- 24" Name="Lethal Drum Hit " ProgramChange="24" />
+			<Patch Number="Patch Bank D- 25" Name="That Heaven Vibe" ProgramChange="25" />
+			<Patch Number="Patch Bank D- 26" Name="Analog Pad      " ProgramChange="26" />
+			<Patch Number="Patch Bank D- 27" Name="Pull Me Please  " ProgramChange="27" />
+			<Patch Number="Patch Bank D- 28" Name="Hard Trombone   " ProgramChange="28" />
+			<Patch Number="Patch Bank D- 29" Name="Mondo'Rimba     " ProgramChange="29" />
+			<Patch Number="Patch Bank D- 30" Name="Spectrum Lead   " ProgramChange="30" />
+			<Patch Number="Patch Bank D- 31" Name="Thunderstorm!!!!" ProgramChange="31" />
+			<Patch Number="Patch Bank D- 32" Name="Frozen Crystals " ProgramChange="32" />
+			<Patch Number="Patch Bank D- 33" Name="Compressed Piano" ProgramChange="33" />
+			<Patch Number="Patch Bank D- 34" Name="Bass Clarinet   " ProgramChange="34" />
+			<Patch Number="Patch Bank D- 35" Name="Light Choir     " ProgramChange="35" />
+			<Patch Number="Patch Bank D- 36" Name="Nylon Guitar    " ProgramChange="36" />
+			<Patch Number="Patch Bank D- 37" Name="Ensemble Bell   " ProgramChange="37" />
+			<Patch Number="Patch Bank D- 38" Name="Acoustic Bass   " ProgramChange="38" />
+			<Patch Number="Patch Bank D- 39" Name="The Symphony    " ProgramChange="39" />
+			<Patch Number="Patch Bank D- 40" Name="Syn Pipes       " ProgramChange="40" />
+			<Patch Number="Patch Bank D- 41" Name="Hit The Beast   " ProgramChange="41" />
+			<Patch Number="Patch Bank D- 42" Name="Pipe Tuentiana  " ProgramChange="42" />
+			<Patch Number="Patch Bank D- 43" Name="Night Tine EP   " ProgramChange="43" />
+			<Patch Number="Patch Bank D- 44" Name="Soft Trumpet    " ProgramChange="44" />
+			<Patch Number="Patch Bank D- 45" Name="Vibraphone      " ProgramChange="45" />
+			<Patch Number="Patch Bank D- 46" Name="Espresso Lead   " ProgramChange="46" />
+			<Patch Number="Patch Bank D- 47" Name="Shamisen        " ProgramChange="47" />
+			<Patch Number="Patch Bank D- 48" Name="Moon Walking    " ProgramChange="48" />
+			<Patch Number="Patch Bank D- 49" Name="Electric Bass   " ProgramChange="49" />
+			<Patch Number="Patch Bank D- 50" Name="Oboe            " ProgramChange="50" />
+			<Patch Number="Patch Bank D- 51" Name="Harp Heaven     " ProgramChange="51" />
+			<Patch Number="Patch Bank D- 52" Name="Lead Guitar/JS-Y" ProgramChange="52" />
+			<Patch Number="Patch Bank D- 53" Name="*Bell * Arena*  " ProgramChange="53" />
+			<Patch Number="Patch Bank D- 54" Name="Euro 8va Bass   " ProgramChange="54" />
+			<Patch Number="Patch Bank D- 55" Name="Solo Violin     " ProgramChange="55" />
+			<Patch Number="Patch Bank D- 56" Name="Asian Gong      " ProgramChange="56" />
+			<Patch Number="Patch Bank D- 57" Name="Synth Orchestra " ProgramChange="57" />
+			<Patch Number="Patch Bank D- 58" Name="Jazz-Organ 1    " ProgramChange="58" />
+			<Patch Number="Patch Bank D- 59" Name="Brite FM Roads  " ProgramChange="59" />
+			<Patch Number="Patch Bank D- 60" Name="Trombone Ens.   " ProgramChange="60" />
+			<Patch Number="Patch Bank D- 61" Name="Timpani         " ProgramChange="61" />
+			<Patch Number="Patch Bank D- 62" Name="Square Wave Lead" ProgramChange="62" />
+			<Patch Number="Patch Bank D- 63" Name="Harp            " ProgramChange="63" />
+			<Patch Number="Patch Bank D- 64" Name="Vocal Motion    " ProgramChange="64" />
+			<Patch Number="Patch Bank D- 65" Name="=Snappy= Clavi  " ProgramChange="65" />
+			<Patch Number="Patch Bank D- 66" Name="Grando Bando    " ProgramChange="66" />
+			<Patch Number="Patch Bank D- 67" Name="Analog Strings  " ProgramChange="67" />
+			<Patch Number="Patch Bank D- 68" Name="Power Chord Plus" ProgramChange="68" />
+			<Patch Number="Patch Bank D- 69" Name="City of Angels  " ProgramChange="69" />
+			<Patch Number="Patch Bank D- 70" Name="Picked Bass     " ProgramChange="70" />
+			<Patch Number="Patch Bank D- 71" Name="ClassicalStrings" ProgramChange="71" />
+			<Patch Number="Patch Bank D- 72" Name="Orch/Ethnic Kits" ProgramChange="72" />
+			<Patch Number="Patch Bank D- 73" Name="Hybrid keys     " ProgramChange="73" />
+			<Patch Number="Patch Bank D- 74" Name="Hard Trumpet    " ProgramChange="74" />
+			<Patch Number="Patch Bank D- 75" Name="Akkordeon/SW 1 2" ProgramChange="75" />
+			<Patch Number="Patch Bank D- 76" Name="French Horn Ens." ProgramChange="76" />
+			<Patch Number="Patch Bank D- 77" Name="Glockenspiel    " ProgramChange="77" />
+			<Patch Number="Patch Bank D- 78" Name="30303 Square    " ProgramChange="78" />
+			<Patch Number="Patch Bank D- 79" Name="Koto            " ProgramChange="79" />
+			<Patch Number="Patch Bank D- 80" Name="Cyber-Impact/SW1" ProgramChange="80" />
+			<Patch Number="Patch Bank D- 81" Name="20,000 Fathoms  " ProgramChange="81" />
+			<Patch Number="Patch Bank D- 82" Name="Recorder        " ProgramChange="82" />
+			<Patch Number="Patch Bank D- 83" Name="Xylospectrum    " ProgramChange="83" />
+			<Patch Number="Patch Bank D- 84" Name="Boys Choir      " ProgramChange="84" />
+			<Patch Number="Patch Bank D- 85" Name="Aurora Borealis " ProgramChange="85" />
+			<Patch Number="Patch Bank D- 86" Name="30303 Mega Bass " ProgramChange="86" />
+			<Patch Number="Patch Bank D- 87" Name="Pizzicato Ens.  " ProgramChange="87" />
+			<Patch Number="Patch Bank D- 88" Name="{Slow Strings}  " ProgramChange="88" />
+			<Patch Number="Patch Bank D- 89" Name="Analog Power    " ProgramChange="89" />
+			<Patch Number="Patch Bank D- 90" Name="Flugelhorn      " ProgramChange="90" />
+			<Patch Number="Patch Bank D- 91" Name="Musette / SW 1 2" ProgramChange="91" />
+			<Patch Number="Patch Bank D- 92" Name="Soft Trombone   " ProgramChange="92" />
+			<Patch Number="Patch Bank D- 93" Name="Hover Craft     " ProgramChange="93" />
+			<Patch Number="Patch Bank D- 94" Name="Mr. Nightmare   " ProgramChange="94" />
+			<Patch Number="Patch Bank D- 95" Name="Stereo Brass    " ProgramChange="95" />
+			<Patch Number="Patch Bank D- 96" Name="Shape Shifter   " ProgramChange="96" />
+			<Patch Number="Patch Bank D- 97" Name="Air Thing       " ProgramChange="97" />
+			<Patch Number="Patch Bank D- 98" Name="Bottle          " ProgramChange="98" />
+			<Patch Number="Patch Bank D- 99" Name="Doo the Vibe Pad" ProgramChange="99" />
+			<Patch Number="Patch Bank D-100" Name="Monster Lead    " ProgramChange="100" />
+			<Patch Number="Patch Bank D-101" Name="Finger Gamelon  " ProgramChange="101" />
+			<Patch Number="Patch Bank D-102" Name="Finger Bass     " ProgramChange="102" />
+			<Patch Number="Patch Bank D-103" Name="Ribbon Strings  " ProgramChange="103" />
+			<Patch Number="Patch Bank D-104" Name="Medium Trumpet  " ProgramChange="104" />
+			<Patch Number="Patch Bank D-105" Name="Aftermath       " ProgramChange="105" />
+			<Patch Number="Patch Bank D-106" Name="Tango / SW 1 2  " ProgramChange="106" />
+			<Patch Number="Patch Bank D-107" Name="Brass Pad       " ProgramChange="107" />
+			<Patch Number="Patch Bank D-108" Name="Tuba            " ProgramChange="108" />
+			<Patch Number="Patch Bank D-109" Name="Space Hatch     " ProgramChange="109" />
+			<Patch Number="Patch Bank D-110" Name="Orbiting Probes " ProgramChange="110" />
+			<Patch Number="Patch Bank D-111" Name="Bass go pop.    " ProgramChange="111" />
+			<Patch Number="Patch Bank D-112" Name=" { Scanners }   " ProgramChange="112" />
+			<Patch Number="Patch Bank D-113" Name="Birds   Bugs    " ProgramChange="113" />
+			<Patch Number="Patch Bank D-114" Name="The Sax Band    " ProgramChange="114" />
+			<Patch Number="Patch Bank D-115" Name="Martian Winds   " ProgramChange="115" />
+			<Patch Number="Patch Bank D-116" Name="Super Pad       " ProgramChange="116" />
+			<Patch Number="Patch Bank D-117" Name="Symphonic Pad   " ProgramChange="117" />
+			<Patch Number="Patch Bank D-118" Name="Monster Bass    " ProgramChange="118" />
+			<Patch Number="Patch Bank D-119" Name="World Strings   " ProgramChange="119" />
+			<Patch Number="Patch Bank D-120" Name="Marc Tree       " ProgramChange="120" />
+			<Patch Number="Patch Bank D-121" Name="Flutepad        " ProgramChange="121" />
+			<Patch Number="Patch Bank D-122" Name="Pipe Positive   " ProgramChange="122" />
+			<Patch Number="Patch Bank D-123" Name="Shakuhachi      " ProgramChange="123" />
+			<Patch Number="Patch Bank D-124" Name="Mine Sweep      " ProgramChange="124" />
+			<Patch Number="Patch Bank D-125" Name="Pop Bottle      " ProgramChange="125" />
+			<Patch Number="Patch Bank D-126" Name="The UFO Appears " ProgramChange="126" />
+			<Patch Number="Patch Bank D-127" Name="Jazz Bass  SW1  " ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Patch Bank (Synth)">
+			<Patch Number="Patch Bank  Synth -  0" Name="War Birds       " ProgramChange="0" />
+			<Patch Number="Patch Bank  Synth -  1" Name="Palawan         " ProgramChange="1" />
+			<Patch Number="Patch Bank  Synth -  2" Name="Whirly E.P.     " ProgramChange="2" />
+			<Patch Number="Patch Bank  Synth -  3" Name="Death Lead      " ProgramChange="3" />
+			<Patch Number="Patch Bank  Synth -  4" Name="Zoop 1          " ProgramChange="4" />
+			<Patch Number="Patch Bank  Synth -  5" Name="Neo Clav        " ProgramChange="5" />
+			<Patch Number="Patch Bank  Synth -  6" Name="Rich Strings    " ProgramChange="6" />
+			<Patch Number="Patch Bank  Synth -  7" Name="Speed Comp      " ProgramChange="7" />
+			<Patch Number="Patch Bank  Synth -  8" Name="Phat Bass       " ProgramChange="8" />
+			<Patch Number="Patch Bank  Synth -  9" Name="Square Hollow   " ProgramChange="9" />
+			<Patch Number="Patch Bank  Synth - 10" Name="Frequency Lead  " ProgramChange="10" />
+			<Patch Number="Patch Bank  Synth - 11" Name="Techno Sequence " ProgramChange="11" />
+			<Patch Number="Patch Bank  Synth - 12" Name="Blue Guitar     " ProgramChange="12" />
+			<Patch Number="Patch Bank  Synth - 13" Name="Garage Choir    " ProgramChange="13" />
+			<Patch Number="Patch Bank  Synth - 14" Name="Bold Trumpet    " ProgramChange="14" />
+			<Patch Number="Patch Bank  Synth - 15" Name="Deep Forest     " ProgramChange="15" />
+			<Patch Number="Patch Bank  Synth - 16" Name="Sweepy Sawz     " ProgramChange="16" />
+			<Patch Number="Patch Bank  Synth - 17" Name="Night Lights    " ProgramChange="17" />
+			<Patch Number="Patch Bank  Synth - 18" Name="Tine Piano      " ProgramChange="18" />
+			<Patch Number="Patch Bank  Synth - 19" Name="Sync Comp       " ProgramChange="19" />
+			<Patch Number="Patch Bank  Synth - 20" Name="Dream Bell      " ProgramChange="20" />
+			<Patch Number="Patch Bank  Synth - 21" Name="SinglePerc Organ" ProgramChange="21" />
+			<Patch Number="Patch Bank  Synth - 22" Name="Blue Sax        " ProgramChange="22" />
+			<Patch Number="Patch Bank  Synth - 23" Name="Vowel Phase Mod " ProgramChange="23" />
+			<Patch Number="Patch Bank  Synth - 24" Name="Dyna Slap Bass  " ProgramChange="24" />
+			<Patch Number="Patch Bank  Synth - 25" Name="Wave Drum       " ProgramChange="25" />
+			<Patch Number="Patch Bank  Synth - 26" Name="Sub Lead        " ProgramChange="26" />
+			<Patch Number="Patch Bank  Synth - 27" Name="Ocean Calm      " ProgramChange="27" />
+			<Patch Number="Patch Bank  Synth - 28" Name="Metallic Bell   " ProgramChange="28" />
+			<Patch Number="Patch Bank  Synth - 29" Name="Male Ahhs       " ProgramChange="29" />
+			<Patch Number="Patch Bank  Synth - 30" Name="Hard Flute      " ProgramChange="30" />
+			<Patch Number="Patch Bank  Synth - 31" Name="Dimension       " ProgramChange="31" />
+			<Patch Number="Patch Bank  Synth - 32" Name="Arena Monster   " ProgramChange="32" />
+			<Patch Number="Patch Bank  Synth - 33" Name="Butterfly Pad   " ProgramChange="33" />
+			<Patch Number="Patch Bank  Synth - 34" Name="Tremolo Synth   " ProgramChange="34" />
+			<Patch Number="Patch Bank  Synth - 35" Name="Analog Lead     " ProgramChange="35" />
+			<Patch Number="Patch Bank  Synth - 36" Name="Zoop 2          " ProgramChange="36" />
+			<Patch Number="Patch Bank  Synth - 37" Name="Comb Clav       " ProgramChange="37" />
+			<Patch Number="Patch Bank  Synth - 38" Name="Dream Strings   " ProgramChange="38" />
+			<Patch Number="Patch Bank  Synth - 39" Name="Zipperling      " ProgramChange="39" />
+			<Patch Number="Patch Bank  Synth - 40" Name="Dirty Old Man   " ProgramChange="40" />
+			<Patch Number="Patch Bank  Synth - 41" Name="BPF Sweep       " ProgramChange="41" />
+			<Patch Number="Patch Bank  Synth - 42" Name="Digi Morphious  " ProgramChange="42" />
+			<Patch Number="Patch Bank  Synth - 43" Name="Techno S H Pad  " ProgramChange="43" />
+			<Patch Number="Patch Bank  Synth - 44" Name="Psychedelic Gtr." ProgramChange="44" />
+			<Patch Number="Patch Bank  Synth - 45" Name="Stream Pad      " ProgramChange="45" />
+			<Patch Number="Patch Bank  Synth - 46" Name="Zee Solo Violin " ProgramChange="46" />
+			<Patch Number="Patch Bank  Synth - 47" Name="Aliens Chitchat " ProgramChange="47" />
+			<Patch Number="Patch Bank  Synth - 48" Name="Giant REZ Sweep " ProgramChange="48" />
+			<Patch Number="Patch Bank  Synth - 49" Name="** ACID Rain ** " ProgramChange="49" />
+			<Patch Number="Patch Bank  Synth - 50" Name="Percussive Ring " ProgramChange="50" />
+			<Patch Number="Patch Bank  Synth - 51" Name="Light Brass Lead" ProgramChange="51" />
+			<Patch Number="Patch Bank  Synth - 52" Name="Bali Bells      " ProgramChange="52" />
+			<Patch Number="Patch Bank  Synth - 53" Name="Digital Dulcimer" ProgramChange="53" />
+			<Patch Number="Patch Bank  Synth - 54" Name="Soprano Sax     " ProgramChange="54" />
+			<Patch Number="Patch Bank  Synth - 55" Name="Moving Picture  " ProgramChange="55" />
+			<Patch Number="Patch Bank  Synth - 56" Name="Touch FingerBass" ProgramChange="56" />
+			<Patch Number="Patch Bank  Synth - 57" Name="Rhythmic Seq    " ProgramChange="57" />
+			<Patch Number="Patch Bank  Synth - 58" Name="mini Lead       " ProgramChange="58" />
+			<Patch Number="Patch Bank  Synth - 59" Name="Osiris          " ProgramChange="59" />
+			<Patch Number="Patch Bank  Synth - 60" Name="Reso Bell       " ProgramChange="60" />
+			<Patch Number="Patch Bank  Synth - 61" Name="Portamento Pad  " ProgramChange="61" />
+			<Patch Number="Patch Bank  Synth - 62" Name="Analog Brass    " ProgramChange="62" />
+			<Patch Number="Patch Bank  Synth - 63" Name="LFO gating      " ProgramChange="63" />
+			<Patch Number="Patch Bank  Synth - 64" Name="Full Synth      " ProgramChange="64" />
+			<Patch Number="Patch Bank  Synth - 65" Name="Motion Comb     " ProgramChange="65" />
+			<Patch Number="Patch Bank  Synth - 66" Name="Direct E.P.     " ProgramChange="66" />
+			<Patch Number="Patch Bank  Synth - 67" Name="Morph 3003 Dist " ProgramChange="67" />
+			<Patch Number="Patch Bank  Synth - 68" Name="Zoop 3          " ProgramChange="68" />
+			<Patch Number="Patch Bank  Synth - 69" Name="Prophetic Pulse " ProgramChange="69" />
+			<Patch Number="Patch Bank  Synth - 70" Name="Huge Strings    " ProgramChange="70" />
+			<Patch Number="Patch Bank  Synth - 71" Name="Rubbery Comp    " ProgramChange="71" />
+			<Patch Number="Patch Bank  Synth - 72" Name="Dark Pop Bass   " ProgramChange="72" />
+			<Patch Number="Patch Bank  Synth - 73" Name="Soft Pad        " ProgramChange="73" />
+			<Patch Number="Patch Bank  Synth - 74" Name="Emmer's Sun Syn " ProgramChange="74" />
+			<Patch Number="Patch Bank  Synth - 75" Name="Victory Pad     " ProgramChange="75" />
+			<Patch Number="Patch Bank  Synth - 76" Name="Nylon Acoustic  " ProgramChange="76" />
+			<Patch Number="Patch Bank  Synth - 77" Name="AEIOU Choir     " ProgramChange="77" />
+			<Patch Number="Patch Bank  Synth - 78" Name="Bold Trombone   " ProgramChange="78" />
+			<Patch Number="Patch Bank  Synth - 79" Name="TREXvsHELICOPTER" ProgramChange="79" />
+			<Patch Number="Patch Bank  Synth - 80" Name="Golden Synth    " ProgramChange="80" />
+			<Patch Number="Patch Bank  Synth - 81" Name="Vision Makers   " ProgramChange="81" />
+			<Patch Number="Patch Bank  Synth - 82" Name="Dyna Expressive " ProgramChange="82" />
+			<Patch Number="Patch Bank  Synth - 83" Name="Deep Sync Lead  " ProgramChange="83" />
+			<Patch Number="Patch Bank  Synth - 84" Name="U.K. Synth Bell " ProgramChange="84" />
+			<Patch Number="Patch Bank  Synth - 85" Name="Pipe Organ Full " ProgramChange="85" />
+			<Patch Number="Patch Bank  Synth - 86" Name="Dirty Sax       " ProgramChange="86" />
+			<Patch Number="Patch Bank  Synth - 87" Name="Flute Moss      " ProgramChange="87" />
+			<Patch Number="Patch Bank  Synth - 88" Name="Freaky Rez Bass " ProgramChange="88" />
+			<Patch Number="Patch Bank  Synth - 89" Name="Noise Virus     " ProgramChange="89" />
+			<Patch Number="Patch Bank  Synth - 90" Name="Phunk Rez Lead  " ProgramChange="90" />
+			<Patch Number="Patch Bank  Synth - 91" Name="Comb Flute Pad  " ProgramChange="91" />
+			<Patch Number="Patch Bank  Synth - 92" Name="Water Bell      " ProgramChange="92" />
+			<Patch Number="Patch Bank  Synth - 93" Name="'n'Bass         " ProgramChange="93" />
+			<Patch Number="Patch Bank  Synth - 94" Name="Cave Flute      " ProgramChange="94" />
+			<Patch Number="Patch Bank  Synth - 95" Name="Cyber Zone      " ProgramChange="95" />
+			<Patch Number="Patch Bank  Synth - 96" Name="HiPass Stuff    " ProgramChange="96" />
+			<Patch Number="Patch Bank  Synth - 97" Name="Sunflower       " ProgramChange="97" />
+			<Patch Number="Patch Bank  Synth - 98" Name="Brass Ensemble  " ProgramChange="98" />
+			<Patch Number="Patch Bank  Synth - 99" Name="Unison PWM      " ProgramChange="99" />
+			<Patch Number="Patch Bank  Synth -100" Name="This is Zee One!" ProgramChange="100" />
+			<Patch Number="Patch Bank  Synth -101" Name="Analog Comb     " ProgramChange="101" />
+			<Patch Number="Patch Bank  Synth -102" Name="Antique Strings " ProgramChange="102" />
+			<Patch Number="Patch Bank  Synth -103" Name="1000 Knives     " ProgramChange="103" />
+			<Patch Number="Patch Bank  Synth -104" Name="Deep Top Bass   " ProgramChange="104" />
+			<Patch Number="Patch Bank  Synth -105" Name="Pad Rize        " ProgramChange="105" />
+			<Patch Number="Patch Bank  Synth -106" Name="Light Res Synth " ProgramChange="106" />
+			<Patch Number="Patch Bank  Synth -107" Name="Resomotor       " ProgramChange="107" />
+			<Patch Number="Patch Bank  Synth -108" Name="Clean Strato Gtr" ProgramChange="108" />
+			<Patch Number="Patch Bank  Synth -109" Name="Female Voice    " ProgramChange="109" />
+			<Patch Number="Patch Bank  Synth -110" Name="Saw Horn        " ProgramChange="110" />
+			<Patch Number="Patch Bank  Synth -111" Name="Mad Scientist   " ProgramChange="111" />
+			<Patch Number="Patch Bank  Synth -112" Name="Rezzit Oiid     " ProgramChange="112" />
+			<Patch Number="Patch Bank  Synth -113" Name="Harbinger       " ProgramChange="113" />
+			<Patch Number="Patch Bank  Synth -114" Name="Misty Synth     " ProgramChange="114" />
+			<Patch Number="Patch Bank  Synth -115" Name="Soft Syn Brass  " ProgramChange="115" />
+			<Patch Number="Patch Bank  Synth -116" Name="Science Laws    " ProgramChange="116" />
+			<Patch Number="Patch Bank  Synth -117" Name="Rockin Bee!     " ProgramChange="117" />
+			<Patch Number="Patch Bank  Synth -118" Name="Hybrid Hardsyn  " ProgramChange="118" />
+			<Patch Number="Patch Bank  Synth -119" Name="Inner Space     " ProgramChange="119" />
+			<Patch Number="Patch Bank  Synth -120" Name="E. Syn Bass     " ProgramChange="120" />
+			<Patch Number="Patch Bank  Synth -121" Name="Noise Burst     " ProgramChange="121" />
+			<Patch Number="Patch Bank  Synth -122" Name="Rezo Bass       " ProgramChange="122" />
+			<Patch Number="Patch Bank  Synth -123" Name="Ground Synth    " ProgramChange="123" />
+			<Patch Number="Patch Bank  Synth -124" Name="Grand image Pad " ProgramChange="124" />
+			<Patch Number="Patch Bank  Synth -125" Name="Big Bass        " ProgramChange="125" />
+			<Patch Number="Patch Bank  Synth -126" Name="Laughter        " ProgramChange="126" />
+			<Patch Number="Patch Bank  Synth -127" Name="ANALOG INIT     " ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Combi Bank A">
+			<Patch Number="Combi Bank A-  0" Name="Filmscore       " ProgramChange="0" />
+			<Patch Number="Combi Bank A-  1" Name="Pankala         " ProgramChange="1" />
+			<Patch Number="Combi Bank A-  2" Name="Rondo'          " ProgramChange="2" />
+			<Patch Number="Combi Bank A-  3" Name="Brass 1 2       " ProgramChange="3" />
+			<Patch Number="Combi Bank A-  4" Name="Fuji-san        " ProgramChange="4" />
+			<Patch Number="Combi Bank A-  5" Name="1-Man-Band      " ProgramChange="5" />
+			<Patch Number="Combi Bank A-  6" Name="Orchestra1      " ProgramChange="6" />
+			<Patch Number="Combi Bank A-  7" Name="12 String       " ProgramChange="7" />
+			<Patch Number="Combi Bank A-  8" Name="Pyramids        " ProgramChange="8" />
+			<Patch Number="Combi Bank A-  9" Name="Bass Piano      " ProgramChange="9" />
+			<Patch Number="Combi Bank A- 10" Name="MIDIStack1      " ProgramChange="10" />
+			<Patch Number="Combi Bank A- 11" Name="BellVoices      " ProgramChange="11" />
+			<Patch Number="Combi Bank A- 12" Name="Ensemble1       " ProgramChange="12" />
+			<Patch Number="Combi Bank A- 13" Name="SunSection      " ProgramChange="13" />
+			<Patch Number="Combi Bank A- 14" Name="Atlantis        " ProgramChange="14" />
+			<Patch Number="Combi Bank A- 15" Name="WeatherMan      " ProgramChange="15" />
+			<Patch Number="Combi Bank A- 16" Name="Orchestra2      " ProgramChange="16" />
+			<Patch Number="Combi Bank A- 17" Name="Perc-Organ      " ProgramChange="17" />
+			<Patch Number="Combi Bank A- 18" Name="RhythmLore      " ProgramChange="18" />
+			<Patch Number="Combi Bank A- 19" Name="Bass Brass      " ProgramChange="19" />
+			<Patch Number="Combi Bank A- 20" Name="Christmas       " ProgramChange="20" />
+			<Patch Number="Combi Bank A- 21" Name="Air Mallet      " ProgramChange="21" />
+			<Patch Number="Combi Bank A- 22" Name="Baroque         " ProgramChange="22" />
+			<Patch Number="Combi Bank A- 23" Name="DynaFusion      " ProgramChange="23" />
+			<Patch Number="Combi Bank A- 24" Name="Montezuma       " ProgramChange="24" />
+			<Patch Number="Combi Bank A- 25" Name="Power Play      " ProgramChange="25" />
+			<Patch Number="Combi Bank A- 26" Name="Orchestra 3     " ProgramChange="26" />
+			<Patch Number="Combi Bank A- 27" Name="Clik Piano      " ProgramChange="27" />
+			<Patch Number="Combi Bank A- 28" Name="Clock Shop      " ProgramChange="28" />
+			<Patch Number="Combi Bank A- 29" Name="Bass Vibe       " ProgramChange="29" />
+			<Patch Number="Combi Bank A- 30" Name="Westerns        " ProgramChange="30" />
+			<Patch Number="Combi Bank A- 31" Name="Breathy         " ProgramChange="31" />
+			<Patch Number="Combi Bank A- 32" Name="Strings         " ProgramChange="32" />
+			<Patch Number="Combi Bank A- 33" Name="Big City        " ProgramChange="33" />
+			<Patch Number="Combi Bank A- 34" Name="Venice          " ProgramChange="34" />
+			<Patch Number="Combi Bank A- 35" Name="Multisound      " ProgramChange="35" />
+			<Patch Number="Combi Bank A- 36" Name="Orchestra 4     " ProgramChange="36" />
+			<Patch Number="Combi Bank A- 37" Name="MultiBass       " ProgramChange="37" />
+			<Patch Number="Combi Bank A- 38" Name="PastTime        " ProgramChange="38" />
+			<Patch Number="Combi Bank A- 39" Name="Bass Reed       " ProgramChange="39" />
+			<Patch Number="Combi Bank A- 40" Name="MIDIStack 2     " ProgramChange="40" />
+			<Patch Number="Combi Bank A- 41" Name="VoiceChoir      " ProgramChange="41" />
+			<Patch Number="Combi Bank A- 42" Name="String Mix      " ProgramChange="42" />
+			<Patch Number="Combi Bank A- 43" Name="SuperBrass      " ProgramChange="43" />
+			<Patch Number="Combi Bank A- 44" Name="Bombay          " ProgramChange="44" />
+			<Patch Number="Combi Bank A- 45" Name="Acoustic        " ProgramChange="45" />
+			<Patch Number="Combi Bank A- 46" Name="Wind 5th        " ProgramChange="46" />
+			<Patch Number="Combi Bank A- 47" Name="Trumpet FH      " ProgramChange="47" />
+			<Patch Number="Combi Bank A- 48" Name="Caverns         " ProgramChange="48" />
+			<Patch Number="Combi Bank A- 49" Name="Bass Sax        " ProgramChange="49" />
+			<Patch Number="Combi Bank A- 50" Name="PianoVoice      " ProgramChange="50" />
+			<Patch Number="Combi Bank A- 51" Name="VoiceSlaps      " ProgramChange="51" />
+			<Patch Number="Combi Bank A- 52" Name="5 Strings       " ProgramChange="52" />
+			<Patch Number="Combi Bank A- 53" Name="TechnoFunk      " ProgramChange="53" />
+			<Patch Number="Combi Bank A- 54" Name="Jamaica         " ProgramChange="54" />
+			<Patch Number="Combi Bank A- 55" Name="Club Date       " ProgramChange="55" />
+			<Patch Number="Combi Bank A- 56" Name="Brass-Orch      " ProgramChange="56" />
+			<Patch Number="Combi Bank A- 57" Name="ElecGuitar      " ProgramChange="57" />
+			<Patch Number="Combi Bank A- 58" Name="Gothica         " ProgramChange="58" />
+			<Patch Number="Combi Bank A- 59" Name="Bass Horn       " ProgramChange="59" />
+			<Patch Number="Combi Bank A- 60" Name="SaintPeter      " ProgramChange="60" />
+			<Patch Number="Combi Bank A- 61" Name="Celestial       " ProgramChange="61" />
+			<Patch Number="Combi Bank A- 62" Name="StringBell      " ProgramChange="62" />
+			<Patch Number="Combi Bank A- 63" Name="Madness         " ProgramChange="63" />
+			<Patch Number="Combi Bank A- 64" Name="China           " ProgramChange="64" />
+			<Patch Number="Combi Bank A- 65" Name="LayerPad        " ProgramChange="65" />
+			<Patch Number="Combi Bank A- 66" Name="The Hunter      " ProgramChange="66" />
+			<Patch Number="Combi Bank A- 67" Name="TP Sax          " ProgramChange="67" />
+			<Patch Number="Combi Bank A- 68" Name="DeepHeart       " ProgramChange="68" />
+			<Patch Number="Combi Bank A- 69" Name="Sax   Orchestra " ProgramChange="69" />
+			<Patch Number="Combi Bank A- 70" Name="Bambu Bell      " ProgramChange="70" />
+			<Patch Number="Combi Bank A- 71" Name="AirHorns        " ProgramChange="71" />
+			<Patch Number="Combi Bank A- 72" Name="Music Box       " ProgramChange="72" />
+			<Patch Number="Combi Bank A- 73" Name="Electric        " ProgramChange="73" />
+			<Patch Number="Combi Bank A- 74" Name="Animation       " ProgramChange="74" />
+			<Patch Number="Combi Bank A- 75" Name="DirtyBrass      " ProgramChange="75" />
+			<Patch Number="Combi Bank A- 76" Name="Str Piano       " ProgramChange="76" />
+			<Patch Number="Combi Bank A- 77" Name="SaxSection      " ProgramChange="77" />
+			<Patch Number="Combi Bank A- 78" Name="DigitalBox      " ProgramChange="78" />
+			<Patch Number="Combi Bank A- 79" Name="Piano EP1       " ProgramChange="79" />
+			<Patch Number="Combi Bank A- 80" Name="ThePlanets      " ProgramChange="80" />
+			<Patch Number="Combi Bank A- 81" Name="Barbarians      " ProgramChange="81" />
+			<Patch Number="Combi Bank A- 82" Name="Atmosphere      " ProgramChange="82" />
+			<Patch Number="Combi Bank A- 83" Name="Metal Clav      " ProgramChange="83" />
+			<Patch Number="Combi Bank A- 84" Name="HammerHead      " ProgramChange="84" />
+			<Patch Number="Combi Bank A- 85" Name="Nuts Bolts      " ProgramChange="85" />
+			<Patch Number="Combi Bank A- 86" Name="OrganChoir      " ProgramChange="86" />
+			<Patch Number="Combi Bank A- 87" Name="Piano L+R       " ProgramChange="87" />
+			<Patch Number="Combi Bank A- 88" Name="Space Race      " ProgramChange="88" />
+			<Patch Number="Combi Bank A- 89" Name="Luna-Pad        " ProgramChange="89" />
+			<Patch Number="Combi Bank A- 90" Name="Beauty          " ProgramChange="90" />
+			<Patch Number="Combi Bank A- 91" Name="WaveMallet      " ProgramChange="91" />
+			<Patch Number="Combi Bank A- 92" Name="Mallets         " ProgramChange="92" />
+			<Patch Number="Combi Bank A- 93" Name="PluckOrgan      " ProgramChange="93" />
+			<Patch Number="Combi Bank A- 94" Name="E.PianoMix      " ProgramChange="94" />
+			<Patch Number="Combi Bank A- 95" Name="SuperSynth      " ProgramChange="95" />
+			<Patch Number="Combi Bank A- 96" Name="Passages        " ProgramChange="96" />
+			<Patch Number="Combi Bank A- 97" Name="OctaveBass      " ProgramChange="97" />
+			<Patch Number="Combi Bank A- 98" Name="Sub-Space       " ProgramChange="98" />
+			<Patch Number="Combi Bank A- 99" Name="Please          " ProgramChange="99" />
+			<Patch Number="Combi Bank A-100" Name="Filmscore       " ProgramChange="100" />
+			<Patch Number="Combi Bank A-101" Name="Pankala         " ProgramChange="101" />
+			<Patch Number="Combi Bank A-102" Name="Rondo'          " ProgramChange="102" />
+			<Patch Number="Combi Bank A-103" Name="Brass 1 2       " ProgramChange="103" />
+			<Patch Number="Combi Bank A-104" Name="Fuji-san        " ProgramChange="104" />
+			<Patch Number="Combi Bank A-105" Name="1-Man-Band      " ProgramChange="105" />
+			<Patch Number="Combi Bank A-106" Name="Orchestra1      " ProgramChange="106" />
+			<Patch Number="Combi Bank A-107" Name="12 String       " ProgramChange="107" />
+			<Patch Number="Combi Bank A-108" Name="Pyramids        " ProgramChange="108" />
+			<Patch Number="Combi Bank A-109" Name="Bass Piano      " ProgramChange="109" />
+			<Patch Number="Combi Bank A-110" Name="MIDIStack1      " ProgramChange="110" />
+			<Patch Number="Combi Bank A-111" Name="BellVoices      " ProgramChange="111" />
+			<Patch Number="Combi Bank A-112" Name="Ensemble1       " ProgramChange="112" />
+			<Patch Number="Combi Bank A-113" Name="SunSection      " ProgramChange="113" />
+			<Patch Number="Combi Bank A-114" Name="Atlantis        " ProgramChange="114" />
+			<Patch Number="Combi Bank A-115" Name="WeatherMan      " ProgramChange="115" />
+			<Patch Number="Combi Bank A-116" Name="Orchestra2      " ProgramChange="116" />
+			<Patch Number="Combi Bank A-117" Name="Perc-Organ      " ProgramChange="117" />
+			<Patch Number="Combi Bank A-118" Name="RhythmLore      " ProgramChange="118" />
+			<Patch Number="Combi Bank A-119" Name="Bass Brass      " ProgramChange="119" />
+			<Patch Number="Combi Bank A-120" Name="Christmas       " ProgramChange="120" />
+			<Patch Number="Combi Bank A-121" Name="Air Mallet      " ProgramChange="121" />
+			<Patch Number="Combi Bank A-122" Name="Baroque         " ProgramChange="122" />
+			<Patch Number="Combi Bank A-123" Name="DynaFusion      " ProgramChange="123" />
+			<Patch Number="Combi Bank A-124" Name="Montezuma       " ProgramChange="124" />
+			<Patch Number="Combi Bank A-125" Name="Power Play      " ProgramChange="125" />
+			<Patch Number="Combi Bank A-126" Name="Orchestra 3     " ProgramChange="126" />
+			<Patch Number="Combi Bank A-127" Name="Clik Piano      " ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Combi Bank B">
+			<Patch Number="Combi Bank B-  0" Name="DynamicOrchestra" ProgramChange="0" />
+			<Patch Number="Combi Bank B-  1" Name="{Hip 90's Split}" ProgramChange="1" />
+			<Patch Number="Combi Bank B-  2" Name="The Rush...     " ProgramChange="2" />
+			<Patch Number="Combi Bank B-  3" Name="E. Grand   Voice" ProgramChange="3" />
+			<Patch Number="Combi Bank B-  4" Name="StereoGuitarPad " ProgramChange="4" />
+			<Patch Number="Combi Bank B-  5" Name="Meganomic       " ProgramChange="5" />
+			<Patch Number="Combi Bank B-  6" Name="Saxophonia      " ProgramChange="6" />
+			<Patch Number="Combi Bank B-  7" Name="Koto Velox      " ProgramChange="7" />
+			<Patch Number="Combi Bank B-  8" Name="Violin Section  " ProgramChange="8" />
+			<Patch Number="Combi Bank B-  9" Name="Happenin'Church!" ProgramChange="9" />
+			<Patch Number="Combi Bank B- 10" Name="*Tim's*Bedtime* " ProgramChange="10" />
+			<Patch Number="Combi Bank B- 11" Name="Big Rock Organ  " ProgramChange="11" />
+			<Patch Number="Combi Bank B- 12" Name="Whistlers Dream " ProgramChange="12" />
+			<Patch Number="Combi Bank B- 13" Name="Time4daBreakdown" ProgramChange="13" />
+			<Patch Number="Combi Bank B- 14" Name="MonsterGodSynth " ProgramChange="14" />
+			<Patch Number="Combi Bank B- 15" Name="Trinity Bells   " ProgramChange="15" />
+			<Patch Number="Combi Bank B- 16" Name="Orchestra   Oboe" ProgramChange="16" />
+			<Patch Number="Combi Bank B- 17" Name="Moonlight Split " ProgramChange="17" />
+			<Patch Number="Combi Bank B- 18" Name="Mystery Islands " ProgramChange="18" />
+			<Patch Number="Combi Bank B- 19" Name="MIDI Grand Stack" ProgramChange="19" />
+			<Patch Number="Combi Bank B- 20" Name="Dyna Pick Bass  " ProgramChange="20" />
+			<Patch Number="Combi Bank B- 21" Name="Cathedral Voices" ProgramChange="21" />
+			<Patch Number="Combi Bank B- 22" Name="SizzleSynthBrass" ProgramChange="22" />
+			<Patch Number="Combi Bank B- 23" Name="MIDI Akkordeon  " ProgramChange="23" />
+			<Patch Number="Combi Bank B- 24" Name="Legato Strings  " ProgramChange="24" />
+			<Patch Number="Combi Bank B- 25" Name="Policemen       " ProgramChange="25" />
+			<Patch Number="Combi Bank B- 26" Name="Sparkling Voices" ProgramChange="26" />
+			<Patch Number="Combi Bank B- 27" Name="Jazzy Organ 2   " ProgramChange="27" />
+			<Patch Number="Combi Bank B- 28" Name="Nashville Duet  " ProgramChange="28" />
+			<Patch Number="Combi Bank B- 29" Name=" Unhappy=Planet " ProgramChange="29" />
+			<Patch Number="Combi Bank B- 30" Name="X-Fader Synth   " ProgramChange="30" />
+			<Patch Number="Combi Bank B- 31" Name="The Mallet Men  " ProgramChange="31" />
+			<Patch Number="Combi Bank B- 32" Name="BOLD Orchestra  " ProgramChange="32" />
+			<Patch Number="Combi Bank B- 33" Name="Bass Piano Vibe " ProgramChange="33" />
+			<Patch Number="Combi Bank B- 34" Name="=Dream Theatre= " ProgramChange="34" />
+			<Patch Number="Combi Bank B- 35" Name="SuperNightTines " ProgramChange="35" />
+			<Patch Number="Combi Bank B- 36" Name="Distraught      " ProgramChange="36" />
+			<Patch Number="Combi Bank B- 37" Name="Luna Breath     " ProgramChange="37" />
+			<Patch Number="Combi Bank B- 38" Name="Dizzy Big Band  " ProgramChange="38" />
+			<Patch Number="Combi Bank B- 39" Name="Evening in Bali " ProgramChange="39" />
+			<Patch Number="Combi Bank B- 40" Name="Green House Pad " ProgramChange="40" />
+			<Patch Number="Combi Bank B- 41" Name="TheName'sJazzmin" ProgramChange="41" />
+			<Patch Number="Combi Bank B- 42" Name="Bottlized Air   " ProgramChange="42" />
+			<Patch Number="Combi Bank B- 43" Name="Tutti Pipe 2    " ProgramChange="43" />
+			<Patch Number="Combi Bank B- 44" Name="SynthPad   Solo " ProgramChange="44" />
+			<Patch Number="Combi Bank B- 45" Name="Rockestra   SW1 " ProgramChange="45" />
+			<Patch Number="Combi Bank B- 46" Name="Song for Darth  " ProgramChange="46" />
+			<Patch Number="Combi Bank B- 47" Name="Pianobell       " ProgramChange="47" />
+			<Patch Number="Combi Bank B- 48" Name="Harp   Strings  " ProgramChange="48" />
+			<Patch Number="Combi Bank B- 49" Name="Groove Section  " ProgramChange="49" />
+			<Patch Number="Combi Bank B- 50" Name="Disquieting Solo" ProgramChange="50" />
+			<Patch Number="Combi Bank B- 51" Name="Piezo Clav      " ProgramChange="51" />
+			<Patch Number="Combi Bank B- 52" Name="MondoSplatBass! " ProgramChange="52" />
+			<Patch Number="Combi Bank B- 53" Name="Dream Sequence  " ProgramChange="53" />
+			<Patch Number="Combi Bank B- 54" Name="Orchestral Brass" ProgramChange="54" />
+			<Patch Number="Combi Bank B- 55" Name="Bonny Loch      " ProgramChange="55" />
+			<Patch Number="Combi Bank B- 56" Name="Arco Strings    " ProgramChange="56" />
+			<Patch Number="Combi Bank B- 57" Name="MondoSynthSplit " ProgramChange="57" />
+			<Patch Number="Combi Bank B- 58" Name="Heavenly Voices " ProgramChange="58" />
+			<Patch Number="Combi Bank B- 59" Name="Standard BX3    " ProgramChange="59" />
+			<Patch Number="Combi Bank B- 60" Name="They split up..." ProgramChange="60" />
+			<Patch Number="Combi Bank B- 61" Name="African Rain    " ProgramChange="61" />
+			<Patch Number="Combi Bank B- 62" Name="Big Bottomed Bed" ProgramChange="62" />
+			<Patch Number="Combi Bank B- 63" Name="Jungle Mouth    " ProgramChange="63" />
+			<Patch Number="Combi Bank B- 64" Name="Woodwind Ens. 2 " ProgramChange="64" />
+			<Patch Number="Combi Bank B- 65" Name="Flugel Trio SW1 " ProgramChange="65" />
+			<Patch Number="Combi Bank B- 66" Name="Virtual Vortex  " ProgramChange="66" />
+			<Patch Number="Combi Bank B- 67" Name="Liquid Piano    " ProgramChange="67" />
+			<Patch Number="Combi Bank B- 68" Name="Nice Acoustics  " ProgramChange="68" />
+			<Patch Number="Combi Bank B- 69" Name="Ghost Town      " ProgramChange="69" />
+			<Patch Number="Combi Bank B- 70" Name="Loud Mutes      " ProgramChange="70" />
+			<Patch Number="Combi Bank B- 71" Name="Indian Nights   " ProgramChange="71" />
+			<Patch Number="Combi Bank B- 72" Name="Orchestral World" ProgramChange="72" />
+			<Patch Number="Combi Bank B- 73" Name="Culture^Shock   " ProgramChange="73" />
+			<Patch Number="Combi Bank B- 74" Name="Rising Tides    " ProgramChange="74" />
+			<Patch Number="Combi Bank B- 75" Name="Mixture Pipe 1  " ProgramChange="75" />
+			<Patch Number="Combi Bank B- 76" Name="Xanosphere      " ProgramChange="76" />
+			<Patch Number="Combi Bank B- 77" Name="Cyber Sequence  " ProgramChange="77" />
+			<Patch Number="Combi Bank B- 78" Name="Ballader        " ProgramChange="78" />
+			<Patch Number="Combi Bank B- 79" Name="Magical Organ   " ProgramChange="79" />
+			<Patch Number="Combi Bank B- 80" Name="Final Movement  " ProgramChange="80" />
+			<Patch Number="Combi Bank B- 81" Name="Power Funk      " ProgramChange="81" />
+			<Patch Number="Combi Bank B- 82" Name="Ghostly Spectrum" ProgramChange="82" />
+			<Patch Number="Combi Bank B- 83" Name="Ballad E.Piano  " ProgramChange="83" />
+			<Patch Number="Combi Bank B- 84" Name="Mr. Martin      " ProgramChange="84" />
+			<Patch Number="Combi Bank B- 85" Name="Tradewinds      " ProgramChange="85" />
+			<Patch Number="Combi Bank B- 86" Name="Trpt   Trombones" ProgramChange="86" />
+			<Patch Number="Combi Bank B- 87" Name="Accordion       " ProgramChange="87" />
+			<Patch Number="Combi Bank B- 88" Name="3 Octave Strings" ProgramChange="88" />
+			<Patch Number="Combi Bank B- 89" Name="Sus4 Split      " ProgramChange="89" />
+			<Patch Number="Combi Bank B- 90" Name="Choir of the Sun" ProgramChange="90" />
+			<Patch Number="Combi Bank B- 91" Name="Jazzy Organ 3   " ProgramChange="91" />
+			<Patch Number="Combi Bank B- 92" Name="Dream Of Lambada" ProgramChange="92" />
+			<Patch Number="Combi Bank B- 93" Name="Martian Sunset  " ProgramChange="93" />
+			<Patch Number="Combi Bank B- 94" Name="Swirling Pad    " ProgramChange="94" />
+			<Patch Number="Combi Bank B- 95" Name="Spectrum Bells  " ProgramChange="95" />
+			<Patch Number="Combi Bank B- 96" Name="Scoring Barocco2" ProgramChange="96" />
+			<Patch Number="Combi Bank B- 97" Name="Salsa Split     " ProgramChange="97" />
+			<Patch Number="Combi Bank B- 98" Name="Solar Mystery   " ProgramChange="98" />
+			<Patch Number="Combi Bank B- 99" Name="Stereo Roads    " ProgramChange="99" />
+			<Patch Number="Combi Bank B-100" Name="Analog-Log Bass " ProgramChange="100" />
+			<Patch Number="Combi Bank B-101" Name="Sombreros       " ProgramChange="101" />
+			<Patch Number="Combi Bank B-102" Name="Big   Nasty Lead" ProgramChange="102" />
+			<Patch Number="Combi Bank B-103" Name="Asia Ensemble   " ProgramChange="103" />
+			<Patch Number="Combi Bank B-104" Name="DynamicPizzicato" ProgramChange="104" />
+			<Patch Number="Combi Bank B-105" Name="Band Of Fusion  " ProgramChange="105" />
+			<Patch Number="Combi Bank B-106" Name="Ambient Choir   " ProgramChange="106" />
+			<Patch Number="Combi Bank B-107" Name="Pos/Tuent.Split " ProgramChange="107" />
+			<Patch Number="Combi Bank B-108" Name="Rainy Night Lead" ProgramChange="108" />
+			<Patch Number="Combi Bank B-109" Name="Alien Nation    " ProgramChange="109" />
+			<Patch Number="Combi Bank B-110" Name="Resonant Sweep  " ProgramChange="110" />
+			<Patch Number="Combi Bank B-111" Name="Pan'n'Drum Jam  " ProgramChange="111" />
+			<Patch Number="Combi Bank B-112" Name="Harpsi   Strings" ProgramChange="112" />
+			<Patch Number="Combi Bank B-113" Name="Bass   Vibe     " ProgramChange="113" />
+			<Patch Number="Combi Bank B-114" Name="Jazz Split Organ" ProgramChange="114" />
+			<Patch Number="Combi Bank B-115" Name="ReallyHonkyTonky" ProgramChange="115" />
+			<Patch Number="Combi Bank B-116" Name="Sassy-Vox Cat   " ProgramChange="116" />
+			<Patch Number="Combi Bank B-117" Name="new silverware  " ProgramChange="117" />
+			<Patch Number="Combi Bank B-118" Name="Superclavitar   " ProgramChange="118" />
+			<Patch Number="Combi Bank B-119" Name="Magic Koto      " ProgramChange="119" />
+			<Patch Number="Combi Bank B-120" Name="Salsa Ensemble  " ProgramChange="120" />
+			<Patch Number="Combi Bank B-121" Name="==Metropolis==  " ProgramChange="121" />
+			<Patch Number="Combi Bank B-122" Name="{{Cyber-Visual}}" ProgramChange="122" />
+			<Patch Number="Combi Bank B-123" Name="Full BX3        " ProgramChange="123" />
+			<Patch Number="Combi Bank B-124" Name="Once upon a time" ProgramChange="124" />
+			<Patch Number="Combi Bank B-125" Name="TheFinalFrontier" ProgramChange="125" />
+			<Patch Number="Combi Bank B-126" Name="MIDI Harp       " ProgramChange="126" />
+			<Patch Number="Combi Bank B-127" Name="Harmonium Soul  " ProgramChange="127" />
+		</PatchNameList>
+
+		<PatchNameList Name="Combi Bank D">
+			<Patch Number="Combi Bank D-  0" Name="Trinity Overture" ProgramChange="0" />
+			<Patch Number="Combi Bank D-  1" Name="Vox Morphing    " ProgramChange="1" />
+			<Patch Number="Combi Bank D-  2" Name="NewSetOfStrings " ProgramChange="2" />
+			<Patch Number="Combi Bank D-  3" Name="Killer Miller!  " ProgramChange="3" />
+			<Patch Number="Combi Bank D-  4" Name="Shakoto         " ProgramChange="4" />
+			<Patch Number="Combi Bank D-  5" Name="Chamber Strings " ProgramChange="5" />
+			<Patch Number="Combi Bank D-  6" Name="Bass   Piano/SW1" ProgramChange="6" />
+			<Patch Number="Combi Bank D-  7" Name="Soprano Winds   " ProgramChange="7" />
+			<Patch Number="Combi Bank D-  8" Name="Sad Movie Scene " ProgramChange="8" />
+			<Patch Number="Combi Bank D-  9" Name="Dyna Slap Bass  " ProgramChange="9" />
+			<Patch Number="Combi Bank D- 10" Name="Piano   Strings " ProgramChange="10" />
+			<Patch Number="Combi Bank D- 11" Name="Brass Band      " ProgramChange="11" />
+			<Patch Number="Combi Bank D- 12" Name="Deep Strings    " ProgramChange="12" />
+			<Patch Number="Combi Bank D- 13" Name=" Secret Garden  " ProgramChange="13" />
+			<Patch Number="Combi Bank D- 14" Name="milesAFTERmiles " ProgramChange="14" />
+			<Patch Number="Combi Bank D- 15" Name="Synthinity      " ProgramChange="15" />
+			<Patch Number="Combi Bank D- 16" Name="Scoring Horns   " ProgramChange="16" />
+			<Patch Number="Combi Bank D- 17" Name="Meet Thy Doom..." ProgramChange="17" />
+			<Patch Number="Combi Bank D- 18" Name="TineOnYourHands " ProgramChange="18" />
+			<Patch Number="Combi Bank D- 19" Name="Yeah! DistGuitar" ProgramChange="19" />
+			<Patch Number="Combi Bank D- 20" Name="Masterpiece     " ProgramChange="20" />
+			<Patch Number="Combi Bank D- 21" Name="Soul InSpaceport" ProgramChange="21" />
+			<Patch Number="Combi Bank D- 22" Name="Super Lead Split" ProgramChange="22" />
+			<Patch Number="Combi Bank D- 23" Name="Who's Next?     " ProgramChange="23" />
+			<Patch Number="Combi Bank D- 24" Name="Raw Power       " ProgramChange="24" />
+			<Patch Number="Combi Bank D- 25" Name="Euro Trance Time" ProgramChange="25" />
+			<Patch Number="Combi Bank D- 26" Name="Orbital Voices  " ProgramChange="26" />
+			<Patch Number="Combi Bank D- 27" Name="Jungle Predator " ProgramChange="27" />
+			<Patch Number="Combi Bank D- 28" Name="Dark Analog Pad " ProgramChange="28" />
+			<Patch Number="Combi Bank D- 29" Name="Miles Ahead     " ProgramChange="29" />
+			<Patch Number="Combi Bank D- 30" Name="Aqua Marine     " ProgramChange="30" />
+			<Patch Number="Combi Bank D- 31" Name="Player's Layers " ProgramChange="31" />
+			<Patch Number="Combi Bank D- 32" Name="Brassband w/Mute" ProgramChange="32" />
+			<Patch Number="Combi Bank D- 33" Name="Scoring Woods   " ProgramChange="33" />
+			<Patch Number="Combi Bank D- 34" Name="Egyptian Princes" ProgramChange="34" />
+			<Patch Number="Combi Bank D- 35" Name="Spectagon   Pad " ProgramChange="35" />
+			<Patch Number="Combi Bank D- 36" Name="Inverse Nebula  " ProgramChange="36" />
+			<Patch Number="Combi Bank D- 37" Name="Bell Landy      " ProgramChange="37" />
+			<Patch Number="Combi Bank D- 38" Name="Moody Orchestra " ProgramChange="38" />
+			<Patch Number="Combi Bank D- 39" Name="Cosmic Approach " ProgramChange="39" />
+			<Patch Number="Combi Bank D- 40" Name="Brass Orchestra " ProgramChange="40" />
+			<Patch Number="Combi Bank D- 41" Name="Master Fisa     " ProgramChange="41" />
+			<Patch Number="Combi Bank D- 42" Name="Doubled Strings " ProgramChange="42" />
+			<Patch Number="Combi Bank D- 43" Name="Tetra Split     " ProgramChange="43" />
+			<Patch Number="Combi Bank D- 44" Name="String Sunrise  " ProgramChange="44" />
+			<Patch Number="Combi Bank D- 45" Name="Halo of Bells   " ProgramChange="45" />
+			<Patch Number="Combi Bank D- 46" Name="Scoring Barocco1" ProgramChange="46" />
+			<Patch Number="Combi Bank D- 47" Name="DynaBass   Brass" ProgramChange="47" />
+			<Patch Number="Combi Bank D- 48" Name="Watch Me Grow..." ProgramChange="48" />
+			<Patch Number="Combi Bank D- 49" Name="Hydra Snap      " ProgramChange="49" />
+			<Patch Number="Combi Bank D- 50" Name="ScareOnDynamics " ProgramChange="50" />
+			<Patch Number="Combi Bank D- 51" Name="Bloodrush Lead  " ProgramChange="51" />
+			<Patch Number="Combi Bank D- 52" Name="Strings   Basses" ProgramChange="52" />
+			<Patch Number="Combi Bank D- 53" Name="X-Choir Fader   " ProgramChange="53" />
+			<Patch Number="Combi Bank D- 54" Name="Positive Tuent. " ProgramChange="54" />
+			<Patch Number="Combi Bank D- 55" Name="BIG BONED  fat  " ProgramChange="55" />
+			<Patch Number="Combi Bank D- 56" Name="Bass   Harp Age " ProgramChange="56" />
+			<Patch Number="Combi Bank D- 57" Name="Spanish Nights  " ProgramChange="57" />
+			<Patch Number="Combi Bank D- 58" Name="Delayed Reaction" ProgramChange="58" />
+			<Patch Number="Combi Bank D- 59" Name="NewAged Bass    " ProgramChange="59" />
+			<Patch Number="Combi Bank D- 60" Name="Piano   Vel.Orch" ProgramChange="60" />
+			<Patch Number="Combi Bank D- 61" Name="SuperHero #5    " ProgramChange="61" />
+			<Patch Number="Combi Bank D- 62" Name="Beach Vocals    " ProgramChange="62" />
+			<Patch Number="Combi Bank D- 63" Name="Astral Prelude  " ProgramChange="63" />
+			<Patch Number="Combi Bank D- 64" Name="Winds of Victory" ProgramChange="64" />
+			<Patch Number="Combi Bank D- 65" Name="BriteModernHarp " ProgramChange="65" />
+			<Patch Number="Combi Bank D- 66" Name="DynamicOrchestra" ProgramChange="66" />
+			<Patch Number="Combi Bank D- 67" Name="Koto Velox      " ProgramChange="67" />
+			<Patch Number="Combi Bank D- 68" Name="Whistlers Dream " ProgramChange="68" />
+			<Patch Number="Combi Bank D- 69" Name="MonsterGodSynth " ProgramChange="69" />
+			<Patch Number="Combi Bank D- 70" Name="Orchestra   Oboe" ProgramChange="70" />
+			<Patch Number="Combi Bank D- 71" Name="Mystery Islands " ProgramChange="71" />
+			<Patch Number="Combi Bank D- 72" Name="MIDI Grand Stack" ProgramChange="72" />
+			<Patch Number="Combi Bank D- 73" Name="Dyna Pick Bass  " ProgramChange="73" />
+			<Patch Number="Combi Bank D- 74" Name="SizzleSynthBrass" ProgramChange="74" />
+			<Patch Number="Combi Bank D- 75" Name="MIDI Akkordeon  " ProgramChange="75" />
+			<Patch Number="Combi Bank D- 76" Name="Legato Strings  " ProgramChange="76" />
+			<Patch Number="Combi Bank D- 77" Name="Sparkling Voices" ProgramChange="77" />
+			<Patch Number="Combi Bank D- 78" Name="X-Fader Synth   " ProgramChange="78" />
+			<Patch Number="Combi Bank D- 79" Name="BOLD Orchestra  " ProgramChange="79" />
+			<Patch Number="Combi Bank D- 80" Name="Bass Piano Vibe " ProgramChange="80" />
+			<Patch Number="Combi Bank D- 81" Name="=Dream Theatre= " ProgramChange="81" />
+			<Patch Number="Combi Bank D- 82" Name="SuperNightTines " ProgramChange="82" />
+			<Patch Number="Combi Bank D- 83" Name="Luna Breath     " ProgramChange="83" />
+			<Patch Number="Combi Bank D- 84" Name="Dizzy Big Band  " ProgramChange="84" />
+			<Patch Number="Combi Bank D- 85" Name="Green House Pad " ProgramChange="85" />
+			<Patch Number="Combi Bank D- 86" Name="SynthPad   Solo " ProgramChange="86" />
+			<Patch Number="Combi Bank D- 87" Name="Harp   Strings  " ProgramChange="87" />
+			<Patch Number="Combi Bank D- 88" Name="Disquieting Solo" ProgramChange="88" />
+			<Patch Number="Combi Bank D- 89" Name="Dream Sequence  " ProgramChange="89" />
+			<Patch Number="Combi Bank D- 90" Name="Orchestral Brass" ProgramChange="90" />
+			<Patch Number="Combi Bank D- 91" Name="Heavenly Voices " ProgramChange="91" />
+			<Patch Number="Combi Bank D- 92" Name="They split up..." ProgramChange="92" />
+			<Patch Number="Combi Bank D- 93" Name="Big Bottomed Bed" ProgramChange="93" />
+			<Patch Number="Combi Bank D- 94" Name="Jungle Mouth    " ProgramChange="94" />
+			<Patch Number="Combi Bank D- 95" Name="Flugel Trio SW1 " ProgramChange="95" />
+			<Patch Number="Combi Bank D- 96" Name="Virtual Vortex  " ProgramChange="96" />
+			<Patch Number="Combi Bank D- 97" Name="Liquid Piano    " ProgramChange="97" />
+			<Patch Number="Combi Bank D- 98" Name="Indian Nights   " ProgramChange="98" />
+			<Patch Number="Combi Bank D- 99" Name="Orchestral World" ProgramChange="99" />
+			<Patch Number="Combi Bank D-100" Name="Rising Tides    " ProgramChange="100" />
+			<Patch Number="Combi Bank D-101" Name="Mixture Pipe 1  " ProgramChange="101" />
+			<Patch Number="Combi Bank D-102" Name="Cyber Sequence  " ProgramChange="102" />
+			<Patch Number="Combi Bank D-103" Name="Ballader        " ProgramChange="103" />
+			<Patch Number="Combi Bank D-104" Name="Trpt   Trombones" ProgramChange="104" />
+			<Patch Number="Combi Bank D-105" Name="Accordion       " ProgramChange="105" />
+			<Patch Number="Combi Bank D-106" Name="3 Octave Strings" ProgramChange="106" />
+			<Patch Number="Combi Bank D-107" Name="Sus4 Split      " ProgramChange="107" />
+			<Patch Number="Combi Bank D-108" Name="Dream Of Lambada" ProgramChange="108" />
+			<Patch Number="Combi Bank D-109" Name="Martian Sunset  " ProgramChange="109" />
+			<Patch Number="Combi Bank D-110" Name="Swirling Pad    " ProgramChange="110" />
+			<Patch Number="Combi Bank D-111" Name="Salsa Split     " ProgramChange="111" />
+			<Patch Number="Combi Bank D-112" Name="Analog-Log Bass " ProgramChange="112" />
+			<Patch Number="Combi Bank D-113" Name="Big   Nasty Lead" ProgramChange="113" />
+			<Patch Number="Combi Bank D-114" Name="Band Of Fusion  " ProgramChange="114" />
+			<Patch Number="Combi Bank D-115" Name="Ambient Choir   " ProgramChange="115" />
+			<Patch Number="Combi Bank D-116" Name="Rainy Night Lead" ProgramChange="116" />
+			<Patch Number="Combi Bank D-117" Name="Alien Nation    " ProgramChange="117" />
+			<Patch Number="Combi Bank D-118" Name="Resonant Sweep  " ProgramChange="118" />
+			<Patch Number="Combi Bank D-119" Name="Bass   Vibe     " ProgramChange="119" />
+			<Patch Number="Combi Bank D-120" Name="ReallyHonkyTonky" ProgramChange="120" />
+			<Patch Number="Combi Bank D-121" Name="Magic Koto      " ProgramChange="121" />
+			<Patch Number="Combi Bank D-122" Name="Salsa Ensemble  " ProgramChange="122" />
+			<Patch Number="Combi Bank D-123" Name="==Metropolis==  " ProgramChange="123" />
+			<Patch Number="Combi Bank D-124" Name="{{Cyber-Visual}}" ProgramChange="124" />
+			<Patch Number="Combi Bank D-125" Name="Once upon a time" ProgramChange="125" />
+			<Patch Number="Combi Bank D-126" Name="MIDI Harp       " ProgramChange="126" />
+			<Patch Number="Combi Bank D-127" Name="Harmonium Soul  " ProgramChange="127" />
+		</PatchNameList>
+
+	</MasterDeviceNames>
+</MIDINameDocument>
+
