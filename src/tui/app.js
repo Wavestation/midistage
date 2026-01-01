@@ -220,6 +220,7 @@ module.exports = function startApp(midnamDir, io)
       label: " Patches ",
       keys: true,
       vi: true,
+      tags: true,
       style: THEME.list
     });
 
@@ -1638,40 +1639,6 @@ module.exports = function startApp(midnamDir, io)
 
     let _inputCallback = null;
 
-    function askInput(question, initialValue, cb)
-    {
-      if (!inputModal || !inputModal.parent)
-      {
-        try { cb && cb(new Error("input modal not available"), null); } catch { }
-        return;
-      }
-
-      _inputCallback = cb;
-      inputQuestion.setContent(question || "Input:");
-      inputBox.setValue(initialValue || "");
-
-      inputModal.show();
-      inputBox.focus();
-      inputBox.readInput();
-      screen.render();
-    }
-
-    function closeInputModal(cancelled, value)
-    {
-      try { inputModal.hide(); } catch { }
-
-      const cb = _inputCallback;
-      _inputCallback = null;
-
-      try { entriesList.focus(); } catch { }
-      screen.render();
-
-      if (cb) cb(cancelled ? new Error("cancelled") : null, value);
-    }
-
-    inputBox.on("submit", (value) => closeInputModal(false, value));
-    inputBox.key(["escape"], () => closeInputModal(true, null));
-
     // ------- Routes editor modal -------
 
     const routesModal = blessed.box({
@@ -1723,6 +1690,65 @@ module.exports = function startApp(midnamDir, io)
 
     let _routesEntryId = null;
 
+    // ------- Focus markers (NEW for Setlists/Entries) -------
+    function refreshFocusMarkers()
+    {
+      setLabelWithFocus(setlistsList, "Setlists", screen.focused === setlistsList);
+      setLabelWithFocus(entriesList, "Entries", screen.focused === entriesList);
+
+      // optionnel (mais cohérent)
+      setLabelWithFocus(preview, "Preview", screen.focused === preview);
+      setLabelWithFocus(status, "Status", screen.focused === status);
+
+      if (!inputModal.hidden) inputModal.setLabel(` ${FOCUS_MARK} Input `);
+      else inputModal.setLabel(" Input ");
+
+      if (!routesModal.hidden) routesModal.setLabel(` ${FOCUS_MARK} Routes `);
+      // sinon on garde le label dynamique déjà posé ailleurs (Routes (n))
+    }
+
+    [setlistsList, entriesList, preview, status].forEach(w =>
+    {
+      w.on("focus", () => { refreshFocusMarkers(); screen.render(); });
+      w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
+    });
+
+    function askInput(question, initialValue, cb)
+    {
+      if (!inputModal || !inputModal.parent)
+      {
+        try { cb && cb(new Error("input modal not available"), null); } catch { }
+        return;
+      }
+
+      _inputCallback = cb;
+      inputQuestion.setContent(question || "Input:");
+      inputBox.setValue(initialValue || "");
+
+      inputModal.show();
+      inputBox.focus();
+      inputBox.readInput();
+      refreshFocusMarkers();
+      screen.render();
+    }
+
+    function closeInputModal(cancelled, value)
+    {
+      try { inputModal.hide(); } catch { }
+
+      const cb = _inputCallback;
+      _inputCallback = null;
+
+      try { entriesList.focus(); } catch { }
+      refreshFocusMarkers();
+      screen.render();
+
+      if (cb) cb(cancelled ? new Error("cancelled") : null, value);
+    }
+
+    inputBox.on("submit", (value) => closeInputModal(false, value));
+    inputBox.key(["escape"], () => closeInputModal(true, null));
+
     function formatRouteLine(r)
     {
       const m = model.machines.getById(r.machineId);
@@ -1771,6 +1797,7 @@ module.exports = function startApp(midnamDir, io)
       routesModal.setLabel(` Routes {gray-fg}(${routes.length}){/gray-fg} `);
       routesModal.show();
       routesList.focus();
+      refreshFocusMarkers();
       screen.render();
     }
 
@@ -1779,6 +1806,7 @@ module.exports = function startApp(midnamDir, io)
       _routesEntryId = null;
       try { routesModal.hide(); } catch { }
       try { entriesList.focus(); } catch { }
+      refreshFocusMarkers();
       screen.render();
     }
 
@@ -1942,7 +1970,7 @@ module.exports = function startApp(midnamDir, io)
           `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${out} ${ch}]{/gray-fg}  \n` +
           `{yellow-fg}${b}{/yellow-fg} {gray-fg}(MSB ${msb} / LSB ${lsb}){/gray-fg}  \n` +
           `{magenta-fg}PC ${pc}{/magenta-fg}  ` +
-          `{white-fg}${p}{/white-fg}` + 
+          `{white-fg}${p}{/white-fg}` +
           `\n`
         );
       });
@@ -1994,6 +2022,7 @@ module.exports = function startApp(midnamDir, io)
 
       focusIndex = (focusIndex + 1) % focusables.length;
       focusables[focusIndex].focus();
+      refreshFocusMarkers();
       screen.render();
     });
 
@@ -2004,6 +2033,7 @@ module.exports = function startApp(midnamDir, io)
 
       focusIndex = (focusIndex - 1 + focusables.length) % focusables.length;
       focusables[focusIndex].focus();
+      refreshFocusMarkers();
       screen.render();
     });
 
@@ -2029,6 +2059,7 @@ module.exports = function startApp(midnamDir, io)
       setStatus(`Active setlist: ${s.name}`, "ok");
       refreshEntries(null);
       entriesList.focus();
+      refreshFocusMarkers();
     });
 
     // Events: entries
@@ -2117,7 +2148,6 @@ module.exports = function startApp(midnamDir, io)
         }
 
         setStatus(`Copied: ${name}`, "ok");
-        // try select the new one
         refreshEntries(created.id || null);
       });
     });
@@ -2235,6 +2265,7 @@ module.exports = function startApp(midnamDir, io)
         setStatus(`Setlist created: ${name}`, "ok");
         refreshEntries(null);
         setlistsList.focus();
+        refreshFocusMarkers();
       });
     });
 
@@ -2306,6 +2337,7 @@ module.exports = function startApp(midnamDir, io)
         setStatus(ok ? "Setlist deleted." : "Delete error.", ok ? "ok" : "err");
         refreshEntries(null);
         setlistsList.focus();
+        refreshFocusMarkers();
       });
     });
 
@@ -2328,6 +2360,7 @@ module.exports = function startApp(midnamDir, io)
     refreshEntries(null);
 
     setlistsList.focus();
+    refreshFocusMarkers();
     screen.render();
 
     return function cleanup()
