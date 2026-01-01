@@ -11,7 +11,7 @@ module.exports = function startApp(midnamDir, io)
   const screen = blessed.screen({
     smartCSR: true,
     title: "MIDISTAGE 26+",
-    // blessed varie selon versions. On force un comportement stable.
+    // blessed varies by version. Force stable behavior.
     unicode: (io && typeof io.unicode === "boolean") ? io.unicode : true,
     fullUnicode: (io && typeof io.unicode === "boolean") ? io.unicode : true,
 
@@ -52,6 +52,51 @@ module.exports = function startApp(midnamDir, io)
   }
 
   const model = new Model({ midnamDir });
+
+  // -------------------- UI Theme (global) --------------------
+  const FOCUS_MARK = "◆";
+
+  const THEME = {
+    // Frames (main page border)
+    frame: { border: { fg: "gray" } },
+    frameFocus: { border: { fg: "cyan" } },
+
+    // Panels / generic boxes
+    panel: { border: { fg: "gray" } },
+    panelFocus: { border: { fg: "cyan" } },
+
+    // Header strip (“menu bar”)
+    header: { fg: "white", bg: "blue" },
+
+    // Lists
+    list: {
+      border: { fg: "gray" },
+      item: { fg: "white" },
+      selected: { fg: "black", bg: "cyan" },
+      hover: { bg: "gray" }
+    },
+
+    // Inputs
+    input: {
+      border: { fg: "gray" },
+      fg: "white",
+      bg: "black"
+    },
+
+    // Modals
+    modal: {
+      border: { fg: "cyan" },
+      fg: "white",
+      bg: "black"
+    }
+  };
+
+  function setLabelWithFocus(widget, baseLabel, focused)
+  {
+    widget.setLabel(` ${focused ? FOCUS_MARK + " " : ""}${baseLabel} `);
+    const borderStyle = focused ? THEME.panelFocus.border : THEME.panel.border;
+    if (widget.style && widget.style.border) widget.style.border = borderStyle;
+  }
 
   // -------------------- Key binding helpers (CRITICAL) --------------------
   function makeKeyBinder()
@@ -114,12 +159,6 @@ module.exports = function startApp(midnamDir, io)
     const midiDriver = require("../midi/driver");
     const kb = makeKeyBinder();
 
-    const FOCUS_MARK = "◆";
-    const THEME = {
-      border: { fg: "white" },
-      borderFocus: { fg: "cyan" }
-    };
-
     const frame = blessed.box({
       parent: screen,
       top: 0,
@@ -128,7 +167,7 @@ module.exports = function startApp(midnamDir, io)
       height: "100%",
       border: "line",
       label: " MIDISTAGE -- (C) DEC 2025 MASAMI KOMURO ~ FELONIA SOFTWARE ",
-      style: { border: THEME.border }
+      style: { border: THEME.frame.border }
     });
 
     const header = blessed.box({
@@ -138,6 +177,7 @@ module.exports = function startApp(midnamDir, io)
       height: 3,
       width: "100%-2",
       tags: true,
+      style: THEME.header,
       content:
         "{bold}Tab{/bold} focus | {bold}Enter{/bold} send | {bold}s{/bold} search | {bold}a{/bold} add->draft | {bold}m{/bold} machines | {bold}o{/bold} MIDI out | {bold}l{/bold} setlist | {bold}Ctrl-Q{/bold} quit"
     });
@@ -154,7 +194,7 @@ module.exports = function startApp(midnamDir, io)
       keys: true,
       vi: true,
       tags: true,
-      style: { border: THEME.border, selected: { inverse: true } }
+      style: THEME.list
     });
 
     const banksList = blessed.list({
@@ -167,7 +207,7 @@ module.exports = function startApp(midnamDir, io)
       label: " Banks ",
       keys: true,
       vi: true,
-      style: { border: THEME.border, selected: { inverse: true } }
+      style: THEME.list
     });
 
     const patchesList = blessed.list({
@@ -180,7 +220,7 @@ module.exports = function startApp(midnamDir, io)
       label: " Patches ",
       keys: true,
       vi: true,
-      style: { border: THEME.border, selected: { inverse: true } }
+      style: THEME.list
     });
 
     const search = blessed.textbox({
@@ -192,7 +232,7 @@ module.exports = function startApp(midnamDir, io)
       border: "line",
       label: " Search ",
       inputOnFocus: true,
-      style: { border: THEME.border }
+      style: THEME.input
     });
 
     const status = blessed.box({
@@ -203,18 +243,11 @@ module.exports = function startApp(midnamDir, io)
       width: "100%-2",
       border: "line",
       label: " Status ",
-      content: "Sélectionne une machine (machines.json).",
+      content: "Select a machine (machines.json).",
       padding: { left: 1, right: 1 },
       tags: true,
-      style: { border: THEME.border }
+      style: { border: THEME.panel.border }
     });
-
-    function setLabelWithFocus(widget, baseLabel, focused)
-    {
-      widget.setLabel(` ${focused ? FOCUS_MARK + " " : ""}${baseLabel} `);
-      const borderStyle = focused ? THEME.borderFocus : THEME.border;
-      if (widget.style && widget.style.border) widget.style.border = borderStyle;
-    }
 
     function refreshFocusMarkers()
     {
@@ -265,7 +298,7 @@ module.exports = function startApp(midnamDir, io)
       label: " MIDI Outputs ",
       hidden: true,
       tags: true,
-      style: { border: THEME.borderFocus },
+      style: THEME.modal,
       padding: { left: 1, right: 1 }
     });
 
@@ -277,7 +310,7 @@ module.exports = function startApp(midnamDir, io)
       height: "100%-4",
       keys: true,
       vi: true,
-      style: { selected: { inverse: true } }
+      style: THEME.list
     });
 
     blessed.box({
@@ -287,7 +320,7 @@ module.exports = function startApp(midnamDir, io)
       height: 2,
       width: "100%-2",
       tags: true,
-      content: "{bold}↑↓{/bold} choisir | {bold}Enter{/bold} assigner | {bold}Esc{/bold} annuler"
+      content: "{bold}↑↓{/bold} select | {bold}Enter{/bold} assign | {bold}Esc{/bold} cancel"
     });
 
     function openMidiPicker()
@@ -295,14 +328,14 @@ module.exports = function startApp(midnamDir, io)
       const active = model.getActiveMachine();
       if (!active)
       {
-        setStatus("Aucune machine active.", "warn");
+        setStatus("No active machine.", "warn");
         return;
       }
 
       const ports = midiDriver.listOutputs();
       if (!ports.length)
       {
-        setStatus("Aucun port MIDI détecté.", "warn");
+        setStatus("No MIDI output detected.", "warn");
         return;
       }
 
@@ -347,7 +380,7 @@ module.exports = function startApp(midnamDir, io)
 
       model.machines.update(active.id, { out: p });
       const m2 = model.getActiveMachine();
-      setStatus(`Port assigné.\nMachine: ${m2.name}\nMIDI out: ${m2.out}`, "ok");
+      setStatus(`Port assigned.\nMachine: ${m2.name}\nMIDI out: ${m2.out}`, "ok");
 
       closeMidiPicker(patchesList);
       refreshMachinesList();
@@ -389,7 +422,7 @@ module.exports = function startApp(midnamDir, io)
 
       search.setValue("");
       model.setPatchFilter("");
-      setStatus(msg || "Aucun instrument chargé.", "warn");
+      setStatus(msg || "No instrument loaded.", "warn");
       screen.render();
     }
 
@@ -400,7 +433,7 @@ module.exports = function startApp(midnamDir, io)
 
       if (!m)
       {
-        clearLoadedInstrumentUI("Aucune machine sélectionnée.");
+        clearLoadedInstrumentUI("No machine selected.");
         return;
       }
 
@@ -408,7 +441,7 @@ module.exports = function startApp(midnamDir, io)
 
       if (!m.midnamFile)
       {
-        clearLoadedInstrumentUI(`Machine active: ${m.name}\n(midnam: none) | ${model.draftGetSummary()}`);
+        clearLoadedInstrumentUI(`Active machine: ${m.name}\n(midnam: none) | ${model.draftGetSummary()}`);
         return;
       }
 
@@ -476,7 +509,7 @@ module.exports = function startApp(midnamDir, io)
       if (r.ok)
       {
         const m = model.getActiveMachine();
-        setStatus(`Draft update.\nMachine: ${(m && m.name) ? m.name : "?"}\n${model.draftGetSummary()}`, "ok");
+        setStatus(`Draft updated.\nMachine: ${(m && m.name) ? m.name : "?"}\n${model.draftGetSummary()}`, "ok");
       }
       else setStatus(r.message, "err");
     }
@@ -623,7 +656,7 @@ module.exports = function startApp(midnamDir, io)
     screen.render();
 
     if ((filesList._machines || []).length) loadSelectedMachineInstrument();
-    else clearLoadedInstrumentUI("Aucune machine dans machines.json.");
+    else clearLoadedInstrumentUI("No machines in machines.json.");
 
     return function cleanup()
     {
@@ -639,12 +672,6 @@ module.exports = function startApp(midnamDir, io)
     const midiDriver = require("../midi/driver");
     const kb = makeKeyBinder();
 
-    const FOCUS_MARK = "◆";
-    const THEME = {
-      border: { fg: "white" },
-      borderFocus: { fg: "cyan" }
-    };
-
     const MIDNAM_NONE = "<none>";
     const OUT_NONE = "<none>";
 
@@ -656,7 +683,7 @@ module.exports = function startApp(midnamDir, io)
       height: "100%",
       border: "line",
       label: " MIDISTAGE — MACHINES ",
-      style: { border: THEME.border }
+      style: { border: THEME.frame.border }
     });
 
     const header = blessed.box({
@@ -666,6 +693,7 @@ module.exports = function startApp(midnamDir, io)
       height: 3,
       width: "100%-2",
       tags: true,
+      style: THEME.header,
       content:
         "{bold}↑↓{/bold} select | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}x{/bold} delete | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit | {bold}q{/bold} back"
     });
@@ -681,7 +709,7 @@ module.exports = function startApp(midnamDir, io)
       keys: true,
       vi: true,
       tags: true,
-      style: { border: THEME.border, selected: { inverse: true } }
+      style: THEME.list
     });
 
     const editor = blessed.box({
@@ -693,7 +721,7 @@ module.exports = function startApp(midnamDir, io)
       border: "line",
       label: " Editor ",
       tags: true,
-      style: { border: THEME.border },
+      style: { border: THEME.panel.border },
       padding: { left: 1, right: 1 }
     });
 
@@ -707,7 +735,7 @@ module.exports = function startApp(midnamDir, io)
       label: " Status ",
       padding: { left: 1, right: 1 },
       tags: true,
-      style: { border: THEME.border },
+      style: { border: THEME.panel.border },
       content: "Machines."
     });
 
@@ -722,7 +750,7 @@ module.exports = function startApp(midnamDir, io)
       label: " Confirm ",
       tags: true,
       hidden: true,
-      style: { border: THEME.borderFocus },
+      style: THEME.modal,
       padding: { left: 1, right: 1 }
     });
 
@@ -745,7 +773,8 @@ module.exports = function startApp(midnamDir, io)
       border: "line",
       inputOnFocus: true,
       keys: true,
-      vi: true
+      vi: true,
+      style: THEME.input
     });
 
     blessed.box({
@@ -755,7 +784,7 @@ module.exports = function startApp(midnamDir, io)
       height: 2,
       width: "100%",
       tags: true,
-      content: "{bold}Enter{/bold} valider | {bold}Esc{/bold} annuler"
+      content: "{bold}Enter{/bold} validate | {bold}Esc{/bold} cancel"
     });
 
     let _confirmCb = null;
@@ -763,7 +792,7 @@ module.exports = function startApp(midnamDir, io)
     function askConfirm(question, cb)
     {
       _confirmCb = cb;
-      confirmQuestion.setContent(question || 'Tape "oui" pour confirmer');
+      confirmQuestion.setContent(question || 'Type "yes" to confirm');
       confirmInput.setValue("");
 
       confirmModal.show();
@@ -798,7 +827,7 @@ module.exports = function startApp(midnamDir, io)
       height: 1,
       width: "100%",
       tags: true,
-      content: "{bold}Nom convivial{/bold}"
+      content: "{bold}Display name{/bold}"
     });
 
     const nameBox = blessed.textbox({
@@ -810,7 +839,8 @@ module.exports = function startApp(midnamDir, io)
       border: "line",
       inputOnFocus: true,
       keys: true,
-      vi: true
+      vi: true,
+      style: THEME.input
     });
 
     const midnamLabel = blessed.box({
@@ -833,7 +863,7 @@ module.exports = function startApp(midnamDir, io)
       keys: true,
       vi: true,
       tags: true,
-      style: { selected: { inverse: true } }
+      style: THEME.list
     });
 
     const outLabel = blessed.box({
@@ -856,7 +886,7 @@ module.exports = function startApp(midnamDir, io)
       keys: true,
       vi: true,
       tags: true,
-      style: { selected: { inverse: true } }
+      style: THEME.list
     });
 
     const chLabel = blessed.box({
@@ -866,7 +896,7 @@ module.exports = function startApp(midnamDir, io)
       height: 1,
       width: "100%",
       tags: true,
-      content: "{bold}Canal MIDI (1..16){/bold}"
+      content: "{bold}MIDI channel (1..16){/bold}"
     });
 
     const chBox = blessed.textbox({
@@ -878,7 +908,8 @@ module.exports = function startApp(midnamDir, io)
       border: "line",
       inputOnFocus: true,
       keys: true,
-      vi: true
+      vi: true,
+      style: THEME.input
     });
 
     const help = blessed.box({
@@ -889,11 +920,45 @@ module.exports = function startApp(midnamDir, io)
       width: "100%",
       tags: true,
       content:
-        "{bold}Tab{/bold} suivant | {bold}Ctrl+S{/bold} sauver | {bold}Esc{/bold} annuler edit | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}x{/bold} delete"
+        "{bold}Tab{/bold} next | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit"
     });
 
+    // ---- Field focus: diamond + border highlight (editor) ----
+    function setFieldLabel(labelBox, title, focused)
+    {
+      const mark = focused ? "{cyan-fg}◆{/cyan-fg} " : "  ";
+      labelBox.setContent(`${mark}{bold}${title}{/bold}`);
+    }
+
+    function setBorderFocus(widget, focused)
+    {
+      if (!widget || !widget.style) return;
+      if (!widget.style.border) widget.style.border = {};
+      widget.style.border = focused ? THEME.panelFocus.border : THEME.panel.border;
+    }
+
+    function refreshEditorFieldFocus()
+    {
+      const f = screen.focused;
+
+      const nameFocused   = (f === nameBox);
+      const midnamFocused = (f === midnamList);
+      const outFocused    = (f === outList);
+      const chFocused     = (f === chBox);
+
+      setFieldLabel(nameLabel,  "Display name",          nameFocused);
+      setFieldLabel(midnamLabel,"MIDNAM",                midnamFocused);
+      setFieldLabel(outLabel,   "MIDI Output",           outFocused);
+      setFieldLabel(chLabel,    "MIDI channel (1..16)",  chFocused);
+
+      setBorderFocus(nameBox,    nameFocused);
+      setBorderFocus(midnamList, midnamFocused);
+      setBorderFocus(outList,    outFocused);
+      setBorderFocus(chBox,      chFocused);
+    }
+
     // ---- Mode ----
-    // view = consultation, edit = modifie existant, create = nouvelle machine
+    // view = consultation, edit = modify existing, create = new machine
     let _editMode = "view";
     let _editId = null;
 
@@ -910,7 +975,7 @@ module.exports = function startApp(midnamDir, io)
     function shouldAutofillName(currentName)
     {
       const n = String(currentName || "").trim().toLowerCase();
-      return !n || n === "nouvelle machine" || n === "machine" || n === "new machine";
+      return !n || n === "new machine" || n === "machine";
     }
 
     function listMidnamFiles()
@@ -999,10 +1064,10 @@ module.exports = function startApp(midnamDir, io)
       screen.render();
     }
 
-    // IMPORTANT: ne pas toucher _editMode ici (sinon tu t’auto-sabotes).
+    // IMPORTANT: do not touch _editMode here (or you sabotage yourself).
     function fillEditorFromMachine(m)
     {
-      if (!m) { clearEditor("Machine invalide."); return; }
+      if (!m) { clearEditor("Invalid machine."); return; }
 
       nameBox.setValue(m.name || "");
       chBox.setValue(String(m.channel || 1));
@@ -1029,7 +1094,7 @@ module.exports = function startApp(midnamDir, io)
       const m = getSelectedMachine();
       if (!m)
       {
-        setStatus("Aucune machine.", "warn");
+        setStatus("No machine.", "warn");
         return;
       }
 
@@ -1037,7 +1102,7 @@ module.exports = function startApp(midnamDir, io)
       _editMode = "view";
       _editId = m.id;
       fillEditorFromMachine(m);
-      setStatus(`Machine active: ${m.name}`, "ok");
+      setStatus(`Active machine: ${m.name}`, "ok");
     }
 
     function beginCreate()
@@ -1047,13 +1112,13 @@ module.exports = function startApp(midnamDir, io)
       _editMode = "create";
       _editId = null;
 
-      nameBox.setValue("Nouvelle machine");
+      nameBox.setValue("New machine");
       chBox.setValue("1");
       midnamList.select(0);
       outList.select(0);
 
       nameBox.focus();
-      setStatus("Création: renseigne puis Ctrl+S.", "ok");
+      setStatus("Create mode: fill fields, then Ctrl+S to save.", "ok");
       screen.render();
     }
 
@@ -1064,17 +1129,17 @@ module.exports = function startApp(midnamDir, io)
       const m = getSelectedMachine() || model.getActiveMachine();
       if (!m)
       {
-        setStatus("Aucune machine à éditer.", "warn");
+        setStatus("No machine to edit.", "warn");
         return;
       }
 
       _editId = m.id;
       fillEditorFromMachine(m);
 
-      // IMPORTANT: après fill, sinon fill te flingue tout si tu remets des trucs plus tard
+      // IMPORTANT: after fill
       _editMode = "edit";
       nameBox.focus();
-      setStatus(`Édition: ${m.name} (Ctrl+S pour sauver).`, "ok");
+      setStatus(`Edit mode: ${m.name} (Ctrl+S to save).`, "ok");
       screen.render();
     }
 
@@ -1104,7 +1169,7 @@ module.exports = function startApp(midnamDir, io)
     {
       if (_editMode !== "edit" && _editMode !== "create")
       {
-        setStatus("Rien à sauver (mode view).", "warn");
+        setStatus("Nothing to save (view mode).", "warn");
         return;
       }
 
@@ -1120,7 +1185,7 @@ module.exports = function startApp(midnamDir, io)
 
       let name = String(nameBox.getValue() || "").trim() || "Machine";
 
-      // Si le nom est générique, et qu’on a un MIDNAM, on “sauve” un nom propre.
+      // If the name is generic and we have a MIDNAM, “save” a proper name.
       if (shouldAutofillName(name) && midSel !== MIDNAM_NONE)
       {
         try
@@ -1145,7 +1210,7 @@ module.exports = function startApp(midnamDir, io)
         saved = model.machines.update(_editId, payload);
         if (!saved)
         {
-          setStatus("Erreur: update machine impossible.", "err");
+          setStatus("Error: cannot update machine.", "err");
           return;
         }
         model.machines.setActive(saved.id);
@@ -1155,7 +1220,7 @@ module.exports = function startApp(midnamDir, io)
         saved = model.machines.add(payload);
         if (!saved)
         {
-          setStatus("Erreur: create machine impossible.", "err");
+          setStatus("Error: cannot create machine.", "err");
           return;
         }
         model.machines.setActive(saved.id);
@@ -1168,7 +1233,7 @@ module.exports = function startApp(midnamDir, io)
       fillEditorFromMachine(saved);
 
       setStatus(
-        `Machine sauvée: ${saved.name}\nMIDNAM=${saved.midnamFile || "-"} | OUT=${saved.out || "-"} | CH=${saved.channel}`,
+        `Machine saved: ${saved.name}\nMIDNAM=${saved.midnamFile || "-"} | OUT=${saved.out || "-"} | CH=${saved.channel}`,
         "ok"
       );
 
@@ -1181,25 +1246,25 @@ module.exports = function startApp(midnamDir, io)
       const m = getSelectedMachine();
       if (!m)
       {
-        setStatus("Aucune machine à supprimer.", "warn");
+        setStatus("No machine to delete.", "warn");
         return;
       }
 
-      askConfirm(`Supprimer la machine {bold}${m.name}{/bold} ?\nTape "oui" pour confirmer.`, function (err, value)
+      askConfirm(`Delete machine {bold}${m.name}{/bold}?\nType "yes" to confirm.`, function (err, value)
       {
         if (err) return;
 
         const v = String(value || "").trim().toLowerCase();
-        if (v !== "oui")
+        if (v !== "yes")
         {
-          setStatus("Annulé.", "warn");
+          setStatus("Cancelled.", "warn");
           return;
         }
 
         const ok = model.machines.remove(m.id);
         if (!ok)
         {
-          setStatus("Erreur suppression machine.", "err");
+          setStatus("Error deleting machine.", "err");
           return;
         }
 
@@ -1208,15 +1273,15 @@ module.exports = function startApp(midnamDir, io)
         const list = model.listMachines();
         if (list.length)
         {
-          // réactive la sélection
+          // re-activate selection
           setActiveFromSelection();
         }
         else
         {
-          clearEditor("Plus aucune machine.");
+          clearEditor("No machines left.");
         }
 
-        setStatus("Machine supprimée.", "ok");
+        setStatus("Machine deleted.", "ok");
       });
     }
 
@@ -1231,7 +1296,7 @@ module.exports = function startApp(midnamDir, io)
           _editId = active.id;
           fillEditorFromMachine(active);
         }
-        else clearEditor("Aucune machine.");
+        else clearEditor("No machine.");
       }
       else if (_editMode === "edit")
       {
@@ -1242,19 +1307,12 @@ module.exports = function startApp(midnamDir, io)
           _editId = m.id;
           fillEditorFromMachine(m);
         }
-        else clearEditor("Machine introuvable.");
+        else clearEditor("Machine not found.");
       }
 
       machinesList.focus();
-      setStatus("Édition annulée.", "warn");
+      setStatus("Edit cancelled.", "warn");
       screen.render();
-    }
-
-    function setLabelWithFocus(widget, baseLabel, focused)
-    {
-      widget.setLabel(` ${focused ? FOCUS_MARK + " " : ""}${baseLabel} `);
-      const borderStyle = focused ? THEME.borderFocus : THEME.border;
-      if (widget.style && widget.style.border) widget.style.border = borderStyle;
     }
 
     function refreshFocusMarkers()
@@ -1265,6 +1323,9 @@ module.exports = function startApp(midnamDir, io)
 
       if (!confirmModal.hidden) confirmModal.setLabel(` ${FOCUS_MARK} Confirm `);
       else confirmModal.setLabel(" Confirm ");
+
+      // NEW: editor field highlight (diamond + borders)
+      refreshEditorFieldFocus();
     }
 
     [machinesList, nameBox, midnamList, outList, chBox, status].forEach(w =>
@@ -1273,7 +1334,14 @@ module.exports = function startApp(midnamDir, io)
       w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
     });
 
-    // Navigation TAB dans l’éditeur
+    // Also listen directly on editor widgets (more reliable)
+    [nameBox, midnamList, outList, chBox].forEach(w =>
+    {
+      w.on("focus", () => { refreshEditorFieldFocus(); screen.render(); });
+      w.on("blur", () => { refreshEditorFieldFocus(); screen.render(); });
+    });
+
+    // TAB navigation inside editor
     const edFocusables = [nameBox, midnamList, outList, chBox];
     let edFocusIndex = 0;
 
@@ -1287,7 +1355,7 @@ module.exports = function startApp(midnamDir, io)
     // Events list
     machinesList.on("select", () =>
     {
-      if (_editMode === "edit" || _editMode === "create") return; // en plein edit, on ne touche pas
+      if (_editMode === "edit" || _editMode === "create") return;
       setActiveFromSelection();
     });
 
@@ -1301,7 +1369,6 @@ module.exports = function startApp(midnamDir, io)
     kb.bindKey(["q"], () =>
     {
       if (!confirmModal.hidden) return;
-      // Retour au browse (pas de drama)
       switchPage("browse");
     });
 
@@ -1322,7 +1389,7 @@ module.exports = function startApp(midnamDir, io)
       if (!confirmModal.hidden) return;
       if (_editMode === "edit" || _editMode === "create")
       {
-        setStatus("Tu édites. Annule (Esc) ou sauve (Ctrl+S) d’abord.", "warn");
+        setStatus("You are editing. Cancel (Esc) or save (Ctrl+S) first.", "warn");
         return;
       }
       deleteSelectedMachine();
@@ -1334,7 +1401,7 @@ module.exports = function startApp(midnamDir, io)
       saveEditor();
     });
 
-    // TAB: si focus est dans l’éditeur, on tourne; sinon on bascule list/editor
+    // TAB: if focus is in editor, rotate; otherwise switch list/editor
     kb.bindKey(["tab"], () =>
     {
       if (!confirmModal.hidden) return;
@@ -1356,31 +1423,31 @@ module.exports = function startApp(midnamDir, io)
       screen.render();
     });
 
-    // Enter: valide juste le champ (pas save)
+    // Enter: validate field (not save)
     nameBox.on("submit", () => edFocusNext());
     chBox.on("submit", () => edFocusNext());
     midnamList.key(["enter"], () => edFocusNext());
     outList.key(["enter"], () => edFocusNext());
 
-    // ESC = annuler edit seulement (+ confirmation)
+    // ESC = cancel edit only (+ confirmation)
     kb.bindKey(["escape"], () =>
     {
       if (!confirmModal.hidden) { closeConfirm(true, null); return; }
 
       if (_editMode === "view")
       {
-        setStatus('Rien à annuler. Utilise "q" pour revenir.', "warn");
+        setStatus('Nothing to cancel. Use "q" to go back.', "warn");
         return;
       }
 
-      askConfirm('Annuler les modifications ?\nTape "oui" pour confirmer.', function (err, value)
+      askConfirm('Cancel changes?\nType "yes" to confirm.', function (err, value)
       {
         if (err) return;
 
         const v = String(value || "").trim().toLowerCase();
-        if (v !== "oui")
+        if (v !== "yes")
         {
-          setStatus("Annulé.", "warn");
+          setStatus("Cancelled.", "warn");
           return;
         }
 
@@ -1406,10 +1473,11 @@ module.exports = function startApp(midnamDir, io)
         fillEditorFromMachine(active);
       }
     }
-    else clearEditor("Aucune machine.");
+    else clearEditor("No machine.");
 
     machinesList.focus();
     refreshFocusMarkers();
+    refreshEditorFieldFocus();
     screen.render();
 
     return function cleanup()
@@ -1425,11 +1493,6 @@ module.exports = function startApp(midnamDir, io)
   {
     const kb = makeKeyBinder();
 
-    const THEME = {
-      border: { fg: "white" },
-      borderFocus: { fg: "cyan" }
-    };
-
     const frame = blessed.box({
       parent: screen,
       top: 0,
@@ -1438,7 +1501,7 @@ module.exports = function startApp(midnamDir, io)
       height: "100%",
       border: "line",
       label: " MIDISTAGE — SETLIST ",
-      style: { border: THEME.border }
+      style: { border: THEME.frame.border }
     });
 
     const header = blessed.box({
@@ -1448,6 +1511,7 @@ module.exports = function startApp(midnamDir, io)
       height: 3,
       width: "100%-2",
       tags: true,
+      style: THEME.header,
       content:
         "{bold}↑↓{/bold} select | {bold}Enter{/bold} recall | {bold}a{/bold} save draft | {bold}r{/bold} rename | {bold}d{/bold} delete | {bold}q{/bold} back"
     });
@@ -1461,7 +1525,7 @@ module.exports = function startApp(midnamDir, io)
       tags: true,
       border: "line",
       label: " Setlist ",
-      style: { border: THEME.border }
+      style: { border: THEME.panel.border }
     });
 
     const entriesList = blessed.list({
@@ -1475,7 +1539,7 @@ module.exports = function startApp(midnamDir, io)
       keys: true,
       vi: true,
       tags: true,
-      style: { border: THEME.border, selected: { inverse: true } }
+      style: THEME.list
     });
 
     const preview = blessed.box({
@@ -1490,7 +1554,7 @@ module.exports = function startApp(midnamDir, io)
       scrollable: true,
       alwaysScroll: true,
       scrollbar: { ch: " ", inverse: true },
-      style: { border: THEME.border },
+      style: { border: THEME.panel.border },
       padding: { left: 1, right: 1 }
     });
 
@@ -1503,7 +1567,7 @@ module.exports = function startApp(midnamDir, io)
       border: "line",
       label: " Status ",
       tags: true,
-      style: { border: THEME.border },
+      style: { border: THEME.panel.border },
       padding: { left: 1, right: 1 },
       content: "Setlist mode."
     });
@@ -1518,7 +1582,7 @@ module.exports = function startApp(midnamDir, io)
       label: " Input ",
       tags: true,
       hidden: true,
-      style: { border: THEME.borderFocus },
+      style: THEME.modal,
       padding: { left: 1, right: 1 }
     });
 
@@ -1541,7 +1605,8 @@ module.exports = function startApp(midnamDir, io)
       border: "line",
       inputOnFocus: true,
       keys: true,
-      vi: true
+      vi: true,
+      style: THEME.input
     });
 
     blessed.box({
@@ -1551,7 +1616,7 @@ module.exports = function startApp(midnamDir, io)
       height: 2,
       width: "100%",
       tags: true,
-      content: "{bold}Enter{/bold} valider | {bold}Esc{/bold} annuler"
+      content: "{bold}Enter{/bold} validate | {bold}Esc{/bold} cancel"
     });
 
     let _inputCallback = null;
@@ -1693,7 +1758,7 @@ module.exports = function startApp(midnamDir, io)
       const e = getSelectedEntry();
       if (!e)
       {
-        setStatus("Aucune entrée.", "warn");
+        setStatus("No entry.", "warn");
         return;
       }
 
@@ -1706,11 +1771,11 @@ module.exports = function startApp(midnamDir, io)
     {
       if (!model.draft.routes.length)
       {
-        setStatus("Draft vide: utilise Browse + a pour ajouter des routes.", "warn");
+        setStatus("Draft is empty: use Browse + a to add routes.", "warn");
         return;
       }
 
-      askInput("Nom de l'entrée (cue) ?", "", (err, value) =>
+      askInput("Entry (cue) name?", "", (err, value) =>
       {
         if (err) return;
 
@@ -1725,23 +1790,23 @@ module.exports = function startApp(midnamDir, io)
       const e = getSelectedEntry();
       if (!e)
       {
-        setStatus("Aucune entrée.", "warn");
+        setStatus("No entry.", "warn");
         return;
       }
 
-      askInput("Nouveau nom ?", e.name, (err, value) =>
+      askInput("New name?", e.name, (err, value) =>
       {
         if (err) return;
 
         const name = String(value || "").trim();
         if (!name)
         {
-          setStatus("Nom vide: annulé.", "warn");
+          setStatus("Empty name: cancelled.", "warn");
           return;
         }
 
         const ok = model.renameEntry(e.id, name);
-        setStatus(ok ? "Renommé." : "Erreur rename.", ok ? "ok" : "err");
+        setStatus(ok ? "Renamed." : "Rename error.", ok ? "ok" : "err");
         refreshEntries();
       });
     });
@@ -1751,23 +1816,23 @@ module.exports = function startApp(midnamDir, io)
       const e = getSelectedEntry();
       if (!e)
       {
-        setStatus("Aucune entrée.", "warn");
+        setStatus("No entry.", "warn");
         return;
       }
 
-      askInput(`Supprimer "${e.name}" ? Tape "oui"`, "", (err, value) =>
+      askInput(`Delete "${e.name}"? Type "yes"`, "", (err, value) =>
       {
         if (err) return;
 
         const v = String(value || "").trim().toLowerCase();
-        if (v !== "oui")
+        if (v !== "yes")
         {
-          setStatus("Annulé.", "warn");
+          setStatus("Cancelled.", "warn");
           return;
         }
 
         const ok = model.deleteEntry(e.id);
-        setStatus(ok ? "Supprimé." : "Erreur delete.", ok ? "ok" : "err");
+        setStatus(ok ? "Deleted." : "Delete error.", ok ? "ok" : "err");
         refreshEntries();
       });
     });

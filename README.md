@@ -27,7 +27,7 @@ The UI runs locally or remotely over Telnet / serial TTY (RS-232).
 ## Dependencies
 
 ### Runtime (npm)
-- **blessed**: terminal user interface widgets (lists, boxes, input, focus handling).
+- [**blessed**](https://github.com/chjj/blessed): terminal user interface widgets (lists, boxes, input, focus handling).
 - **midi**: MIDI I/O (list outputs, send Program Change / Bank Select).
 - **serialport**: RS-232 / serial TTY support.
 
@@ -52,6 +52,6 @@ MIDISTAGE is primarily developed and tested in the following environment:
 - **MIDI interface**:  
   iConnectivity **mioXL**  
   Connected to the Raspberry Pi via **RTP-MIDI**  
-  RTP stack: `rtpmidid` by David Moreno
+  RTP stack: [`rtpmidid` by David Moreno](https://github.com/davidmoreno/rtpmidid)
 
 This setup allows MIDISTAGE to run headless on the Raspberry Pi while being fully controlled remotely from a terminal, with low-latency MIDI routing over the network.
