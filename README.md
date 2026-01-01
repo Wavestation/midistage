@@ -50,7 +50,7 @@ MIDISTAGE is primarily developed and tested in the following environment:
   Apple MacBook Pro M2
   Visual Studio Code (via SSH)
 
-- **Remote terminal access**:  
+- **Remote terminal access**  
   Lenovo S10-3t using **PuTTY** on Windows 7
   Connection via **Telnet**  
   Terminal emulation: **xterm-256color**
