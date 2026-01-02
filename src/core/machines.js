@@ -29,11 +29,20 @@ function safeWriteJson(filePath, obj)
 
 function normalizeMachine(m)
 {
+    // Note: machines can target either a physical MIDI output (legacy `out`)
+    // or an abstract MIDI port slot (`outSlot`) defined in midiports.json.
     return {
         id: String(m.id || makeId()),
         name: String(m.name || "Machine"),
-        midnamFile: m.midnamFile == null ? null : String(m.midnamFile), // <-- AJOUT
-        out: m.out == null ? null : String(m.out), // ex: "USB MIDI 1" / "rtp:studio" / null
+        midnamFile: m.midnamFile == null ? null : String(m.midnamFile), // MIDNAM filename or null
+        // Legacy: physical port name. Kept for backward compatibility.
+        out: m.out == null ? null : String(m.out),
+        // Preferred: slot id (1..256). Stored as a number, or null.
+        outSlot: (() =>
+        {
+            const v = (m && m.outSlot != null) ? parseInt(String(m.outSlot), 10) : NaN;
+            return Number.isFinite(v) ? Math.min(256, Math.max(1, v)) : null;
+        })(),
         channel: Number.isFinite(m.channel) ? Math.min(16, Math.max(1, m.channel)) : 1
     };
 }

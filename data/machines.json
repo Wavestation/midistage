@@ -1,46 +1,52 @@
 {
-  "activeId": "m_efma",
+  "activeId": "m_58281203af4d",
   "machines": [
     {
       "id": "m_korgtr_ch5",
       "name": "Korg TR-Rack",
       "midnamFile": "TR-Rack.midnam",
-      "out": "rtpmidid:mioXL 7DE-03 128:4",
+      "out": null,
+      "outSlot": 3,
       "channel": 1
     },
     {
       "id": "m_efma",
       "name": "Kodamo EFM",
       "midnamFile": "Essence FM.midnam",
-      "out": "rtpmidid:mioXL 7DE-13 128:14",
+      "out": null,
+      "outSlot": 12,
       "channel": 1
     },
     {
       "id": "m_d0daaba01f95",
       "name": "Yamaha MOTIF Rack ES",
       "midnamFile": "MOTIF ES 6^7^8.midnam",
-      "out": "rtpmidid:mioXL 7DE-01 128:2",
+      "out": null,
+      "outSlot": 1,
       "channel": 1
     },
     {
       "id": "m_b387d1c5be6e",
       "name": "Roland JV-2080",
       "midnamFile": "JV-2080.midnam",
-      "out": "rtpmidid:mioXL 7DE-02 128:3",
+      "out": null,
+      "outSlot": 2,
       "channel": 1
     },
     {
       "id": "m_3b67d71316ba",
       "name": "Access Virus Rack XL",
       "midnamFile": "Virus Rack XL.midnam",
-      "out": "rtpmidid:mioXL 7DE-11 128:12",
+      "out": null,
+      "outSlot": 11,
       "channel": 1
     },
     {
       "id": "m_9b657df5d442",
       "name": "Kurzweil K2500R",
       "midnamFile": "K2500(R).midnam",
-      "out": "rtpmidid:mioXL 7DE-04 128:5",
+      "out": null,
+      "outSlot": 4,
       "channel": 1
     },
     {
@@ -48,6 +54,7 @@
       "name": "NS5R interface mobile",
       "midnamFile": "NS5R.midnam",
       "out": "rtpmidid:mioXL 29A-07 128:7",
+      "outSlot": null,
       "channel": 1
     },
     {
@@ -55,6 +62,7 @@
       "name": "K2500 interface mobile",
       "midnamFile": "K2500(R).midnam",
       "out": "rtpmidid:mioXL 29A-08 128:8",
+      "outSlot": null,
       "channel": 1
     }
   ]

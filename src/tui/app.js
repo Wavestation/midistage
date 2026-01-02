@@ -180,7 +180,7 @@ module.exports = function startApp(midnamDir, io)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} send | {bold}s{/bold} search | {bold}a{/bold} add->draft | {bold}m{/bold} machines | {bold}o{/bold} MIDI out | {bold}l{/bold} setlist | {bold}p{/bold} ports | {bold}Ctrl-Q{/bold} quit"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} send | {bold}s{/bold} search | {bold}l{/bold} setlist | {bold}a{/bold} add->draft | {bold}m{/bold} machines mgmt | {bold}Ctrl-Q{/bold} quit"
     });
 
     // “Instruments” = machines.json
@@ -281,11 +281,25 @@ module.exports = function startApp(midnamDir, io)
 
     function machineToLine(m)
     {
-      const out = m.out ? m.out : "default";
       const ch = m.channel ? `CH${m.channel}` : "CH?";
+
+      let outTxt = "default";
+      if (m.outSlot != null && model.midiports && typeof model.midiports.getSlot === "function")
+      {
+        const s = model.midiports.getSlot(m.outSlot);
+        const n = String(m.outSlot).padStart(3, "0");
+        const label = (s && s.label) ? String(s.label).trim() : `Slot ${n}`;
+        const port = (s && s.port) ? String(s.port).trim() : "<unassigned>";
+        outTxt = `S${n} ${label} -> ${port}`;
+      }
+      else if (m.out)
+      {
+        outTxt = m.out; // legacy
+      }
+
       const mid = m.midnamFile ? m.midnamFile : "<no midnam>";
       const dev = tryPeekDeviceName(m.midnamFile);
-      return `${m.name}  {gray-fg}[${out} / ${ch}]{/gray-fg}  {gray-fg}${dev}{/gray-fg}  {gray-fg}(${mid}){/gray-fg}`;
+      return `${m.name}  {gray-fg}[${outTxt} / ${ch}]{/gray-fg}  {gray-fg}${dev}{/gray-fg}  {gray-fg}(${mid}){/gray-fg}`;
     }
 
     // -------- MIDI port picker modal --------
@@ -642,14 +656,14 @@ module.exports = function startApp(midnamDir, io)
     // Go to Machines page
     kb.bindKey(["m"], () => switchPage("machines"));
 
-    // MIDI out picker
-    kb.bindKey(["o"], () => openMidiPicker());
+    // MIDI out picker -- disabled
+    // kb.bindKey(["o"], () => openMidiPicker());
 
     // Go to Setlist page
     kb.bindKey(["l"], () => switchPage("setlist"));
 
-    // Go to MIDI Ports page
-    kb.bindKey(["p"], () => switchPage("ports"));
+    // Go to MIDI Ports page -- not accessible from the main page
+    // kb.bindKey(["p"], () => switchPage("ports"));
 
     // Quit
     kb.bindKey(["C-q", "C-c"], () => quit());
@@ -708,7 +722,7 @@ module.exports = function startApp(midnamDir, io)
       top: 3,
       left: 1,
       width: "45%-2",
-      height: "100%-6",
+      height: "100%-9",
       border: "line",
       label: " Machines ",
       keys: true,
@@ -722,7 +736,7 @@ module.exports = function startApp(midnamDir, io)
       top: 3,
       left: "45%",
       width: "55%-2",
-      height: "100%-6",
+      height: "100%-9",
       border: "line",
       label: " Editor ",
       tags: true,
@@ -830,7 +844,7 @@ module.exports = function startApp(midnamDir, io)
       top: 0,
       left: 0,
       height: 1,
-      width: "100%",
+      width: "100%-3",
       tags: true,
       content: "{bold}Display name{/bold}"
     });
@@ -840,7 +854,7 @@ module.exports = function startApp(midnamDir, io)
       top: 1,
       left: 0,
       height: 3,
-      width: "100%",
+      width: "100%-3",
       border: "line",
       inputOnFocus: true,
       keys: true,
@@ -862,8 +876,8 @@ module.exports = function startApp(midnamDir, io)
       parent: editor,
       top: 5,
       left: 0,
-      width: "50%-1",
-      height: "60%-7",
+      width: "50%-10",
+      height: "60%-3",
       border: "line",
       keys: true,
       vi: true,
@@ -874,19 +888,19 @@ module.exports = function startApp(midnamDir, io)
     const outLabel = blessed.box({
       parent: editor,
       top: 4,
-      left: "50%",
+      left: "50%-9",
       height: 1,
       width: "50%-1",
       tags: true,
-      content: "{bold}MIDI Output{/bold}"
+      content: "{bold}MIDI Slot{/bold}"
     });
 
     const outList = blessed.list({
       parent: editor,
       top: 5,
-      left: "50%",
-      width: "50%-1",
-      height: "60%-7",
+      left: "50%-9",
+      width: "50%+6",
+      height: "60%-3",
       border: "line",
       keys: true,
       vi: true,
@@ -899,7 +913,7 @@ module.exports = function startApp(midnamDir, io)
       bottom: 6,
       left: 0,
       height: 1,
-      width: "100%",
+      width: "100%-3",
       tags: true,
       content: "{bold}MIDI channel (1..16){/bold}"
     });
@@ -922,7 +936,7 @@ module.exports = function startApp(midnamDir, io)
       bottom: 0,
       left: 0,
       height: 3,
-      width: "100%",
+      width: "100%-3",
       tags: true,
       content:
         "{bold}Tab{/bold} next | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit"
@@ -1000,21 +1014,51 @@ module.exports = function startApp(midnamDir, io)
       midnamList.setItems(midnams);
       midnamList._midnams = midnams;
 
-      const outs = [OUT_NONE].concat((midiDriver.listOutputs ? midiDriver.listOutputs() : []));
-      outList.setItems(outs);
-      outList._outs = outs;
+      // MIDI OUT abstraction: choose a SLOT (midiports.json), not a physical port name.
+      // Slot numbers are stored in machines.json as "outSlot".
+      const slots = (model.midiports && typeof model.midiports.listSlots === "function")
+        ? model.midiports.listSlots()
+        : [];
+
+      // First line = none
+      const items = [OUT_NONE].concat(slots.map(s =>
+      {
+        const n = String(s.slot).padStart(3, "0");
+        const label = (s.label && String(s.label).trim()) ? String(s.label).trim() : `Slot ${n}`;
+        const port = (s.port && String(s.port).trim()) ? String(s.port).trim() : "<unassigned>";
+        return `S${n}  ${label}  {gray-fg}-> ${port}{/gray-fg}`;
+      }));
+
+      outList.setItems(items);
+      outList._slots = [null].concat(slots); // index-aligned with items
     }
 
     function machineToLine(m, withId)
     {
-      const out = m.out ? m.out : "default";
       const ch = m.channel ? `CH${m.channel}` : "CH?";
+
+      // Prefer slot abstraction (outSlot) when present.
+      let outTxt = "default";
+      if (m.outSlot != null && model.midiports && typeof model.midiports.getSlot === "function")
+      {
+        const s = model.midiports.getSlot(m.outSlot);
+        const n = String(m.outSlot).padStart(3, "0");
+        const label = (s && s.label) ? String(s.label).trim() : `Slot ${n}`;
+        const port = (s && s.port) ? String(s.port).trim() : "<unassigned>";
+        outTxt = `S${n} ${label} -> ${port}`;
+      }
+      else if (m.out)
+      {
+        // Backward-compat: older machines.json stored the physical port name in "out".
+        outTxt = m.out;
+      }
+
       const mid = m.midnamFile ? m.midnamFile : "<no midnam>";
       let dev = "?";
       try { dev = model.peekMidnamDeviceName(m.midnamFile); } catch { dev = "?"; }
 
       const idPart = withId ? `  {gray-fg}(${m.id}){/gray-fg}` : "";
-      return `${m.name}  {gray-fg}[${out} / ${ch}]{/gray-fg}  {gray-fg}${dev}{/gray-fg}  {gray-fg}(${mid}){/gray-fg}${idPart}`;
+      return `${m.name}  {gray-fg}[${outTxt} / ${ch}]{/gray-fg}  {gray-fg}${dev}{/gray-fg}  {gray-fg}(${mid}){/gray-fg}${idPart}`;
     }
 
     function refreshMachinesList(keepId)
@@ -1078,17 +1122,29 @@ module.exports = function startApp(midnamDir, io)
       chBox.setValue(String(m.channel || 1));
 
       const midnams = midnamList._midnams || [MIDNAM_NONE];
-      const outs = outList._outs || [OUT_NONE];
+      const slots = outList._slots || [null];
 
       const mid = m.midnamFile || MIDNAM_NONE;
       let mi = midnams.findIndex(x => x === mid);
       if (mi < 0) mi = 0;
       midnamList.select(mi);
 
-      const out = m.out || OUT_NONE;
-      let oi = outs.findIndex(x => x === out);
-      if (oi < 0) oi = 0;
-      outList.select(oi);
+      // Slot selection (preferred). Fallback to legacy "out" if no outSlot.
+      let oi = 0;
+
+      if (m.outSlot != null)
+      {
+        const idx = slots.findIndex(s => s && s.slot === m.outSlot);
+        if (idx >= 0) oi = idx;
+      }
+      else if (m.out)
+      {
+        // Try to match legacy out (physical port) by finding a slot pointing to it.
+        const idx = slots.findIndex(s => s && s.port === m.out);
+        if (idx >= 0) oi = idx;
+      }
+
+      outList.select(Math.max(0, oi));
 
       _editId = m.id;
       screen.render();
@@ -1179,12 +1235,11 @@ module.exports = function startApp(midnamDir, io)
       }
 
       const midnams = midnamList._midnams || [MIDNAM_NONE];
-      const outs = outList._outs || [OUT_NONE];
+      const slots = outList._slots || [null];
 
       const midSel = midnams[midnamList.selected] || MIDNAM_NONE;
-      const outSel = outs[outList.selected] || OUT_NONE;
-
-      let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
+      const slotSel = slots[outList.selected] || null;
+let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       if (!Number.isFinite(ch)) ch = 1;
       ch = Math.max(1, Math.min(16, ch));
 
@@ -1204,7 +1259,8 @@ module.exports = function startApp(midnamDir, io)
       const payload = {
         name,
         midnamFile: (midSel === MIDNAM_NONE ? null : midSel),
-        out: (outSel === OUT_NONE ? null : outSel),
+        outSlot: (slotSel ? slotSel.slot : null),
+        out: null, // legacy field cleared; actual routing is via outSlot
         channel: ch
       };
 
@@ -1903,7 +1959,8 @@ module.exports = function startApp(midnamDir, io)
     kb.bindKey(["q", "escape"], () =>
     {
       if (!inputModal.hidden) { closeLabel(true, null); return; }
-      switchPage("machines");
+      switchPage("machines"); // aller aux machines
+      //switchPage("browse");   // ou au browser
     });
 
     kb.bindKey(["C-c"], () => quit());
