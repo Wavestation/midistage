@@ -127,6 +127,32 @@
               "patchName": "Passion Source"
             }
           ]
+        },
+        {
+          "id": "e_6be0004e39e6",
+          "name": "Mobile",
+          "routes": [
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "Prog A",
+              "msb": 81,
+              "lsb": 0,
+              "program": 41,
+              "patchName": "PianoHaven"
+            },
+            {
+              "machineId": "m_5e47b1df2b7f",
+              "midnamFile": "K2500(R).midnam",
+              "deviceName": "Kurzweil",
+              "bankName": "Bank 0",
+              "msb": null,
+              "lsb": 0,
+              "program": 12,
+              "patchName": "Suitcase E Pno"
+            }
+          ]
         }
       ]
     }

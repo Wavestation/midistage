@@ -5,6 +5,7 @@ const { parseMidnamFile } = require("../midnam/parseMidnam");
 const midiDriver = require("../midi/driver");
 const { MachinesStore } = require("./machines");
 const { SetlistsStore } = require("./setlists");
+const { MidiPortsStore } = require("./midiports");
 
 const ENABLE_FUZZY_SEARCH = false;
 
@@ -31,6 +32,7 @@ class Model
         this.midnamDir = options.midnamDir;
         this.machines = new MachinesStore(options.machines || {});
         this.setlists = new SetlistsStore(options.setlists || {});
+        this.midiports = new MidiPortsStore(options.midiports || {});
 
         this._midnamNameCache = new Map();
 
@@ -315,7 +317,22 @@ class Model
         };
     }
 
-    sendSelectedPatch(view, selectedIndex)
+resolveMachineOut(machine)
+{
+    if (!machine) return null;
+
+    // New way: outSlot -> midiports.json -> physical port name
+    if (machine.outSlot != null && this.midiports && typeof this.midiports.getPort === "function")
+    {
+        const p = this.midiports.getPort(machine.outSlot);
+        if (p) return p;
+    }
+
+    // Legacy: direct physical port name in machines.json
+    return machine.out || null;
+}
+
+sendSelectedPatch(view, selectedIndex)
     {
         const machine = this.machines.getActive() || { id: "default", name: "Machine", out: null, channel: 1 };
         const m = this.state.model;
@@ -360,8 +377,16 @@ class Model
         try
         {
 
-            const msg = midiDriver.sendPatch(machine, bank, patch);
-            this.logSend("BROWSE_SEND", machine, bank, patch);
+const out = this.resolveMachineOut(machine);
+if (!out)
+{
+    return { ok: false, message: "Aucune sortie MIDI assignée (Machines/Ports)." };
+}
+
+const machineRun = Object.assign({}, machine, { out });
+
+const msg = midiDriver.sendPatch(machineRun, bank, patch);
+            this.logSend("BROWSE_SEND", machineRun, bank, patch);
             return { ok: true, message: `Device: ${m.deviceName}\n${msg}` };
         }
         catch (e)
@@ -544,8 +569,16 @@ class Model
 
             try
             {
-                midiDriver.sendPatch(machine, bank, patch);
-                this.logSend("SETLIST_RECALL", machine, bank, patch);
+const out = this.resolveMachineOut(machine);
+if (!out)
+{
+    lines.push(`WARN: pas de sortie MIDI pour ${machine.name || machine.id}`);
+    return;
+}
+
+const machineRun = Object.assign({}, machine, { out });
+midiDriver.sendPatch(machineRun, bank, patch);
+                this.logSend("SETLIST_RECALL", machineRun, bank, patch);
                 lines.push(`${machine.name || machine.id} -> ${bank.name} ${patch.program} ${patch.name}`);
             }
             catch (ex)

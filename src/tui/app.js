@@ -141,6 +141,7 @@ module.exports = function startApp(midnamDir, io)
 
     if (name === "setlist") currentCleanup = buildSetlistPage();
     else if (name === "machines") currentCleanup = buildMachinesPage();
+    else if (name === "ports") currentCleanup = buildMidiPortsPage();
     else currentCleanup = buildBrowsePage();
 
     screen.render();
@@ -179,7 +180,7 @@ module.exports = function startApp(midnamDir, io)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} send | {bold}s{/bold} search | {bold}a{/bold} add->draft | {bold}m{/bold} machines | {bold}o{/bold} MIDI out | {bold}l{/bold} setlist | {bold}Ctrl-Q{/bold} quit"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} send | {bold}s{/bold} search | {bold}a{/bold} add->draft | {bold}m{/bold} machines | {bold}o{/bold} MIDI out | {bold}l{/bold} setlist | {bold}p{/bold} ports | {bold}Ctrl-Q{/bold} quit"
     });
 
     // “Instruments” = machines.json
@@ -188,7 +189,7 @@ module.exports = function startApp(midnamDir, io)
       top: 3,
       left: 1,
       width: "33%-2",
-      height: "100%-6",
+      height: "100%-9",
       border: "line",
       label: " Instruments ",
       keys: true,
@@ -202,7 +203,7 @@ module.exports = function startApp(midnamDir, io)
       top: 3,
       left: "33%",
       width: "34%-1",
-      height: "100%-6",
+      height: "100%-9",
       border: "line",
       label: " Banks ",
       keys: true,
@@ -215,7 +216,7 @@ module.exports = function startApp(midnamDir, io)
       top: 3,
       left: "67%",
       width: "33%-2",
-      height: "100%-10",
+      height: "100%-12",
       border: "line",
       label: " Patches ",
       keys: true,
@@ -647,6 +648,9 @@ module.exports = function startApp(midnamDir, io)
     // Go to Setlist page
     kb.bindKey(["l"], () => switchPage("setlist"));
 
+    // Go to MIDI Ports page
+    kb.bindKey(["p"], () => switchPage("ports"));
+
     // Quit
     kb.bindKey(["C-q", "C-c"], () => quit());
 
@@ -696,7 +700,7 @@ module.exports = function startApp(midnamDir, io)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}↑↓{/bold} select | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}x{/bold} delete | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit | {bold}q{/bold} back"
+        "{bold}↑↓{/bold} select | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}x{/bold} delete | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit | {bold}p{/bold} ports | {bold}q{/bold} back"
     });
 
     const machinesList = blessed.list({
@@ -1367,6 +1371,17 @@ module.exports = function startApp(midnamDir, io)
     });
 
     // Keys page
+    kb.bindKey(["p"], () =>
+    {
+      if (!confirmModal.hidden) return;
+      if (_editMode !== "view")
+      {
+        setStatus("You are editing. Cancel (Esc) or save (Ctrl+S) first.", "warn");
+        return;
+      }
+      switchPage("ports");
+    });
+
     kb.bindKey(["q"], () =>
     {
       if (!confirmModal.hidden) return;
@@ -1488,6 +1503,426 @@ module.exports = function startApp(midnamDir, io)
     };
   }
 
+
+  // -------------------- MIDI Ports Page --------------------
+
+  function buildMidiPortsPage()
+  {
+    const midiDriver = require("../midi/driver");
+    const kb = makeKeyBinder();
+
+    const frame = blessed.box({
+      parent: screen,
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      border: "line",
+      label: " MIDISTAGE — MIDI PORTS ",
+      style: { border: THEME.frame.border }
+    });
+
+    const header = blessed.box({
+      parent: frame,
+      top: 0,
+      left: 0,
+      right: 0,
+      height: 2,
+      tags: true,
+      style: THEME.header,
+      content:
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} assign output -> slot | {bold}r{/bold} rename slot | {bold}c{/bold} clear | {bold}s{/bold} save | {bold}q{/bold} back"
+    });
+
+    const slotsList = blessed.list({
+      parent: frame,
+      top: 3,
+      left: 1,
+      width: "45%-2",
+      height: "100%-9",
+      border: "line",
+      label: " Slots ",
+      keys: true,
+      vi: true,
+      tags: true,
+      style: THEME.list
+    });
+
+    const outsList = blessed.list({
+      parent: frame,
+      top: 3,
+      left: "45%",
+      width: "55%-2",
+      height: "100%-13",
+      border: "line",
+      label: " Physical outputs ",
+      keys: true,
+      vi: true,
+      tags: true,
+      style: THEME.list
+    });
+
+    const info = blessed.box({
+      parent: frame,
+      bottom: 4,
+      left: "45%",
+      width: "55%-2",
+      height: 4,
+      border: "line",
+      label: " Slot info ",
+      tags: true,
+      padding: { left: 1, right: 1 },
+      style: { border: THEME.panel.border },
+      content: ""
+    });
+
+    const status = blessed.box({
+      parent: frame,
+      bottom: 1,
+      left: 1,
+      height: 3,
+      width: "100%-2",
+      border: "line",
+      label: " Status ",
+      tags: true,
+      style: { border: THEME.panel.border },
+      padding: { left: 1, right: 1 },
+      content: "MIDI ports."
+    });
+
+    // ------- Input modal (rename) -------
+
+    const inputModal = blessed.box({
+      parent: frame,
+      top: "center",
+      left: "center",
+      width: "70%",
+      height: 9,
+      border: "line",
+      label: " Rename ",
+      tags: true,
+      hidden: true,
+      style: THEME.modal,
+      padding: { left: 1, right: 1 }
+    });
+
+    const inputQuestion = blessed.box({
+      parent: inputModal,
+      top: 0,
+      left: 0,
+      height: 2,
+      width: "100%",
+      tags: true,
+      content: "Slot label:"
+    });
+
+    const inputBox = blessed.textbox({
+      parent: inputModal,
+      top: 2,
+      left: 0,
+      height: 3,
+      width: "100%",
+      border: "line",
+      inputOnFocus: true,
+      keys: true,
+      vi: true,
+      style: THEME.input
+    });
+
+    blessed.box({
+      parent: inputModal,
+      bottom: 0,
+      left: 0,
+      height: 2,
+      width: "100%",
+      tags: true,
+      content: "{bold}Enter{/bold} validate | {bold}Esc{/bold} cancel"
+    });
+
+    let _inputCb = null;
+
+    function askLabel(initial, cb)
+    {
+      _inputCb = cb;
+      inputBox.setValue(initial || "");
+      inputModal.show();
+      inputBox.focus();
+      inputBox.readInput();
+      refreshFocusMarkers();
+      screen.render();
+    }
+
+    function closeLabel(cancelled, value)
+    {
+      try { inputModal.hide(); } catch { }
+
+      const cb = _inputCb;
+      _inputCb = null;
+
+      try { slotsList.focus(); } catch { }
+      refreshFocusMarkers();
+      screen.render();
+
+      if (cb) cb(cancelled ? new Error("cancelled") : null, value);
+    }
+
+    inputBox.on("submit", (value) => closeLabel(false, value));
+    inputBox.key(["escape"], () => closeLabel(true, null));
+
+    // ------- Helpers -------
+
+    function setStatus(text, level)
+    {
+      let prefix = "";
+      if (level === "ok") prefix = "{green-fg}[OK]{/green-fg} ";
+      else if (level === "warn") prefix = "{yellow-fg}[WARN]{/yellow-fg} ";
+      else if (level === "err") prefix = "{red-fg}[ERR]{/red-fg} ";
+      status.setContent(prefix + text);
+      screen.render();
+    }
+
+    function slotToLine(s)
+    {
+      const num = String(s.slot).padStart(3, "0");
+      const label = s.label ? s.label : `Slot ${num}`;
+      const port = s.port ? s.port : "-";
+      return `${num}  {cyan-fg}${label}{/cyan-fg}  {gray-fg}=> ${port}{/gray-fg}`;
+    }
+
+    function refreshSlots(keepSlot)
+    {
+      const slots = model.midiports ? model.midiports.listSlots() : [];
+      slotsList._slots = slots;
+
+      if (!slots.length)
+      {
+        slotsList.setItems(["<no slots>"]);
+        slotsList.select(0);
+        return;
+      }
+
+      slotsList.setItems(slots.map(slotToLine));
+
+      let idx = 0;
+      if (keepSlot != null)
+      {
+        const found = slots.findIndex(x => x.slot === keepSlot);
+        if (found >= 0) idx = found;
+      }
+      slotsList.select(idx);
+    }
+
+    function refreshOuts()
+    {
+      const ports = midiDriver.listOutputs ? midiDriver.listOutputs() : [];
+      const items = ["<none>"].concat(ports);
+      outsList._ports = items;
+      outsList.setItems(items);
+      outsList.select(0);
+    }
+
+    function getSelectedSlot()
+    {
+      const slots = slotsList._slots || [];
+      return slots[slotsList.selected] || null;
+    }
+
+    function refreshInfo()
+    {
+      const s = getSelectedSlot();
+      if (!s)
+      {
+        info.setContent("<no slot>");
+        return;
+      }
+
+      const num = String(s.slot).padStart(3, "0");
+      const label = s.label ? s.label : `Slot ${num}`;
+      const port = s.port ? s.port : "-";
+
+      info.setContent(
+        `{bold}${num} - ${label}{/bold}\n` +
+        `{gray-fg}Assigned port:{/gray-fg} ${port}\n` +
+        `{gray-fg}Tip:{/gray-fg} Enter on right list to assign`
+      );
+
+      // try to auto-select the assigned port
+      const ports = outsList._ports || [];
+      const idx = s.port ? ports.findIndex(x => x === s.port) : 0;
+      outsList.select(idx >= 0 ? idx : 0);
+    }
+
+    function refreshFocusMarkers()
+    {
+      setLabelWithFocus(slotsList, "Slots", screen.focused === slotsList);
+      setLabelWithFocus(outsList, "Physical outputs", screen.focused === outsList);
+
+      if (!inputModal.hidden) inputModal.setLabel(` ${FOCUS_MARK} Rename `);
+      else inputModal.setLabel(" Rename ");
+    }
+
+    // ------- Actions -------
+
+    function assignSelectedPort()
+    {
+      const s = getSelectedSlot();
+      if (!s) return;
+
+      const ports = outsList._ports || ["<none>"];
+      const p = ports[outsList.selected];
+
+      const slotNum = s.slot;
+
+      if (!model.midiports || !model.midiports.setPort)
+      {
+        setStatus("Missing model.midiports.setPort().", "err");
+        return;
+      }
+
+      const val = (p === "<none>") ? null : p;
+      model.midiports.setPort(slotNum, val);
+
+      setStatus(`Slot ${String(slotNum).padStart(3,"0")} assigned to: ${val || "-"}`, "ok");
+      refreshSlots(slotNum);
+      refreshInfo();
+      refreshFocusMarkers();
+      screen.render();
+    }
+
+    function clearSelectedPort()
+    {
+      const s = getSelectedSlot();
+      if (!s) return;
+
+      model.midiports.setPort(s.slot, null);
+      setStatus("Cleared.", "ok");
+      refreshSlots(s.slot);
+      refreshInfo();
+      refreshFocusMarkers();
+      screen.render();
+    }
+
+    function renameSelectedSlot()
+    {
+      const s = getSelectedSlot();
+      if (!s) return;
+
+      const num = String(s.slot).padStart(3, "0");
+      const current = s.label ? s.label : `Slot ${num}`;
+
+      askLabel(current, (err, value) =>
+      {
+        if (err) return;
+        const name = String(value || "").trim();
+        model.midiports.setLabel(s.slot, name);
+        setStatus("Renamed.", "ok");
+        refreshSlots(s.slot);
+        refreshInfo();
+        refreshFocusMarkers();
+        screen.render();
+      });
+    }
+
+    function save()
+    {
+      if (!model.midiports || !model.midiports.save)
+      {
+        setStatus("Missing model.midiports.save().", "err");
+        return;
+      }
+      try
+      {
+        model.midiports.save();
+        setStatus("Saved midiports.json.", "ok");
+      }
+      catch (e)
+      {
+        setStatus(`Save error: ${e.message}`, "err");
+      }
+    }
+
+    // ------- Focus management -------
+
+    const focusables = [slotsList, outsList];
+    let focusIndex = 0;
+
+    kb.bindKey(["tab"], () =>
+    {
+      if (!inputModal.hidden) return;
+
+      focusIndex = (focusIndex + 1) % focusables.length;
+      focusables[focusIndex].focus();
+      refreshFocusMarkers();
+      screen.render();
+    });
+
+    kb.bindKey(["S-tab"], () =>
+    {
+      if (!inputModal.hidden) return;
+
+      focusIndex = (focusIndex - 1 + focusables.length) % focusables.length;
+      focusables[focusIndex].focus();
+      refreshFocusMarkers();
+      screen.render();
+    });
+
+    [slotsList, outsList].forEach(w =>
+    {
+      w.on("focus", () => { refreshFocusMarkers(); screen.render(); });
+      w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
+    });
+
+    // Selection changes
+    slotsList.on("highlight", () => { refreshInfo(); screen.render(); });
+    slotsList.on("select", () => { refreshInfo(); screen.render(); });
+
+    outsList.key(["enter"], () =>
+    {
+      if (!inputModal.hidden) return;
+      assignSelectedPort();
+    });
+
+    kb.bindKey(["r"], () =>
+    {
+      if (!inputModal.hidden) return;
+      renameSelectedSlot();
+    });
+
+    kb.bindKey(["c"], () =>
+    {
+      if (!inputModal.hidden) return;
+      clearSelectedPort();
+    });
+
+    kb.bindKey(["s"], () =>
+    {
+      if (!inputModal.hidden) return;
+      save();
+    });
+
+    kb.bindKey(["q", "escape"], () =>
+    {
+      if (!inputModal.hidden) { closeLabel(true, null); return; }
+      switchPage("machines");
+    });
+
+    kb.bindKey(["C-c"], () => quit());
+
+    // Init
+    refreshOuts();
+    refreshSlots(1);
+    slotsList.focus();
+    refreshInfo();
+    refreshFocusMarkers();
+    screen.render();
+
+    return function cleanup()
+    {
+      kb.unbindAllKeys();
+      try { inputModal.hide(); } catch { }
+    };
+  }
+
   // -------------------- Setlist Page --------------------
 
   function buildSetlistPage()
@@ -1535,7 +1970,7 @@ module.exports = function startApp(midnamDir, io)
       top: 6,
       left: 1,
       width: "25%-1",
-      height: "100%-10",
+      height: "100%-12",
       border: "line",
       label: " Setlists ",
       keys: true,
@@ -1549,7 +1984,7 @@ module.exports = function startApp(midnamDir, io)
       top: 6,
       left: "25%",
       width: "35%-1",
-      height: "100%-10",
+      height: "100%-12",
       border: "line",
       label: " Entries ",
       keys: true,
@@ -1562,8 +1997,8 @@ module.exports = function startApp(midnamDir, io)
       parent: frame,
       top: 6,
       left: "60%",
-      width: "40%-2",
-      height: "100%-10",
+      width: "40%-1",
+      height: "100%-12",
       border: "line",
       label: " Preview ",
       tags: true,
@@ -1688,6 +2123,19 @@ module.exports = function startApp(midnamDir, io)
       content: "{bold}↑↓{/bold} select | {bold}Enter{/bold} replace from Draft | {bold}Del{/bold} remove route | {bold}Esc{/bold} close"
     });
 
+
+
+function refreshFocusMarkers()
+{
+  setLabelWithFocus(setlistsList, "Setlists", screen.focused === setlistsList);
+  setLabelWithFocus(entriesList, "Entries", screen.focused === entriesList);
+
+  if (!inputModal.hidden) inputModal.setLabel(` ${FOCUS_MARK} Input `);
+  else inputModal.setLabel(" Input ");
+
+  if (!routesModal.hidden) routesModal.setLabel(` ${FOCUS_MARK} Routes `);
+  else routesModal.setLabel(" Routes ");
+}
     let _routesEntryId = null;
 
     // ------- Focus markers (NEW for Setlists/Entries) -------
@@ -1940,8 +2388,9 @@ module.exports = function startApp(midnamDir, io)
       }
 
       const lines = [];
-      lines.push(`{bold}${e.name}{/bold}`);
-      lines.push("");
+      // Uncomment to write entry name in the preview box
+      // lines.push(`{bold}${e.name}{/bold}`);
+      // lines.push("");
 
       if (!e.routes || !e.routes.length)
       {
@@ -1976,6 +2425,7 @@ module.exports = function startApp(midnamDir, io)
       });
 
       preview.setContent(lines.join("\n"));
+      preview.setLabel(` Preview - ${e.name} `);
       screen.render();
     }
 
@@ -2036,6 +2486,13 @@ module.exports = function startApp(midnamDir, io)
       refreshFocusMarkers();
       screen.render();
     });
+
+
+[setlistsList, entriesList].forEach(w =>
+{
+  w.on("focus", () => { refreshFocusMarkers(); screen.render(); });
+  w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
+});
 
     // Events: setlists
     setlistsList.key(["enter"], () =>

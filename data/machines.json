@@ -42,6 +42,20 @@
       "midnamFile": "K2500(R).midnam",
       "out": "rtpmidid:mioXL 7DE-04 128:5",
       "channel": 1
+    },
+    {
+      "id": "m_58281203af4d",
+      "name": "NS5R interface mobile",
+      "midnamFile": "NS5R.midnam",
+      "out": "rtpmidid:mioXL 29A-07 128:7",
+      "channel": 1
+    },
+    {
+      "id": "m_5e47b1df2b7f",
+      "name": "K2500 interface mobile",
+      "midnamFile": "K2500(R).midnam",
+      "out": "rtpmidid:mioXL 29A-08 128:8",
+      "channel": 1
     }
   ]
 }
