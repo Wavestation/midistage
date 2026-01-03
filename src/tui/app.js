@@ -2745,7 +2745,7 @@ function refreshFocusMarkers()
       });
     });
 
-    // Entry: paste/replace routes from Draft into selected entry
+    // Entry: paste draft into selected entry (merge; confirm if overwrite)
     kb.bindKey(["p"], () =>
     {
       if (!routesModal.hidden) return;
@@ -2764,8 +2764,33 @@ function refreshFocusMarkers()
         return;
       }
 
-      const r = model.pasteDraftIntoEntry(e.id, { clearDraft: false });
-      setStatus(r && r.message ? r.message : (r?.ok ? "Pasted." : "Paste failed."), r?.ok ? "ok" : "err");
+      const res = model.pasteDraftIntoEntry(e.id, { clearDraft: false });
+
+      // If draft would overwrite existing routes, ask confirmation first.
+      if (res && res.confirm)
+      {
+        const msg = res.message || 'Overwrite existing route(s)? Type "yes"';
+        askInput(msg + 'Type "yes" to confirm.', "", (err, value) =>
+        {
+          if (err) return;
+          const v = String(value || "").trim().toLowerCase();
+          if (v !== "yes")
+          {
+            setStatus("Cancelled.", "warn");
+            return;
+          }
+
+          const forced = model.pasteDraftIntoEntry(e.id, { clearDraft: false, force: true });
+          setStatus(
+            forced && forced.message ? forced.message : (forced?.ok ? "Pasted." : "Paste failed."),
+            forced?.ok ? "ok" : "err"
+          );
+          refreshEntries(e.id);
+        });
+        return;
+      }
+
+      setStatus(res && res.message ? res.message : (res?.ok ? "Pasted." : "Paste failed."), res?.ok ? "ok" : "err");
       refreshEntries(e.id);
     });
 

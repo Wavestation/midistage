@@ -491,7 +491,6 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
     }
     // ---------- Commit / Recall ----------
 
-
     pasteDraftIntoEntry(entryId, options = {})
     {
         const s = this.getActiveSetlist();
@@ -506,24 +505,63 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
             return { ok: false, message: "Draft is empty: nothing to paste." };
         }
 
-        // Remove all existing routes for this entry
         const existing = Array.isArray(e.routes) ? e.routes : [];
+        const existingByMachine = new Map();
         for (const r of existing)
         {
-            if (r && r.machineId) this.setlists.removeRoute(s.id, entryId, r.machineId);
+            if (r && r.machineId) existingByMachine.set(r.machineId, r);
         }
 
-        // Add draft routes (clone objects)
+        // Conflicts = same machineId already present in the entry.
+        const conflicts = [];
         for (const r of draftRoutes)
         {
             if (!r || !r.machineId) continue;
+            if (existingByMachine.has(r.machineId)) conflicts.push(r.machineId);
+        }
+
+        const force = !!(options && (options.force === true));
+        if (conflicts.length && !force)
+        {
+            const unique = [...new Set(conflicts)];
+            const names = unique.map(id =>
+            {
+                const m = (this.machines && typeof this.machines.getById === "function") ? this.machines.getById(id) : null;
+                return (m && m.name) ? m.name : id;
+            });
+
+            return {
+                ok: false,
+                confirm: true,
+                conflicts: unique,
+                message: `Overwrite existing route(s) for: ${names.join(", ")} ?`
+            };
+        }
+
+        // Merge behavior:
+        // - If machineId does not exist => add new route.
+        // - If machineId exists => overwrite (when force=true).
+        let added = 0;
+        let overwritten = 0;
+
+        for (const r of draftRoutes)
+        {
+            if (!r || !r.machineId) continue;
+
             const copy = Object.assign({}, r);
-            this.setlists.upsertRoute(s.id, entryId, copy);
+            const had = existingByMachine.has(copy.machineId);
+
+            const ok = this.setlists.upsertRoute(s.id, entryId, copy);
+            if (ok)
+            {
+                if (had) overwritten++;
+                else added++;
+            }
         }
 
         if (options && options.clearDraft) this.draftClear();
 
-        return { ok: true, message: `Entry updated from draft (${draftRoutes.length} route(s)).` };
+        return { ok: true, message: `Pasted from draft: +${added} route(s), overwritten ${overwritten}.` };
     }
 
     commitDraftAsEntry(entryName)

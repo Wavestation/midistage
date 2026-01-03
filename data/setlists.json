@@ -83,29 +83,9 @@
       "name": "Live Diokan",
       "entries": [
         {
-          "id": "e_d4ffe5377ae7",
-          "name": "Dream of Diokan",
+          "id": "e_6c86d279cb8c",
+          "name": "Test",
           "routes": [
-            {
-              "machineId": "m_korgtr_ch5",
-              "midnamFile": "TR-Rack.midnam",
-              "deviceName": "Korg TR-Rack",
-              "bankName": "Program Bank A",
-              "msb": 0,
-              "lsb": 0,
-              "program": 19,
-              "patchName": "Breath of Life"
-            },
-            {
-              "machineId": "m_d0daaba01f95",
-              "midnamFile": "MOTIF ES 6^7^8.midnam",
-              "deviceName": "Yamaha",
-              "bankName": "Preset Voice Bank 4",
-              "msb": 63,
-              "lsb": 3,
-              "program": 44,
-              "patchName": "AngelVoice"
-            },
             {
               "machineId": "m_b387d1c5be6e",
               "midnamFile": "JV-2080.midnam",
@@ -113,34 +93,18 @@
               "bankName": "Patch Bank PR-E",
               "msb": 81,
               "lsb": 4,
-              "program": 90,
-              "patchName": "Enlighten"
+              "program": 99,
+              "patchName": "Gluey Pad"
             },
-            {
-              "machineId": "m_9b657df5d442",
-              "midnamFile": "K2500(R).midnam",
-              "deviceName": "Kurzweil",
-              "bankName": "Bank 1",
-              "msb": null,
-              "lsb": 1,
-              "program": 51,
-              "patchName": "Passion Source"
-            }
-          ]
-        },
-        {
-          "id": "e_6be0004e39e6",
-          "name": "Mobile",
-          "routes": [
             {
               "machineId": "m_3b67d71316ba",
               "midnamFile": "Virus Rack XL.midnam",
               "deviceName": "Access Virus Rack XL",
-              "bankName": "Singles Bank E",
+              "bankName": "Singles Bank A",
               "msb": 0,
-              "lsb": 4,
-              "program": 102,
-              "patchName": "SynthPnoJL"
+              "lsb": 0,
+              "program": 0,
+              "patchName": "3AM DEVICE"
             },
             {
               "machineId": "m_5e47b1df2b7f",
@@ -153,14 +117,40 @@
               "patchName": "Koreana Pad"
             },
             {
-              "machineId": "m_korgtr_ch5",
-              "midnamFile": "TR-Rack.midnam",
-              "deviceName": "Korg TR-Rack",
-              "bankName": "Program Bank A",
+              "machineId": "m_d0daaba01f95",
+              "midnamFile": "MOTIF ES 6^7^8.midnam",
+              "deviceName": "Yamaha",
+              "bankName": "Preset Voice Bank 1",
+              "msb": 63,
+              "lsb": 0,
+              "program": 12,
+              "patchName": "1968"
+            },
+            {
+              "machineId": "m_efma",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank A",
               "msb": 0,
               "lsb": 0,
               "program": 0,
-              "patchName": "Tsunami Warning"
+              "patchName": "Glass Organ"
+            }
+          ]
+        },
+        {
+          "id": "e_6be0004e39e6",
+          "name": "Mobile",
+          "routes": [
+            {
+              "machineId": "m_5e47b1df2b7f",
+              "midnamFile": "K2500(R).midnam",
+              "deviceName": "Kurzweil",
+              "bankName": "Bank 0",
+              "msb": null,
+              "lsb": 0,
+              "program": 15,
+              "patchName": "Big PWM"
             },
             {
               "machineId": "m_58281203af4d",
