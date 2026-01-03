@@ -2,6 +2,8 @@
 "use strict";
 
 const fs = require("fs");
+const path = require("path");
+const child_process = require("child_process");
 const blessed = require("blessed");
 
 const { Model } = require("../core/model");
@@ -52,6 +54,105 @@ module.exports = function startApp(midnamDir, io)
   }
 
   const model = new Model({ midnamDir });
+
+
+// -------------------- Settings store (data/settings.json) --------------------
+// Option A: outside Model. Persistent UI/ergonomics settings.
+const SETTINGS_PATH = path.join(__dirname, "..", "data", "settings.json");
+const DEFAULT_SETTINGS = { ui: { autorecallOnScroll: false } };
+
+function deepMerge(dst, src)
+{
+  if (!src || typeof src !== "object") return dst;
+  for (const k of Object.keys(src))
+  {
+    const v = src[k];
+    if (v && typeof v === "object" && !Array.isArray(v))
+    {
+      if (!dst[k] || typeof dst[k] !== "object") dst[k] = {};
+      deepMerge(dst[k], v);
+    }
+    else dst[k] = v;
+  }
+  return dst;
+}
+
+function atomicWriteJson(filePath, obj)
+{
+  const dir = path.dirname(filePath);
+  try { fs.mkdirSync(dir, { recursive: true }); } catch { }
+  const tmp = filePath + ".tmp";
+  fs.writeFileSync(tmp, JSON.stringify(obj, null, 2) + "\n", "utf8");
+  fs.renameSync(tmp, filePath);
+}
+
+function loadSettings()
+{
+  try
+  {
+    if (!fs.existsSync(SETTINGS_PATH))
+    {
+      atomicWriteJson(SETTINGS_PATH, DEFAULT_SETTINGS);
+      return JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+    }
+    const raw = JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
+    const s = deepMerge(JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), raw);
+    try { atomicWriteJson(SETTINGS_PATH, s); } catch { }
+    return s;
+  }
+  catch
+  {
+    return JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+  }
+}
+
+let settings = loadSettings();
+
+function getSetting(pathStr, fallback)
+{
+  try
+  {
+    const parts = String(pathStr || "").split(".").filter(Boolean);
+    let cur = settings;
+    for (const p of parts) cur = cur[p];
+    return (cur === undefined) ? fallback : cur;
+  }
+  catch { return fallback; }
+}
+
+function setSetting(pathStr, value)
+{
+  const parts = String(pathStr || "").split(".").filter(Boolean);
+  if (!parts.length) return;
+
+  let cur = settings;
+  for (let i = 0; i < parts.length - 1; i++)
+  {
+    const p = parts[i];
+    if (!cur[p] || typeof cur[p] !== "object") cur[p] = {};
+    cur = cur[p];
+  }
+  cur[parts[parts.length - 1]] = value;
+
+  try { atomicWriteJson(SETTINGS_PATH, settings); } catch { }
+}
+
+function runSystemctl(action)
+{
+  try
+  {
+    const p = child_process.spawn("sudo", ["/bin/systemctl", action], {
+      stdio: "ignore",
+      detached: true
+    });
+    p.unref();
+    return true;
+  }
+  catch
+  {
+    return false;
+  }
+}
 
   // -------------------- UI Theme (global) --------------------
   const FOCUS_MARK = "◆";
@@ -142,6 +243,7 @@ module.exports = function startApp(midnamDir, io)
     if (name === "setlist") currentCleanup = buildSetlistPage();
     else if (name === "machines") currentCleanup = buildMachinesPage();
     else if (name === "ports") currentCleanup = buildMidiPortsPage();
+    else if (name === "system") currentCleanup = buildSystemPage();
     else currentCleanup = buildBrowsePage();
 
     screen.render();
@@ -180,7 +282,7 @@ module.exports = function startApp(midnamDir, io)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} send | {bold}s{/bold} search | {bold}l{/bold} setlist | {bold}a{/bold} add->draft | {bold}m{/bold} machines mgmt | {bold}Ctrl-Q{/bold} quit"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} send prog. change | {bold}s{/bold} search | {bold}l{/bold} setlist page | {bold}a{/bold} add->draft | {bold}m{/bold} machines mgmt menu | {bold}t{/bold} system menu"
     });
 
     // “Instruments” = machines.json
@@ -653,6 +755,8 @@ module.exports = function startApp(midnamDir, io)
     kb.bindKey(["C-p"], () => moveSelection(-1));
     kb.bindKey(["a"], () => addToDraft());
 
+    // System settings
+    kb.bindKey(["t"], () => switchPage("system"));
     // Go to Machines page
     kb.bindKey(["m"], () => switchPage("machines"));
 
@@ -665,8 +769,8 @@ module.exports = function startApp(midnamDir, io)
     // Go to MIDI Ports page -- not accessible from the main page
     // kb.bindKey(["p"], () => switchPage("ports"));
 
-    // Quit
-    kb.bindKey(["C-q", "C-c"], () => quit());
+    // Quit -- not accessible ... TODO make it accessible only when launched in local terminal (no telnet, no serial)
+    // kb.bindKey(["C-q", "C-c"], () => quit());
 
     // Init
     refreshMachinesList();
@@ -714,7 +818,7 @@ module.exports = function startApp(midnamDir, io)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}↑↓{/bold} select | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}x{/bold} delete | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit | {bold}p{/bold} ports | {bold}q{/bold} back"
+        "{bold}↑↓{/bold} select | {bold}n{/bold} new | {bold}e{/bold} edit | {bold}x{/bold} delete | {bold}Ctrl+S{/bold} save | {bold}Esc{/bold} cancel edit | {bold}p{/bold} ports | {bold}t{/bold} system | {bold}q{/bold} back"
     });
 
     const machinesList = blessed.list({
@@ -1426,6 +1530,13 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       setActiveFromSelection();
     });
 
+    // System settings
+    kb.bindKey(["t"], () =>
+    {
+      if (!confirmModal.hidden) return;
+      switchPage("system");
+    });
+
     // Keys page
     kb.bindKey(["p"], () =>
     {
@@ -1437,6 +1548,15 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       }
       switchPage("ports");
     });
+
+    // System settings
+    kb.bindKey(["t"], () =>
+    {
+      if (!routesModal.hidden) return;
+      if (!inputModal.hidden) return;
+      switchPage("system");
+    });
+
 
     kb.bindKey(["q"], () =>
     {
@@ -1587,7 +1707,7 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} assign output -> slot | {bold}r{/bold} rename slot | {bold}c{/bold} clear | {bold}s{/bold} save | {bold}q{/bold} back"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} assign output -> slot | {bold}r{/bold} rename slot | {bold}c{/bold} clear | {bold}s{/bold} save | {bold}t{/bold} system | {bold}q{/bold} back"
     });
 
     const slotsList = blessed.list({
@@ -1965,6 +2085,13 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
 
     kb.bindKey(["C-c"], () => quit());
 
+    // System settings
+    kb.bindKey(["t"], () =>
+    {
+      if (!inputModal.hidden) return;
+      switchPage("system");
+    });
+
     // Init
     refreshOuts();
     refreshSlots(1);
@@ -2006,8 +2133,8 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}a{/bold} save draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move\n" +
-        "{bold}n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist | {bold}q{/bold} back"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}a{/bold} save draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down\n" +
+        "{bold}n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist | {bold}t{/bold} system | {bold}Esc / q{/bold} back"
     });
 
     const setlistInfo = blessed.box({
@@ -2885,6 +3012,236 @@ function refreshFocusMarkers()
     };
   }
 
+
+
+// -------------------- System Settings Page --------------------
+
+function buildSystemPage()
+{
+  const kb = makeKeyBinder();
+
+  const frame = blessed.box({
+    parent: screen,
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    border: "line",
+    label: " MIDISTAGE — SYSTEM SETTINGS ",
+    style: { border: THEME.frame.border }
+  });
+
+  const header = blessed.box({
+    parent: frame,
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 1,
+    tags: true,
+    style: THEME.header,
+    content:
+      "{bold}↑↓{/bold} select | {bold}Enter{/bold} apply | {bold}Esc / q{/bold} back "
+  });
+
+  const list = blessed.list({
+    parent: frame,
+    top: 2,
+    left: 1,
+    right: 1,
+    height: "100%-8",
+    border: "line",
+    label: " Actions ",
+    keys: true,
+    vi: true,
+    tags: true,
+    style: THEME.list
+  });
+
+  const status = blessed.box({
+    parent: frame,
+    bottom: 1,
+    left: 1,
+    right: 1,
+    height: 3,
+    border: "line",
+    label: " Status ",
+    padding: { left: 1, right: 1 },
+    tags: true,
+    style: { border: THEME.panel.border },
+    content: "System settings."
+  });
+
+  const confirmModal = blessed.box({
+    parent: frame,
+    top: "center",
+    left: "center",
+    width: "60%",
+    height: 9,
+    border: "line",
+    label: " Confirm ",
+    tags: true,
+    hidden: true,
+    style: THEME.modal,
+    padding: { left: 1, right: 1 }
+  });
+
+  const confirmQuestion = blessed.box({
+    parent: confirmModal,
+    top: 0,
+    left: 0,
+    height: 3,
+    width: "100%",
+    tags: true,
+    content: ""
+  });
+
+  const confirmInput = blessed.textbox({
+    parent: confirmModal,
+    top: 3,
+    left: 0,
+    height: 3,
+    width: "100%",
+    border: "line",
+    inputOnFocus: true,
+    keys: true,
+    vi: true,
+    style: THEME.input
+  });
+
+  blessed.box({
+    parent: confirmModal,
+    bottom: 0,
+    left: 0,
+    height: 2,
+    width: "100%",
+    tags: true,
+    content: "{bold}Enter{/bold} validate | {bold}Esc{/bold} cancel"
+  });
+
+  let _confirmAction = null;
+
+  function setStatus(text, level)
+  {
+    let prefix = "";
+    if (level === "ok") prefix = "{green-fg}[OK]{/green-fg} ";
+    else if (level === "warn") prefix = "{yellow-fg}[WARN]{/yellow-fg} ";
+    else if (level === "err") prefix = "{red-fg}[ERR]{/red-fg} ";
+    status.setContent(prefix + text);
+    screen.render();
+  }
+
+  function buildItems()
+  {
+    const ar = !!getSetting("ui.autorecallOnScroll", false);
+    list.setItems([
+      `UI: Auto-recall program / entry on list scroll: {bold}${ar ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
+      "{yellow-fg}Machine: Hardware reboot!{/yellow-fg}",
+      "{red-fg}Machine: Hardware poweroff!{/red-fg}"
+    ]);
+    list.select(0);
+  }
+
+  function askYes(question, action)
+  {
+    _confirmAction = action;
+    confirmQuestion.setContent(question + '\nType "yes" to confirm.');
+    confirmInput.setValue("");
+    confirmModal.show();
+    confirmInput.focus();
+    confirmInput.readInput();
+    screen.render();
+  }
+
+  function closeConfirm(cancelled, value)
+  {
+    try { confirmModal.hide(); } catch { }
+    list.focus();
+    screen.render();
+
+    if (cancelled) return;
+
+    const v = String(value || "").trim().toLowerCase();
+    if (v !== "yes")
+    {
+      setStatus("Cancelled.", "warn");
+      return;
+    }
+
+    const a = _confirmAction;
+    _confirmAction = null;
+
+    if (a === "reboot" || a === "poweroff")
+    {
+      setStatus(a === "reboot" ? "Rebooting..." : "Shutting down...", "ok");
+      screen.render();
+      const ok = runSystemctl(a);
+      if (!ok) setStatus("Failed to execute systemctl (sudo/policy?).", "err");
+    }
+  }
+
+  confirmInput.on("submit", (value) => closeConfirm(false, value));
+  confirmInput.key(["escape"], () => closeConfirm(true, null));
+
+  function applySelected()
+  {
+    const idx = list.selected | 0;
+
+    if (idx === 0)
+    {
+      const cur = !!getSetting("ui.autorecallOnScroll", false);
+      setSetting("ui.autorecallOnScroll", !cur);
+      settings = loadSettings();
+      buildItems();
+      setStatus(`Auto-recall is now ${!cur ? "ON" : "OFF"}.`, "ok");
+      return;
+    }
+
+    if (idx === 1)
+    {
+      askYes("Reboot the system?", "reboot");
+      return;
+    }
+
+    if (idx === 2)
+    {
+      askYes("Power off the system?", "poweroff");
+      return;
+    }
+  }
+
+  list.key(["enter"], () =>
+  {
+    if (!confirmModal.hidden) return;
+    applySelected();
+  });
+
+  list.key(["escape"], () =>
+  {
+    if (!confirmModal.hidden) { closeConfirm(true, null); return; }
+    switchPage("browse");
+  });
+
+  kb.bindKey(["q"], () =>
+  {
+    if (!confirmModal.hidden) return;
+    switchPage("browse");
+  });
+
+  kb.bindKey(["C-c"], () => quit());
+
+  buildItems();
+  list.focus();
+  screen.render();
+
+  return function cleanup()
+  {
+    kb.unbindAllKeys();
+    try { confirmModal.hide(); } catch { }
+  };
+}
+
   // Start on browse
   switchPage("browse");
 };
+
+
