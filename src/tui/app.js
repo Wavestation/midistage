@@ -2134,8 +2134,8 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       style: THEME.header,
       content:
         "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}t{/bold} system menu | {bold}Esc / q{/bold} back \n" + 
-        "{bold}ENTRY CMDS   : a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down\n" +
-        "{bold}SETLIST CMDS : n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist"
+        "{bold}{yellow-fg}ENTRY CMDS   :{/yellow-fg} a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down\n" +
+        "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist"
     });
 
     const setlistInfo = blessed.box({
@@ -2706,7 +2706,27 @@ function refreshFocusMarkers()
 
     // Events: entries
     entriesList.on("highlight", () => refreshPreview());
-    entriesList.key(["up", "down", "k", "j", "pageup", "pagedown"], () => refreshPreview());
+    entriesList.key(["up", "down", "k", "j", "pageup", "pagedown"], () => {
+      refreshPreview()
+
+      // auto recall on scroll
+      const aros = !!getSetting("ui.autorecallOnScroll", false);
+      if (aros)
+      {
+        if (!routesModal.hidden) return;
+
+        const e = getSelectedEntry();
+        if (!e)
+        {
+          setStatus("No entry.", "warn");
+          return;
+        }
+
+        const r = model.recallEntry(e.id);
+        setStatus(r.message, r.ok ? "ok" : "err");
+        refreshEntries(e.id);
+      }
+    });
 
     entriesList.key(["enter"], () =>
     {
@@ -3184,7 +3204,7 @@ function buildSystemPage()
   {
     const ar = !!getSetting("ui.autorecallOnScroll", false);
     list.setItems([
-      `UI: Auto-recall program / entry on list scroll: {bold}${ar ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
+      `UI: Auto-recall setlist entry on scroll: {bold}${ar ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
       "{yellow-fg}Machine: Hardware reboot!{/yellow-fg}",
       "{red-fg}Machine: Hardware poweroff!{/red-fg}"
     ]);
