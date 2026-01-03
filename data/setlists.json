@@ -133,24 +133,44 @@
           "name": "Mobile",
           "routes": [
             {
-              "machineId": "m_58281203af4d",
-              "midnamFile": "NS5R.midnam",
-              "deviceName": "Korg NS5R",
-              "bankName": "Prog A",
-              "msb": 81,
-              "lsb": 0,
-              "program": 41,
-              "patchName": "PianoHaven"
+              "machineId": "m_3b67d71316ba",
+              "midnamFile": "Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank E",
+              "msb": 0,
+              "lsb": 4,
+              "program": 102,
+              "patchName": "SynthPnoJL"
             },
             {
               "machineId": "m_5e47b1df2b7f",
               "midnamFile": "K2500(R).midnam",
               "deviceName": "Kurzweil",
-              "bankName": "Bank 0",
+              "bankName": "Bank 8",
               "msb": null,
+              "lsb": 8,
+              "program": 97,
+              "patchName": "Koreana Pad"
+            },
+            {
+              "machineId": "m_korgtr_ch5",
+              "midnamFile": "TR-Rack.midnam",
+              "deviceName": "Korg TR-Rack",
+              "bankName": "Program Bank A",
+              "msb": 0,
               "lsb": 0,
-              "program": 12,
-              "patchName": "Suitcase E Pno"
+              "program": 0,
+              "patchName": "Tsunami Warning"
+            },
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "Prog B",
+              "msb": 82,
+              "lsb": 0,
+              "program": 38,
+              "patchName": "MIDI Grand"
             }
           ]
         }

@@ -489,8 +489,42 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
 
         return { ok: true, message: `Draft: route mise à jour pour machine ${snap.machineId}.` };
     }
-
     // ---------- Commit / Recall ----------
+
+
+    pasteDraftIntoEntry(entryId, options = {})
+    {
+        const s = this.getActiveSetlist();
+        if (!s) return { ok: false, message: "No active setlist." };
+
+        const e = this.setlists.getEntry(s.id, entryId);
+        if (!e) return { ok: false, message: "Entry not found." };
+
+        const draftRoutes = Array.isArray(this.draft.routes) ? this.draft.routes : [];
+        if (!draftRoutes.length)
+        {
+            return { ok: false, message: "Draft is empty: nothing to paste." };
+        }
+
+        // Remove all existing routes for this entry
+        const existing = Array.isArray(e.routes) ? e.routes : [];
+        for (const r of existing)
+        {
+            if (r && r.machineId) this.setlists.removeRoute(s.id, entryId, r.machineId);
+        }
+
+        // Add draft routes (clone objects)
+        for (const r of draftRoutes)
+        {
+            if (!r || !r.machineId) continue;
+            const copy = Object.assign({}, r);
+            this.setlists.upsertRoute(s.id, entryId, copy);
+        }
+
+        if (options && options.clearDraft) this.draftClear();
+
+        return { ok: true, message: `Entry updated from draft (${draftRoutes.length} route(s)).` };
+    }
 
     commitDraftAsEntry(entryName)
     {

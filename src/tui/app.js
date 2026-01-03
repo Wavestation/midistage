@@ -2129,12 +2129,13 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       top: 0,
       left: 0,              // FIX
       right: 0,
-      height: 2,
+      height: 3,
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}a{/bold} save draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down\n" +
-        "{bold}n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist | {bold}t{/bold} system | {bold}Esc / q{/bold} back"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}t{/bold} system menu | {bold}Esc / q{/bold} back \n" + 
+        "{bold}ENTRY CMDS   : a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down\n" +
+        "{bold}SETLIST CMDS : n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist"
     });
 
     const setlistInfo = blessed.box({
@@ -2742,6 +2743,30 @@ function refreshFocusMarkers()
         setStatus(r.message, r.ok ? "ok" : "err");
         refreshEntries(null);
       });
+    });
+
+    // Entry: paste/replace routes from Draft into selected entry
+    kb.bindKey(["p"], () =>
+    {
+      if (!routesModal.hidden) return;
+      if (!inputModal.hidden) return;
+
+      const e = getSelectedEntry();
+      if (!e)
+      {
+        setStatus("No entry.", "warn");
+        return;
+      }
+
+      if (!model.pasteDraftIntoEntry)
+      {
+        setStatus("Missing model.pasteDraftIntoEntry().", "err");
+        return;
+      }
+
+      const r = model.pasteDraftIntoEntry(e.id, { clearDraft: false });
+      setStatus(r && r.message ? r.message : (r?.ok ? "Pasted." : "Paste failed."), r?.ok ? "ok" : "err");
+      refreshEntries(e.id);
     });
 
     // Entry: edit routes (modal)
