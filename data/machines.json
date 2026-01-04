@@ -1,5 +1,5 @@
 {
-  "activeId": "m_efma",
+  "activeId": "m_korgtr_ch5",
   "machines": [
     {
       "id": "m_korgtr_ch5",
@@ -59,8 +59,8 @@
     },
     {
       "id": "m_5e47b1df2b7f",
-      "name": "K2500 interface mobile",
-      "midnamFile": "K2500(R).midnam",
+      "name": "K2000 interface mobile",
+      "midnamFile": "K2000.midnam",
       "out": null,
       "outSlot": 26,
       "channel": 1

@@ -75,6 +75,52 @@
               "patchName": "RD-1000"
             }
           ]
+        },
+        {
+          "id": "e_3a874124be5c",
+          "name": "Fuzzy Piano Stage",
+          "routes": [
+            {
+              "machineId": "m_korgtr_ch5",
+              "midnamFile": "TR-Rack.midnam",
+              "deviceName": "Korg TR-Rack",
+              "bankName": "Program Bank D",
+              "msb": 0,
+              "lsb": 3,
+              "program": 43,
+              "patchName": "= Evaporate ="
+            },
+            {
+              "machineId": "m_d0daaba01f95",
+              "midnamFile": "MOTIF ES 6^7^8.midnam",
+              "deviceName": "Yamaha",
+              "bankName": "Preset Voice Bank 1",
+              "msb": 63,
+              "lsb": 0,
+              "program": 16,
+              "patchName": "80s Layer"
+            },
+            {
+              "machineId": "m_b387d1c5be6e",
+              "midnamFile": "JV-2080.midnam",
+              "deviceName": "Roland JV-2080",
+              "bankName": "Patch Bank PR-E",
+              "msb": 81,
+              "lsb": 4,
+              "program": 2,
+              "patchName": "RD-1000"
+            },
+            {
+              "machineId": "m_9b657df5d442",
+              "midnamFile": "K2500(R).midnam",
+              "deviceName": "Kurzweil",
+              "bankName": "Bank 7",
+              "msb": null,
+              "lsb": 7,
+              "program": 77,
+              "patchName": "Piano for Layers"
+            }
+          ]
         }
       ]
     },
@@ -84,7 +130,7 @@
       "entries": [
         {
           "id": "e_6c86d279cb8c",
-          "name": "Test",
+          "name": "Mellowy Diokan",
           "routes": [
             {
               "machineId": "m_b387d1c5be6e",
@@ -100,21 +146,11 @@
               "machineId": "m_3b67d71316ba",
               "midnamFile": "Virus Rack XL.midnam",
               "deviceName": "Access Virus Rack XL",
-              "bankName": "Singles Bank A",
+              "bankName": "Singles Bank C",
               "msb": 0,
-              "lsb": 0,
-              "program": 0,
-              "patchName": "3AM DEVICE"
-            },
-            {
-              "machineId": "m_5e47b1df2b7f",
-              "midnamFile": "K2500(R).midnam",
-              "deviceName": "Kurzweil",
-              "bankName": "Bank 8",
-              "msb": null,
-              "lsb": 8,
-              "program": 97,
-              "patchName": "Koreana Pad"
+              "lsb": 2,
+              "program": 15,
+              "patchName": "DarkliteSV"
             },
             {
               "machineId": "m_d0daaba01f95",
@@ -144,13 +180,13 @@
           "routes": [
             {
               "machineId": "m_5e47b1df2b7f",
-              "midnamFile": "K2500(R).midnam",
-              "deviceName": "Kurzweil",
+              "midnamFile": "K2000.midnam",
+              "deviceName": "Kurzweil K2000",
               "bankName": "Bank 0",
               "msb": null,
               "lsb": 0,
-              "program": 15,
-              "patchName": "Big PWM"
+              "program": 17,
+              "patchName": "Mixed Choir"
             },
             {
               "machineId": "m_58281203af4d",

@@ -8,6 +8,53 @@ const blessed = require("blessed");
 
 const { Model } = require("../core/model");
 
+// -------------------- Splashscreen helpers --------------------
+function sleep(ms)
+{
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function showJowliSplash(screen, { name, version, asciiArt = "" })
+{
+  // simple rainbow  (blessed tags)
+  const rainbowText = "2025~2026 MASAMI KOMURO @ FELONIA SOFTWARE";
+  const rainbowColors = ["red-fg","yellow-fg","green-fg","cyan-fg","blue-fg","magenta-fg"];
+
+  const rainbow = rainbowText.split("").map((ch, i) =>
+  {
+    const c = rainbowColors[i % rainbowColors.length];
+    return `{${c}}${ch}{/${c}}`;
+  }).join("");
+
+  const content =
+    (asciiArt ? `${asciiArt}\n\n` : "") +
+    `{bold}${name}{/bold}  {gray-fg}v${version}{/gray-fg}\n` +
+    `{bold}A NICE MIDI PROGRAM CHANGE SETLIST MANAGER{/bold}\n\n` +
+    `{bold}${rainbow}{/bold}`
+
+  const splash = blessed.box({
+    parent: screen,
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    align: "center",
+    valign: "middle",
+    tags: true,
+    style: { fg: "white", bg: "black" },
+    content
+  });
+
+  screen.render();
+
+  return () =>
+  {
+    try { splash.destroy(); } catch { }
+    try { screen.render(); } catch { }
+  };
+}
+
+
 module.exports = function startApp(midnamDir, io)
 {
   const screen = blessed.screen({
@@ -1548,16 +1595,6 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       }
       switchPage("ports");
     });
-
-    // System settings
-    kb.bindKey(["t"], () =>
-    {
-      if (!routesModal.hidden) return;
-      if (!inputModal.hidden) return;
-      switchPage("system");
-    });
-
-
     kb.bindKey(["q"], () =>
     {
       if (!confirmModal.hidden) return;
@@ -2133,9 +2170,9 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}t{/bold} system menu | {bold}Esc / q{/bold} back \n" + 
-        "{bold}{yellow-fg}ENTRY CMDS   :{/yellow-fg} a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down\n" +
-        "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}Esc / q{/bold} back \n" + 
+        "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist \n" + 
+        "{bold}{yellow-fg}ENTRY CMDS   :{/yellow-fg} a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down"
     });
 
     const setlistInfo = blessed.box({
@@ -2601,7 +2638,8 @@ function refreshFocusMarkers()
         const p = r.patchName || "Patch";
 
         lines.push(
-          `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${out} ${ch}]{/gray-fg}  \n` +
+          // `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${out} ${ch}]{/gray-fg}  \n` +
+          `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${ch}]{/gray-fg}  \n` +
           `{yellow-fg}${b}{/yellow-fg} {gray-fg}(MSB ${msb} / LSB ${lsb}){/gray-fg}  \n` +
           `{magenta-fg}PC ${pc}{/magenta-fg}  ` +
           `{white-fg}${p}{/white-fg}` +
@@ -2790,7 +2828,7 @@ function refreshFocusMarkers()
       if (res && res.confirm)
       {
         const msg = res.message || 'Overwrite existing route(s)? Type "yes"';
-        askInput(msg + 'Type "yes" to confirm.', "", (err, value) =>
+        askInput((msg ? (msg + "\n") : "") + 'Type "yes" to confirm.', "", (err, value) =>
         {
           if (err) return;
           const v = String(value || "").trim().toLowerCase();
@@ -3310,8 +3348,38 @@ function buildSystemPage()
   };
 }
 
-  // Start on browse
-  switchPage("browse");
+  // -------------------- Splash + Start --------------------
+  const ASCII = String.raw`
+       ___   ___   ___   ___   ___   ___   ___   ___  
+|\ /|   |     | |   |   |       |   |   | |     |     
+| + |   +     + |   +    -+-    +   |-+-| | +-  |-+-  
+|   |   |     | |   |       |   |   |   | |   | |     
+       ---   ---   ---   ---               ---   ---  
+`;
+
+ const AltASCII = String.raw`
+  ██████   █████████████████████  █████  █████████  ███████████ █████████    █████████  ██████████
+░░██████ ██████░░███░░███░░░░███░░███  ███░░░░░███░█░░░███░░░████░░░░░███  ███░░░░░███░░███░░░░░█
+ ░███░█████░███ ░███ ░███   ░░███░███ ░███    ░░░ ░   ░███  ░░███    ░███ ███     ░░░  ░███  █ ░ 
+ ░███░░███ ░███ ░███ ░███    ░███░███ ░░█████████     ░███   ░███████████░███          ░██████   
+ ░███ ░░░  ░███ ░███ ░███    ░███░███  ░░░░░░░░███    ░███   ░███░░░░░███░███    █████ ░███░░█   
+ ░███      ░███ ░███ ░███    ███ ░███  ███    ░███    ░███   ░███    ░███░░███  ░░███  ░███ ░   █
+ █████     ████████████████████  █████░░█████████     █████  █████   █████░░█████████  ██████████
+░░░░░     ░░░░░░░░░░░░░░░░░░░░  ░░░░░  ░░░░░░░░░     ░░░░░  ░░░░░   ░░░░░  ░░░░░░░░░  ░░░░░░░░░░ 
+`;                                                                                                
+
+  const hideSplash = showJowliSplash(screen, {
+    name: "MIDISTAGE",
+    version: "1.0",
+    asciiArt: ASCII
+  });
+
+  // Wait 3s then start UI (no async required)
+  setTimeout(() =>
+  {
+    hideSplash();
+    switchPage("browse");
+  }, 3000);
+
+  return; // prevent immediate UI build behind the splash
 };
-
-
