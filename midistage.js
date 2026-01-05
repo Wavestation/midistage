@@ -6,6 +6,8 @@ const { startSerialServer } = require("./src/tui/serialServer");
 
 const MIDNAM_DIR = path.join(__dirname, "data", "names");
 
+const appVer = "1.0"
+
 function getArg(name, def = null) 
 {
   const i = process.argv.indexOf(name);
@@ -27,7 +29,7 @@ if (process.argv.includes("--telnet"))
 
   console.log("Starting Telnet on port " + port + " ...");
 
-  startTelnetServer((io) => startApp(MIDNAM_DIR, io), port, {
+  startTelnetServer((io) => startApp(MIDNAM_DIR, io, appVer), port, {
     //terminal: "ansi",
     terminal: "xterm-256color",
     unicode: false,
@@ -57,7 +59,7 @@ else if (process.argv.includes("--serial"))
       terminal: "xterm-256color",
       unicode: false
     },
-    (io) => startApp(MIDNAM_DIR, io)
+    (io) => startApp(MIDNAM_DIR, io, appVer)
   );
 
   const shutdown = () => {
@@ -71,5 +73,5 @@ else if (process.argv.includes("--serial"))
 else 
 {
   // local  
-  startApp(MIDNAM_DIR);
+  startApp(MIDNAM_DIR, null, appVer);
 }

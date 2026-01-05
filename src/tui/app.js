@@ -9,6 +9,19 @@ const blessed = require("blessed");
 const { Model } = require("../core/model");
 
 // -------------------- Splashscreen helpers --------------------
+function makeItGayLol(rainbowText)
+{
+  const rainbowColors = ["red-fg","yellow-fg","green-fg","cyan-fg","blue-fg","magenta-fg"];
+
+  const rainbow = rainbowText.split("").map((ch, i) =>
+  {
+    const c = rainbowColors[i % rainbowColors.length];
+    return `{${c}}${ch}{/${c}}`;
+  }).join("");
+
+  return rainbow;
+}
+
 function sleep(ms)
 {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -19,13 +32,8 @@ function showJowliSplash(screen, { name, version, asciiArt = "" })
 {
   // simple rainbow  (blessed tags)
   const rainbowText = "2025~2026 MASAMI KOMURO @ FELONIA SOFTWARE";
-  const rainbowColors = ["red-fg","yellow-fg","green-fg","cyan-fg","blue-fg","magenta-fg"];
 
-  const rainbow = rainbowText.split("").map((ch, i) =>
-  {
-    const c = rainbowColors[i % rainbowColors.length];
-    return `{${c}}${ch}{/${c}}`;
-  }).join("");
+  const rainbow = makeItGayLol(rainbowText);
 
   const content =
     (asciiArt ? `${asciiArt}\n\n` : "") +
@@ -55,12 +63,68 @@ function showJowliSplash(screen, { name, version, asciiArt = "" })
   };
 }
 
+// -------------------- About box helper --------------------
+function showAboutBox(screen, { name, version, asciiArt = "", extra = "", onClose })
+{
 
-module.exports = function startApp(midnamDir, io)
+  const asciiArtColors = "{bold}" + makeItGayLol(asciiArt) + "{/bold}";
+  const content =
+    (asciiArtColors ? `${asciiArtColors}\n\n\n` : "") +
+    `{bold}${name}{/bold}  {gray-fg}v${version}{/gray-fg}\n` +
+    `{bold}A NICE MIDI PROGRAM CHANGE SETLIST MANAGER{/bold}\n\n` +
+    (extra ? `${extra}\n\n` : "") +
+    `{green-fg}Press any key to close.{/green-fg}`;
+
+  const about = blessed.box({
+    parent: screen,
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    align: "center",
+    valign: "middle",
+    tags: true,
+    style: { fg: "white", bg: "black" },
+    content
+  });
+
+  screen.render();
+
+  let closed = false;
+  let ignoreOne = true; // <- IMPORTANT: skip the key that opened it
+
+  function close(ch, key)
+  {
+    if (closed) return;
+    closed = true;
+
+    try { screen.removeListener("keypress", onKeyPress); } catch { }
+    try { about.destroy(); } catch { }
+    try { screen.render(); } catch { }
+
+    if (typeof onClose === "function")
+    {
+      try { onClose(ch, key); } catch { }
+    }
+  }
+
+  const onKeyPress = (ch, key) =>
+  {
+    if (ignoreOne) { ignoreOne = false; return; }
+    close(ch, key);
+  };
+
+  screen.on("keypress", onKeyPress);
+
+  return () => close();
+}
+
+
+module.exports = function startApp(midnamDir, io, appVersion)
 {
   const screen = blessed.screen({
     smartCSR: true,
-    title: "MIDISTAGE :)",
+    title: `MIDISTAGE V${appVersion} :)`,
     // blessed varies by version. Force stable behavior.
     unicode: (io && typeof io.unicode === "boolean") ? io.unicode : true,
     fullUnicode: (io && typeof io.unicode === "boolean") ? io.unicode : true,
@@ -317,7 +381,7 @@ function runSystemctl(action)
       width: "100%",
       height: "100%",
       border: "line",
-      label: " MIDISTAGE -- 2025~2026 MASAMI KOMURO @ FELONIA SOFTWARE ",
+      label: " MIDISTAGE -- MAIN MENU -- VERSION " + appVersion + " ",
       style: { border: THEME.frame.border }
     });
 
@@ -853,7 +917,7 @@ function runSystemctl(action)
       width: "100%",
       height: "100%",
       border: "line",
-      label: " MIDISTAGE — MACHINES ",
+      label: " MIDISTAGE -- MACHINE MANAGEMENT ",
       style: { border: THEME.frame.border }
     });
 
@@ -1732,7 +1796,7 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       width: "100%",
       height: "100%",
       border: "line",
-      label: " MIDISTAGE — MIDI PORTS ",
+      label: " MIDISTAGE -- MIDI PORTS ",
       style: { border: THEME.frame.border }
     });
 
@@ -2158,7 +2222,7 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       width: "100%",
       height: "100%",
       border: "line",
-      label: " MIDISTAGE — SETLIST ",
+      label: " MIDISTAGE -- SETLIST ",
       style: { border: THEME.frame.border }
     });
 
@@ -3136,7 +3200,7 @@ function buildSystemPage()
     width: "100%",
     height: "100%",
     border: "line",
-    label: " MIDISTAGE — SYSTEM SETTINGS ",
+    label: " MIDISTAGE -- SYSTEM SETTINGS ",
     style: { border: THEME.frame.border }
   });
 
@@ -3245,7 +3309,8 @@ function buildSystemPage()
     list.setItems([
       `UI: Auto-recall setlist entry on scroll: {bold}${ar ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
       "{yellow-fg}Machine: Hardware reboot!{/yellow-fg}",
-      "{red-fg}Machine: Hardware poweroff!{/red-fg}"
+      "{red-fg}Machine: Hardware poweroff!{/red-fg}",
+      "{green-fg}About MIDISTAGE...{/green-fg}"
     ]);
     list.select(0);
   }
@@ -3315,6 +3380,48 @@ function buildSystemPage()
     {
       askYes("Power off the system?", "poweroff");
       return;
+    }
+
+    if (idx === 3)
+    {
+      // reuse your ASCII logos if you want
+      const logo = (typeof ASCIILogo !== "undefined" && ASCIILogo && ASCIILogo.length)
+        ? ASCIILogo[Math.floor(Math.random() * ASCIILogo.length)]
+        : "";
+
+      const extraText = "This system was made for keyboardists and stage performers.\n" +
+                        "If you enjoy it or for any request, feel free to contact me at\n" +
+                        "{blue-fg}https://github.com/Wavestation{/blue-fg}\n\n" +
+                        "{gray-fg}2025~2026 MASAMI KOMURO @ FELONIA SOFTWARE{/gray-fg}"   
+
+      const hide = showAboutBox(screen, {
+        name: "MIDISTAGE",
+        version: appVersion,
+        asciiArt: logo,
+        extra: extraText,
+        onClose: () => { list.focus(); screen.render(); }
+      });
+
+      // When it closes, restore focus to the System list
+      // (we can just poll next tick because close is keypress-driven)
+      const restore = () =>
+      {
+        try { list.focus(); } catch { }
+        try { screen.render(); } catch { }
+      };
+
+      // Wrap the cleanup to restore focus
+      const origHide = hide;
+      // Monkey-patch style: safe + minimal changes
+      return (function () {
+        // We can't intercept internal close directly, so we rebind one global keypress restore:
+        const once = () => {
+          try { screen.removeListener("keypress", once); } catch { }
+          restore();
+        };
+        screen.on("keypress", once);
+        // and keep the about itself closing via its own handler
+      })();
     }
   }
 
@@ -3394,7 +3501,7 @@ ASCIILogo[2] = String.raw`
 
   const hideSplash = showJowliSplash(screen, {
     name: "MIDISTAGE",
-    version: "1.0",
+    version: appVersion,
     asciiArt: ASCIILogo[getRandomInt(3)]
   });
 

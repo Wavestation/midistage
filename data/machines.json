@@ -1,5 +1,5 @@
 {
-  "activeId": "m_korgtr_ch5",
+  "activeId": "m_24d196fd4495",
   "machines": [
     {
       "id": "m_korgtr_ch5",
@@ -54,13 +54,29 @@
       "name": "NS5R interface mobile",
       "midnamFile": "NS5R.midnam",
       "out": null,
-      "outSlot": 25,
+      "outSlot": 27,
       "channel": 1
     },
     {
       "id": "m_5e47b1df2b7f",
       "name": "K2000 interface mobile",
       "midnamFile": "K2000.midnam",
+      "out": null,
+      "outSlot": 28,
+      "channel": 1
+    },
+    {
+      "id": "m_24d196fd4495",
+      "name": "EFM interface mobile",
+      "midnamFile": "Essence FM.midnam",
+      "out": null,
+      "outSlot": 25,
+      "channel": 1
+    },
+    {
+      "id": "m_bc84fb8a2c41",
+      "name": "MASK1 interface mobile",
+      "midnamFile": "Proteus Custom.midnam",
       "out": null,
       "outSlot": 26,
       "channel": 1
