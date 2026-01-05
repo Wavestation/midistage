@@ -32,7 +32,7 @@ if (process.argv.includes("--telnet"))
   startTelnetServer((io) => startApp(MIDNAM_DIR, io, appVer), port, {
     //terminal: "ansi",
     terminal: "xterm-256color",
-    unicode: false,
+    unicode: true,
     cols: 80,
     rows: 24
   });

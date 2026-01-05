@@ -120,6 +120,7 @@ function showAboutBox(screen, { name, version, asciiArt = "", extra = "", onClos
 }
 
 
+// ----------------------- MAIN APPLICATION ----------------------------------------
 module.exports = function startApp(midnamDir, io, appVersion)
 {
   const screen = blessed.screen({
