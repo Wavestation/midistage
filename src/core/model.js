@@ -160,6 +160,81 @@ class Model
         return this.setlists.removeRoute(s.id, entryId, machineId);
     }
 
+
+    updateEntryRouteCC(entryId, machineId, ccSlots)
+    {
+        const s = this.getActiveSetlist();
+        if (!s) return { ok: false, message: "No active setlist." };
+
+        const e = this.setlists.getEntry(s.id, entryId);
+        if (!e) return { ok: false, message: "Entry not found." };
+
+        const existing = Array.isArray(e.routes) ? e.routes.find(r => r && r.machineId === machineId) : null;
+        if (!existing) return { ok: false, message: "Route not found for that machine." };
+
+        const copy = Object.assign({}, existing, { ccSlots: Array.isArray(ccSlots) ? ccSlots : [] });
+
+        const ok = this.setlists.upsertRoute(s.id, entryId, copy);
+        return { ok, message: ok ? "CC slots updated." : "CC update failed." };
+    }
+
+    getEntryRoute(entryId, machineId)
+    {
+        const s = this.getActiveSetlist();
+        if (!s) return null;
+        const e = this.setlists.getEntry(s.id, entryId);
+        if (!e) return null;
+        return (Array.isArray(e.routes) ? e.routes.find(r => r && r.machineId === machineId) : null) || null;
+    }
+
+    _sendRouteCCSlots(machineRun, ccSlots)
+    {
+        if (!machineRun) return;
+        if (!Array.isArray(ccSlots) || !ccSlots.length) return;
+        if (typeof midiDriver.sendCC !== "function") return;
+
+        const clamp7 = (n) =>
+        {
+            n = Number(n);
+            if (!Number.isFinite(n)) return null;
+            n = n | 0;
+            if (n < 0) n = 0;
+            if (n > 127) n = 127;
+            return n;
+        };
+
+        // Tu as dit: 4 CC. On respecte.
+        const slots = ccSlots.slice(0, 4);
+
+        for (const s of slots)
+        {
+            if (!s) continue;
+
+            const cc = clamp7(s.cc);
+            const value = clamp7(s.value);
+
+            if (cc == null || value == null) continue;
+
+            try
+            {
+                midiDriver.sendCC(machineRun, cc, value);
+
+                this.logSend(
+                    "SETLIST_CC",
+                    machineRun,
+                    { name: "CC", msb: null, lsb: null },
+                    { program: null, name: `CC${cc}=${value}` }
+                );
+            }
+            catch
+            {
+                // non-fatal: ne bloque pas le recall
+            }
+        }
+    }
+
+
+
     duplicateEntry(entryId, newName)
     {
         const s = this.getActiveSetlist();
@@ -650,6 +725,7 @@ if (!out)
 
 const machineRun = Object.assign({}, machine, { out });
 midiDriver.sendPatch(machineRun, bank, patch);
+                this._sendRouteCCSlots(machineRun, r.ccSlots);
                 this.logSend("SETLIST_RECALL", machineRun, bank, patch);
                 lines.push(`${machine.name || machine.id} -> ${bank.name} ${patch.program} ${patch.name}`);
             }

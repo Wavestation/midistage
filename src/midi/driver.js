@@ -139,8 +139,31 @@ function sendPatch(machine, bank, patch) {
   return msg;
 }
 
+function sendCC(machine, cc, value) {
+  const ch = Math.max(1, Math.min(16, Number(machine?.channel || 1))) - 1;
+
+  const outName = machine?.out;
+  if (!outName) {
+    throw new Error(`Machine "${machine?.name || machine?.id}" n'a pas de sortie MIDI (out=null). Assigne un port.`);
+  }
+
+  if (MOCK) {
+    return `[MOCK MIDI] ${machine?.name || "Machine"} ch=${ch + 1} CC${cc}=${value}`;
+  }
+
+  const out = getOrOpenOutputByName(outName);
+
+  const clamp7 = (v) => Math.max(0, Math.min(127, v | 0));
+  const cc7 = clamp7(cc);
+  const val7 = clamp7(value);
+
+  out.sendMessage([0xB0 | ch, cc7, val7]);
+  return `${machine?.name || "Machine"} ch=${ch + 1} CC${cc7}=${val7}`;
+}
+
+
 process.on("exit", closeAll);
 process.on("SIGINT", () => { closeAll(); process.exit(0); });
 process.on("SIGTERM", () => { closeAll(); process.exit(0); });
 
-module.exports = { listOutputs, sendPatch, closeAll };
+module.exports = { listOutputs, sendPatch, sendCC, closeAll };

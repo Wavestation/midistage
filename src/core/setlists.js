@@ -33,6 +33,60 @@ function safeWriteJson(filePath, obj)
     fs.renameSync(tmp, filePath);
 }
 
+
+function normalizeCCSlots(src)
+{
+    // Accept: null/undefined, array of {cc,value}, array of [cc,value], or object map {cc:number->value}
+    if (src == null) return null;
+
+    let arr = [];
+
+    if (Array.isArray(src))
+    {
+        arr = src.map((it) =>
+        {
+            if (it == null) return null;
+
+            // [cc,value]
+            if (Array.isArray(it) && it.length >= 2)
+            {
+                const cc = Number(it[0]);
+                const value = Number(it[1]);
+                if (!Number.isFinite(cc) || !Number.isFinite(value)) return null;
+                return { cc: Math.max(0, Math.min(127, cc|0)), value: Math.max(0, Math.min(127, value|0)) };
+            }
+
+            // {cc,value}
+            if (typeof it === "object")
+            {
+                const cc = Number(it.cc);
+                const value = Number(it.value);
+                if (!Number.isFinite(cc) || !Number.isFinite(value)) return null;
+                return { cc: Math.max(0, Math.min(127, cc|0)), value: Math.max(0, Math.min(127, value|0)) };
+            }
+
+            return null;
+        }).filter(Boolean);
+    }
+    else if (typeof src === "object")
+    {
+        // map { "74": 127, ... }
+        for (const k of Object.keys(src))
+        {
+            const cc = Number(k);
+            const value = Number(src[k]);
+            if (!Number.isFinite(cc) || !Number.isFinite(value)) continue;
+            arr.push({ cc: Math.max(0, Math.min(127, cc|0)), value: Math.max(0, Math.min(127, value|0)) });
+        }
+    }
+
+    // Max 4 slots, stable order by appearance then CC#
+    arr = arr.slice(0, 4);
+
+    // If fewer than 4, keep as-is (UI can pad)
+    return arr;
+}
+
 function normalizeRoute(r)
 {
     return {
@@ -49,6 +103,11 @@ function normalizeRoute(r)
 
         program: (r && r.program != null) ? Number(r.program) : null,
         patchName: r && r.patchName ? String(r.patchName) : null
+    ,
+        // optional: up to 4 Control Change (CC) messages sent after program change
+        ccSlots: (r && (r.ccSlots != null || r.cc != null || r.ccs != null))
+            ? normalizeCCSlots(r.ccSlots != null ? r.ccSlots : (r.cc != null ? r.cc : r.ccs))
+            : null
     };
 }
 
@@ -321,6 +380,12 @@ class SetlistsStore
         const idx = e.routes.findIndex(x => x.machineId === r.machineId);
         if (idx >= 0)
         {
+            // Preserve existing CC slots unless the new route explicitly provides them
+            if (r.ccSlots == null && e.routes[idx] && e.routes[idx].ccSlots != null)
+            {
+                r.ccSlots = e.routes[idx].ccSlots;
+            }
+
             e.routes[idx] = r;
         }
         else

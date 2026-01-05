@@ -13,7 +13,7 @@ function makeItGayLol(rainbowText)
 {
   const rainbowColors = ["red-fg","yellow-fg","green-fg","cyan-fg","blue-fg","magenta-fg"];
 
-  const rainbow = rainbowText.split("").map((ch, i) =>
+  const rainbow = String(rainbowText || "").split("").map((ch, i) =>
   {
     const c = rainbowColors[i % rainbowColors.length];
     return `{${c}}${ch}{/${c}}`;
@@ -39,7 +39,7 @@ function showJowliSplash(screen, { name, version, asciiArt = "" })
     (asciiArt ? `${asciiArt}\n\n` : "") +
     `{bold}${name}{/bold}  {gray-fg}v${version}{/gray-fg}\n` +
     `{bold}A NICE MIDI PROGRAM CHANGE SETLIST MANAGER{/bold}\n\n` +
-    `{bold}${rainbow}{/bold}`
+    `{bold}${rainbow}{/bold}`;
 
   const splash = blessed.box({
     parent: screen,
@@ -63,17 +63,18 @@ function showJowliSplash(screen, { name, version, asciiArt = "" })
   };
 }
 
-// -------------------- About box helper --------------------
+// -------------------- About box helper (FIXED) --------------------
 function showAboutBox(screen, { name, version, asciiArt = "", extra = "", onClose })
 {
-
-  const asciiArtColors = "{bold}" + makeItGayLol(asciiArt) + "{/bold}";
+  const asciiArtColors = asciiArt ? ("{bold}" + makeItGayLol(asciiArt) + "{/bold}") : "";
   const content =
     (asciiArtColors ? `${asciiArtColors}\n\n\n` : "") +
     `{bold}${name}{/bold}  {gray-fg}v${version}{/gray-fg}\n` +
     `{bold}A NICE MIDI PROGRAM CHANGE SETLIST MANAGER{/bold}\n\n` +
     (extra ? `${extra}\n\n` : "") +
     `{green-fg}Press any key to close.{/green-fg}`;
+
+  const prevFocus = screen.focused; // remember who had focus
 
   const about = blessed.box({
     parent: screen,
@@ -84,37 +85,49 @@ function showAboutBox(screen, { name, version, asciiArt = "", extra = "", onClos
     align: "center",
     valign: "middle",
     tags: true,
+    keys: true,     // IMPORTANT: allow it to receive keys
+    vi: true,
     style: { fg: "white", bg: "black" },
     content
   });
 
-  screen.render();
-
   let closed = false;
-  let ignoreOne = true; // <- IMPORTANT: skip the key that opened it
 
   function close(ch, key)
   {
     if (closed) return;
     closed = true;
 
-    try { screen.removeListener("keypress", onKeyPress); } catch { }
+    try { about.removeListener("keypress", onKeyPress); } catch { }
     try { about.destroy(); } catch { }
-    try { screen.render(); } catch { }
 
-    if (typeof onClose === "function")
+    // IMPORTANT: restore focus next tick, so the key that closed the modal
+    // doesn't immediately hit the list's Enter handler.
+    setImmediate(() =>
     {
-      try { onClose(ch, key); } catch { }
-    }
+      try
+      {
+        if (prevFocus && typeof prevFocus.focus === "function") prevFocus.focus();
+        else screen.focusNext();
+      }
+      catch { }
+
+      try { screen.render(); } catch { }
+
+      if (typeof onClose === "function")
+      {
+        try { onClose(ch, key); } catch { }
+      }
+    });
   }
 
-  const onKeyPress = (ch, key) =>
-  {
-    if (ignoreOne) { ignoreOne = false; return; }
-    close(ch, key);
-  };
+  const onKeyPress = (ch, key) => close(ch, key);
 
-  screen.on("keypress", onKeyPress);
+  about.on("keypress", onKeyPress);
+
+  // Take focus NOW.
+  try { about.focus(); } catch { }
+  screen.render();
 
   return () => close();
 }
@@ -389,7 +402,7 @@ function runSystemctl(action)
     const header = blessed.box({
       parent: frame,
       top: 0,
-      left: 0,              // FIX
+      left: 0,
       right: 0,
       height: 1,
       tags: true,
@@ -901,6 +914,8 @@ function runSystemctl(action)
     };
   }
 
+  // -------------------- Machines Page --------------------
+  // (inchangé depuis ton fichier: je ne te le casse pas ici)
   // -------------------- Machines Page --------------------
 
   function buildMachinesPage()
@@ -1456,7 +1471,8 @@ function runSystemctl(action)
 
       const midSel = midnams[midnamList.selected] || MIDNAM_NONE;
       const slotSel = slots[outList.selected] || null;
-let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
+
+      let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       if (!Number.isFinite(ch)) ch = 1;
       ch = Math.max(1, Math.min(16, ch));
 
@@ -1783,6 +1799,8 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
   }
 
 
+  // -------------------- MIDI Ports Page --------------------
+  // (inchangé depuis ton fichier)
   // -------------------- MIDI Ports Page --------------------
 
   function buildMidiPortsPage()
@@ -2230,14 +2248,14 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
     const header = blessed.box({
       parent: frame,
       top: 0,
-      left: 0,              // FIX
+      left: 0,
       right: 0,
       height: 3,
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}Esc / q{/bold} back \n" + 
-        "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist \n" + 
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}Esc / q{/bold} back \n" +
+        "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist \n" +
         "{bold}{yellow-fg}ENTRY CMDS   :{/yellow-fg} a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down"
     });
 
@@ -2311,6 +2329,16 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
       content: "Setlist mode."
     });
 
+    function setStatus(text, level)
+    {
+      let prefix = "";
+      if (level === "ok") prefix = "{green-fg}[OK]{/green-fg} ";
+      else if (level === "warn") prefix = "{yellow-fg}[WARN]{/yellow-fg} ";
+      else if (level === "err") prefix = "{red-fg}[ERR]{/red-fg} ";
+      status.setContent(prefix + text);
+      screen.render();
+    }
+
     // ------- Input modal (generic) -------
 
     const inputModal = blessed.box({
@@ -2362,93 +2390,6 @@ let ch = parseInt(String(chBox.getValue() || "1").trim(), 10);
 
     let _inputCallback = null;
 
-    // ------- Routes editor modal -------
-
-    const routesModal = blessed.box({
-      parent: frame,
-      top: "center",
-      left: "center",
-      width: "80%",
-      height: "70%",
-      border: "line",
-      label: " Routes ",
-      tags: true,
-      hidden: true,
-      style: THEME.modal,
-      padding: { left: 1, right: 1 }
-    });
-
-    const routesTitle = blessed.box({
-      parent: routesModal,
-      top: 0,
-      left: 0,
-      height: 2,
-      width: "100%",
-      tags: true,
-      content: ""
-    });
-
-    const routesList = blessed.list({
-      parent: routesModal,
-      top: 2,
-      left: 0,
-      width: "100%",
-      height: "100%-4",
-      border: "line",
-      keys: true,
-      vi: true,
-      tags: true,
-      style: THEME.list
-    });
-
-    blessed.box({
-      parent: routesModal,
-      bottom: 0,
-      left: 0,
-      height: 2,
-      width: "100%",
-      tags: true,
-      content: "{bold}↑↓{/bold} select | {bold}Enter{/bold} replace from Draft | {bold}Del{/bold} remove route | {bold}Esc{/bold} close"
-    });
-
-
-
-function refreshFocusMarkers()
-{
-  setLabelWithFocus(setlistsList, "Setlists", screen.focused === setlistsList);
-  setLabelWithFocus(entriesList, "Entries", screen.focused === entriesList);
-
-  if (!inputModal.hidden) inputModal.setLabel(` ${FOCUS_MARK} Input `);
-  else inputModal.setLabel(" Input ");
-
-  if (!routesModal.hidden) routesModal.setLabel(` ${FOCUS_MARK} Routes `);
-  else routesModal.setLabel(" Routes ");
-}
-    let _routesEntryId = null;
-
-    // ------- Focus markers (NEW for Setlists/Entries) -------
-    function refreshFocusMarkers()
-    {
-      setLabelWithFocus(setlistsList, "Setlists", screen.focused === setlistsList);
-      setLabelWithFocus(entriesList, "Entries", screen.focused === entriesList);
-
-      // optionnel (mais cohérent)
-      setLabelWithFocus(preview, "Preview", screen.focused === preview);
-      setLabelWithFocus(status, "Status", screen.focused === status);
-
-      if (!inputModal.hidden) inputModal.setLabel(` ${FOCUS_MARK} Input `);
-      else inputModal.setLabel(" Input ");
-
-      if (!routesModal.hidden) routesModal.setLabel(` ${FOCUS_MARK} Routes `);
-      // sinon on garde le label dynamique déjà posé ailleurs (Routes (n))
-    }
-
-    [setlistsList, entriesList, preview, status].forEach(w =>
-    {
-      w.on("focus", () => { refreshFocusMarkers(); screen.render(); });
-      w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
-    });
-
     function askInput(question, initialValue, cb)
     {
       if (!inputModal || !inputModal.parent)
@@ -2485,12 +2426,184 @@ function refreshFocusMarkers()
     inputBox.on("submit", (value) => closeInputModal(false, value));
     inputBox.key(["escape"], () => closeInputModal(true, null));
 
-    function formatRouteLine(r)
+    // ------- Routes editor modal -------
+
+    const routesModal = blessed.box({
+      parent: frame,
+      top: "center",
+      left: "center",
+      width: "90%",
+      height: "75%",
+      border: "line",
+      label: " Routes ",
+      tags: true,
+      hidden: true,
+      style: THEME.modal,
+      padding: { left: 1, right: 1 }
+    });
+
+    const routesTitle = blessed.box({
+      parent: routesModal,
+      top: 0,
+      left: 0,
+      height: 2,
+      width: "100%-3",
+      tags: true,
+      content: ""
+    });
+
+    const routesList = blessed.list({
+      parent: routesModal,
+      top: 3,
+      left: 0,
+      width: "60%-1",
+      height: "100%-13",
+      border: "line",
+      keys: true,
+      vi: true,
+      tags: true,
+      style: THEME.list
+    });
+
+    // Route details panel
+    const routeInfo = blessed.box({
+      parent: routesModal,
+      top: 3,
+      left: "60%",
+      width: "40%-3",
+      height: "100%-7",
+      border: "line",
+      label: " Route details ",
+      tags: true,
+      style: { border: THEME.panel.border },
+      padding: { left: 1, right: 1 }
+    });
+
+    blessed.box({
+      parent: routesModal,
+      bottom: 0,
+      left: 0,
+      height: 2,
+      width: "100%-3",
+      tags: true,
+      content: "{bold}↑↓{/bold} select | {bold}Enter{/bold} replace from Draft | {bold}c{/bold} CC quick edit | {bold}C{/bold} bulk CC edit | {bold}Del{/bold} remove | {bold}Esc{/bold} close"
+    });
+
+    // CC quick edit panel (4 slots)
+    const ccPanel = blessed.box({
+      parent: routesModal,
+      top: 17,
+      left: 0,
+      width: "60%-1",
+      height: 6,
+      border: "line",
+      label: " CC quick edit ",
+      tags: true,
+      style: { border: THEME.panel.border },
+      padding: { left: 1, right: 1 }
+    });
+
+    function makeCCField(i, leftExpr)
     {
+      blessed.box({
+        parent: ccPanel,
+        top: 0,
+        left: leftExpr,
+        width: "25%-2",
+        height: 1,
+        tags: true,
+        // note: "{7:96}" inside a tags box is fine; inside textbox it's not, so we keep tags:false there
+        content: `{bold}CC${i}{/bold} {gray-fg}(ex: {7:96} ou 7=96){/gray-fg}`
+      });
+
+      const box = blessed.textbox({
+        parent: ccPanel,
+        top: 1,
+        left: leftExpr,
+        width: "25%-2",
+        height: 3,
+        border: "line",
+        inputOnFocus: true,
+        keys: true,
+        vi: true,
+        tags: false,
+        style: THEME.input
+      });
+
+      return box;
+    }
+
+    const ccBox1 = makeCCField(1, 0);
+    const ccBox2 = makeCCField(2, "25%");
+    const ccBox3 = makeCCField(3, "50%");
+    const ccBox4 = makeCCField(4, "75%");
+    const ccBoxes = [ccBox1, ccBox2, ccBox3, ccBox4];
+
+
+    let _routesEntryId = null;
+
+    // ------- Focus markers (NEW for Setlists/Entries) -------
+    function refreshFocusMarkers()
+    {
+      setLabelWithFocus(setlistsList, "Setlists", screen.focused === setlistsList);
+      setLabelWithFocus(entriesList, "Entries", screen.focused === entriesList);
+      setLabelWithFocus(preview, "Preview", screen.focused === preview);
+      setLabelWithFocus(status, "Status", screen.focused === status);
+
+      if (!routesModal.hidden)
+      {
+        setLabelWithFocus(routesList, "Routes", screen.focused === routesList);
+        setLabelWithFocus(routeInfo, "Route details", screen.focused === routeInfo);
+
+        const ccFocused = ccBoxes.includes(screen.focused);
+        setLabelWithFocus(ccPanel, "CC quick edit", ccFocused);
+      }
+
+      if (!inputModal.hidden) inputModal.setLabel(` ${FOCUS_MARK} Input `);
+      else inputModal.setLabel(" Input ");
+
+      if (!routesModal.hidden) routesModal.setLabel(` ${FOCUS_MARK} Routes `);
+    }
+
+    [setlistsList, entriesList, preview, status, routesList, routeInfo, ccPanel, ...ccBoxes].forEach(w =>
+    {
+      w.on("focus", () => { refreshFocusMarkers(); screen.render(); });
+      w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
+    });
+
+    function _truncate(s, max)
+    {
+      const t = String(s == null ? "" : s);
+      if (!max || max <= 0) return "";
+      if (t.length <= max) return t;
+      if (max <= 3) return t.slice(0, max);
+      return t.slice(0, max - 3) + "...";
+    }
+
+    function ccSlotsToText(ccSlots)
+    {
+      if (!Array.isArray(ccSlots) || !ccSlots.length) return "";
+      return ccSlots
+        .filter(s => s && Number.isFinite(Number(s.cc)) && Number.isFinite(Number(s.value)))
+        .slice(0, 4)
+        .map(s => `${Number(s.cc)|0}=${Number(s.value)|0}`)
+        .join(",");
+    }
+
+    function renderRouteInfo(r)
+    {
+      if (!r)
+      {
+        routeInfo.setContent("<no route>");
+        return;
+      }
+
       const m = model.machines.getById(r.machineId);
       const mName = (m && m.name) ? m.name : r.machineId;
 
-      const out = (m && m.out) ? m.out : "default";
+      const out = (model && typeof model.resolveMachineOut === "function")
+        ? (model.resolveMachineOut(m) || "default")
+        : ((m && m.out) ? m.out : "default");
       const ch = (m && m.channel) ? `CH${m.channel}` : "CH?";
 
       const bank = r.bankName || "Bank";
@@ -2499,15 +2612,157 @@ function refreshFocusMarkers()
       const pc  = (r.program == null) ? "?" : String(r.program);
       const p   = r.patchName || "Patch";
 
+      const slots = Array.isArray(r.ccSlots) ? r.ccSlots.slice(0, 4) : [];
+      const lines = [];
+      lines.push(`{bold}{cyan-fg}${_truncate(mName, 22)}{/cyan-fg}{/bold}`);
+      lines.push(`{gray-fg}${_truncate(out, 26)}{/gray-fg}  {gray-fg}${ch}{/gray-fg}`);
+      lines.push("");
+      lines.push(`{bold}{yellow-fg}Bank{/yellow-fg}{/bold}: ${_truncate(bank, 26)}`);
+      lines.push(`{gray-fg}MSB{/gray-fg} ${msb}   {gray-fg}LSB{/gray-fg} ${lsb}`);
+      lines.push(`{bold}{magenta-fg}PC{/magenta-fg}{/bold}: ${pc}`);
+      lines.push(`{bold}Patch{/bold}: ${_truncate(p, 32)}`);
+      lines.push("");
+
+      lines.push(`{bold}{green-fg}CC slots{/green-fg}{/bold} {gray-fg}(press c to edit){/gray-fg}`);
+      for (let i = 0; i < 4; i++)
+      {
+        const s = slots[i];
+        const cc = (s && Number.isFinite(Number(s.cc))) ? (Number(s.cc) | 0) : null;
+        const vv = (s && Number.isFinite(Number(s.value))) ? (Number(s.value) | 0) : null;
+        const txt = (cc == null || vv == null)
+          ? "--"
+          : `{bold}${cc}{/bold}={bold}${vv}{/bold}`;
+        lines.push(` ${i + 1}. ${txt}`);
+      }
+
+      routeInfo.setContent(lines.join("\n"));
+    }
+
+    // --- CC single slot formatting/parsing (quick edit) ---
+
+    function formatSingleCCSlot(s)
+    {
+      if (!s) return "";
+      const cc = Number(s.cc);
+      const vv = Number(s.value);
+      if (!Number.isFinite(cc) || !Number.isFinite(vv)) return "";
+      return `{${(cc|0)}:${(vv|0)}}`;
+    }
+
+    function parseSingleCCSlotText(text)
+    {
+      const t = String(text || "").trim();
+      if (!t) return null;
+
+      // {7:96}
+      let m = t.match(/^\{\s*(\d{1,3})\s*:\s*(\d{1,3})\s*\}$/);
+      if (!m)
+      {
+        // 7=96
+        m = t.match(/^(\d{1,3})\s*=\s*(\d{1,3})$/);
+      }
+      if (!m) return null;
+
+      let cc = Number(m[1]);
+      let value = Number(m[2]);
+      if (!Number.isFinite(cc) || !Number.isFinite(value)) return null;
+
+      cc = Math.max(0, Math.min(127, cc|0));
+      value = Math.max(0, Math.min(127, value|0));
+      return { cc, value };
+    }
+
+    function getCCSlotsFromBoxes()
+    {
+      const out = [];
+      for (const b of ccBoxes)
+      {
+        const s = parseSingleCCSlotText(b.getValue());
+        if (s) out.push(s);
+        if (out.length >= 4) break;
+      }
+      return out;
+    }
+
+    function setBoxesFromCCSlots(ccSlots)
+    {
+      const slots = Array.isArray(ccSlots) ? ccSlots.slice(0, 4) : [];
+      for (let i = 0; i < 4; i++)
+      {
+        ccBoxes[i].setValue(formatSingleCCSlot(slots[i]));
+      }
+    }
+
+    function parseCCSlotsText(text)
+    {
+      const t = String(text || "").trim();
+      if (!t) return [];
+
+      const parts = t.split(/[;,]/).map(x => x.trim()).filter(Boolean);
+      const out = [];
+
+      for (const p of parts)
+      {
+        const m = p.match(/^(\d{1,3})\s*=\s*(\d{1,3})$/);
+        if (!m) continue;
+
+        let cc = Number(m[1]);
+        let value = Number(m[2]);
+
+        if (!Number.isFinite(cc) || !Number.isFinite(value)) continue;
+
+        cc = Math.max(0, Math.min(127, cc|0));
+        value = Math.max(0, Math.min(127, value|0));
+
+        out.push({ cc, value });
+
+        if (out.length >= 4) break;
+      }
+
+      return out;
+    }
+
+    function formatRouteLine(r)
+    {
+      const m = model.machines.getById(r.machineId);
+      const mName = (m && m.name) ? m.name : r.machineId;
+
+      const out = (model && typeof model.resolveMachineOut === "function")
+        ? (model.resolveMachineOut(m) || "default")
+        : ((m && m.out) ? m.out : "default");
+      const ch = (m && m.channel) ? `CH${m.channel}` : "CH?";
+
+      const bank = r.bankName || "Bank";
+      const msb = (r.msb == null) ? "-" : String(r.msb);
+      const lsb = (r.lsb == null) ? "-" : String(r.lsb);
+      const pc  = (r.program == null) ? "?" : String(r.program);
+      const p   = r.patchName || "Patch";
+
+      const ccText = ccSlotsToText(r.ccSlots);
+      const ccPart = ccText ? `  {green-fg}CC{/green-fg} {white-fg}${ccText}{/white-fg}` : "";
+
       return (
-        `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${out} ${ch}]{/gray-fg}  ` +
-        `{yellow-fg}${bank}{/yellow-fg} {gray-fg}(MSB ${msb} / LSB ${lsb}){/gray-fg}  ` +
+        `{cyan-fg}${_truncate(mName, 18)}{/cyan-fg} {gray-fg}[${_truncate(out, 18)} ${ch}]{/gray-fg}  ` +
+        `{yellow-fg}${_truncate(bank, 14)}{/yellow-fg} {gray-fg}(${msb}/${lsb}){/gray-fg}  ` +
         `{magenta-fg}PC ${pc}{/magenta-fg}  ` +
-        `{white-fg}${p}{/white-fg}`
+        `{white-fg}${_truncate(p, 26)}{/white-fg}` +
+        ccPart
       );
     }
 
-    function openRoutesEditor(entryId)
+    function getSelectedEntry()
+    {
+      const entries = entriesList._entries || [];
+      return entries[entriesList.selected] || null;
+    }
+
+    function getSelectedRouteInModal()
+    {
+      const routes = routesList._routes || [];
+      return routes[routesList.selected] || null;
+    }
+
+    function openRoutesEditor(entryId, keepMachineId)
     {
       const e = (entriesList._entries || []).find(x => x.id === entryId) || getSelectedEntry();
       if (!e)
@@ -2520,7 +2775,7 @@ function refreshFocusMarkers()
 
       routesTitle.setContent(
         `{bold}${e.name}{/bold}\n` +
-        `{gray-fg}Tip: build Draft in Browse (a), then Enter here to apply per machine.{/gray-fg}`
+        `{gray-fg}Tip: build Draft in Browse (a), then Enter here to apply per machine. CC quick edit is above. Press (C) for bulk CC editor.{/gray-fg}`
       );
 
       const routes = Array.isArray(e.routes) ? e.routes : [];
@@ -2528,7 +2783,18 @@ function refreshFocusMarkers()
 
       const items = routes.length ? routes.map(formatRouteLine) : ["<no routes>"];
       routesList.setItems(items);
-      routesList.select(0);
+
+      let idx = 0;
+      if (keepMachineId && routes.length)
+      {
+        const found = routes.findIndex(x => x.machineId === keepMachineId);
+        if (found >= 0) idx = found;
+      }
+      routesList.select(idx);
+
+      const r0 = routes.length ? (routes[idx] || routes[0]) : null;
+      renderRouteInfo(r0);
+      setBoxesFromCCSlots(r0 ? r0.ccSlots : []);
 
       routesModal.setLabel(` Routes {gray-fg}(${routes.length}){/gray-fg} `);
       routesModal.show();
@@ -2548,11 +2814,127 @@ function refreshFocusMarkers()
 
     routesList.key(["escape"], () => closeRoutesEditor());
 
+    routesList.on("highlight", () =>
+    {
+      const r = getSelectedRouteInModal();
+      renderRouteInfo(r);
+      setBoxesFromCCSlots(r ? r.ccSlots : []);
+      screen.render();
+    });
+
+    routesList.on("select", () =>
+    {
+      const r = getSelectedRouteInModal();
+      renderRouteInfo(r);
+      setBoxesFromCCSlots(r ? r.ccSlots : []);
+      screen.render();
+    });
+
+    // Save CC quick edit back to model for selected route
+    function saveCCBoxesToSelectedRoute()
+    {
+      const entryId = _routesEntryId;
+      const r = getSelectedRouteInModal();
+      if (!entryId || !r) return;
+
+      if (!model.updateEntryRouteCC)
+      {
+        setStatus("Missing model.updateEntryRouteCC().", "err");
+        return;
+      }
+
+      const ccSlots = getCCSlotsFromBoxes();
+      const res = model.updateEntryRouteCC(entryId, r.machineId, ccSlots);
+
+      setStatus(
+        res && res.message ? res.message : (res?.ok ? "CC updated." : "CC update failed."),
+        res?.ok ? "ok" : "err"
+      );
+
+      refreshEntries(entryId);
+      openRoutesEditor(entryId, r.machineId);
+    }
+
+    function focusCCBox(i)
+    {
+      const b = ccBoxes[i];
+      if (!b) return;
+      b.focus();
+      try { b.readInput(); } catch { }
+      refreshFocusMarkers();
+      screen.render();
+    }
+
+    // Enter in CC fields: go next; last saves.
+    ccBoxes.forEach((box, idx) =>
+    {
+      box.on("submit", () =>
+      {
+        if (idx < ccBoxes.length - 1) focusCCBox(idx + 1);
+        else
+        {
+          saveCCBoxesToSelectedRoute();
+          routesList.focus();
+          refreshFocusMarkers();
+          screen.render();
+        }
+      });
+
+      box.key(["escape"], () =>
+      {
+        // revert to current route values
+        const r = getSelectedRouteInModal();
+        setBoxesFromCCSlots(r ? r.ccSlots : []);
+        routesList.focus();
+        refreshFocusMarkers();
+        screen.render();
+      });
+    });
+
+    // Key: c focuses CC quick edit, C keeps old bulk editor
+    routesList.key(["c"], () =>
+    {
+      const r = getSelectedRouteInModal();
+      setBoxesFromCCSlots(r ? r.ccSlots : []);
+      focusCCBox(0);
+    });
+
+    routesList.key(["C"], () =>
+    {
+      const entryId = _routesEntryId;
+      const r = getSelectedRouteInModal();
+
+      if (!entryId || !r)
+      {
+        setStatus("No route selected.", "warn");
+        return;
+      }
+
+      if (!model.updateEntryRouteCC)
+      {
+        setStatus("Missing model.updateEntryRouteCC().", "err");
+        return;
+      }
+
+      const current = ccSlotsToText(r.ccSlots);
+      askInput("CC slots (max 4) for this route. Format: cc=value,cc=value", current, (err, value) =>
+      {
+        if (err) return;
+
+        const ccSlots = parseCCSlotsText(value);
+        const res = model.updateEntryRouteCC(entryId, r.machineId, ccSlots);
+
+        setStatus(res && res.message ? res.message : (res?.ok ? "CC updated." : "CC update failed."), res?.ok ? "ok" : "err");
+
+        refreshEntries(entryId);
+        openRoutesEditor(entryId, r.machineId);
+      });
+    });
+
     routesList.key(["enter"], () =>
     {
       const entryId = _routesEntryId;
-      const routes = routesList._routes || [];
-      const r = routes[routesList.selected];
+      const r = getSelectedRouteInModal();
 
       if (!entryId || !r)
       {
@@ -2569,16 +2951,14 @@ function refreshFocusMarkers()
       const res = model.updateEntryRouteFromDraft(entryId, r.machineId);
       setStatus(res && res.message ? res.message : (res?.ok ? "Route updated." : "Route update failed."), res?.ok ? "ok" : "err");
 
-      // refresh entry list & preview and reopen modal on same entry
       refreshEntries(entryId);
-      openRoutesEditor(entryId);
+      openRoutesEditor(entryId, r.machineId);
     });
 
     routesList.key(["delete", "backspace"], () =>
     {
       const entryId = _routesEntryId;
-      const routes = routesList._routes || [];
-      const r = routes[routesList.selected];
+      const r = getSelectedRouteInModal();
 
       if (!entryId || !r)
       {
@@ -2596,20 +2976,10 @@ function refreshFocusMarkers()
       setStatus(ok ? "Route removed." : "Route remove failed.", ok ? "ok" : "err");
 
       refreshEntries(entryId);
-      openRoutesEditor(entryId);
+      openRoutesEditor(entryId, null);
     });
 
     // ------- Common helpers -------
-
-    function setStatus(text, level)
-    {
-      let prefix = "";
-      if (level === "ok") prefix = "{green-fg}[OK]{/green-fg} ";
-      else if (level === "warn") prefix = "{yellow-fg}[WARN]{/yellow-fg} ";
-      else if (level === "err") prefix = "{red-fg}[ERR]{/red-fg} ";
-      status.setContent(prefix + text);
-      screen.render();
-    }
 
     function refreshSetlistHeader()
     {
@@ -2676,9 +3046,6 @@ function refreshFocusMarkers()
       }
 
       const lines = [];
-      // Uncomment to write entry name in the preview box
-      // lines.push(`{bold}${e.name}{/bold}`);
-      // lines.push("");
 
       if (!e.routes || !e.routes.length)
       {
@@ -2693,7 +3060,6 @@ function refreshFocusMarkers()
         const m = model.machines.getById(r.machineId);
         const mName = (m && m.name) ? m.name : r.machineId;
 
-        const out = (m && m.out) ? m.out : "default";
         const ch  = (m && m.channel) ? `CH${m.channel}` : "CH?";
 
         const b = r.bankName || "Bank";
@@ -2704,7 +3070,6 @@ function refreshFocusMarkers()
         const p = r.patchName || "Patch";
 
         lines.push(
-          // `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${out} ${ch}]{/gray-fg}  \n` +
           `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${ch}]{/gray-fg}  \n` +
           `{yellow-fg}${b}{/yellow-fg} {gray-fg}(MSB ${msb} / LSB ${lsb}){/gray-fg}  \n` +
           `{magenta-fg}PC ${pc}{/magenta-fg}  ` +
@@ -2744,12 +3109,6 @@ function refreshFocusMarkers()
       refreshSetlists();
     }
 
-    function getSelectedEntry()
-    {
-      const entries = entriesList._entries || [];
-      return entries[entriesList.selected] || null;
-    }
-
     // Focus management for Setlist page
     const focusables = [setlistsList, entriesList];
     let focusIndex = 0;
@@ -2775,13 +3134,6 @@ function refreshFocusMarkers()
       refreshFocusMarkers();
       screen.render();
     });
-
-
-[setlistsList, entriesList].forEach(w =>
-{
-  w.on("focus", () => { refreshFocusMarkers(); screen.render(); });
-  w.on("blur", () => { refreshFocusMarkers(); screen.render(); });
-});
 
     // Events: setlists
     setlistsList.key(["enter"], () =>
@@ -2810,8 +3162,9 @@ function refreshFocusMarkers()
 
     // Events: entries
     entriesList.on("highlight", () => refreshPreview());
-    entriesList.key(["up", "down", "k", "j", "pageup", "pagedown"], () => {
-      refreshPreview()
+    entriesList.key(["up", "down", "k", "j", "pageup", "pagedown"], () =>
+    {
+      refreshPreview();
 
       // auto recall on scroll
       const aros = !!getSetting("ui.autorecallOnScroll", false);
@@ -3187,7 +3540,6 @@ function refreshFocusMarkers()
   }
 
 
-
 // -------------------- System Settings Page --------------------
 
 function buildSystemPage()
@@ -3385,44 +3737,28 @@ function buildSystemPage()
 
     if (idx === 3)
     {
-      // reuse your ASCII logos if you want
-      const logo = (typeof ASCIILogo !== "undefined" && ASCIILogo && ASCIILogo.length)
-        ? ASCIILogo[Math.floor(Math.random() * ASCIILogo.length)]
-        : "";
-
-      const extraText = "This system was made for keyboardists and stage performers.\n" +
-                        "If you enjoy it or for any request, feel free to contact me at\n" +
-                        "{blue-fg}https://github.com/Wavestation{/blue-fg}\n\n" +
-                        "{gray-fg}2025~2026 MASAMI KOMURO @ FELONIA SOFTWARE{/gray-fg}"   
-
-      const hide = showAboutBox(screen, {
-        name: "MIDISTAGE",
-        version: appVersion,
-        asciiArt: logo,
-        extra: extraText,
-        onClose: () => { list.focus(); screen.render(); }
-      });
-
-      // When it closes, restore focus to the System list
-      // (we can just poll next tick because close is keypress-driven)
-      const restore = () =>
+      // IMPORTANT FIX: open About box next tick so it doesn't immediately eat the Enter key.
+      setImmediate(() =>
       {
-        try { list.focus(); } catch { }
-        try { screen.render(); } catch { }
-      };
+        const logo = (typeof ASCIILogo !== "undefined" && ASCIILogo && ASCIILogo.length)
+          ? ASCIILogo[Math.floor(Math.random() * ASCIILogo.length)]
+          : "";
 
-      // Wrap the cleanup to restore focus
-      const origHide = hide;
-      // Monkey-patch style: safe + minimal changes
-      return (function () {
-        // We can't intercept internal close directly, so we rebind one global keypress restore:
-        const once = () => {
-          try { screen.removeListener("keypress", once); } catch { }
-          restore();
-        };
-        screen.on("keypress", once);
-        // and keep the about itself closing via its own handler
-      })();
+        const extraText =
+          "This system was made for keyboardists and stage performers.\n" +
+          "If you enjoy it or for any request, feel free to contact me at\n" +
+          "{blue-fg}https://github.com/Wavestation{/blue-fg}\n\n" +
+          "{gray-fg}2025~2026 MASAMI KOMURO @ FELONIA SOFTWARE{/gray-fg}";
+
+        showAboutBox(screen, {
+          name: "MIDISTAGE",
+          version: appVersion,
+          asciiArt: logo,
+          extra: extraText,
+          onClose: () => { try { list.focus(); } catch { } try { screen.render(); } catch { } }
+        });
+      });
+      return;
     }
   }
 
@@ -3468,7 +3804,7 @@ function buildSystemPage()
        ---   ---   ---   ---               ---   ---  
 `;
 
- ASCIILogo[1] = String.raw`
+  ASCIILogo[1] = String.raw`
   o          o   __o__   o__ __o       __o__     o__ __o    ____o__ __o____    o           o__ __o       o__ __o__/_ 
  <|\        /|>    |    <|     v\        |      /v     v\    /   \   /   \    <|>         /v     v\     <|    v      
  / \\o    o// \   / \   / \     <\      / \    />       <\        \o/         / \        />       <\    < >          
@@ -3480,8 +3816,7 @@ function buildSystemPage()
  / \        / \  __|>_  / \  __/>      __|>_    <\__ __/>         / \  />             <\  <\__ __/>     / \  _\o__/_
 `;                                                                                                
 
-
-ASCIILogo[2] = String.raw`
+  ASCIILogo[2] = String.raw`
       ___                   _____                    ___                   ___          ___          ___     
      /__/\       ___       /  /::\      ___         /  /\         ___     /  /\        /  /\        /  /\    
     |  |::\     /  /\     /  /:/\:\    /  /\       /  /:/_       /  /\   /  /::\      /  /:/_      /  /:/_   
@@ -3493,9 +3828,9 @@ ASCIILogo[2] = String.raw`
    \  \:\         /__/:/   \  \::/       /__/:/   \__\/ /:/       \  \:\\  \:\       \  \:\/:/    \  \:\/:/  
     \  \:\        \__\/     \__\/        \__\/      /__/:/         \__\/ \  \:\       \  \::/      \  \::/   
      \__\/                                          \__\/                 \__\/        \__\/        \__\/    
-`
+`;
 
-  function getRandomInt(max) 
+  function getRandomInt(max)
   {
     return Math.floor(Math.random() * max);
   }

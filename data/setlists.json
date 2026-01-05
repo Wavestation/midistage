@@ -16,7 +16,8 @@
               "msb": null,
               "lsb": 1,
               "program": 18,
-              "patchName": "Cathedral Choir"
+              "patchName": "Cathedral Choir",
+              "ccSlots": null
             },
             {
               "machineId": "m_b387d1c5be6e",
@@ -26,7 +27,8 @@
               "msb": 81,
               "lsb": 4,
               "program": 99,
-              "patchName": "Gluey Pad"
+              "patchName": "Gluey Pad",
+              "ccSlots": null
             },
             {
               "machineId": "m_d0daaba01f95",
@@ -36,7 +38,8 @@
               "msb": 63,
               "lsb": 0,
               "program": 0,
-              "patchName": "Full Grand"
+              "patchName": "Full Grand",
+              "ccSlots": null
             }
           ]
         },
@@ -52,7 +55,8 @@
               "msb": 63,
               "lsb": 3,
               "program": 42,
-              "patchName": "Nativity"
+              "patchName": "Nativity",
+              "ccSlots": null
             },
             {
               "machineId": "m_9b657df5d442",
@@ -62,7 +66,8 @@
               "msb": null,
               "lsb": 7,
               "program": 75,
-              "patchName": "Concert Piano 2"
+              "patchName": "Concert Piano 2",
+              "ccSlots": null
             },
             {
               "machineId": "m_b387d1c5be6e",
@@ -72,7 +77,8 @@
               "msb": 81,
               "lsb": 4,
               "program": 2,
-              "patchName": "RD-1000"
+              "patchName": "RD-1000",
+              "ccSlots": null
             }
           ]
         },
@@ -88,7 +94,8 @@
               "msb": 0,
               "lsb": 3,
               "program": 43,
-              "patchName": "= Evaporate ="
+              "patchName": "= Evaporate =",
+              "ccSlots": null
             },
             {
               "machineId": "m_d0daaba01f95",
@@ -98,7 +105,8 @@
               "msb": 63,
               "lsb": 0,
               "program": 16,
-              "patchName": "80s Layer"
+              "patchName": "80s Layer",
+              "ccSlots": null
             },
             {
               "machineId": "m_b387d1c5be6e",
@@ -108,7 +116,8 @@
               "msb": 81,
               "lsb": 4,
               "program": 2,
-              "patchName": "RD-1000"
+              "patchName": "RD-1000",
+              "ccSlots": null
             },
             {
               "machineId": "m_9b657df5d442",
@@ -118,7 +127,8 @@
               "msb": null,
               "lsb": 7,
               "program": 77,
-              "patchName": "Piano for Layers"
+              "patchName": "Piano for Layers",
+              "ccSlots": null
             }
           ]
         }
@@ -140,7 +150,8 @@
               "msb": 81,
               "lsb": 4,
               "program": 99,
-              "patchName": "Gluey Pad"
+              "patchName": "Gluey Pad",
+              "ccSlots": null
             },
             {
               "machineId": "m_3b67d71316ba",
@@ -150,7 +161,8 @@
               "msb": 0,
               "lsb": 2,
               "program": 15,
-              "patchName": "DarkliteSV"
+              "patchName": "DarkliteSV",
+              "ccSlots": null
             },
             {
               "machineId": "m_d0daaba01f95",
@@ -160,7 +172,8 @@
               "msb": 63,
               "lsb": 0,
               "program": 12,
-              "patchName": "1968"
+              "patchName": "1968",
+              "ccSlots": null
             },
             {
               "machineId": "m_efma",
@@ -170,7 +183,8 @@
               "msb": 0,
               "lsb": 0,
               "program": 0,
-              "patchName": "Glass Organ"
+              "patchName": "Glass Organ",
+              "ccSlots": null
             }
           ]
         },
@@ -186,7 +200,13 @@
               "msb": null,
               "lsb": 0,
               "program": 17,
-              "patchName": "Mixed Choir"
+              "patchName": "Mixed Choir",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 120
+                }
+              ]
             },
             {
               "machineId": "m_58281203af4d",
@@ -196,7 +216,73 @@
               "msb": 82,
               "lsb": 0,
               "program": 38,
-              "patchName": "MIDI Grand"
+              "patchName": "MIDI Grand",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 18,
+              "patchName": "Dreamy Strings",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                }
+              ]
+            },
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 82,
+              "patchName": "Preset 082",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_d73e14a68e81",
+          "name": "Fabmusique",
+          "routes": [
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank B",
+              "msb": 0,
+              "lsb": 1,
+              "program": 122,
+              "patchName": "Additive Pad",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 111
+                }
+              ]
+            },
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 39,
+              "patchName": "Preset 039",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                }
+              ]
             }
           ]
         }
