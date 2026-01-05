@@ -38,7 +38,7 @@ function showJowliSplash(screen, { name, version, asciiArt = "" })
   const content =
     (asciiArt ? `${asciiArt}\n\n` : "") +
     `{bold}${name}{/bold}  {gray-fg}v${version}{/gray-fg}\n` +
-    `{bold}A NICE MIDI PROGRAM CHANGE SETLIST MANAGER{/bold}\n\n` +
+    `{bold}A NICE MIDI SETLIST MANAGER{/bold}\n\n` +
     `{bold}${rainbow}{/bold}`;
 
   const splash = blessed.box({
@@ -70,7 +70,7 @@ function showAboutBox(screen, { name, version, asciiArt = "", extra = "", onClos
   const content =
     (asciiArtColors ? `${asciiArtColors}\n\n\n` : "") +
     `{bold}${name}{/bold}  {gray-fg}v${version}{/gray-fg}\n` +
-    `{bold}A NICE MIDI PROGRAM CHANGE SETLIST MANAGER{/bold}\n\n` +
+    `{bold}A NICE MIDI SETLIST MANAGER{/bold}\n\n` +
     (extra ? `${extra}\n\n` : "") +
     `{green-fg}Press any key to close.{/green-fg}`;
 
