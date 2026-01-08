@@ -2594,7 +2594,7 @@ function runSystemctl(action)
         .filter(s => s && Number.isFinite(Number(s.cc)) && Number.isFinite(Number(s.value)))
         .slice(0, 4)
         .map(s => `${Number(s.cc)|0}=${Number(s.value)|0}`)
-        .join(",");
+        .join(", ");
     }
 
     function renderRouteInfo(r)
@@ -3076,12 +3076,17 @@ function runSystemctl(action)
         const pc = (r.program == null) ? "?" : String(r.program);
         const p = r.patchName || "Patch";
 
+        const ccst = ccSlotsToText(r.ccSlots).trim();
+        const fccst = `\n{#FFA500-fg}CC Slots{/#FFA500-fg} {white-fg}${ccst}{/white-fg}`
+        const cclst = (ccst == "") ? "" : String(fccst);
+
         lines.push(
           `{cyan-fg}${mName}{/cyan-fg} {gray-fg}[${ch}]{/gray-fg}  \n` +
           `{yellow-fg}${b}{/yellow-fg} {gray-fg}(MSB ${msb} / LSB ${lsb}){/gray-fg}  \n` +
           `{magenta-fg}PC ${pc}{/magenta-fg}  ` +
-          `{white-fg}${p}{/white-fg}` +
-          `\n`
+          `{white-fg}<${p}>{/white-fg}` +
+          cclst +
+          `\n`         
         );
       });
 
