@@ -281,7 +281,7 @@ function runSystemctl(action)
 }
 
   // -------------------- UI Theme (global) --------------------
-  const FOCUS_MARK = "◆";
+  const FOCUS_MARK = "{bold}{magenta-fg}<o>{/magenta-fg}{/bold}" //"◆";
 
   const THEME = {
     // Frames (main page border)
@@ -395,6 +395,7 @@ function runSystemctl(action)
       width: "100%",
       height: "100%",
       border: "line",
+      tags: true,
       label: " MIDISTAGE -- MAIN MENU -- VERSION " + appVersion + " ",
       style: { border: THEME.frame.border }
     });
@@ -436,6 +437,7 @@ function runSystemctl(action)
       label: " Banks ",
       keys: true,
       vi: true,
+      tags: true,
       style: THEME.list
     });
 
@@ -461,6 +463,7 @@ function runSystemctl(action)
       width: "33%-2",
       border: "line",
       label: " Search ",
+      tags: true,
       inputOnFocus: true,
       style: THEME.input
     });
@@ -554,6 +557,7 @@ function runSystemctl(action)
       height: "100%-4",
       keys: true,
       vi: true,
+      tags: true,
       style: THEME.list
     });
 
@@ -933,6 +937,7 @@ function runSystemctl(action)
       width: "100%",
       height: "100%",
       border: "line",
+      tags: true,
       label: " MIDISTAGE -- MACHINE MANAGEMENT ",
       style: { border: THEME.frame.border }
     });
@@ -1009,18 +1014,18 @@ function runSystemctl(action)
       parent: confirmModal,
       top: 0,
       left: 0,
-      height: 3,
-      width: "100%",
+      height: 2,
+      width: "100%-4",
       tags: true,
       content: ""
     });
 
     const confirmInput = blessed.textbox({
       parent: confirmModal,
-      top: 3,
+      top: 2,
       left: 0,
       height: 3,
-      width: "100%",
+      width: "100%-4",
       border: "line",
       inputOnFocus: true,
       keys: true,
@@ -1033,7 +1038,7 @@ function runSystemctl(action)
       bottom: 0,
       left: 0,
       height: 2,
-      width: "100%",
+      width: "100%-4",
       tags: true,
       content: "{bold}Enter{/bold} validate | {bold}Esc{/bold} cancel"
     });
@@ -1177,7 +1182,7 @@ function runSystemctl(action)
     // ---- Field focus: diamond + border highlight (editor) ----
     function setFieldLabel(labelBox, title, focused)
     {
-      const mark = focused ? "{cyan-fg}◆{/cyan-fg} " : "  ";
+      const mark = focused ? FOCUS_MARK + " " : "  ";
       labelBox.setContent(`${mark}{bold}${title}{/bold}`);
     }
 
@@ -1767,7 +1772,7 @@ function runSystemctl(action)
     });
 
     // Quit hard
-    kb.bindKey(["C-c"], () => quit());
+    // kb.bindKey(["C-c"], () => quit());
 
     // Init
     refreshMidnamAndOutLists();
@@ -1815,6 +1820,7 @@ function runSystemctl(action)
       width: "100%",
       height: "100%",
       border: "line",
+      tags: true,
       label: " MIDISTAGE -- MIDI PORTS ",
       style: { border: THEME.frame.border }
     });
@@ -1907,18 +1913,18 @@ function runSystemctl(action)
       parent: inputModal,
       top: 0,
       left: 0,
-      height: 2,
-      width: "100%",
+      height: 1,
+      width: "100%-4",
       tags: true,
       content: "Slot label:"
     });
 
     const inputBox = blessed.textbox({
       parent: inputModal,
-      top: 2,
+      top: 1,
       left: 0,
       height: 3,
-      width: "100%",
+      width: "100%-4",
       border: "line",
       inputOnFocus: true,
       keys: true,
@@ -1931,7 +1937,7 @@ function runSystemctl(action)
       bottom: 0,
       left: 0,
       height: 2,
-      width: "100%",
+      width: "100%-4",
       tags: true,
       content: "{bold}Enter{/bold} validate | {bold}Esc{/bold} cancel"
     });
@@ -2204,7 +2210,7 @@ function runSystemctl(action)
       //switchPage("browse");   // ou au browser
     });
 
-    kb.bindKey(["C-c"], () => quit());
+    // kb.bindKey(["C-c"], () => quit());
 
     // System settings
     kb.bindKey(["t"], () =>
@@ -2241,6 +2247,7 @@ function runSystemctl(action)
       width: "100%",
       height: "100%",
       border: "line",
+      tags: true,
       label: " MIDISTAGE -- SETLIST ",
       style: { border: THEME.frame.border }
     });
@@ -2360,7 +2367,7 @@ function runSystemctl(action)
       top: 0,
       left: 0,
       height: 2,
-      width: "100%",
+      width: "100%-5",
       tags: true,
       content: ""
     });
@@ -2370,7 +2377,7 @@ function runSystemctl(action)
       top: 2,
       left: 0,
       height: 3,
-      width: "100%",
+      width: "100%-4",
       border: "line",
       inputOnFocus: true,
       keys: true,
@@ -2382,8 +2389,8 @@ function runSystemctl(action)
       parent: inputModal,
       bottom: 0,
       left: 0,
-      height: 2,
-      width: "100%",
+      height: 1,
+      width: "100%-5",
       tags: true,
       content: "{bold}Enter{/bold} validate | {bold}Esc{/bold} cancel"
     });
@@ -2497,7 +2504,7 @@ function runSystemctl(action)
       width: "60%-1",
       height: 6,
       border: "line",
-      label: " CC quick edit ",
+      label: " CC quick edit  {gray-fg}format {cc#:value} or cc#=value{/gray-fg} ",
       tags: true,
       style: { border: THEME.panel.border },
       padding: { left: 1, right: 1 }
@@ -2513,7 +2520,7 @@ function runSystemctl(action)
         height: 1,
         tags: true,
         // note: "{7:96}" inside a tags box is fine; inside textbox it's not, so we keep tags:false there
-        content: `{bold}CC${i}{/bold} {gray-fg}(ex: {7:96} ou 7=96){/gray-fg}`
+        content: `{bold}CC${i}{/bold}`
       });
 
       const box = blessed.textbox({
@@ -2556,7 +2563,7 @@ function runSystemctl(action)
         setLabelWithFocus(routeInfo, "Route details", screen.focused === routeInfo);
 
         const ccFocused = ccBoxes.includes(screen.focused);
-        setLabelWithFocus(ccPanel, "CC quick edit", ccFocused);
+        setLabelWithFocus(ccPanel, "CC quick edit  {gray-fg}format {cc#:value} or cc#=value{/gray-fg}", ccFocused);
       }
 
       if (!inputModal.hidden) inputModal.setLabel(` ${FOCUS_MARK} Input `);
@@ -2993,7 +3000,7 @@ function runSystemctl(action)
       const n = s.entries ? s.entries.length : 0;
       const active = model.getActiveSetlist();
       const isActive = active && active.id === s.id;
-      const mark = isActive ? "{cyan-fg}◆{/cyan-fg} " : "  ";
+      const mark = isActive ? FOCUS_MARK + " " : "  ";
       return `${mark}${s.name}  {gray-fg}[${n} entries]{/gray-fg}`;
     }
 
@@ -3521,13 +3528,15 @@ function runSystemctl(action)
       switchPage("browse");
     });
 
-    kb.bindKey(["C-c"], () => quit());
+    // kb.bindKey(["C-c"], () => quit());
 
     refreshSetlistHeader();
     refreshSetlists();
     refreshEntries(null);
 
-    setlistsList.focus();
+    entriesList.focus();
+    focusIndex = 1;
+
     refreshFocusMarkers();
     screen.render();
 
@@ -3553,6 +3562,7 @@ function buildSystemPage()
     width: "100%",
     height: "100%",
     border: "line",
+    tags: true,
     label: " MIDISTAGE -- SYSTEM SETTINGS ",
     style: { border: THEME.frame.border }
   });
@@ -3615,18 +3625,18 @@ function buildSystemPage()
     parent: confirmModal,
     top: 0,
     left: 0,
-    height: 3,
-    width: "100%",
+    height: 2,
+    width: "100%-4",
     tags: true,
     content: ""
   });
 
   const confirmInput = blessed.textbox({
     parent: confirmModal,
-    top: 3,
+    top: 2,
     left: 0,
     height: 3,
-    width: "100%",
+    width: "100%-4",
     border: "line",
     inputOnFocus: true,
     keys: true,
@@ -3639,7 +3649,7 @@ function buildSystemPage()
     bottom: 0,
     left: 0,
     height: 2,
-    width: "100%",
+    width: "100%-4",
     tags: true,
     content: "{bold}Enter{/bold} validate | {bold}Esc{/bold} cancel"
   });
@@ -3780,7 +3790,7 @@ function buildSystemPage()
     switchPage("browse");
   });
 
-  kb.bindKey(["C-c"], () => quit());
+  // kb.bindKey(["C-c"], () => quit());
 
   buildItems();
   list.focus();

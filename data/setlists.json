@@ -39,7 +39,7 @@
               "lsb": 0,
               "program": 0,
               "patchName": "Full Grand",
-              "ccSlots": null
+              "ccSlots": []
             }
           ]
         },
@@ -217,7 +217,12 @@
               "lsb": 0,
               "program": 38,
               "patchName": "MIDI Grand",
-              "ccSlots": null
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 99
+                }
+              ]
             },
             {
               "machineId": "m_24d196fd4495",
@@ -281,6 +286,64 @@
                 {
                   "cc": 7,
                   "value": 127
+                },
+                {
+                  "cc": 117,
+                  "value": 127
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e_258c29e807d4",
+          "name": "Strings of Boya",
+          "routes": [
+            {
+              "machineId": "m_5e47b1df2b7f",
+              "midnamFile": "K2000.midnam",
+              "deviceName": "Kurzweil K2000",
+              "bankName": "Bank 1",
+              "msb": null,
+              "lsb": 1,
+              "program": 51,
+              "patchName": "Tranquility",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank C",
+              "msb": 0,
+              "lsb": 2,
+              "program": 18,
+              "patchName": "Orch Vel Strings",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                }
+              ]
+            },
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "Prog C",
+              "msb": 83,
+              "lsb": 0,
+              "program": 118,
+              "patchName": "Soft Pad",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 120
                 }
               ]
             }
@@ -289,5 +352,5 @@
       ]
     }
   ],
-  "activeId": "sl_5843e77461b3"
+  "activeId": "sl_123abc"
 }

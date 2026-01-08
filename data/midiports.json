@@ -135,7 +135,7 @@
     {
       "slot": 27,
       "label": "Ext 7",
-      "port": "rtpmidid:mioXL 29A-07 128:7"
+      "port": "rtpmidid:mioXL 29A-03 128:3"
     },
     {
       "slot": 28,
