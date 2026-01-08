@@ -7,6 +7,14 @@ const telnet = require("telnet2");
  * startTelnetServer((io) => startApp(MIDNAM_DIR, io), port)
  * - io: { input, output, terminal, unicode, cols, rows, onResize(fn) }
  */
+
+// HELPERS ////////////
+function normalizeIP(ip) 
+{
+  return ip?.startsWith('::ffff:') ? ip.slice(7) : ip;
+}
+
+// MAIN FUNCTION //////
 function startTelnetServer(createSession, port = 2323, options = {})
 {
   const server = telnet({ tty: true }, (client) =>
@@ -64,7 +72,7 @@ function startTelnetServer(createSession, port = 2323, options = {})
       io.terminal = term || terminal;
       // Certaines TUIs aiment re-render quand TERM change
       try { client.emit("resize"); } catch {}
-      console.log("Telnet: Session connect.");
+      console.log("Telnet: Session connect from " + normalizeIP(client.remoteAddress));
     });
 
     // Démarre une session (ton startApp)
