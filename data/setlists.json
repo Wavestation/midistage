@@ -249,7 +249,12 @@
               "lsb": 0,
               "program": 82,
               "patchName": "Preset 082",
-              "ccSlots": null
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                }
+              ]
             }
           ]
         },

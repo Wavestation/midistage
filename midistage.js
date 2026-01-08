@@ -49,6 +49,8 @@ else if (process.argv.includes("--serial"))
   const cols = clampInt(getArg("--cols", "64"), 80, 20, 300);
   const rows = clampInt(getArg("--rows", "24"), 24, 10, 120);
 
+  console.log("Starting Telnet on port " + portPath + " ...");
+
   const srv = startSerialServer(
     {
       path: portPath,
