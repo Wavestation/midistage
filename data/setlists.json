@@ -201,7 +201,12 @@
               "lsb": 4,
               "program": 99,
               "patchName": "Gluey Pad",
-              "ccSlots": null
+              "ccSlots": [
+                {
+                  "cc": 111,
+                  "value": 10
+                }
+              ]
             },
             {
               "machineId": "m_3b67d71316ba",

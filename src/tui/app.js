@@ -2495,7 +2495,7 @@ function runSystemctl(action)
       height: 2,
       width: "100%-3",
       tags: true,
-      content: "{bold}↑↓{/bold} select | {bold}Enter{/bold} replace from Draft | {bold}c{/bold} CC quick edit | {bold}C{/bold} bulk CC edit | {bold}Del{/bold} remove | {bold}Esc{/bold} close"
+      content: "{bold}↑↓{/bold} select | {bold}Enter{/bold} replace from Draft | {bold}c{/bold} CC quick edit | {bold}Del{/bold} remove | {bold}Esc{/bold} close"
     });
 
     // CC quick edit panel (4 slots)
@@ -2782,9 +2782,9 @@ function runSystemctl(action)
 
       _routesEntryId = e.id;
 
-      routesTitle.setContent(
+      routesTitle.setContent( 
         `{bold}${e.name}{/bold}\n` +
-        `{gray-fg}Tip: build Draft in Browse (a), then Enter here to apply per machine. CC quick edit is above. Press (C) for bulk CC editor.{/gray-fg}`
+        `{gray-fg}Tip: build Draft in Browse (a), then Enter here to apply per machine. CC quick edit is above, using (c) key.{/gray-fg}`
       );
 
       const routes = Array.isArray(e.routes) ? e.routes : [];
@@ -2900,7 +2900,7 @@ function runSystemctl(action)
       });
     });
 
-    // Key: c focuses CC quick edit, C keeps old bulk editor
+    // Key: c focuses CC quick edit
     routesList.key(["c"], () =>
     {
       const r = getSelectedRouteInModal();
@@ -2908,7 +2908,9 @@ function runSystemctl(action)
       focusCCBox(0);
     });
 
-    routesList.key(["C"], () =>
+    /*
+    // -- DISABLED BULK EDITOR but kept for legacy --
+    routesList.key(["v"], () =>
     {
       const entryId = _routesEntryId;
       const r = getSelectedRouteInModal();
@@ -2939,6 +2941,7 @@ function runSystemctl(action)
         openRoutesEditor(entryId, r.machineId);
       });
     });
+    */
 
     routesList.key(["enter"], () =>
     {
