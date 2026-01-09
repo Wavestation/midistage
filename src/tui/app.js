@@ -3260,6 +3260,22 @@ function runSystemctl(action)
       refreshEntries(e.id);
     });
 
+    preview.key(["enter"], () =>
+    {
+      if (!routesModal.hidden) return;
+
+      const e = getSelectedEntry();
+      if (!e)
+      {
+        setStatus("No entry.", "warn");
+        return;
+      }
+
+      const r = model.recallEntry(e.id);
+      setStatus(r.message, r.ok ? "ok" : "err");
+      refreshEntries(e.id);
+    });
+
     // Entry: add from draft
     kb.bindKey(["a"], () =>
     {
