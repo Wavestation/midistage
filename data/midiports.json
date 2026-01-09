@@ -155,7 +155,7 @@
     {
       "slot": 31,
       "label": null,
-      "port": null
+      "port": "rtpmidid:mioXL 29A-22 128:22"
     },
     {
       "slot": 32,

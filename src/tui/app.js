@@ -2261,7 +2261,7 @@ function runSystemctl(action)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}Esc / q{/bold} back \n" +
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}PgUp / PgDwn{/bold} quick select entry |{bold}Esc / q{/bold} back \n" +
         "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist \n" +
         "{bold}{yellow-fg}ENTRY CMDS   :{/yellow-fg} a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down"
     });
@@ -2315,6 +2315,8 @@ function runSystemctl(action)
       border: "line",
       label: " Preview ",
       tags: true,
+      keys: true,
+      vi: true,
       scrollable: true,
       alwaysScroll: true,
       scrollbar: { ch: " ", inverse: true },
@@ -3122,7 +3124,7 @@ function runSystemctl(action)
     }
 
     // Focus management for Setlist page
-    const focusables = [setlistsList, entriesList];
+    const focusables = [setlistsList, entriesList, preview];
     let focusIndex = 0;
 
     kb.bindKey(["tab"], () =>
@@ -3147,7 +3149,49 @@ function runSystemctl(action)
       screen.render();
     });
 
-    // Events: setlists
+    
+    // PageUp/PageDown: step entries without stealing focus from the current box
+    function stepEntrySelection(delta)
+    {
+      if (!routesModal.hidden) return;
+      if (!inputModal.hidden) return;
+
+      const entries = entriesList._entries || [];
+      if (!entries.length) return;
+
+      const cur = (entriesList.selected == null) ? 0 : entriesList.selected;
+      let next = cur + delta;
+      if (next < 0) next = 0;
+      if (next >= entries.length) next = entries.length - 1;
+      if (next === cur) return;
+
+      entriesList.select(next);
+      refreshPreview();
+
+      // Keep the existing "auto recall on scroll" behavior
+      const aros = !!getSetting("ui.autorecallOnScroll", false);
+      if (aros)
+      {
+        const e = getSelectedEntry();
+        if (!e)
+        {
+          setStatus("No entry.", "warn");
+          return;
+        }
+
+        const r = model.recallEntry(e.id);
+        setStatus(r.message, r.ok ? "ok" : "err");
+        refreshEntries(e.id);
+      }
+
+      refreshFocusMarkers();
+      screen.render();
+    }
+
+    kb.bindKey(["pageup"], () => stepEntrySelection(-1));
+    kb.bindKey(["pagedown"], () => stepEntrySelection(+1));
+
+// Events: setlists
     setlistsList.key(["enter"], () =>
     {
       if (!routesModal.hidden) return;
@@ -3174,7 +3218,7 @@ function runSystemctl(action)
 
     // Events: entries
     entriesList.on("highlight", () => refreshPreview());
-    entriesList.key(["up", "down", "k", "j", "pageup", "pagedown"], () =>
+    entriesList.key(["up", "down", "k", "j"], () =>
     {
       refreshPreview();
 

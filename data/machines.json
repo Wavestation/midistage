@@ -1,5 +1,5 @@
 {
-  "activeId": "m_9b657df5d442",
+  "activeId": "m_57f33818bc73",
   "machines": [
     {
       "id": "m_korgtr_ch5",
@@ -67,7 +67,7 @@
     },
     {
       "id": "m_24d196fd4495",
-      "name": "EFM interface mobile",
+      "name": "EFM CH1 interface mobile",
       "midnamFile": "Essence FM.midnam",
       "out": null,
       "outSlot": 25,
@@ -80,6 +80,22 @@
       "out": null,
       "outSlot": 26,
       "channel": 1
+    },
+    {
+      "id": "m_22df58e6d023",
+      "name": "EFM CH2 interface mobile",
+      "midnamFile": "Essence FM.midnam",
+      "out": null,
+      "outSlot": 25,
+      "channel": 2
+    },
+    {
+      "id": "m_57f33818bc73",
+      "name": "mioXL mobile preset selector",
+      "midnamFile": "Proteus Custom.midnam",
+      "out": null,
+      "outSlot": 31,
+      "channel": 16
     }
   ]
 }
