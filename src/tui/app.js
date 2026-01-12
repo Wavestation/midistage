@@ -184,7 +184,7 @@ module.exports = function startApp(midnamDir, io, appVersion)
 
 // -------------------- Settings store (data/settings.json) --------------------
 // Option A: outside Model. Persistent UI/ergonomics settings.
-const SETTINGS_PATH = path.join(__dirname, "..", "data", "settings.json");
+const SETTINGS_PATH = path.join(__dirname, "..", "..", "data", "settings.json");
 const DEFAULT_SETTINGS = { ui: { autorecallOnScroll: false } };
 
 function deepMerge(dst, src)
@@ -2261,7 +2261,7 @@ function runSystemctl(action)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}PgUp / PgDwn{/bold} quick select entry |{bold}Esc / q{/bold} back \n" +
+        "{bold}{yellow-fg}GENERAL CMDS :{/yellow-fg} Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}PgUp / PgDwn{/bold} quick select entry | {bold}Esc / q{/bold} back \n" +
         "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist \n" +
         "{bold}{yellow-fg}ENTRY CMDS   :{/yellow-fg} a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down"
     });

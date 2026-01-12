@@ -6,7 +6,7 @@ const { startSerialServer } = require("./src/tui/serialServer");
 
 const MIDNAM_DIR = path.join(__dirname, "data", "names");
 
-const appVer = "1.0"
+const appVer = "1.1"
 
 function getArg(name, def = null) 
 {
