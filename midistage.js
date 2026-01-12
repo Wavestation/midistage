@@ -1,8 +1,12 @@
 const path = require("path");
 const startApp = require("./src/tui/app");
 const { startTelnetServer } = require("./src/tui/telnetServer");
-//const { startTelnetPtyServer } = require("./src/tui/telnetPtyServer");
 const { startSerialServer } = require("./src/tui/serialServer");
+// const { startTelnetPtyServer } = require("./src/tui/telnetPtyServer");
+
+const { Model } = require("./src/core/model");
+const { RemoteDevice } = require("./src/remote/remoteDevice");
+
 
 const MIDNAM_DIR = path.join(__dirname, "data", "names");
 
@@ -77,3 +81,17 @@ else
   // local  
   startApp(MIDNAM_DIR, null, appVer);
 }
+
+// Démarrage de la RC
+const model = new Model(MIDNAM_DIR);
+const remote = new RemoteDevice({
+  path: "/dev/ttyUSB0",
+  log: console.log
+});
+
+remote.on("key", k => model.handleRemoteKey(k));
+
+model.on("selectionChanged", ({ setlist, entry }) =>
+{
+  remote.show(setlist.name, entry.name);
+});

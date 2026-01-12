@@ -125,7 +125,9 @@ function normalizeSetlist(s)
     return {
         id: String((s && s.id) || makeId("sl")),
         name: String((s && s.name) || "Setlist"),
-        entries: Array.isArray(s && s.entries) ? s.entries.map(normalizeEntry) : []
+        entries: Array.isArray(s && s.entries) ? s.entries.map(normalizeEntry) : [],
+        // optional: hotkeys A..H => entryId
+        hotkeys: (s && typeof s.hotkeys === "object" && s.hotkeys) ? Object.assign({}, s.hotkeys) : {}
     };
 }
 

@@ -72,7 +72,7 @@ function startTelnetServer(createSession, port = 2323, options = {})
       io.terminal = term || terminal;
       // Certaines TUIs aiment re-render quand TERM change
       try { client.emit("resize"); } catch {}
-      console.log("Telnet: Session connect from " + normalizeIP(client.remoteAddress));
+      console.log("[TELNET] Session connect from " + normalizeIP(client.remoteAddress));
     });
 
     // Démarre une session (ton startApp)
@@ -87,7 +87,7 @@ function startTelnetServer(createSession, port = 2323, options = {})
       // Si ton app throw dès l’init, on ferme proprement
       try { client.end("Session error.\r\n"); } catch {}
       try { client.destroy(); } catch {}
-      console.log("Telnet: Session error.");
+      console.log("[TELNET] Session error.");
       return;
     }
 
@@ -96,7 +96,7 @@ function startTelnetServer(createSession, port = 2323, options = {})
     {
       try { sessionCleanup && sessionCleanup(); } catch {}
       try { client.destroy(); } catch {}
-      console.log("Telnet: Session ended.");
+      console.log("[TELNET] Session ended.");
     });
 
     client.on("error", () =>
@@ -107,7 +107,7 @@ function startTelnetServer(createSession, port = 2323, options = {})
   });
 
   server.listen(port);
-  console.log("Telnet: Session ready.");
+  console.log("[TELNET] Session ready.");
   return server;
 }
 

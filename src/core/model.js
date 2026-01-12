@@ -7,6 +7,8 @@ const { MachinesStore } = require("./machines");
 const { SetlistsStore } = require("./setlists");
 const { MidiPortsStore } = require("./midiports");
 
+const { EventEmitter } = require("events");
+
 const ENABLE_FUZZY_SEARCH = false;
 
 function fuzzyMatch(query, text)
@@ -25,10 +27,11 @@ function fuzzyMatch(query, text)
     return qi === query.length;
 }
 
-class Model
+class Model extends EventEmitter
 {
     constructor(options = {})
     {
+        super();
         this.midnamDir = options.midnamDir;
         this.machines = new MachinesStore(options.machines || {});
         this.setlists = new SetlistsStore(options.setlists || {});
@@ -50,6 +53,10 @@ class Model
             name: "",
             routes: [] // [{ machineId, midnamFile, deviceName, bankName, msb, lsb, program, patchName }]
         };
+
+
+        // Concert state: currently active entry (for remote + VFD)
+        this.currentEntryId = null;
 
         // ensure there is at least one setlist
         this.ensureActiveSetlist();
@@ -90,7 +97,12 @@ class Model
 
     ensureActiveSetlist()
     {
-        return this.setlists.ensureDefaultSetlist("Default");
+        const s = this.setlists.ensureDefaultSetlist("Default");
+        if (!this.currentEntryId)
+        {
+            this.currentEntryId = s?.entries?.[0]?.id || null;
+        }
+        return s;
     }
 
     getActiveSetlist()
@@ -112,16 +124,141 @@ class Model
         return s.entries.find(e => e.id === entryId) || null;
     }
 
+// ---------- Concert / Remote helpers ----------
+
+/**
+ * Returns minimal UI state for TUI and VFD.
+ */
+getUiState()
+{
+    const s = this.getActiveSetlist();
+    const setName = s?.name || "";
+
+    let entryName = "";
+    if (s && this.currentEntryId)
+    {
+        const e = s.entries.find(x => x && x.id === this.currentEntryId);
+        entryName = e?.name || "";
+    }
+
+    return {
+        currentSetlistName: setName,
+        currentEntryName: entryName,
+        currentEntryId: this.currentEntryId
+    };
+}
+
+/**
+ * Activate an entry (select + send all MIDI for it).
+ * This is what the remote should call (and the TUI can call too).
+ */
+activateEntry(entryId)
+{
+    const s = this.getActiveSetlist();
+    if (!s) return { ok: false, message: "Aucune setlist active." };
+
+    const e = this.setlists.getEntry(s.id, entryId);
+    if (!e) return { ok: false, message: "Entrée introuvable." };
+
+        // Track current entry for UI/remote
+        this.currentEntryId = entryId;
+
+    this.currentEntryId = entryId;
+
+    const res = this.recallEntry(entryId);
+
+    // ensure UI refresh even if recall had partial errors
+    this.emit?.("stateChanged");
+
+    return res;
+}
+
+/**
+ * Activate previous/next entry in current setlist.
+ */
+activateEntryDelta(delta)
+{
+    const s = this.getActiveSetlist();
+    if (!s || !Array.isArray(s.entries) || !s.entries.length)
+    {
+        return { ok: false, message: "Setlist vide." };
+    }
+
+    let idx = -1;
+    if (this.currentEntryId)
+    {
+        idx = s.entries.findIndex(e => e && e.id === this.currentEntryId);
+    }
+    if (idx < 0) idx = 0;
+
+    idx = Math.max(0, Math.min(s.entries.length - 1, idx + (delta | 0)));
+
+    return this.activateEntry(s.entries[idx].id);
+}
+
+/**
+ * Function keys from remote (1..8). You can extend this mapping later.
+ * Default mapping:
+ *  1 = previous entry
+ *  2 = next entry
+ *  3 = replay current entry
+ */
+triggerFunctionKey(n)
+{
+    n = Number(n);
+    if (!Number.isFinite(n)) return;
+
+    if (n === 1) return this.activateEntryDelta(-1);
+    if (n === 2) return this.activateEntryDelta(+1);
+
+    if (n === 3)
+    {
+        if (this.currentEntryId) return this.activateEntry(this.currentEntryId);
+
+        // If nothing selected yet, activate first entry if exists
+        const s = this.getActiveSetlist();
+        const first = s?.entries?.[0]?.id || null;
+        if (first) return this.activateEntry(first);
+        return;
+    }
+}
+
+/**
+ * Hotkeys A..H stored in setlist JSON: setlist.hotkeys = { A: entryId, ... }
+ */
+triggerSetlistHotkey(letter)
+{
+    const s = this.getActiveSetlist();
+    if (!s) return;
+
+    const key = String(letter || "").trim().toUpperCase();
+    const entryId = s.hotkeys?.[key];
+
+    if (!entryId) return;
+
+    return this.activateEntry(entryId);
+}
+
+
+
 
     listSetlists()
     {
         return this.setlists.list();
     }
 
-    setActiveSetlist(id)
-    {
-        return this.setlists.setActive(id);
-    }
+    
+setActiveSetlist(id)
+{
+    const ok = this.setlists.setActive(id);
+
+    // When changing setlist, reset current entry to first entry if any
+    const s = this.getActiveSetlist();
+    this.currentEntryId = s?.entries?.[0]?.id || null;
+
+    this.emit?.("stateChanged");
+    return ok;
+}
 
     addSetlist(name)
     {

@@ -260,7 +260,7 @@ function setSetting(pathStr, value)
   }
   cur[parts[parts.length - 1]] = value;
 
-  try { atomicWriteJson(SETTINGS_PATH, settings); } catch { }
+  try { atomicWriteJson(npm , settings); } catch { }
 }
 
 function runSystemctl(action)
