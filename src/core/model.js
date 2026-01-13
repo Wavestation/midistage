@@ -1,6 +1,8 @@
 // model.js
 
 const path = require("path");
+const child_process = require("child_process");
+
 const { parseMidnamFile } = require("../midnam/parseMidnam");
 const midiDriver = require("../midi/driver");
 const { MachinesStore } = require("./machines");
@@ -11,6 +13,8 @@ const { EventEmitter } = require("events");
 const { isNumberObject } = require("util/types");
 
 const ENABLE_FUZZY_SEARCH = false;
+
+
 
 function fuzzyMatch(query, text)
 {
@@ -30,6 +34,8 @@ function fuzzyMatch(query, text)
 
 class Model extends EventEmitter
 {
+    CurrentMenu = "main";
+
     constructor(options = {})
     {
         super();
@@ -63,6 +69,23 @@ class Model extends EventEmitter
         this.ensureActiveSetlist();
     }
 
+
+    runSystemctl(action)
+    {
+        try
+        {
+            const p = child_process.spawn("sudo", ["/bin/systemctl", action], {
+            stdio: "ignore",
+            detached: true
+            });
+            p.unref();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
     // ---------- Machines helpers ----------
 
     listMachines()
@@ -198,7 +221,7 @@ class Model extends EventEmitter
 
     handleRemoteKey(key)
     {
-        if (parseInt(key) == NaN)
+        if (!Number.isInteger(parseInt(key)))
         {
             this.triggerSetlistHotkey(key);
         } else {
@@ -220,19 +243,86 @@ class Model extends EventEmitter
 
         console.log("[MODEL] FKEY: " + n);
 
-        if (n === 7) return this.activateEntryDelta(-1);
-        if (n === 8) return this.activateEntryDelta(+1);
-
-        if (n === 6)
+        switch(n)
         {
-            if (this.currentEntryId) return this.activateEntry(this.currentEntryId);
+            case 1:
+                // previous setlist
+                this.currentMenu = "main"
+                break;
+            case 2:
+                // next setlist
+                this.currentMenu = "main"
+                break;
+            case 3:
+                this.currentMenu = "main"
+                setTimeout(() =>
+                {
+                    this.emit("remoteDisplayXY", {
+                        text:"à",
+                        xpos:20,
+                        ypos:2
+                    });
+                }, 39);
+                if (this.currentEntryId) return this.activateEntry(this.currentEntryId);
 
-            // If nothing selected yet, activate first entry if exists
-            const s = this.getActiveSetlist();
-            const first = s?.entries?.[0]?.id || null;
-            if (first) return this.activateEntry(first);
-            console.log("[MODEL] F6: " + first);
-            return;
+                // If nothing selected yet, activate first entry if exists
+                const s = this.getActiveSetlist();
+                const first = s?.entries?.[0]?.id || null;
+                if (first) return this.activateEntry(first);
+                console.log("[MODEL] F6: " + first);
+                return;
+            case 4:
+                // previous entry
+                this.currentMenu = "main"
+                return this.activateEntryDelta(-1);
+            case 5:
+                // next entry
+                this.currentMenu = "main"
+                return this.activateEntryDelta(+1);
+            case 6:
+                if(this.currentMenu == "power")  // REBOOT
+                {
+                    this.emit("remoteMessage", {
+                        up:"MIDISTAGE REBOOTING",
+                        down: "Please Wait..."
+                    });
+                    this.runSystemctl("reboot");
+                }
+                break;
+            case 7:
+                if(this.currentMenu == "power") // SHUTDOWN
+                {
+                    this.emit("remoteMessage", {
+                        up:"MIDISTAGE SYSTEM...",
+                        down: "...IS SHUTTING DOWN"
+                    });
+                    setTimeout(() => {
+
+                        this.emit("remoteDisplayPower", {value:0});
+                        this.runSystemctl("poweroff");
+                    }, 1939);
+                    
+                }
+                break;
+            case 8:
+                // power menu
+                if (this.currentMenu != "power")
+                {
+                    this.currentMenu = "power";
+                    this.emit("remoteMessage", {
+                        up:"Power Menu (F8 BACK)",
+                        down: "F6:REBOOT F7:SHUTDWN"
+                    });
+                } 
+                else if(this.currentMenu == "power") 
+                {
+                    this.currentMenu = "main";
+                    this.emit("remoteMessage", {
+                        up:"è MIDISTAGE MENU . è",
+                        down: "F1-8 FNCT é A-H HKYS"
+                    });
+                }
+                break;
         }
     }
 
@@ -241,17 +331,29 @@ class Model extends EventEmitter
      */
     triggerSetlistHotkey(letter)
     {
+        this.currentMenu = "main"
+
         console.log("[MODEL] LKEY: " + letter);
+        
 
         const s = this.getActiveSetlist();
         if (!s) return;
 
+        console.log(s.hotkeys);
+
         const key = String(letter || "").trim().toUpperCase();
         const entryId = s.hotkeys?.[key];
 
-        console.log("[MODEL] eID: " + entryId);
+        console.log("[MODEL] eID: " + key);
 
-        if (!entryId) return;
+        if (!entryId) 
+        {
+            this.emit("remoteMessage", {
+                up:s.name,
+                down: `Hotkey ${key} unassigned!`
+            });
+            return;
+        }
 
         return this.activateEntry(entryId);
     }

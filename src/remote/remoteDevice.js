@@ -165,7 +165,7 @@ class RemoteDevice extends EventEmitter
   setVFDPower(pw)     // O = off, 1 = on
   {
     const payload = Buffer.concat([
-      Buffer.from([0x1F, 0x28, pw]),  // SET POWER STATE
+      Buffer.from([0x1F, 0x28, 0x61, 0x40, pw]),  // SET POWER STATE
     ]);
     this._send(payload);
   }

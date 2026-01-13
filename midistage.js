@@ -83,7 +83,7 @@ else
   // local  
   startApp(MIDNAM_DIR, null, appVer, model);
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////
 // Démarrage de la RC
 const remote = new RemoteDevice({
   path: "/dev/ttyUSB0",
@@ -93,8 +93,9 @@ const remote = new RemoteDevice({
 remote.initVFD();
 remote.setVFDBrightness(3);
 remote.setCharTable(0);
-remote.setIntlFont(1);
-remote.showText(`è MIDISTAGE ver${appVer} è`, "F1-8 FNCT é A-H FAVS");
+remote.setIntlFont(0);
+
+remote.showText(`è MIDISTAGE ver${appVer} è`, "F1-8 FNCT é A-H HKYS");
 
 setInterval(() => {
  const uistate = model.getUiState();
@@ -116,12 +117,27 @@ model.on("recalledEntry", (state) =>
   remote.clearVFD();
   remote.showText(state.setlist, state.entry);
   remote.showTextXY(`[${state.status}]`, 17, 1);
+  /*
   if (state.status == "KO")
   {
     remote.setVFDReverse(1);
     setTimeout(() => {
       remote.setVFDReverse(0);
-    }, 939);
+    }, 1939);
   }
+  */
   console.log(`[REMOTE] RECALLED ENTRY TO REMOTE ${state.setlist} - ${state.entry}`);
+});
+
+model.on("remoteMessage", (message) => {
+  remote.showText(message.up, message.down);
+});
+
+model.on("remoteDisplayXY", (message) => {
+  console.log(`[REMOTE] TEXT POS XY ${message.text} - ${message.xpos} - ${message.ypos}`);
+  remote.showTextXY(message.text, message.xpos, message.ypos);
+});
+
+model.on("remoteDisplayPower", (value) => {
+  remote.setVFDPower(value.value);
 });
