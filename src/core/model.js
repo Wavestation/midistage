@@ -219,6 +219,39 @@ class Model extends EventEmitter
         return this.activateEntry(s.entries[idx].id);
     }
 
+    /**
+     * Activate previous/next entry in current setlist.
+     */
+    activateSetlistDelta(delta)
+    {
+
+        const s = this.listSetlists()
+        
+
+        if (!s || !Array.isArray(s) || !s.length)
+        {
+            return { ok: false, message: "Pas de setlists..." };
+        }
+        
+        
+        let idx = -1;
+        if (this.getActiveSetlist().id)
+        {
+            idx = s.findIndex(e => e && e.id === this.getActiveSetlist().id);
+        }
+        if (idx < 0) idx = 0;
+
+        idx = Math.max(0, Math.min(s.length - 1, idx + (delta | 0)));
+
+        console.log(s[idx]);
+        setTimeout(()=>{
+            this.listEntries();
+            console.log(this.getActiveSetlist());
+        }, 39);
+        return this.setActiveSetlist(s[idx].id);
+        
+    }
+
     handleRemoteKey(key)
     {
         if (!Number.isInteger(parseInt(key)))
@@ -248,17 +281,19 @@ class Model extends EventEmitter
             case 1:
                 // previous setlist
                 this.currentMenu = "main"
+                this.activateSetlistDelta(-1);
                 break;
             case 2:
                 // next setlist
                 this.currentMenu = "main"
+                this.activateSetlistDelta(1);
                 break;
             case 3:
                 this.currentMenu = "main"
                 setTimeout(() =>
                 {
                     this.emit("remoteDisplayXY", {
-                        text:"à",
+                        text:String.fromCharCode(0xFB),
                         xpos:20,
                         ypos:2
                     });
@@ -354,7 +389,14 @@ class Model extends EventEmitter
             });
             return;
         }
-
+        setTimeout(() =>
+            {
+                this.emit("remoteDisplayXY", {
+                    text:String.fromCharCode(0x9F) + key,
+                    xpos:18,
+                    ypos:1
+                });
+            }, 339);
         return this.activateEntry(entryId);
     }
 
@@ -375,7 +417,11 @@ class Model extends EventEmitter
         const s = this.getActiveSetlist();
         this.currentEntryId = s?.entries?.[0]?.id || null;
 
-        this.emit?.("stateChanged");
+        this.emit?.("changedSetlist", {
+            setlist:s.name,
+            entry:s?.entries?.[0]?.name || "<NO ENTRY>",
+            status:"WT"
+        });
         return ok;
     }
 

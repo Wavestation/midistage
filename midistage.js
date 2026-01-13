@@ -129,6 +129,23 @@ model.on("recalledEntry", (state) =>
   console.log(`[REMOTE] RECALLED ENTRY TO REMOTE ${state.setlist} - ${state.entry}`);
 });
 
+model.on("changedSetlist", (state) =>
+  {
+    remote.clearVFD();
+    remote.showText(state.setlist, state.entry);
+    remote.showTextXY(`[${state.status}]`, 17, 1);
+    /*
+    if (state.status == "KO")
+    {
+      remote.setVFDReverse(1);
+      setTimeout(() => {
+        remote.setVFDReverse(0);
+      }, 1939);
+    }
+    */
+    console.log(`[REMOTE] RECALLED ENTRY TO REMOTE ${state.setlist} - ${state.entry}`);
+  });
+
 model.on("remoteMessage", (message) => {
   remote.showText(message.up, message.down);
 });
