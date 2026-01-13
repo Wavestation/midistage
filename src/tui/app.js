@@ -134,7 +134,7 @@ function showAboutBox(screen, { name, version, asciiArt = "", extra = "", onClos
 
 
 // ----------------------- MAIN APPLICATION ----------------------------------------
-module.exports = function startApp(midnamDir, io, appVersion)
+module.exports = function startApp(midnamDir, io, appVersion, glomodel)
 {
   const screen = blessed.screen({
     smartCSR: true,
@@ -179,7 +179,10 @@ module.exports = function startApp(midnamDir, io, appVersion)
     });
   }
 
-  const model = new Model({ midnamDir });
+  glomodel.midnamDir = midnamDir;
+  const model = glomodel;
+  // const model = new Model({ midnamDir });
+  console.log("[TUI] midnam path: " + model.midnamDir);
 
 
 // -------------------- Settings store (data/settings.json) --------------------
@@ -628,7 +631,7 @@ function runSystemctl(action)
 
       model.machines.update(active.id, { out: p });
       const m2 = model.getActiveMachine();
-      setStatus(`Port assigned.\nMachine: ${m2.name}\nMIDI out: ${m2.out}`, "ok");
+      setStatus(`Port assigned. Machine: ${m2.name} -> MIDI out: ${m2.out}`, "ok");
 
       closeMidiPicker(patchesList);
       refreshMachinesList();
@@ -689,7 +692,7 @@ function runSystemctl(action)
 
       if (!m.midnamFile)
       {
-        clearLoadedInstrumentUI(`Active machine: ${m.name}\n(midnam: none) | ${model.draftGetSummary()}`);
+        clearLoadedInstrumentUI(`Active machine: ${m.name} (midnam: none) | ${model.draftGetSummary()}`);
         return;
       }
 
@@ -697,14 +700,14 @@ function runSystemctl(action)
       {
         const parsed = model.loadMidnam(m.midnamFile);
         search.setValue("");
-        setStatus(`OK: ${parsed.deviceName}\nMachine: ${m.name} | ${model.draftGetSummary()}`, "ok");
+        setStatus(`OK: ${parsed.deviceName} Machine: ${m.name} | ${model.draftGetSummary()}`, "ok");
         refreshAll();
       }
       catch (e)
       {
         banksList.setItems(["<parse error>"]);
         patchesList.setItems(["<parse error>"]);
-        setStatus(`Parse error (${m.midnamFile}):\n${e.message}`, "err");
+        setStatus(`Parse error (${m.midnamFile}):${e.message}`, "err");
         screen.render();
       }
     }
@@ -742,7 +745,7 @@ function runSystemctl(action)
 
       if (r.ok)
       {
-        setStatus(`${r.message}\n${model.draftGetSummary()}`, "ok");
+        setStatus(`${r.message} ${model.draftGetSummary()}`, "ok");
         refreshBanks();
         screen.render();
       }

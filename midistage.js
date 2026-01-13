@@ -12,6 +12,8 @@ const MIDNAM_DIR = path.join(__dirname, "data", "names");
 
 const appVer = "1.1"
 
+const model = new Model(MIDNAM_DIR);
+
 function getArg(name, def = null) 
 {
   const i = process.argv.indexOf(name);
@@ -33,7 +35,7 @@ if (process.argv.includes("--telnet"))
 
   console.log("Starting Telnet on port " + port + " ...");
 
-  startTelnetServer((io) => startApp(MIDNAM_DIR, io, appVer), port, {
+  startTelnetServer((io) => startApp(MIDNAM_DIR, io, appVer, model), port, {
     //terminal: "ansi",
     terminal: "xterm-256color",
     unicode: true,
@@ -65,7 +67,7 @@ else if (process.argv.includes("--serial"))
       terminal: "xterm-256color",
       unicode: false
     },
-    (io) => startApp(MIDNAM_DIR, io, appVer)
+    (io) => startApp(MIDNAM_DIR, io, appVer, model)
   );
 
   const shutdown = () => {
@@ -79,19 +81,47 @@ else if (process.argv.includes("--serial"))
 else 
 {
   // local  
-  startApp(MIDNAM_DIR, null, appVer);
+  startApp(MIDNAM_DIR, null, appVer, model);
 }
 
 // Démarrage de la RC
-const model = new Model(MIDNAM_DIR);
 const remote = new RemoteDevice({
   path: "/dev/ttyUSB0",
   log: console.log
 });
 
-remote.on("key", k => model.handleRemoteKey(k));
+remote.initVFD();
+remote.setVFDBrightness(3);
+remote.setCharTable(0);
+remote.setIntlFont(1);
+remote.showText(`è MIDISTAGE ver${appVer} è`, "F1-8 FNCT é A-H FAVS");
 
-model.on("selectionChanged", ({ setlist, entry }) =>
+setInterval(() => {
+ const uistate = model.getUiState();
+
+ //remote.showSetEnt(uistate.currentSetlistName, uistate.currentEntryName);
+}, 939);
+
+remote.on("key", k => { 
+  try
+  {
+    console.log("[REMOTE] Key Pressed:" + k);
+    model.handleRemoteKey(k);
+  } catch(er) { console.warn("[REMOTE] ERR KEYPRESS " + er); } // doesn't crash here
+
+});
+
+model.on("recalledEntry", (state) =>
 {
-  remote.show(setlist.name, entry.name);
+  remote.clearVFD();
+  remote.showText(state.setlist, state.entry);
+  remote.showTextXY(`[${state.status}]`, 17, 1);
+  if (state.status == "KO")
+  {
+    remote.setVFDReverse(1);
+    setTimeout(() => {
+      remote.setVFDReverse(0);
+    }, 939);
+  }
+  console.log(`[REMOTE] RECALLED ENTRY TO REMOTE ${state.setlist} - ${state.entry}`);
 });

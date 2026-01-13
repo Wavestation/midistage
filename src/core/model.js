@@ -8,6 +8,7 @@ const { SetlistsStore } = require("./setlists");
 const { MidiPortsStore } = require("./midiports");
 
 const { EventEmitter } = require("events");
+const { isNumberObject } = require("util/types");
 
 const ENABLE_FUZZY_SEARCH = false;
 
@@ -129,115 +130,131 @@ class Model extends EventEmitter
 /**
  * Returns minimal UI state for TUI and VFD.
  */
-getUiState()
-{
-    const s = this.getActiveSetlist();
-    const setName = s?.name || "";
-
-    let entryName = "";
-    if (s && this.currentEntryId)
+    getUiState()
     {
-        const e = s.entries.find(x => x && x.id === this.currentEntryId);
-        entryName = e?.name || "";
+        const s = this.getActiveSetlist();
+        const setName = s?.name || "";
+
+        let entryName = "";
+        if (s && this.currentEntryId)
+        {
+            const e = s.entries.find(x => x && x.id === this.currentEntryId);
+            entryName = e?.name || "";
+        }
+
+        return {
+            currentSetlistName: setName,
+            currentEntryName: entryName,
+            currentEntryId: this.currentEntryId
+        };
     }
 
-    return {
-        currentSetlistName: setName,
-        currentEntryName: entryName,
-        currentEntryId: this.currentEntryId
-    };
-}
+    /**
+     * Activate an entry (select + send all MIDI for it).
+     * This is what the remote should call (and the TUI can call too).
+     */
+    activateEntry(entryId)
+    {
+        const s = this.getActiveSetlist();
+        if (!s) return { ok: false, message: "Aucune setlist active." };
 
-/**
- * Activate an entry (select + send all MIDI for it).
- * This is what the remote should call (and the TUI can call too).
- */
-activateEntry(entryId)
-{
-    const s = this.getActiveSetlist();
-    if (!s) return { ok: false, message: "Aucune setlist active." };
+        const e = this.setlists.getEntry(s.id, entryId);
+        if (!e) return { ok: false, message: "Entrée introuvable." };
 
-    const e = this.setlists.getEntry(s.id, entryId);
-    if (!e) return { ok: false, message: "Entrée introuvable." };
+            // Track current entry for UI/remote
+            this.currentEntryId = entryId;
 
-        // Track current entry for UI/remote
         this.currentEntryId = entryId;
 
-    this.currentEntryId = entryId;
+        const res = this.recallEntry(entryId);
 
-    const res = this.recallEntry(entryId);
-
-    // ensure UI refresh even if recall had partial errors
-    this.emit?.("stateChanged");
-
-    return res;
-}
-
-/**
- * Activate previous/next entry in current setlist.
- */
-activateEntryDelta(delta)
-{
-    const s = this.getActiveSetlist();
-    if (!s || !Array.isArray(s.entries) || !s.entries.length)
-    {
-        return { ok: false, message: "Setlist vide." };
+        // ensure UI refresh even if recall had partial errors
+        console.log("[MODEL] Activate entry: " + res);
+        return res;
     }
 
-    let idx = -1;
-    if (this.currentEntryId)
+    /**
+     * Activate previous/next entry in current setlist.
+     */
+    activateEntryDelta(delta)
     {
-        idx = s.entries.findIndex(e => e && e.id === this.currentEntryId);
-    }
-    if (idx < 0) idx = 0;
-
-    idx = Math.max(0, Math.min(s.entries.length - 1, idx + (delta | 0)));
-
-    return this.activateEntry(s.entries[idx].id);
-}
-
-/**
- * Function keys from remote (1..8). You can extend this mapping later.
- * Default mapping:
- *  1 = previous entry
- *  2 = next entry
- *  3 = replay current entry
- */
-triggerFunctionKey(n)
-{
-    n = Number(n);
-    if (!Number.isFinite(n)) return;
-
-    if (n === 1) return this.activateEntryDelta(-1);
-    if (n === 2) return this.activateEntryDelta(+1);
-
-    if (n === 3)
-    {
-        if (this.currentEntryId) return this.activateEntry(this.currentEntryId);
-
-        // If nothing selected yet, activate first entry if exists
         const s = this.getActiveSetlist();
-        const first = s?.entries?.[0]?.id || null;
-        if (first) return this.activateEntry(first);
-        return;
+        if (!s || !Array.isArray(s.entries) || !s.entries.length)
+        {
+            return { ok: false, message: "Setlist vide." };
+        }
+
+        let idx = -1;
+        if (this.currentEntryId)
+        {
+            idx = s.entries.findIndex(e => e && e.id === this.currentEntryId);
+        }
+        if (idx < 0) idx = 0;
+
+        idx = Math.max(0, Math.min(s.entries.length - 1, idx + (delta | 0)));
+
+        return this.activateEntry(s.entries[idx].id);
     }
-}
 
-/**
- * Hotkeys A..H stored in setlist JSON: setlist.hotkeys = { A: entryId, ... }
- */
-triggerSetlistHotkey(letter)
-{
-    const s = this.getActiveSetlist();
-    if (!s) return;
+    handleRemoteKey(key)
+    {
+        if (parseInt(key) == NaN)
+        {
+            this.triggerSetlistHotkey(key);
+        } else {
+            this.triggerFunctionKey(key);
+        }
+    }
 
-    const key = String(letter || "").trim().toUpperCase();
-    const entryId = s.hotkeys?.[key];
+    /**
+     * Function keys from remote (1..8). You can extend this mapping later.
+     * Default mapping:
+     *  1 = previous entry
+     *  2 = next entry
+     *  3 = replay current entry
+     */
+    triggerFunctionKey(n)
+    {
+        n = Number(n);
+        if (!Number.isFinite(n)) return;
 
-    if (!entryId) return;
+        console.log("[MODEL] FKEY: " + n);
 
-    return this.activateEntry(entryId);
-}
+        if (n === 7) return this.activateEntryDelta(-1);
+        if (n === 8) return this.activateEntryDelta(+1);
+
+        if (n === 6)
+        {
+            if (this.currentEntryId) return this.activateEntry(this.currentEntryId);
+
+            // If nothing selected yet, activate first entry if exists
+            const s = this.getActiveSetlist();
+            const first = s?.entries?.[0]?.id || null;
+            if (first) return this.activateEntry(first);
+            console.log("[MODEL] F6: " + first);
+            return;
+        }
+    }
+
+    /**
+     * Hotkeys A..H stored in setlist JSON: setlist.hotkeys = { A: entryId, ... }
+     */
+    triggerSetlistHotkey(letter)
+    {
+        console.log("[MODEL] LKEY: " + letter);
+
+        const s = this.getActiveSetlist();
+        if (!s) return;
+
+        const key = String(letter || "").trim().toUpperCase();
+        const entryId = s.hotkeys?.[key];
+
+        console.log("[MODEL] eID: " + entryId);
+
+        if (!entryId) return;
+
+        return this.activateEntry(entryId);
+    }
 
 
 
@@ -247,18 +264,18 @@ triggerSetlistHotkey(letter)
         return this.setlists.list();
     }
 
-    
-setActiveSetlist(id)
-{
-    const ok = this.setlists.setActive(id);
+        
+    setActiveSetlist(id)
+    {
+        const ok = this.setlists.setActive(id);
 
-    // When changing setlist, reset current entry to first entry if any
-    const s = this.getActiveSetlist();
-    this.currentEntryId = s?.entries?.[0]?.id || null;
+        // When changing setlist, reset current entry to first entry if any
+        const s = this.getActiveSetlist();
+        this.currentEntryId = s?.entries?.[0]?.id || null;
 
-    this.emit?.("stateChanged");
-    return ok;
-}
+        this.emit?.("stateChanged");
+        return ok;
+    }
 
     addSetlist(name)
     {
@@ -853,18 +870,24 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
 
             try
             {
-const out = this.resolveMachineOut(machine);
-if (!out)
-{
-    lines.push(`WARN: pas de sortie MIDI pour ${machine.name || machine.id}`);
-    return;
-}
+                 const out = this.resolveMachineOut(machine);
+                if (!out)
+                {
+                    lines.push(`WARN: pas de sortie MIDI pour ${machine.name || machine.id}`);
+                    return;
+                }
 
-const machineRun = Object.assign({}, machine, { out });
-midiDriver.sendPatch(machineRun, bank, patch);
+                const machineRun = Object.assign({}, machine, { out });
+                midiDriver.sendPatch(machineRun, bank, patch);
                 this._sendRouteCCSlots(machineRun, r.ccSlots);
                 this.logSend("SETLIST_RECALL", machineRun, bank, patch);
                 lines.push(`${machine.name || machine.id} -> ${bank.name} ${patch.program} ${patch.name}`);
+
+                /*
+                const items = entries.map((e, i) => {
+                    return `${i}/${e.count} ${e.name}` 
+                });
+                */
             }
             catch (ex)
             {
@@ -874,10 +897,20 @@ midiDriver.sendPatch(machineRun, bank, patch);
 
         if (errors.length)
         {
-            return { ok: false, message: `Recall partiel.\n${lines.join("\n")}\n\nErreurs:\n${errors.join("\n")}` };
+            this.emit("recalledEntry", {
+                entry: e.name,
+                setlist: s.name,
+                status: "KO"
+            });
+            return { ok: false, message: `Recall partiel. ${lines.join(" ")} Erreurs: ${errors.join("/")}` };
         }
 
-        return { ok: true, message: `Recall OK: ${e.name}\n${lines.join("\n")}` };
+        this.emit("recalledEntry", {
+            entry: e.name,
+            setlist: s.name,
+            status: "OK"
+        });
+        return { ok: true, message: `Recall OK: ${e.name} // ${lines.join("/")}` };
     }
 
     getMachinesInstrumentsView()

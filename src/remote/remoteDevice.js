@@ -129,16 +129,100 @@ class RemoteDevice extends EventEmitter
     }
   }
 
-  show(setlistName, entryName)
+  initVFD()
   {
-    const line1 = `SET : ${fitFixed(setlistName, 14)}`;
-    const line2 = `ENT : ${fitFixed(entryName, 14)}`;
+    const payload = Buffer.concat([
+      Buffer.from([0x1B, 0x40]),  // INIT DISPLAY
+      Buffer.from([0x0C, 0x0B]),  // CLEAR and HOME
+    ]);
+    this._send(payload);
+  }
+  
+  clearVFD()
+  {
+    const payload = Buffer.concat([
+      Buffer.from([0x0C, 0x0B]),  // CLEAR and HOME
+    ]);
+    this._send(payload);
+  }
+
+  setVFDBrightness(br)    // 1 to 4 levels
+  {
+    const payload = Buffer.concat([
+      Buffer.from([0x1F, 0x58, br]),  // SET BRIGHTNESS
+    ]);
+    this._send(payload);
+  }
+
+  setVFDReverse(rv)     // O = normal, 1 = reverse
+  {
+    const payload = Buffer.concat([
+      Buffer.from([0x1F, 0x72, rv]),  // SET REVERSE
+    ]);
+    this._send(payload);
+  }
+
+  setVFDPower(pw)     // O = off, 1 = on
+  {
+    const payload = Buffer.concat([
+      Buffer.from([0x1F, 0x28, pw]),  // SET POWER STATE
+    ]);
+    this._send(payload);
+  }
+
+  setVFDBlink(bk)     // bk = blink speed 1 to 255 / 0 = off
+  {
+    const payload = Buffer.concat([
+      Buffer.from([0x1F, 0x45, bk]),  // SET BLINK
+    ]);
+    this._send(payload);
+  }
+
+  setIntlFont(ifs)    // international font set
+  {
+    const payload = Buffer.concat([
+      Buffer.from([0x1B, 0x52, ifs]),  // SET FONT
+    ]);
+    this._send(payload);
+  }
+
+  setCharTable(tid)
+  {
+    const payload = Buffer.concat([
+      Buffer.from([0x1B, 0x74, tid]),  // SET CHAR TABLE
+    ]);
+    this._send(payload);
+  }
+  
+
+  showText(line_up, line_low)
+  {
+    const line1 = fitFixed(line_up, 20);
+    const line2 = fitFixed(line_low, 20);
 
     const payload = Buffer.concat([
-      Buffer.from([0x0C, 0x0B]),
+      Buffer.from([0x1F, 0x24, 0x01, 0x01]), // GOTO ROW 1 LINE 1
       Buffer.from(line1, "ascii"),
-      Buffer.from([0x0A]),
+      Buffer.from([0x1F, 0x24, 0x01, 0x02]), // GOTO ROW 1 LINE 2
       Buffer.from(line2, "ascii")
+    ]);
+
+    this._send(payload);
+  }
+
+  showSetEnt(setlistName, entryName)
+  {
+    const line1 = `SET:${fitFixed(setlistName, 16)}`;
+    const line2 = `ENT:${fitFixed(entryName, 16)}`;
+
+    this.showText(line1, line2);
+  }
+
+  showTextXY(text, xpos, ypos)
+  {
+    const payload = Buffer.concat([
+      Buffer.from([0x1F, 0x24, xpos, ypos]), // GOTO X Y
+      Buffer.from(text, "ascii"),
     ]);
 
     this._send(payload);

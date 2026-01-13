@@ -3,10 +3,6 @@
     {
       "id": "sl_123abc",
       "name": "Maison",
-      "hotkeys": {
-        "A": "e_251c6475101c",
-        "B": "e_03dd5400118e"
-      },
       "entries": [
         {
           "id": "e_251c6475101c",
@@ -186,71 +182,16 @@
             }
           ]
         }
-      ]
+      ],
+      "hotkeys": {
+        "A": "e_251c6475101c",
+        "B": "e_03dd5400118e"
+      }
     },
     {
       "id": "sl_5843e77461b3",
       "name": "Live Diokan",
-      "hotkeys": {
-        "A": "e_6c86d279cb8c",
-        "B": "e_6be0004e39e6"
-      },
       "entries": [
-        {
-          "id": "e_6c86d279cb8c",
-          "name": "Mellowy Diokan",
-          "routes": [
-            {
-              "machineId": "m_b387d1c5be6e",
-              "midnamFile": "JV-2080.midnam",
-              "deviceName": "Roland JV-2080",
-              "bankName": "Patch Bank PR-E",
-              "msb": 81,
-              "lsb": 4,
-              "program": 99,
-              "patchName": "Gluey Pad",
-              "ccSlots": [
-                {
-                  "cc": 111,
-                  "value": 10
-                }
-              ]
-            },
-            {
-              "machineId": "m_3b67d71316ba",
-              "midnamFile": "Virus Rack XL.midnam",
-              "deviceName": "Access Virus Rack XL",
-              "bankName": "Singles Bank C",
-              "msb": 0,
-              "lsb": 2,
-              "program": 15,
-              "patchName": "DarkliteSV",
-              "ccSlots": null
-            },
-            {
-              "machineId": "m_d0daaba01f95",
-              "midnamFile": "MOTIF ES 6^7^8.midnam",
-              "deviceName": "Yamaha",
-              "bankName": "Preset Voice Bank 1",
-              "msb": 63,
-              "lsb": 0,
-              "program": 12,
-              "patchName": "1968",
-              "ccSlots": null
-            },
-            {
-              "machineId": "m_efma",
-              "midnamFile": "Essence FM.midnam",
-              "deviceName": "Kodamo Essence FM",
-              "bankName": "Bank A",
-              "msb": 0,
-              "lsb": 0,
-              "program": 0,
-              "patchName": "Glass Organ",
-              "ccSlots": null
-            }
-          ]
-        },
         {
           "id": "e_6be0004e39e6",
           "name": "Mobile Dioporko",
@@ -520,8 +461,12 @@
             }
           ]
         }
-      ]
+      ],
+      "hotkeys": {
+        "A": "e_6c86d279cb8c",
+        "B": "e_6be0004e39e6"
+      }
     }
   ],
-  "activeId": "sl_5843e77461b3"
+  "activeId": "sl_123abc"
 }
