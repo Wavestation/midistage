@@ -117,15 +117,6 @@ model.on("recalledEntry", (state) =>
   remote.clearVFD();
   remote.showText(state.setlist, state.entry);
   remote.showTextXY(`[${state.status}]`, 17, 1);
-  /*
-  if (state.status == "KO")
-  {
-    remote.setVFDReverse(1);
-    setTimeout(() => {
-      remote.setVFDReverse(0);
-    }, 1939);
-  }
-  */
   console.log(`[REMOTE] RECALLED ENTRY TO REMOTE ${state.setlist} - ${state.entry}`);
 });
 
@@ -134,16 +125,7 @@ model.on("changedSetlist", (state) =>
     remote.clearVFD();
     remote.showText(state.setlist, state.entry);
     remote.showTextXY(`[${state.status}]`, 17, 1);
-    /*
-    if (state.status == "KO")
-    {
-      remote.setVFDReverse(1);
-      setTimeout(() => {
-        remote.setVFDReverse(0);
-      }, 1939);
-    }
-    */
-    console.log(`[REMOTE] RECALLED ENTRY TO REMOTE ${state.setlist} - ${state.entry}`);
+    console.log(`[REMOTE] RECALLED SETLIST TO REMOTE ${state.setlist} - ${state.entry}`);
   });
 
 model.on("remoteMessage", (message) => {
@@ -151,7 +133,6 @@ model.on("remoteMessage", (message) => {
 });
 
 model.on("remoteDisplayXY", (message) => {
-  console.log(`[REMOTE] TEXT POS XY ${message.text} - ${message.xpos} - ${message.ypos}`);
   remote.showTextXY(message.text, message.xpos, message.ypos);
 });
 

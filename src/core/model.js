@@ -323,6 +323,16 @@ class Model extends EventEmitter
                     });
                     this.runSystemctl("reboot");
                 }
+                else                               // normal operation : VIEW MENU
+                {
+                    const uis = this.getUiState();
+                    this.emit?.("changedSetlist", {
+                        setlist:`{${uis.currentSetlistName}}`,
+                        entry:uis.currentEntryName,
+                        status:"WT"
+                    });
+
+                }
                 break;
             case 7:
                 if(this.currentMenu == "power") // SHUTDOWN
@@ -384,8 +394,8 @@ class Model extends EventEmitter
         if (!entryId) 
         {
             this.emit("remoteMessage", {
-                up:s.name,
-                down: `Hotkey ${key} unassigned!`
+                up:`{${s.name}}`,
+                down: `HKey [${key}] unassigned!`
             });
             return;
         }
@@ -418,7 +428,7 @@ class Model extends EventEmitter
         this.currentEntryId = s?.entries?.[0]?.id || null;
 
         this.emit?.("changedSetlist", {
-            setlist:s.name,
+            setlist:`{${s.name}}`,
             entry:s?.entries?.[0]?.name || "<NO ENTRY>",
             status:"WT"
         });
@@ -1046,16 +1056,16 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
         if (errors.length)
         {
             this.emit("recalledEntry", {
+                setlist: `{${s.name}}`,
                 entry: e.name,
-                setlist: s.name,
                 status: "KO"
             });
             return { ok: false, message: `Recall partiel. ${lines.join(" ")} Erreurs: ${errors.join("/")}` };
         }
 
-        this.emit("recalledEntry", {
+        this.emit("recalledEntry", {           
+            setlist: `{${s.name}}`,
             entry: e.name,
-            setlist: s.name,
             status: "OK"
         });
         return { ok: true, message: `Recall OK: ${e.name} // ${lines.join("/")}` };

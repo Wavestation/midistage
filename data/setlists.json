@@ -460,6 +460,34 @@
               ]
             }
           ]
+        },
+        {
+          "id": "e_67767b65c9df",
+          "name": "KAKS B",
+          "routes": [
+            {
+              "machineId": "m_5e47b1df2b7f",
+              "midnamFile": "K2000.midnam",
+              "deviceName": "Kurzweil K2000",
+              "bankName": "Bank 0",
+              "msb": null,
+              "lsb": 0,
+              "program": 11,
+              "patchName": "Neo-Prophet",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank I",
+              "msb": 0,
+              "lsb": 8,
+              "program": 14,
+              "patchName": "Myriade FM EP+KS",
+              "ccSlots": null
+            }
+          ]
         }
       ],
       "hotkeys": {
@@ -468,5 +496,5 @@
       }
     }
   ],
-  "activeId": "sl_123abc"
+  "activeId": "sl_5843e77461b3"
 }
