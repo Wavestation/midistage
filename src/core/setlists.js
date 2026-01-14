@@ -27,16 +27,13 @@ function safeWriteJson(filePath, obj)
 {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
 
-    // écriture atomique (évite JSON tronqué si crash)
     const tmp = filePath + ".tmp";
     fs.writeFileSync(tmp, JSON.stringify(obj, null, 2), "utf8");
     fs.renameSync(tmp, filePath);
 }
 
-
 function normalizeCCSlots(src)
 {
-    // Accept: null/undefined, array of {cc,value}, array of [cc,value], or object map {cc:number->value}
     if (src == null) return null;
 
     let arr = [];
@@ -47,7 +44,6 @@ function normalizeCCSlots(src)
         {
             if (it == null) return null;
 
-            // [cc,value]
             if (Array.isArray(it) && it.length >= 2)
             {
                 const cc = Number(it[0]);
@@ -56,7 +52,6 @@ function normalizeCCSlots(src)
                 return { cc: Math.max(0, Math.min(127, cc|0)), value: Math.max(0, Math.min(127, value|0)) };
             }
 
-            // {cc,value}
             if (typeof it === "object")
             {
                 const cc = Number(it.cc);
@@ -70,7 +65,6 @@ function normalizeCCSlots(src)
     }
     else if (typeof src === "object")
     {
-        // map { "74": 127, ... }
         for (const k of Object.keys(src))
         {
             const cc = Number(k);
@@ -80,31 +74,20 @@ function normalizeCCSlots(src)
         }
     }
 
-    // Max 4 slots, stable order by appearance then CC#
-    arr = arr.slice(0, 4);
-
-    // If fewer than 4, keep as-is (UI can pad)
-    return arr;
+    return arr.slice(0, 4);
 }
 
 function normalizeRoute(r)
 {
     return {
         machineId: r && r.machineId ? String(r.machineId) : null,
-
-        // provenance
         midnamFile: r && r.midnamFile ? String(r.midnamFile) : null,
         deviceName: r && r.deviceName ? String(r.deviceName) : null,
-
-        // bank/patch
         bankName: r && r.bankName ? String(r.bankName) : null,
         msb: (r && r.msb != null) ? Number(r.msb) : null,
         lsb: (r && r.lsb != null) ? Number(r.lsb) : null,
-
         program: (r && r.program != null) ? Number(r.program) : null,
-        patchName: r && r.patchName ? String(r.patchName) : null
-    ,
-        // optional: up to 4 Control Change (CC) messages sent after program change
+        patchName: r && r.patchName ? String(r.patchName) : null,
         ccSlots: (r && (r.ccSlots != null || r.cc != null || r.ccs != null))
             ? normalizeCCSlots(r.ccSlots != null ? r.ccSlots : (r.cc != null ? r.cc : r.ccs))
             : null
@@ -126,18 +109,20 @@ function normalizeSetlist(s)
         id: String((s && s.id) || makeId("sl")),
         name: String((s && s.name) || "Setlist"),
         entries: Array.isArray(s && s.entries) ? s.entries.map(normalizeEntry) : [],
-        // optional: hotkeys A..H => entryId
         hotkeys: (s && typeof s.hotkeys === "object" && s.hotkeys) ? Object.assign({}, s.hotkeys) : {}
     };
 }
 
-/**
- * Format v2:
- * data = { setlists: [ {id,name,entries:[{id,name,routes:[...] }]} ], activeId }
- *
- * Si tu avais l'ancien format (items[]), on tente une migration best-effort:
- * - items[] devient entries[] avec une entry "Imported" contenant 1 route par item (machineId+bank/patch)
- */
+function normalizeHotkey(k)
+{
+    if (!k) return null;
+    const key = String(k).trim().toUpperCase();
+    if (key.length !== 1) return null;
+    const c = key.charCodeAt(0);
+    if (c < 65 || c > 72) return null; // A..H
+    return key;
+}
+
 class SetlistsStore
 {
     constructor(options = {})
@@ -151,41 +136,9 @@ class SetlistsStore
     {
         const raw = safeReadJson(this.filePath, { setlists: [], activeId: null });
 
-        // Migration v1 -> v2 (best-effort)
         if (Array.isArray(raw.setlists))
         {
-            raw.setlists = raw.setlists.map((s) =>
-            {
-                // v1: { items: [...] }
-                if (Array.isArray(s.items) && !Array.isArray(s.entries))
-                {
-                    const imported = {
-                        id: makeId("e"),
-                        name: "Imported",
-                        routes: s.items.map((it) =>
-                        {
-                            return normalizeRoute({
-                                machineId: it.machineId,
-                                midnamFile: it.midnamFile,
-                                deviceName: it.deviceName,
-                                bankName: it.bankName,
-                                msb: it.msb,
-                                lsb: it.lsb,
-                                program: it.program,
-                                patchName: it.patchName
-                            });
-                        })
-                    };
-
-                    return normalizeSetlist({
-                        id: s.id,
-                        name: s.name,
-                        entries: [imported]
-                    });
-                }
-
-                return normalizeSetlist(s);
-            });
+            raw.setlists = raw.setlists.map(normalizeSetlist);
         }
         else
         {
@@ -193,7 +146,7 @@ class SetlistsStore
         }
 
         this.data = {
-            setlists: raw.setlists.map(normalizeSetlist),
+            setlists: raw.setlists,
             activeId: raw.activeId || null
         };
 
@@ -208,20 +161,9 @@ class SetlistsStore
         safeWriteJson(this.filePath, this.data);
     }
 
-    list()
-    {
-        return [...this.data.setlists];
-    }
-
-    getById(id)
-    {
-        return this.data.setlists.find(s => s.id === id) || null;
-    }
-
-    getActive()
-    {
-        return this.getById(this.data.activeId) || null;
-    }
+    list() { return [...this.data.setlists]; }
+    getById(id) { return this.data.setlists.find(s => s.id === id) || null; }
+    getActive() { return this.getById(this.data.activeId) || null; }
 
     setActive(id)
     {
@@ -257,7 +199,7 @@ class SetlistsStore
         const idx = this.data.setlists.findIndex(s => s.id === id);
         if (idx < 0) return false;
 
-        const wasActive = (this.data.activeId === id);
+        const wasActive = this.data.activeId === id;
         this.data.setlists.splice(idx, 1);
 
         if (wasActive)
@@ -282,21 +224,18 @@ class SetlistsStore
         return true;
     }
 
-
     // ----- Entries -----
 
     listEntries(setlistId)
     {
         const s = this.getById(setlistId);
-        if (!s) return [];
-        return [...s.entries];
+        return s ? [...s.entries] : [];
     }
 
     getEntry(setlistId, entryId)
     {
         const s = this.getById(setlistId);
-        if (!s) return null;
-        return s.entries.find(e => e.id === entryId) || null;
+        return s ? s.entries.find(e => e.id === entryId) || null : null;
     }
 
     addEntry(setlistId, name, routes = [])
@@ -319,97 +258,75 @@ class SetlistsStore
         if (idx < 0) return false;
 
         s.entries.splice(idx, 1);
+
+        // nettoyage hotkeys
+        for (const k of Object.keys(s.hotkeys))
+        {
+            if (s.hotkeys[k] === entryId) delete s.hotkeys[k];
+        }
+
         this.save();
         return true;
     }
 
-    renameEntry(setlistId, entryId, name)
-    {
-        const e = this.getEntry(setlistId, entryId);
-        if (!e) return false;
+    // ----- HOTKEYS -----
 
-        e.name = String(name || "Entry");
-        this.save();
-        return true;
-    }
-
-    moveEntry(setlistId, entryId, delta)
+    assignHotkey(setlistId, key, entryId)
     {
         const s = this.getById(setlistId);
         if (!s) return false;
 
-        const idx = s.entries.findIndex(e => e.id === entryId);
-        if (idx < 0) return false;
+        const hk = normalizeHotkey(key);
+        if (!hk) return false;
 
-        const next = Math.max(0, Math.min(s.entries.length - 1, idx + delta));
-        if (next === idx) return true;
+        if (!s.entries.find(e => e.id === entryId)) return false;
 
-        const [e] = s.entries.splice(idx, 1);
-        s.entries.splice(next, 0, e);
+        s.hotkeys[hk] = entryId;
         this.save();
         return true;
     }
 
-    duplicateEntry(setlistId, entryId, newName)
+    removeHotkey(setlistId, key)
+    {
+        const s = this.getById(setlistId);
+        if (!s) return false;
+
+        const hk = normalizeHotkey(key);
+        if (!hk) return false;
+
+        if (!s.hotkeys[hk]) return false;
+
+        delete s.hotkeys[hk];
+        this.save();
+        return true;
+    }
+
+    clearHotkeys(setlistId)
+    {
+        const s = this.getById(setlistId);
+        if (!s) return false;
+
+        s.hotkeys = {};
+        this.save();
+        return true;
+    }
+
+    getHotkeyForEntry(setlistId, entryId)
     {
         const s = this.getById(setlistId);
         if (!s) return null;
 
-        const src = s.entries.find(e => e.id === entryId);
-        if (!src) return null;
-
-        const copy = normalizeEntry({
-        name: newName || (src.name + " (copy)"),
-        routes: (src.routes || []).map(r => ({ ...r })) // shallow OK ici (valeurs primitives)
-        });
-
-        s.entries.push(copy);
-        this.save();
-        return copy;
+        for (const [k, v] of Object.entries(s.hotkeys))
+        {
+            if (v === entryId) return k;
+        }
+        return null;
     }
 
-
-    // ----- Routes -----
-
-    upsertRoute(setlistId, entryId, route)
+    listHotkeys(setlistId)
     {
-        const e = this.getEntry(setlistId, entryId);
-        if (!e) return false;
-
-        const r = normalizeRoute(route);
-        if (!r.machineId) return false;
-
-        const idx = e.routes.findIndex(x => x.machineId === r.machineId);
-        if (idx >= 0)
-        {
-            // Preserve existing CC slots unless the new route explicitly provides them
-            if (r.ccSlots == null && e.routes[idx] && e.routes[idx].ccSlots != null)
-            {
-                r.ccSlots = e.routes[idx].ccSlots;
-            }
-
-            e.routes[idx] = r;
-        }
-        else
-        {
-            e.routes.push(r);
-        }
-
-        this.save();
-        return true;
-    }
-
-    removeRoute(setlistId, entryId, machineId)
-    {
-        const e = this.getEntry(setlistId, entryId);
-        if (!e) return false;
-
-        const idx = e.routes.findIndex(x => x.machineId === machineId);
-        if (idx < 0) return false;
-
-        e.routes.splice(idx, 1);
-        this.save();
-        return true;
+        const s = this.getById(setlistId);
+        return s ? Object.assign({}, s.hotkeys) : {};
     }
 }
 

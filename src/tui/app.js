@@ -2265,7 +2265,7 @@ function runSystemctl(action)
       style: THEME.header,
       content:
         "{bold}{yellow-fg}GENERAL CMDS :{/yellow-fg} Tab{/bold} focus | {bold}Enter{/bold} recall | {bold}PgUp / PgDwn{/bold} quick select entry | {bold}Esc / q{/bold} back \n" +
-        "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist \n" +
+        "{bold}{yellow-fg}SETLIST CMDS :{/yellow-fg} n{/bold} new setlist | {bold}x{/bold} rename setlist | {bold}w{/bold} delete setlist | {bold}h{/bold} assign hotkey to entry\n" +
         "{bold}{yellow-fg}ENTRY CMDS   :{/yellow-fg} a{/bold} save draft | {bold}p{/bold} paste draft | {bold}e{/bold} edit routes | {bold}c{/bold} copy entry | {bold}r{/bold} rename entry | {bold}d{/bold} delete entry | {bold}v/b{/bold} move entry up/down"
     });
 
@@ -3045,7 +3045,10 @@ function runSystemctl(action)
     function entryToLine(e, idx)
     {
       const n = e.routes ? e.routes.length : 0;
-      return `${String(idx + 1).padStart(2, "0")} - ${e.name}  {gray-fg}[${n} route(s)]{/gray-fg}`;
+      const hk = model.getHotkeyForEntry(getSelectedSetlist().id, e.id)
+      //const hk = Object.keys(model.getHotkeyForEntry(getSelectedSetlist().id, e.id)).join(", ");
+
+      return `{green-fg}${String(idx + 1).padStart(2, "0")}{/green-fg} ${e.name}  {yellow-fg}[HK: ${hk || "N/A"}]{/yellow-fg} {gray-fg}[${n} route(s)]{/gray-fg}`;
     }
 
     function refreshPreview()
@@ -3278,6 +3281,59 @@ function runSystemctl(action)
       setStatus(r.message, r.ok ? "ok" : "err");
       refreshEntries(e.id);
     });
+
+    // Assign Hotkeys
+    kb.bindKey(["h"], () => {
+        //if (page !== "setlist") return;
+    
+        const entry = getSelectedEntry();
+        if (!entry) return;
+    
+        const prompt = blessed.prompt({
+            parent: screen,
+            border: "line",
+            height: 7,
+            width: 60,
+            top: "center",
+            left: "center",
+            label: " Assign hotkey ",
+            keys: true,
+            vi: true
+        });
+    
+        screen.grabKeys = true;
+        prompt.focus();
+    
+        prompt.input(
+            "Enter a letter from A to H to assign, or DEL to clear",
+            "",
+            (err, value) => {
+                screen.grabKeys = false;
+    
+                if (err || !value) {
+                    screen.render();
+                    return;
+                }
+    
+                const v = value.trim().toUpperCase();
+                const e = getSelectedEntry();
+    
+                if (v === "DEL" || v === "DELETE") {
+                    model.clearHotkey(model.getActiveSetlist().id, e.id);
+                }
+                else if (/^[A-H]$/.test(v)) {
+                    model.assignHotkey(model.getActiveSetlist().id, v, e.id);
+                }
+                
+                // TODO Status...
+
+                refreshEntries(e.id);
+                screen.render();
+            }
+        );
+        screen.render();
+    });
+
 
     // Entry: add from draft
     kb.bindKey(["a"], () =>

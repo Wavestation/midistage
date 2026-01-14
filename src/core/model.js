@@ -293,7 +293,7 @@ class Model extends EventEmitter
                 setTimeout(() =>
                 {
                     this.emit("remoteDisplayXY", {
-                        text:String.fromCharCode(0xFB),
+                        text:String.fromCharCode(0xF7),
                         xpos:20,
                         ypos:2
                     });
@@ -363,7 +363,7 @@ class Model extends EventEmitter
                 {
                     this.currentMenu = "main";
                     this.emit("remoteMessage", {
-                        up:"è MIDISTAGE MENU . è",
+                        up:"è [MIDISTAGE  MENU] è",
                         down: "F1-8 FNCT é A-H HKYS"
                     });
                 }
@@ -1131,6 +1131,85 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
         {
             return { ok: false, message: `Erreur midnam (${m.midnamFile}):\n${e.message}` };
         }
+    }
+
+    // ---------- Setlist Hotkeys (mirrorées dans le model) ----------
+
+    /**
+     * Assign a hotkey (A..H) to a given entry in the active setlist.
+     * @param {string} setlistId - ID of the setlist
+     * @param {string} letter - Hotkey letter A..H
+     * @param {string} entryId - ID of the entry to assign
+     * @returns {boolean} true if saved successfully
+     */
+    assignHotkey(setlistId, letter, entryId)
+    {
+
+        console.log("[MODEL] ENTERING ASSIGN HOTKEY " + setlistId);
+
+        const s = this.setlists.getById(setlistId);
+        if (!s) return false;
+
+        const key = String(letter || "").trim().toUpperCase();
+        if (!/^[A-H]$/.test(key)) return false;
+
+        /*
+        if (!s.hotkeys) s.hotkeys = {};
+        s.hotkeys[key] = entryId;
+        */
+        console.log("[MODEL] ASSIGN HOTKEY THEN SAVE " + letter + " " + entryId);
+        const result = this.setlists.assignHotkey(setlistId, key, entryId);
+
+        if (result)
+        {
+            this.emit("remoteMessage", {
+                up:`{${s.name}}`,
+                down: `HKey [${key}] assigned!`
+            });
+        }
+        return result;    
+    }
+
+    /**
+     * Clear any hotkey (A..H) pointing to a given entry in the active setlist.
+     * @param {string} setlistId - ID of the setlist
+     * @param {string} entryId - ID of the entry to clear
+     * @returns {boolean} true if saved successfully
+     */
+    clearHotkey(setlistId, entryId)
+    {
+        console.log("[MODEL] ENTERING CLEAR HOTKEY " + setlistId);
+
+        const s = this.setlists.getById(setlistId);
+        if (!s || !s.hotkeys) return false;
+
+        // Remove any hotkey pointing to entryId
+        const key = this.setlists.getHotkeyForEntry(setlistId, entryId);
+
+        console.log("[MODEL] REMOVE HOTKEY THEN SAVE " + key + " " + entryId);
+        const result = this.setlists.removeHotkey(setlistId, key);
+
+        if (result)
+        {
+            this.emit("remoteMessage", {
+                up:`{${s.name}}`,
+                down: `HKey [${key}] cleared!`
+            });
+        }
+
+        return result;
+    }
+
+
+    listHotkeys(setlistId)
+    {
+        return this.setlists.listHotkeys(setlistId);
+    }
+
+
+    getHotkeyForEntry(setlistId, entryId)
+    {
+        return this.setlists.getHotkeyForEntry(setlistId, entryId);
     }
 
     // Logging helpers
