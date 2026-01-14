@@ -246,7 +246,7 @@ function getSetting(pathStr, fallback)
     for (const p of parts) cur = cur[p];
     return (cur === undefined) ? fallback : cur;
   }
-  catch { return fallback; }
+  catch(er) { console.warn("[SETSETTING] ERROR: " + er); return fallback; }
 }
 
 function setSetting(pathStr, value)
@@ -263,7 +263,7 @@ function setSetting(pathStr, value)
   }
   cur[parts[parts.length - 1]] = value;
 
-  try { atomicWriteJson(npm , settings); } catch { }
+  try { atomicWriteJson(SETTINGS_PATH , settings); } catch(er) { console.warn("[SETSETTING] ERROR: " + er); }
 }
 
 function runSystemctl(action)
@@ -3305,12 +3305,13 @@ function runSystemctl(action)
         prompt.focus();
     
         prompt.input(
-            "Enter a letter from A to H to assign, or DEL to clear",
+            "Type A to H to assign, DEL to remove, ALL to clear all entries",
             "",
             (err, value) => {
                 screen.grabKeys = false;
     
-                if (err || !value) {
+                if (err || !value) 
+                {
                     screen.render();
                     return;
                 }
@@ -3318,14 +3319,34 @@ function runSystemctl(action)
                 const v = value.trim().toUpperCase();
                 const e = getSelectedEntry();
     
-                if (v === "DEL" || v === "DELETE") {
-                    model.clearHotkey(model.getActiveSetlist().id, e.id);
+                if (v === "DEL" || v === "DELETE") 
+                {
+                  if (model.removeHotkey(model.getActiveSetlist().id, e.id))
+                  {
+                    setStatus(`Hotkey for '${e.name}' removed!`, "ok");
+                  } else {
+                    setStatus("Unable to remove hotkey!", "warn");
+                  }
                 }
-                else if (/^[A-H]$/.test(v)) {
-                    model.assignHotkey(model.getActiveSetlist().id, v, e.id);
+                else if(v === "ALL")
+                {
+                  if (model.clearHotkeys(model.getActiveSetlist().id))
+                    {
+                      setStatus(`Hotkeys for '${model.getActiveSetlist().name}' cleared!`, "ok");
+                    } else {
+                      setStatus("Unable to clear hotkeys!", "warn");
+                    }
+                }
+                else if (/^[A-H]$/.test(v)) 
+                {
+                  if(model.assignHotkey(model.getActiveSetlist().id, v, e.id))
+                  {
+                    setStatus(`Hotkey for '${e.name}' bind successfully!`, "ok");
+                  } else {
+                    setStatus("Unable to bind hotkey!", "warn");
+                  }
                 }
                 
-                // TODO Status...
 
                 refreshEntries(e.id);
                 screen.render();
@@ -3796,8 +3817,11 @@ function buildSystemPage()
   function buildItems()
   {
     const ar = !!getSetting("ui.autorecallOnScroll", false);
+    const br = getSetting("remote.vfdBrightness", 3);
+
     list.setItems([
       `UI: Auto-recall setlist entry on scroll: {bold}${ar ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
+      `Remote: Display Brightness: {bold}${br}{/bold}`,
       "{yellow-fg}Machine: Hardware reboot!{/yellow-fg}",
       "{red-fg}Machine: Hardware poweroff!{/red-fg}",
       "{green-fg}About MIDISTAGE...{/green-fg}"
@@ -3862,17 +3886,74 @@ function buildSystemPage()
 
     if (idx === 1)
     {
-      askYes("Reboot the system?", "reboot");
+      const prompt = blessed.prompt({
+        parent: screen,
+        border: "line",
+        height: 7,
+        width: 60,
+        top: "center",
+        left: "center",
+        label: " Set remote display brightness ",
+        keys: true,
+        vi: true
+      });
+
+      screen.grabKeys = true;
+      prompt.focus();
+
+      prompt.input(
+      "Type a number between 1 and 4 to set display brigthness",
+      "",
+      (err, value) => {
+          screen.grabKeys = false;
+
+          if (err || !value) 
+          {
+              screen.render();
+              return;
+          }
+
+          if (Number.isInteger(parseInt(value)))
+          {
+            const n = Math.max(1, Math.min(4, value));
+
+            setSetting("remote.vfdBrightness", n);
+            console.log("[APP / SYSTEM] SETTINGS: " + settings);
+            settings = loadSettings();
+            buildItems();
+
+            model.emit("remoteVFDBrightness", {value: n});
+            setStatus(`Display brightness is now ${n}.`, "ok");
+
+            const cur = getSetting("remote.vfdBrightness", 0);
+
+            console.log("[APP / SYSTEM] SAVING VFDBR " + cur + ":" + n);
+
+            screen.render();
+            return;
+          }
+
+          screen.render();
+          return;
+        }
+      );
+      screen.render();
       return;
     }
 
     if (idx === 2)
     {
-      askYes("Power off the system?", "poweroff");
+      askYes("Reboot the system?", "reboot");
       return;
     }
 
     if (idx === 3)
+    {
+      askYes("Power off the system?", "poweroff");
+      return;
+    }
+
+    if (idx === 4)
     {
       // IMPORTANT FIX: open About box next tick so it doesn't immediately eat the Enter key.
       setImmediate(() =>

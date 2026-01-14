@@ -269,22 +269,115 @@ class SetlistsStore
         return true;
     }
 
-    // ----- HOTKEYS -----
+    renameEntry(setlistId, entryId, name)
+    {
+        const e = this.getEntry(setlistId, entryId);
+        if (!e) return false;
 
-    assignHotkey(setlistId, key, entryId)
+        e.name = String(name || "Entry");
+        this.save();
+        return true;
+    }
+
+    moveEntry(setlistId, entryId, delta)
     {
         const s = this.getById(setlistId);
         if (!s) return false;
 
+        const idx = s.entries.findIndex(e => e.id === entryId);
+        if (idx < 0) return false;
+
+        const next = Math.max(0, Math.min(s.entries.length - 1, idx + delta));
+        if (next === idx) return true;
+
+        const [e] = s.entries.splice(idx, 1);
+        s.entries.splice(next, 0, e);
+        this.save();
+        return true;
+    }
+
+    duplicateEntry(setlistId, entryId, newName)
+    {
+        const s = this.getById(setlistId);
+        if (!s) return null;
+
+        const src = s.entries.find(e => e.id === entryId);
+        if (!src) return null;
+
+        const copy = normalizeEntry({
+        name: newName || (src.name + " (copy)"),
+        routes: (src.routes || []).map(r => ({ ...r })) // shallow OK ici (valeurs primitives)
+        });
+
+        s.entries.push(copy);
+        this.save();
+        return copy;
+    }
+    
+    // ----- Routes -----
+
+    upsertRoute(setlistId, entryId, route)
+    {
+        const e = this.getEntry(setlistId, entryId);
+        if (!e) return false;
+
+        const r = normalizeRoute(route);
+        if (!r.machineId) return false;
+
+        const idx = e.routes.findIndex(x => x.machineId === r.machineId);
+        if (idx >= 0)
+        {
+            // Preserve existing CC slots unless the new route explicitly provides them
+            if (r.ccSlots == null && e.routes[idx] && e.routes[idx].ccSlots != null)
+            {
+                r.ccSlots = e.routes[idx].ccSlots;
+            }
+
+            e.routes[idx] = r;
+        }
+        else
+        {
+            e.routes.push(r);
+        }
+
+        this.save();
+        return true;
+    }
+
+    removeRoute(setlistId, entryId, machineId)
+    {
+        const e = this.getEntry(setlistId, entryId);
+        if (!e) return false;
+
+        const idx = e.routes.findIndex(x => x.machineId === machineId);
+        if (idx < 0) return false;
+
+        e.routes.splice(idx, 1);
+        this.save();
+        return true;
+    }
+    // ----- HOTKEYS -----
+
+    assignHotkey(setlistId, key, entryId) 
+    {
+        const s = this.getById(setlistId);
+        if (!s) return false;
+    
         const hk = normalizeHotkey(key);
         if (!hk) return false;
-
+    
         if (!s.entries.find(e => e.id === entryId)) return false;
-
+    
+        // check if already assigned
+        const alreadyAssigned = Object.entries(s.hotkeys).some(([k, id]) => id === entryId && k !== hk);
+    
+        if (alreadyAssigned) return false;
+    
         s.hotkeys[hk] = entryId;
         this.save();
         return true;
     }
+    
 
     removeHotkey(setlistId, key)
     {

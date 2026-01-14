@@ -1176,7 +1176,7 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
      * @param {string} entryId - ID of the entry to clear
      * @returns {boolean} true if saved successfully
      */
-    clearHotkey(setlistId, entryId)
+    removeHotkey(setlistId, entryId)
     {
         console.log("[MODEL] ENTERING CLEAR HOTKEY " + setlistId);
 
@@ -1193,13 +1193,18 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
         {
             this.emit("remoteMessage", {
                 up:`{${s.name}}`,
-                down: `HKey [${key}] cleared!`
+                down: `HKey [${key}] removed!`
             });
         }
 
         return result;
     }
 
+    // Wrapper to hotkeys functions
+    clearHotkeys(setlistId)
+    {
+        return this.setlists.clearHotkeys(setlistId);
+    }
 
     listHotkeys(setlistId)
     {

@@ -1,4 +1,5 @@
 const path = require("path");
+
 const startApp = require("./src/tui/app");
 const { startTelnetServer } = require("./src/tui/telnetServer");
 const { startSerialServer } = require("./src/tui/serialServer");
@@ -6,13 +7,16 @@ const { startSerialServer } = require("./src/tui/serialServer");
 
 const { Model } = require("./src/core/model");
 const { RemoteDevice } = require("./src/remote/remoteDevice");
+const { Settings } = require("./src/core/settings");
 
 
 const MIDNAM_DIR = path.join(__dirname, "data", "names");
+const SETTINGS_PATH = path.join(__dirname, "data", "settings.json");
 
 const appVer = "1.1"
 
 const model = new Model(MIDNAM_DIR);
+const settings = new Settings(SETTINGS_PATH);
 
 function getArg(name, def = null) 
 {
@@ -90,8 +94,10 @@ const remote = new RemoteDevice({
   log: console.log
 });
 
+console.log("[DEBUG] Setting VFD: " + settings.getSetting("remote.vfdBrightness", 3))
+
 remote.initVFD();
-remote.setVFDBrightness(3);
+remote.setVFDBrightness(settings.getSetting("remote.vfdBrightness", 3));
 remote.setCharTable(0);
 remote.setIntlFont(0);
 
@@ -138,4 +144,7 @@ model.on("remoteDisplayXY", (message) => {
 
 model.on("remoteDisplayPower", (value) => {
   remote.setVFDPower(value.value);
+});
+model.on("remoteVFDBrightness", (value) => {
+  remote.setVFDBrightness(value.value);
 });
