@@ -4,8 +4,12 @@
 const fs = require("fs");
 const path = require("path");
 const child_process = require("child_process");
+
+const { SerialPort } = require("serialport");
+
 const blessed = require("blessed");
 
+const { Settings } = require("../core/settings");
 const { Model } = require("../core/model");
 
 // -------------------- Splashscreen helpers --------------------
@@ -190,81 +194,8 @@ module.exports = function startApp(midnamDir, io, appVersion, glomodel)
 const SETTINGS_PATH = path.join(__dirname, "..", "..", "data", "settings.json");
 const DEFAULT_SETTINGS = { ui: { autorecallOnScroll: false } };
 
-function deepMerge(dst, src)
-{
-  if (!src || typeof src !== "object") return dst;
-  for (const k of Object.keys(src))
-  {
-    const v = src[k];
-    if (v && typeof v === "object" && !Array.isArray(v))
-    {
-      if (!dst[k] || typeof dst[k] !== "object") dst[k] = {};
-      deepMerge(dst[k], v);
-    }
-    else dst[k] = v;
-  }
-  return dst;
-}
-
-function atomicWriteJson(filePath, obj)
-{
-  const dir = path.dirname(filePath);
-  try { fs.mkdirSync(dir, { recursive: true }); } catch { }
-  const tmp = filePath + ".tmp";
-  fs.writeFileSync(tmp, JSON.stringify(obj, null, 2) + "\n", "utf8");
-  fs.renameSync(tmp, filePath);
-}
-
-function loadSettings()
-{
-  try
-  {
-    if (!fs.existsSync(SETTINGS_PATH))
-    {
-      atomicWriteJson(SETTINGS_PATH, DEFAULT_SETTINGS);
-      return JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
-    }
-    const raw = JSON.parse(fs.readFileSync(SETTINGS_PATH, "utf8"));
-    const s = deepMerge(JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), raw);
-    try { atomicWriteJson(SETTINGS_PATH, s); } catch { }
-    return s;
-  }
-  catch
-  {
-    return JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
-  }
-}
-
-let settings = loadSettings();
-
-function getSetting(pathStr, fallback)
-{
-  try
-  {
-    const parts = String(pathStr || "").split(".").filter(Boolean);
-    let cur = settings;
-    for (const p of parts) cur = cur[p];
-    return (cur === undefined) ? fallback : cur;
-  }
-  catch(er) { console.warn("[SETSETTING] ERROR: " + er); return fallback; }
-}
-
-function setSetting(pathStr, value)
-{
-  const parts = String(pathStr || "").split(".").filter(Boolean);
-  if (!parts.length) return;
-
-  let cur = settings;
-  for (let i = 0; i < parts.length - 1; i++)
-  {
-    const p = parts[i];
-    if (!cur[p] || typeof cur[p] !== "object") cur[p] = {};
-    cur = cur[p];
-  }
-  cur[parts[parts.length - 1]] = value;
-
-  try { atomicWriteJson(SETTINGS_PATH , settings); } catch(er) { console.warn("[SETSETTING] ERROR: " + er); }
-}
+const setmgr = new Settings(SETTINGS_PATH);
+let settings = setmgr.settings;
 
 function runSystemctl(action)
 {
@@ -3178,7 +3109,7 @@ function runSystemctl(action)
       refreshPreview();
 
       // Keep the existing "auto recall on scroll" behavior
-      const aros = !!getSetting("ui.autorecallOnScroll", false);
+      const aros = !!setmgr.getSetting("ui.autorecallOnScroll", false);
       if (aros)
       {
         const e = getSelectedEntry();
@@ -3232,7 +3163,7 @@ function runSystemctl(action)
       refreshPreview();
 
       // auto recall on scroll
-      const aros = !!getSetting("ui.autorecallOnScroll", false);
+      const aros = !!setmgr.getSetting("ui.autorecallOnScroll", false);
       if (aros)
       {
         if (!routesModal.hidden) return;
@@ -3816,11 +3747,17 @@ function buildSystemPage()
 
   function buildItems()
   {
-    const ar = !!getSetting("ui.autorecallOnScroll", false);
-    const br = getSetting("remote.vfdBrightness", 3);
+    const ar = !!setmgr.getSetting("ui.autorecallOnScroll", false);
+    const rs = setmgr.getSetting("remote.serialPort", "/dev/ttyS0");
+    const rb = setmgr.getSetting("remote.serialRate", 38400);
+    const to = setmgr.getSetting("remote.vfdIdleTime", 39);
+    const br = setmgr.getSetting("remote.vfdBrightness", 3);
 
     list.setItems([
       `UI: Auto-recall setlist entry on scroll: {bold}${ar ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
+      `Remote: Serial Port: {bold}${rs}{/bold}`,
+      `Remote: Serial Speed: {bold}${rb}{/bold}`,
+      `Remote: Display Idle Time: {bold}${to}{/bold}`,
       `Remote: Display Brightness: {bold}${br}{/bold}`,
       "{yellow-fg}Machine: Hardware reboot!{/yellow-fg}",
       "{red-fg}Machine: Hardware poweroff!{/red-fg}",
@@ -3874,17 +3811,200 @@ function buildSystemPage()
   {
     const idx = list.selected | 0;
 
-    if (idx === 0)
+    if (idx === 0)  //auto recall
     {
-      const cur = !!getSetting("ui.autorecallOnScroll", false);
-      setSetting("ui.autorecallOnScroll", !cur);
-      settings = loadSettings();
+      const cur = !!setmgr.getSetting("ui.autorecallOnScroll", false);
+      setmgr.setSetting("ui.autorecallOnScroll", !cur);
+      settings = setmgr.settings;
       buildItems();
       setStatus(`Auto-recall is now ${!cur ? "ON" : "OFF"}.`, "ok");
       return;
     }
 
-    if (idx === 1)
+    if (idx === 1)  // remote serial port
+    {
+      const prompt = blessed.prompt({
+        parent: screen,
+        border: "line",
+        height: 7,
+        width: 60,
+        top: "center",
+        left: "center",
+        label: " Set remote serial port ",
+        keys: true,
+        vi: true
+      });
+
+      screen.grabKeys = true;
+      prompt.focus();
+
+      prompt.input(
+      "Type the patch to the serial port. e.g.: /dev/ttyS0",
+      "",
+      (err, value) => {
+          screen.grabKeys = false;
+
+          if (err || !value) 
+          {
+              screen.render();
+              return;
+          }
+
+          let n = value.trim();
+
+          let validatePort = false;
+          const ports = SerialPort.list().then(ports => {
+            console.log("[APP / SYSTEM] AVAILABLE PORTS: " + JSON.stringify(ports));
+
+            validatePort = ports.find(p => p.path === n);
+
+            if (validatePort)
+            {
+              setmgr.setSetting("remote.serialPort", n);
+              console.log("[APP / SYSTEM] SETTINGS: " + settings);
+              settings = setmgr.settings;
+              buildItems();
+
+              setStatus(`Remote serial port is now ${n}. Please reboot to apply.`, "ok");
+
+              const cur = setmgr.getSetting("remote.serialPort", 0);
+
+              console.log("[APP / SYSTEM] SAVING REMPORT " + cur + ":" + n);
+
+              screen.render();
+              return;
+            } else {
+              setStatus(`Unable to set ${n} as remote serial port. Please check your input.`, "warn");
+            }
+            screen.render();
+            return;
+          })
+          .catch(err =>
+          {
+            setStatus(`Unable to list serial ports. Please check your hardware.`, "err");
+            screen.render();
+            return;
+          });
+        }
+      );
+      screen.render();
+      return;
+    }
+
+    if (idx === 2)  // remote serial speed
+    {
+      const prompt = blessed.prompt({
+        parent: screen,
+        border: "line",
+        height: 7,
+        width: 60,
+        top: "center",
+        left: "center",
+        label: " Set remote serial baudrate ",
+        keys: true,
+        vi: true
+      });
+
+      screen.grabKeys = true;
+      prompt.focus();
+
+      prompt.input(
+      "Type a number between 10 and 115200 to set remote serial baudrate.",
+      "",
+      (err, value) => {
+          screen.grabKeys = false;
+
+          if (err || !value) 
+          {
+              screen.render();
+              return;
+          }
+
+          if (Number.isInteger(parseInt(value)))
+          {
+            const n = Math.max(10, Math.min(115200, value));
+
+            setmgr.setSetting("remote.serialRate", n);
+            console.log("[APP / SYSTEM] SETTINGS: " + settings);
+            settings = setmgr.settings;
+            buildItems();
+
+            setStatus(`Remote serial baudrate is now ${n}. Please reboot to apply.`, "ok");
+
+            const cur = setmgr.getSetting("remote.serialRate", 0);
+
+            console.log("[APP / SYSTEM] SAVING REMBAUD " + cur + ":" + n);
+
+            screen.render();
+            return;
+          }
+
+          screen.render();
+          return;
+        }
+      );
+      screen.render();
+      return;
+    }
+
+    if (idx === 3)  // remote display idle time
+    {
+      const prompt = blessed.prompt({
+        parent: screen,
+        border: "line",
+        height: 7,
+        width: 60,
+        top: "center",
+        left: "center",
+        label: " Set remote display idle time ",
+        keys: true,
+        vi: true
+      });
+
+      screen.grabKeys = true;
+      prompt.focus();
+
+      prompt.input(
+      "Type a number between 10 and 390 to set display idle time in seconds",
+      "",
+      (err, value) => {
+          screen.grabKeys = false;
+
+          if (err || !value) 
+          {
+              screen.render();
+              return;
+          }
+
+          if (Number.isInteger(parseInt(value)))
+          {
+            const n = Math.max(10, Math.min(390, value));
+
+            setmgr.setSetting("remote.vfdIdleTime", n);
+            console.log("[APP / SYSTEM] SETTINGS: " + settings);
+            settings = setmgr.settings;
+            buildItems();
+
+            model.emit("remoteVFDIdleTime", {value: n});
+            setStatus(`Display idle time is now ${n}.`, "ok");
+
+            const cur = setmgr.getSetting("remote.vfdIdleTime", 0);
+
+            console.log("[APP / SYSTEM] SAVING VFDTIME " + cur + ":" + n);
+
+            screen.render();
+            return;
+          }
+
+          screen.render();
+          return;
+        }
+      );
+      screen.render();
+      return;
+    }
+
+    if (idx === 4)  // remote display brightness
     {
       const prompt = blessed.prompt({
         parent: screen,
@@ -3917,15 +4037,15 @@ function buildSystemPage()
           {
             const n = Math.max(1, Math.min(4, value));
 
-            setSetting("remote.vfdBrightness", n);
+            setmgr.setSetting("remote.vfdBrightness", n);
             console.log("[APP / SYSTEM] SETTINGS: " + settings);
-            settings = loadSettings();
+            settings = setmgr.settings;
             buildItems();
 
             model.emit("remoteVFDBrightness", {value: n});
             setStatus(`Display brightness is now ${n}.`, "ok");
 
-            const cur = getSetting("remote.vfdBrightness", 0);
+            const cur = setmgr.getSetting("remote.vfdBrightness", 0);
 
             console.log("[APP / SYSTEM] SAVING VFDBR " + cur + ":" + n);
 
@@ -3941,19 +4061,19 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 2)
+    if (idx === 5)  // reboot
     {
       askYes("Reboot the system?", "reboot");
       return;
     }
 
-    if (idx === 3)
+    if (idx === 6)  // poweroff
     {
       askYes("Power off the system?", "poweroff");
       return;
     }
 
-    if (idx === 4)
+    if (idx === 7)  // aboutbox
     {
       // IMPORTANT FIX: open About box next tick so it doesn't immediately eat the Enter key.
       setImmediate(() =>

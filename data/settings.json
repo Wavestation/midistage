@@ -1,8 +1,11 @@
 {
   "ui": {
-    "autorecallOnScroll": true
+    "autorecallOnScroll": false
   },
   "remote": {
-    "vfdBrightness": 3
+    "vfdBrightness": 3,
+    "vfdIdleTime": 39,
+    "serialRate": 38400,
+    "serialPort": "/dev/ttyUSB0"
   }
 }

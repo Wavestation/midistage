@@ -474,7 +474,12 @@
               "lsb": 0,
               "program": 11,
               "patchName": "Neo-Prophet",
-              "ccSlots": null
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                }
+              ]
             },
             {
               "machineId": "m_24d196fd4495",
@@ -485,7 +490,12 @@
               "lsb": 8,
               "program": 14,
               "patchName": "Myriade FM EP+KS",
-              "ccSlots": null
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                }
+              ]
             }
           ]
         }

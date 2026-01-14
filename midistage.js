@@ -90,11 +90,14 @@ else
 ////////////////////////////////////////////////////////////////////////////////////////////
 // Démarrage de la RC
 const remote = new RemoteDevice({
-  path: "/dev/ttyUSB0",
-  log: console.log
+  path: settings.getSetting("remote.serialPort", "/dev/ttyS0"),
+  baudRate: parseInt(settings.getSetting("remote.serialRate", 38400)),
+  log: console.log,
+  vfdIdleDelay: parseInt(settings.getSetting("remote.vfdIdleTime", 39)) * 1000,
+  vfdDefaultBrightness: settings.getSetting("remote.vfdBrightness", 3)
 });
 
-console.log("[DEBUG] Setting VFD: " + settings.getSetting("remote.vfdBrightness", 3))
+// console.log("[DEBUG] Setting VFD: " + settings.getSetting("remote.vfdBrightness", 3))
 
 remote.initVFD();
 remote.setVFDBrightness(settings.getSetting("remote.vfdBrightness", 3));
@@ -145,6 +148,11 @@ model.on("remoteDisplayXY", (message) => {
 model.on("remoteDisplayPower", (value) => {
   remote.setVFDPower(value.value);
 });
+
 model.on("remoteVFDBrightness", (value) => {
   remote.setVFDBrightness(value.value);
+});
+
+model.on("remoteVFDIdleTime", (value) => {
+  remote.idleDelay = parseInt(value.value) * 1000;
 });

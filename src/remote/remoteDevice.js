@@ -28,12 +28,20 @@ class RemoteDevice extends EventEmitter
     log,
     readyLine = "cts",
     pollMs = 5,
-    chunkSize = 32
+    chunkSize = 32,
+    vfdIdleDelay = 90_000,
+    vfdDefaultBrightness = 3
   })
   {
     super();
 
     if (!path) throw new Error("RemoteDevice requires a serial path");
+
+    this.idleDelay = vfdIdleDelay;
+    this.idleTimer = null;
+    this.sleeping = false;
+    this.activeBrightness = vfdDefaultBrightness;
+    this.sleepBrightness = 1;
 
     this.log = typeof log === "function" ? log : () => {};
     this.readyLine = readyLine;
@@ -60,6 +68,9 @@ class RemoteDevice extends EventEmitter
     {
       const s = String(line).trim();
       if (!s) return;
+
+      this._resetIdleTimer();
+
       this.emit("key", s[0].toUpperCase());
     });
 
@@ -69,7 +80,10 @@ class RemoteDevice extends EventEmitter
       this.emit("error", e);
     });
 
-    this.log(`[REMOTE] started on ${path}`);
+    this.log(`[REMOTE] started on ${path} at ${baudRate} bauds`);
+
+    this.initVFD();
+    this.setVFDBrightness(vfdDefaultBrightness);
   }
 
   async _isReady()
@@ -129,6 +143,31 @@ class RemoteDevice extends EventEmitter
     }
   }
 
+  _resetIdleTimer()
+  {
+    if (this.sleeping)
+    {
+      const payload = Buffer.concat([
+        Buffer.from([0x1F, 0x58, this.activeBrightness]),  // SET BRIGHTNESS
+      ]);
+      this._send(payload);
+      this.sleeping = false;
+      console.log(`[REMOTE] VFD WOKE UP TO ${this.activeBrightness}`);
+    }
+
+    if (this.idleTimer) clearTimeout(this.idleTimer);
+
+    this.idleTimer = setTimeout(() =>
+    {
+      const payload = Buffer.concat([
+        Buffer.from([0x1F, 0x58, this.sleepBrightness]),  // SET BRIGHTNESS
+      ]);
+      this._send(payload);
+      this.sleeping = true;
+      console.log(`[REMOTE] VFD GO TO BED AT ${this.sleepBrightness}`);
+    }, this.idleDelay);
+  }
+
   initVFD()
   {
     const payload = Buffer.concat([
@@ -136,6 +175,7 @@ class RemoteDevice extends EventEmitter
       Buffer.from([0x0C, 0x0B]),  // CLEAR and HOME
     ]);
     this._send(payload);
+    this._resetIdleTimer();
   }
   
   clearVFD()
@@ -144,6 +184,7 @@ class RemoteDevice extends EventEmitter
       Buffer.from([0x0C, 0x0B]),  // CLEAR and HOME
     ]);
     this._send(payload);
+    this._resetIdleTimer();
   }
 
   setVFDBrightness(br)    // 1 to 4 levels
@@ -151,7 +192,11 @@ class RemoteDevice extends EventEmitter
     const payload = Buffer.concat([
       Buffer.from([0x1F, 0x58, br]),  // SET BRIGHTNESS
     ]);
+
+    this.activeBrightness = br;
+
     this._send(payload);
+    this._resetIdleTimer();
   }
 
   setVFDReverse(rv)     // O = normal, 1 = reverse
@@ -160,6 +205,7 @@ class RemoteDevice extends EventEmitter
       Buffer.from([0x1F, 0x72, rv]),  // SET REVERSE
     ]);
     this._send(payload);
+    this._resetIdleTimer();
   }
 
   setVFDPower(pw)     // O = off, 1 = on
@@ -168,6 +214,7 @@ class RemoteDevice extends EventEmitter
       Buffer.from([0x1F, 0x28, 0x61, 0x40, pw]),  // SET POWER STATE
     ]);
     this._send(payload);
+    this._resetIdleTimer();
   }
 
   setVFDBlink(bk)     // bk = blink speed 1 to 255 / 0 = off
@@ -176,6 +223,7 @@ class RemoteDevice extends EventEmitter
       Buffer.from([0x1F, 0x45, bk]),  // SET BLINK
     ]);
     this._send(payload);
+    this._resetIdleTimer();
   }
 
   setIntlFont(ifs)    // international font set
@@ -208,6 +256,7 @@ class RemoteDevice extends EventEmitter
     ]);
 
     this._send(payload);
+    this._resetIdleTimer();
   }
 
   showSetEnt(setlistName, entryName)
@@ -226,6 +275,7 @@ class RemoteDevice extends EventEmitter
     ]);
 
     this._send(payload);
+    this._resetIdleTimer();
   }
 
   close()

@@ -96,7 +96,7 @@ class Settings extends EventEmitter
         }
         cur[parts[parts.length - 1]] = value;
 
-        try { atomicWriteJson(this.SETTINGS_PATH , this.settings); } catch(er) { console.warn("[SETSETTING] ERROR: " + er); }
+        try { this.atomicWriteJson(this.SETTINGS_PATH , this.settings); } catch(er) { console.warn("[SETSETTING] ERROR: " + er); }
     }
 
 }
