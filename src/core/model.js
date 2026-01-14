@@ -355,8 +355,8 @@ class Model extends EventEmitter
                 {
                     this.currentMenu = "power";
                     this.emit("remoteMessage", {
-                        up:"Power Menu (F8 BACK)",
-                        down: "F6:REBOOT F7:SHUTDWN"
+                        up:"Power Menu (F8:BACK)",
+                        down: "F6:REBOOT F7:POWROFF"
                     });
                 } 
                 else if(this.currentMenu == "power") 

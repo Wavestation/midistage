@@ -48,6 +48,8 @@ class RemoteDevice extends EventEmitter
     this.pollMs = pollMs;
     this.chunkSize = chunkSize;
 
+    this.disabled = false;
+
     this.queue = [];
     this.sending = false;
 
@@ -78,9 +80,11 @@ class RemoteDevice extends EventEmitter
     {
       this.log(`[REMOTE] serial error: ${e.message}`);
       this.emit("error", e);
+      this.disabled = true;
+      this.queue.length = 0;
     });
 
-    this.log(`[REMOTE] started on ${path} at ${baudRate} bauds`);
+    this.log(`[REMOTE] started on ${path} at ${baudRate} bauds.`);
 
     this.initVFD();
     this.setVFDBrightness(vfdDefaultBrightness);
@@ -100,18 +104,21 @@ class RemoteDevice extends EventEmitter
 
   async _waitReady()
   {
+    if (this.disabled) return;
     while (!(await this._isReady()))
       await sleep(this.pollMs);
   }
 
   _send(buf)
   {
+    if (this.disabled) return;
     this.queue.push(buf);
     this._kick();
   }
 
   async _kick()
   {
+    if (this.disabled) return;
     if (this.sending) return;
     this.sending = true;
 
