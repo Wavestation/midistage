@@ -3751,6 +3751,7 @@ function buildSystemPage()
     const rs = setmgr.getSetting("remote.serialPort", "/dev/ttyS0");
     const rb = setmgr.getSetting("remote.serialRate", 38400);
     const to = setmgr.getSetting("remote.vfdIdleTime", 39);
+    const ds = !!setmgr.getSetting("remote.vfdDeepSleep", false);
     const br = setmgr.getSetting("remote.vfdBrightness", 3);
 
     list.setItems([
@@ -3758,6 +3759,7 @@ function buildSystemPage()
       `Remote: Serial Port: {bold}${rs}{/bold}`,
       `Remote: Serial Speed: {bold}${rb}{/bold}`,
       `Remote: Display Idle Time: {bold}${to}{/bold}`,
+      `Remote: Display Deep Sleep: {bold}${ds ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
       `Remote: Display Brightness: {bold}${br}{/bold}`,
       "{yellow-fg}Machine: Hardware reboot!{/yellow-fg}",
       "{red-fg}Machine: Hardware poweroff!{/red-fg}",
@@ -4004,7 +4006,18 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 4)  // remote display brightness
+    if (idx === 4)  // remote display deep sleep
+    {
+      const cur = !!setmgr.getSetting("remote.vfdDeepSleep", false);
+      setmgr.setSetting("remote.vfdDeepSleep", !cur);
+      settings = setmgr.settings;
+      buildItems();
+      model.emit("remoteVFDDeepSleep", {value: !cur});
+      setStatus(`Remote display deep sleep is now ${!cur ? "ON" : "OFF"}.`, "ok");
+      return;
+    }
+
+    if (idx === 5)  // remote display brightness
     {
       const prompt = blessed.prompt({
         parent: screen,
@@ -4061,19 +4074,19 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 5)  // reboot
+    if (idx === 6)  // reboot
     {
       askYes("Reboot the system?", "reboot");
       return;
     }
 
-    if (idx === 6)  // poweroff
+    if (idx === 7)  // poweroff
     {
       askYes("Power off the system?", "poweroff");
       return;
     }
 
-    if (idx === 7)  // aboutbox
+    if (idx === 8)  // aboutbox
     {
       // IMPORTANT FIX: open About box next tick so it doesn't immediately eat the Enter key.
       setImmediate(() =>

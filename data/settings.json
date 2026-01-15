@@ -6,6 +6,7 @@
     "vfdBrightness": 3,
     "vfdIdleTime": 39,
     "serialRate": 38400,
-    "serialPort": "/dev/ttyUSB0"
+    "serialPort": "/dev/ttyUSB0",
+    "vfdDeepSleep": true
   }
 }

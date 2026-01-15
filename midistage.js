@@ -94,7 +94,8 @@ const remote = new RemoteDevice({
   baudRate: parseInt(settings.getSetting("remote.serialRate", 38400)),
   log: console.log,
   vfdIdleDelay: parseInt(settings.getSetting("remote.vfdIdleTime", 39)) * 1000,
-  vfdDefaultBrightness: settings.getSetting("remote.vfdBrightness", 3)
+  vfdDefaultBrightness: settings.getSetting("remote.vfdBrightness", 3),
+  vfdDeepSleepEnabled: !!settings.getSetting("remote.vfdDeepSleep", false)
 });
 
 // console.log("[DEBUG] Setting VFD: " + settings.getSetting("remote.vfdBrightness", 3))
@@ -108,10 +109,10 @@ remote.showText(`è MIDISTAGE ver${appVer} è`, "F1-8 FNCT é A-H HKYS");
 
 setInterval(() => {
  const uistate = model.getUiState();
-
  //remote.showSetEnt(uistate.currentSetlistName, uistate.currentEntryName);
 }, 939);
 
+// Remote Events handle
 remote.on("key", k => { 
   try
   {
@@ -151,8 +152,14 @@ model.on("remoteDisplayPower", (value) => {
 
 model.on("remoteVFDBrightness", (value) => {
   remote.setVFDBrightness(value.value);
+  console.log(`[REMOTE] PARAMETER VFDBR CHANGED TO ${value.value}`);
 });
 
 model.on("remoteVFDIdleTime", (value) => {
   remote.idleDelay = parseInt(value.value) * 1000;
+  console.log(`[REMOTE] PARAMETER IDLEDLY CHANGED TO ${value.value}`);
+});
+model.on("remoteVFDDeepSleep", (value) => {
+  remote.deepSleepEnabled = !!value.value
+  console.log(`[REMOTE] PARAMETER DEEPSLEEP CHANGED TO ${!!value.value}`);
 });

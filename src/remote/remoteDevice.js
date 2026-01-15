@@ -30,7 +30,8 @@ class RemoteDevice extends EventEmitter
     pollMs = 5,
     chunkSize = 32,
     vfdIdleDelay = 90_000,
-    vfdDefaultBrightness = 3
+    vfdDefaultBrightness = 3,
+    vfdDeepSleepEnabled = true
   })
   {
     super();
@@ -38,8 +39,12 @@ class RemoteDevice extends EventEmitter
     if (!path) throw new Error("RemoteDevice requires a serial path");
 
     this.idleDelay = vfdIdleDelay;
+    this.powerOffDelayOffset = 3600;
+    this.deepSleepEnabled = vfdDeepSleepEnabled;
     this.idleTimer = null;
+    this.offTimer = null;
     this.sleeping = false;
+    this.vfdoff = false;
     this.activeBrightness = vfdDefaultBrightness;
     this.sleepBrightness = 1;
 
@@ -173,16 +178,42 @@ class RemoteDevice extends EventEmitter
       this.sleeping = true;
       console.log(`[REMOTE] VFD GO TO BED AT ${this.sleepBrightness}`);
     }, this.idleDelay);
+
+    if (this.vfdoff)
+    {
+      const payload = Buffer.concat([
+        Buffer.from([0x1F, 0x28, 0x61, 0x40, 0x01]),  // POWER ON
+      ]);
+      this._send(payload);
+      this.vfdoff = false;
+      console.log(`[REMOTE] VFD POWER ON`);
+    }
+
+    if (this.deepSleepEnabled)
+    {
+      if (this.offTimer)  clearTimeout(this.offTimer);
+      
+      this.offTimer = setTimeout(() =>
+      {
+        const payload = Buffer.concat([
+          Buffer.from([0x1F, 0x28, 0x61, 0x40, 0x00]),  // POWER OFF
+        ]);
+        this._send(payload);
+        this.vfdoff = true;
+        console.log(`[REMOTE] VFD GO OFF`);
+      }, this.idleDelay + (this.powerOffDelayOffset * 1000)); //this.idleDelay + (3600 * 1000));
+    } 
   }
 
   initVFD()
   {
+    this._resetIdleTimer();
+
     const payload = Buffer.concat([
       Buffer.from([0x1B, 0x40]),  // INIT DISPLAY
       Buffer.from([0x0C, 0x0B]),  // CLEAR and HOME
     ]);
     this._send(payload);
-    this._resetIdleTimer();
   }
   
   clearVFD()
