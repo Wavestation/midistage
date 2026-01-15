@@ -105,9 +105,20 @@ remote.setVFDBrightness(settings.getSetting("remote.vfdBrightness", 3));
 remote.setCharTable(0);
 remote.setIntlFont(0);
 
-remote.showText(`è MIDISTAGE ver${appVer} è`, "F1-8 FNCT é A-H HKYS");
+remote.showText(`è MIDISTAGE ver${appVer} è`, "");
+
+let remoteLogoAnimStep = 0;
+let remoteLogoAnim = setInterval(() => {
+  const animsymbs = [176, 176, 176, 176, 176, 177, 177, 177, 177, 177, 178, 178, 178, 178, 178, 219, 219, 219, 219, 219];
+  remote.showTextXY(String.fromCharCode(animsymbs[remoteLogoAnimStep]), remoteLogoAnimStep, 2);
+
+  remoteLogoAnimStep++;
+  if (remoteLogoAnimStep >= 21) clearInterval(remoteLogoAnim);
+}, 100);
 
 setTimeout(() => {
+
+  clearInterval(remoteLogoAnim);
   const uis = model.getUiState();
   let currentName = uis.currentEntryName
   if (model.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>" 
