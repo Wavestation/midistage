@@ -34,7 +34,7 @@ function fuzzyMatch(query, text)
 
 class Model extends EventEmitter
 {
-    CurrentMenu = "main";
+    
 
     constructor(options = {})
     {
@@ -67,6 +67,9 @@ class Model extends EventEmitter
 
         // ensure there is at least one setlist
         this.ensureActiveSetlist();
+
+        // we start always at main menu
+        this.currentMenu = "main";
     }
 
 
@@ -264,10 +267,6 @@ class Model extends EventEmitter
 
     /**
      * Function keys from remote (1..8). You can extend this mapping later.
-     * Default mapping:
-     *  1 = previous entry
-     *  2 = next entry
-     *  3 = replay current entry
      */
     triggerFunctionKey(n)
     {
@@ -280,16 +279,24 @@ class Model extends EventEmitter
         {
             case 1:
                 // previous setlist
+                if(this.currentMenu != "main") return;
+
                 this.currentMenu = "main"
                 this.activateSetlistDelta(-1);
                 break;
             case 2:
                 // next setlist
+                if(this.currentMenu != "main") return;
+
                 this.currentMenu = "main"
                 this.activateSetlistDelta(1);
                 break;
             case 3:
-                this.currentMenu = "main"
+                // activate current setlist
+                if(this.currentMenu != "main") return;
+
+                if (this.getActiveSetlist().entries.length == 0) return;
+                this.currentMenu = "main" 
                 setTimeout(() =>
                 {
                     this.emit("remoteDisplayXY", {
@@ -308,11 +315,17 @@ class Model extends EventEmitter
                 return;
             case 4:
                 // previous entry
+                if(this.currentMenu != "main") return;
+
+                if (this.getActiveSetlist().entries.length == 0) return;
                 this.currentMenu = "main"
                 return this.activateEntryDelta(-1);
             case 5:
                 // next entry
+                if(this.currentMenu != "main") return;
+
                 this.currentMenu = "main"
+                if (this.getActiveSetlist().entries.length == 0) return;
                 return this.activateEntryDelta(+1);
             case 6:
                 if(this.currentMenu == "power")  // REBOOT
@@ -326,12 +339,14 @@ class Model extends EventEmitter
                 else                               // normal operation : VIEW MENU
                 {
                     const uis = this.getUiState();
+                    let currentName = uis.currentEntryName
+                    if (this.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>" 
+
                     this.emit?.("changedSetlist", {
                         setlist:`{${uis.currentSetlistName}}`,
-                        entry:uis.currentEntryName,
+                        entry:currentName,
                         status:"WT"
                     });
-
                 }
                 break;
             case 7:
@@ -348,6 +363,10 @@ class Model extends EventEmitter
                     }, 1939);
                     
                 }
+                else                           // NORMAL OPERATION : TBD
+                {
+                    // Do other things // key currently unassigned
+                }
                 break;
             case 8:
                 // power menu
@@ -362,9 +381,14 @@ class Model extends EventEmitter
                 else if(this.currentMenu == "power") 
                 {
                     this.currentMenu = "main";
-                    this.emit("remoteMessage", {
-                        up:"è [MIDISTAGE  MENU] è",
-                        down: "F1-8 FNCT é A-H HKYS"
+                    const uis = this.getUiState();
+                    let currentName = uis.currentEntryName
+                    if (this.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>" 
+
+                    this.emit?.("changedSetlist", {
+                        setlist:`{${uis.currentSetlistName}}`,
+                        entry:currentName,
+                        status:"WT"
                     });
                 }
                 break;
@@ -376,6 +400,7 @@ class Model extends EventEmitter
      */
     triggerSetlistHotkey(letter)
     {
+        if(this.currentMenu != "main") return;
         this.currentMenu = "main"
 
         console.log("[MODEL] LKEY: " + letter);
@@ -1060,6 +1085,7 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
                 entry: e.name,
                 status: "KO"
             });
+            this.currentMenu = "main";
             return { ok: false, message: `Recall partiel. ${lines.join(" ")} Erreurs: ${errors.join("/")}` };
         }
 
@@ -1068,6 +1094,7 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
             entry: e.name,
             status: "OK"
         });
+        this.currentMenu = "main";
         return { ok: true, message: `Recall OK: ${e.name} // ${lines.join("/")}` };
     }
 

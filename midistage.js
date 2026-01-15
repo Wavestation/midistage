@@ -107,10 +107,15 @@ remote.setIntlFont(0);
 
 remote.showText(`è MIDISTAGE ver${appVer} è`, "F1-8 FNCT é A-H HKYS");
 
-setInterval(() => {
- const uistate = model.getUiState();
- //remote.showSetEnt(uistate.currentSetlistName, uistate.currentEntryName);
-}, 939);
+setTimeout(() => {
+  const uis = model.getUiState();
+  let currentName = uis.currentEntryName
+  if (model.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>" 
+
+  remote.showText(`{${uis.currentSetlistName}}`, currentName);
+  remote.showTextXY(`[WT]`, 17, 1);
+
+}, 2639);
 
 // Remote Events handle
 remote.on("key", k => { 
