@@ -422,10 +422,10 @@ function runPM2(action)
 
     const status = blessed.box({
       parent: frame,
-      bottom: 1,
+      bottom: 0,
       left: 1,
       right: 1,
-      height: 3,
+      height: 4,
       border: "line",
       label: " Status ",
       content: "Select a machine (machines.json).",
@@ -2269,7 +2269,7 @@ function runPM2(action)
       top: 6,
       left: 1,
       width: "25%-1",
-      height: "100%-12",
+      height: "100%-11",
       border: "line",
       label: " Setlists ",
       keys: true,
@@ -2283,7 +2283,7 @@ function runPM2(action)
       top: 6,
       left: "25%",
       width: "35%-1",
-      height: "100%-12",
+      height: "100%-11",
       border: "line",
       label: " Entries ",
       keys: true,
@@ -2296,8 +2296,8 @@ function runPM2(action)
       parent: frame,
       top: 6,
       left: "60%",
-      width: "40%-1",
-      height: "100%-12",
+      width: "39%+1",
+      height: "100%-11",
       border: "line",
       label: " Preview ",
       tags: true,
@@ -2312,7 +2312,7 @@ function runPM2(action)
 
     const status = blessed.box({
       parent: frame,
-      bottom: 1,
+      bottom: 0,
       left: 1,
       right: 0,
       height: 3,
@@ -2430,7 +2430,7 @@ function runPM2(action)
       width: "90%",
       height: "75%",
       border: "line",
-      label: " Routes ",
+      label: " Entry Routes Editor ",
       tags: true,
       hidden: true,
       style: THEME.modal,
@@ -2487,7 +2487,7 @@ function runPM2(action)
     // CC quick edit panel (4 slots)
     const ccPanel = blessed.box({
       parent: routesModal,
-      top: 17,
+      bottom: 2,
       left: 0,
       width: "60%-1",
       height: 6,
@@ -2504,7 +2504,7 @@ function runPM2(action)
         parent: ccPanel,
         top: 0,
         left: leftExpr,
-        width: "25%-2",
+        width: "25%-3",
         height: 1,
         tags: true,
         // note: "{7:96}" inside a tags box is fine; inside textbox it's not, so we keep tags:false there
@@ -2515,7 +2515,7 @@ function runPM2(action)
         parent: ccPanel,
         top: 1,
         left: leftExpr,
-        width: "25%-2",
+        width: "25%-3",
         height: 3,
         border: "line",
         inputOnFocus: true,
@@ -2557,7 +2557,7 @@ function runPM2(action)
       if (!inputModal.hidden) inputModal.setLabel(` ${FOCUS_MARK} Input `);
       else inputModal.setLabel(" Input ");
 
-      if (!routesModal.hidden) routesModal.setLabel(` ${FOCUS_MARK} Routes `);
+      if (!routesModal.hidden) routesModal.setLabel(` ${FOCUS_MARK} Entry Routes Editor `);
     }
 
     [setlistsList, entriesList, preview, status, routesList, routeInfo, ccPanel, ...ccBoxes].forEach(w =>
@@ -2791,7 +2791,7 @@ function runPM2(action)
       renderRouteInfo(r0);
       setBoxesFromCCSlots(r0 ? r0.ccSlots : []);
 
-      routesModal.setLabel(` Routes {gray-fg}(${routes.length}){/gray-fg} `);
+      routesModal.setLabel(` Entry Routes Editor ... {gray-fg}(${routes.length}){/gray-fg} `);
       routesModal.show();
       routesList.focus();
       refreshFocusMarkers();
