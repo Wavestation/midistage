@@ -1,6 +1,7 @@
 {
   "ui": {
-    "autorecallOnScroll": false
+    "autorecallOnScroll": false,
+    "enableFuzzySearch": false
   },
   "remote": {
     "vfdBrightness": 3,

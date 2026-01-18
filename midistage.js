@@ -15,8 +15,12 @@ const SETTINGS_PATH = path.join(__dirname, "data", "settings.json");
 
 const appVer = "1.1"
 
-const model = new Model(MIDNAM_DIR);
 const settings = new Settings(SETTINGS_PATH);
+
+const model = new Model({
+  midnamDir: MIDNAM_DIR, 
+  fuzzySearchEnabled: !!settings.getSetting("ui.enableFuzzySearch", false)
+});
 
 function getArg(name, def = null) 
 {
@@ -119,6 +123,7 @@ let remoteLogoAnim = setInterval(() => {
 setTimeout(() => {
 
   clearInterval(remoteLogoAnim);
+  
   const uis = model.getUiState();
   let currentName = uis.currentEntryName
   if (model.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>" 

@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MIDIDeviceTypes PUBLIC "-//MIDI Manufacturers Association//DTD MIDIDeviceTypes 0.3//EN" "http://www.sonosphere.com/dtds/MIDIDeviceTypes.dtd">
+
+<MIDIDeviceTypes>
+	<Author>Mark of the Unicorn - converted from FreeMIDI</Author>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-30" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-33" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-50" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="27 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-80" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="27 00" Member="01 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-880" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="20 00" Member="00 00" />
+		<DeviceID Min="1" Max="16" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-90" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="7D 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-90EX" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="7D 00" Member="00 01" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-90 w/VE-GS1 Exp Board" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="42 00" Member="02 01" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="A-90 w/VE-JV1 Exp Board" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="AX-1" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Alpha Juno-1" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="23 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Alpha Juno-2" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="23 00" Member="01 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss DR-550" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss DR-550 MK II" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss DR-660" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="52 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss DR-660 MK II" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss DR-770" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss DS-330" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss GT-3" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="1" Max="1" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss SE-50" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="true" >
+		<InquiryResponse Manufacturer="41" Family="37 00" Member="00 00" />
+		<DeviceID Min="1" Max="16" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Boss SE-70" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="CM-32L" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="05 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="CM-32P" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="06 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="CM-64" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="07 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="CM-300" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="CM-500" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="D-5" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="04 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="D-10" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="02 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="D-110" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="01 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="D-20" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="03 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="D-50" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="14 00" Member="00 00" />
+		<DeviceID Min="1" Max="16" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="D-550" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="14 00" Member="00 00" />
+		<DeviceID Min="1" Max="16" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="D-70" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="39 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="DEP-5" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="true" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="DM-800" SupportsGeneralMIDI="false" SupportsMMC="true" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="true" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="E-36" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="E-56" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="E-86" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="EP-7" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Fantom" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="GM-70" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="11 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="GP-8" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="true" >
+		<InquiryResponse Manufacturer="41" Family="13 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="GP-16" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="true" >
+		<InquiryResponse Manufacturer="41" Family="2A 00" Member="00 00" />
+		<DeviceID Min="1" Max="16" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="GR-1" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="54 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="GR-1 w/Exp" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="54 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="GR-30" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="00 07" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="GR-50" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="06 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Handsonic" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JD-800" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="3D 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JD-990" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="57 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JP-8000" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JP-8080" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="2" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Juno-106" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-30" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="4D 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-35" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="4D 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-50" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="4D 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-80" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-880" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-90" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-1000" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-1010" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-1080" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="01 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JV-2080" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="02 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType> 
+		<MIDIDeviceType Manufacturer="Roland" Model="JV-2080 Expanded" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="02 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JW-50" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JX-8P" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="21 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JX-10" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="24 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="JX-305" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="M-BD1" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="M-DC1" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="M-VS1" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="M-SE1" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="M-OC1" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="M-GS64" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="46 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MC-303" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MC-307" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MC-505" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="ME-10" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="49 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MKB-200" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MKS-7" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MKS-20" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MKS-50" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="23 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MKS-70" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="24 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MKS-80" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="20 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MKS-100" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="MT-32" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="16 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="Octapad" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="P-330" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="22 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="P-55" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="PAD-80" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="25 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="PC-200" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="0" MTC="false" Clock="false" Notes="false" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="PC-200mkII" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="0" MTC="false" Clock="false" Notes="false" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="PM-16" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="19 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="PMA-5" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="28 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="PRO-E" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="22 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="R-8" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="28 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="R-8 MKII" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="5E 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="R-8M" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="36 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="R-70" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="50 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="RD-250" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="RD-500" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="RD-600" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="09 01" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="RD-700" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="03 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="RD-1000" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="RSP-550" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="38 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="RS-5/9" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="S-10" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="true" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="S-220" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="true" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="S-330" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="true" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="S-50" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="true" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="S-550" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="true" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="S-750" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="true" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="S-760" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="true" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="34 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="S-770" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="true" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="false" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SBX-80" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="60 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-7" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="42 00" Member="01 00" />
+		<DeviceID Min="17" Max="17" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-33" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="55 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-50" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="45 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-55" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="45 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-55mkII" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="45 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-66" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-88" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="42 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-88 Pro" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="42 00" Member="00 04" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-880" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SC-155" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="45 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SD-35" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SP-700" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SPD-8" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SPD-11" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="SRV-2000" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="true" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="51 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="false" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="TD-7" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="58 00" Member="00 00" />
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="TR-505" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="1" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="TR-626" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="TR-707" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="TR-727" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="true" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="U-110" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="23 00" Member="00 00" />
+		<DeviceID Min="1" Max="16" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="U-20" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="2B 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="U-220" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="2B 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="0" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="VK-1000" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="VS-880" SupportsGeneralMIDI="false" SupportsMMC="true" IsSampler="false" IsDrumMachine="false" IsMixer="true" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="7C 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="true" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="W-30" SupportsGeneralMIDI="false" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<DeviceID Min="1" Max="32" Default="1" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="1" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="false" BankSelectLSB="false" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="XP-10" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="42 00" Member="02 01" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="XP-30" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="XP-50" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="XP-80" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="00 00" Member="00 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="XV-3080" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="41 10" Member="01 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="XV-5050" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="41 10" Member="01 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="XV-5080" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="41 10" Member="01 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+	<MIDIDeviceType Manufacturer="Roland" Model="XV-88" SupportsGeneralMIDI="true" SupportsMMC="false" IsSampler="false" IsDrumMachine="false" IsMixer="false" IsEffectUnit="false" >
+		<InquiryResponse Manufacturer="41" Family="41 10" Member="01 00" />
+		<DeviceID Min="17" Max="32" Default="17" Base="1" />
+		<Receives MaxChannels="16" MTC="false" Clock="true" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" PanDisruptsStereo="false" />
+		<Transmits MaxChannels="16" MTC="false" Clock="false" Notes="true" ProgramChanges="true" BankSelectMSB="true" BankSelectLSB="true" />
+	</MIDIDeviceType>
+</MIDIDeviceTypes>

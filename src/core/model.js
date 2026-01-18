@@ -12,7 +12,7 @@ const { MidiPortsStore } = require("./midiports");
 const { EventEmitter } = require("events");
 const { isNumberObject } = require("util/types");
 
-const ENABLE_FUZZY_SEARCH = false;
+
 
 
 
@@ -40,6 +40,7 @@ class Model extends EventEmitter
     {
         super();
         this.midnamDir = options.midnamDir;
+        this.fuzzySearchEnabled = !!options.fuzzySearchEnabled;
         this.machines = new MachinesStore(options.machines || {});
         this.setlists = new SetlistsStore(options.setlists || {});
         this.midiports = new MidiPortsStore(options.midiports || {});
@@ -68,7 +69,7 @@ class Model extends EventEmitter
         // ensure there is at least one setlist
         this.ensureActiveSetlist();
 
-        // we start always at main menu
+        // remote: we start always at main menu
         this.currentMenu = "main";
     }
 
@@ -684,7 +685,7 @@ class Model extends EventEmitter
                 {
                     const hay = `${patch.name} ${patch.program}`.toLowerCase();
 
-                    const match = ENABLE_FUZZY_SEARCH
+                    const match = this.fuzzySearchEnabled
                         ? fuzzyMatch(q, hay)
                         : hay.includes(q);
 

@@ -1,10 +1,10 @@
 {
-  "activeId": "m_24d196fd4495",
+  "activeId": "m_57f33818bc73",
   "machines": [
     {
       "id": "m_korgtr_ch5",
       "name": "Korg TR-Rack",
-      "midnamFile": "TR-Rack.midnam",
+      "midnamFile": "Korg/TR-Rack.midnam",
       "out": null,
       "outSlot": 3,
       "channel": 1
@@ -12,7 +12,7 @@
     {
       "id": "m_efma",
       "name": "Kodamo EFM",
-      "midnamFile": "Essence FM.midnam",
+      "midnamFile": "Kodamo/Essence FM.midnam",
       "out": null,
       "outSlot": 12,
       "channel": 1
@@ -20,7 +20,7 @@
     {
       "id": "m_d0daaba01f95",
       "name": "Yamaha MOTIF Rack ES",
-      "midnamFile": "MOTIF ES 6^7^8.midnam",
+      "midnamFile": "Yamaha/MOTIF ES 6^7^8.midnam",
       "out": null,
       "outSlot": 1,
       "channel": 1
@@ -28,7 +28,7 @@
     {
       "id": "m_b387d1c5be6e",
       "name": "Roland JV-2080",
-      "midnamFile": "JV-2080.midnam",
+      "midnamFile": "Roland/JV-2080.midnam",
       "out": null,
       "outSlot": 2,
       "channel": 1
@@ -36,7 +36,7 @@
     {
       "id": "m_3b67d71316ba",
       "name": "Access Virus Rack XL",
-      "midnamFile": "Virus Rack XL.midnam",
+      "midnamFile": "Access/Virus Rack XL.midnam",
       "out": null,
       "outSlot": 11,
       "channel": 1
@@ -44,7 +44,7 @@
     {
       "id": "m_9b657df5d442",
       "name": "Kurzweil K2500R",
-      "midnamFile": "K2500(R).midnam",
+      "midnamFile": "Kurzweil/K2500(R).midnam",
       "out": null,
       "outSlot": 4,
       "channel": 1
@@ -52,7 +52,7 @@
     {
       "id": "m_58281203af4d",
       "name": "NS5R interface mobile",
-      "midnamFile": "NS5R.midnam",
+      "midnamFile": "Korg/NS5R.midnam",
       "out": null,
       "outSlot": 27,
       "channel": 1
@@ -60,7 +60,7 @@
     {
       "id": "m_5e47b1df2b7f",
       "name": "K2000 interface mobile",
-      "midnamFile": "K2000.midnam",
+      "midnamFile": "Kurzweil/K2000.midnam",
       "out": null,
       "outSlot": 28,
       "channel": 1
@@ -68,7 +68,7 @@
     {
       "id": "m_24d196fd4495",
       "name": "EFM CH1 interface mobile",
-      "midnamFile": "Essence FM.midnam",
+      "midnamFile": "Kodamo/Essence FM.midnam",
       "out": null,
       "outSlot": 25,
       "channel": 1
@@ -76,7 +76,7 @@
     {
       "id": "m_bc84fb8a2c41",
       "name": "MASK1 interface mobile",
-      "midnamFile": "Proteus Custom.midnam",
+      "midnamFile": "E-Mu/Proteus Custom.midnam",
       "out": null,
       "outSlot": 26,
       "channel": 1
@@ -84,7 +84,7 @@
     {
       "id": "m_22df58e6d023",
       "name": "EFM CH2 interface mobile",
-      "midnamFile": "Essence FM.midnam",
+      "midnamFile": "Kodamo/Essence FM.midnam",
       "out": null,
       "outSlot": 25,
       "channel": 2
@@ -92,7 +92,7 @@
     {
       "id": "m_57f33818bc73",
       "name": "mioXL mobile preset selector",
-      "midnamFile": "Proteus Custom.midnam",
+      "midnamFile": "E-Mu/Proteus Custom.midnam",
       "out": null,
       "outSlot": 31,
       "channel": 16

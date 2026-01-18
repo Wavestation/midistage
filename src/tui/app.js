@@ -184,6 +184,7 @@ module.exports = function startApp(midnamDir, io, appVersion, glomodel)
   }
 
   glomodel.midnamDir = midnamDir;
+
   const model = glomodel;
   // const model = new Model({ midnamDir });
   console.log("[TUI] midnam path: " + model.midnamDir);
@@ -202,6 +203,23 @@ function runSystemctl(action)
   try
   {
     const p = child_process.spawn("sudo", ["/bin/systemctl", action], {
+      stdio: "ignore",
+      detached: true
+    });
+    p.unref();
+    return true;
+  }
+  catch
+  {
+    return false;
+  }
+}
+
+function runPM2(action)
+{
+  try
+  {
+    const p = child_process.spawn("/usr/local/bin/pm2", action, {
       stdio: "ignore",
       detached: true
     });
@@ -893,7 +911,7 @@ function runSystemctl(action)
       top: 3,
       left: 1,
       width: "45%-2",
-      height: "100%-9",
+      height: "100%-8",
       border: "line",
       label: " Machines ",
       keys: true,
@@ -907,7 +925,7 @@ function runSystemctl(action)
       top: 3,
       left: "45%",
       width: "55%-2",
-      height: "100%-9",
+      height: "100%-8",
       border: "line",
       label: " Editor ",
       tags: true,
@@ -917,7 +935,7 @@ function runSystemctl(action)
 
     const status = blessed.box({
       parent: frame,
-      bottom: 1,
+      bottom: 0,
       left: 1,
       right: 1,
       height: 3,
@@ -1048,7 +1066,7 @@ function runSystemctl(action)
       top: 5,
       left: 0,
       width: "50%-10",
-      height: "60%-3",
+      height: "60%+1",
       border: "line",
       keys: true,
       vi: true,
@@ -1071,7 +1089,7 @@ function runSystemctl(action)
       top: 5,
       left: "50%-9",
       width: "50%+6",
-      height: "60%-3",
+      height: "60%+1",
       border: "line",
       keys: true,
       vi: true,
@@ -1081,20 +1099,21 @@ function runSystemctl(action)
 
     const chLabel = blessed.box({
       parent: editor,
-      bottom: 6,
-      left: 0,
+      top:23,
+      left: 2,
       height: 1,
-      width: "100%-3",
+      width: "50%",
       tags: true,
-      content: "{bold}MIDI channel (1..16){/bold}"
+      content: "{bold}MIDI channel (1..16) --->{/bold}"
     });
 
     const chBox = blessed.textbox({
       parent: editor,
+      top: 22,
       bottom: 3,
-      left: 0,
+      left: "50%-9",
       height: 3,
-      width: "50%-1",
+      width: 5,
       border: "line",
       inputOnFocus: true,
       keys: true,
@@ -1104,9 +1123,10 @@ function runSystemctl(action)
 
     const help = blessed.box({
       parent: editor,
+      top: 25,
       bottom: 0,
       left: 0,
-      height: 3,
+      height: 1,
       width: "100%-3",
       tags: true,
       content:
@@ -1139,7 +1159,7 @@ function runSystemctl(action)
       setFieldLabel(nameLabel,  "Display name",          nameFocused);
       setFieldLabel(midnamLabel,"MIDNAM",                midnamFocused);
       setFieldLabel(outLabel,   "MIDI Output",           outFocused);
-      setFieldLabel(chLabel,    "MIDI channel (1..16)",  chFocused);
+      setFieldLabel(chLabel,    "{bold}MIDI channel (1..16) --->{/bold}",  chFocused);
 
       setBorderFocus(nameBox,    nameFocused);
       setBorderFocus(midnamList, midnamFocused);
@@ -1168,7 +1188,7 @@ function runSystemctl(action)
       return !n || n === "new machine" || n === "machine";
     }
 
-    function listMidnamFiles()
+    function listMidnamFilesSingle()
     {
       try
       {
@@ -1177,6 +1197,38 @@ function runSystemctl(action)
           .sort((a, b) => a.localeCompare(b));
       }
       catch { return []; }
+    }
+
+    function listMidnamFiles() 
+    {
+      const walk = (dir) => {
+        let results = [];
+        const list = fs.readdirSync(dir);
+    
+        list.forEach(file => {
+          const fullPath = path.join(dir, file);
+          const stat = fs.statSync(fullPath);
+    
+          if (stat && stat.isDirectory()) 
+           {
+            results = results.concat(walk(fullPath));
+          } 
+          else if (file.toLowerCase().endsWith(".midnam")) 
+          {
+            const relativePath = path.relative(midnamDir, fullPath);
+            results.push(relativePath);
+          }
+        });
+    
+        return results;
+      };
+    
+      try 
+      {
+        return walk(midnamDir).sort((a, b) => a.localeCompare(b));
+      } catch (err) {
+        return [];
+      }
     }
 
     function refreshMidnamAndOutLists()
@@ -3655,7 +3707,7 @@ function buildSystemPage()
     tags: true,
     style: THEME.header,
     content:
-      "{bold}↑↓{/bold} select | {bold}Enter{/bold} apply | {bold}Esc / q{/bold} back "
+      "{bold}↑↓{/bold} select | {bold}Enter{/bold} edit / apply | {bold}Esc / q{/bold} back "
   });
 
   const list = blessed.list({
@@ -3747,7 +3799,11 @@ function buildSystemPage()
 
   function buildItems()
   {
+
+    const currentItem = list.selected | 0;
+
     const ar = !!setmgr.getSetting("ui.autorecallOnScroll", false);
+    const fz = !!setmgr.getSetting("ui.enableFuzzySearch", false);
     const rs = setmgr.getSetting("remote.serialPort", "/dev/ttyS0");
     const rb = setmgr.getSetting("remote.serialRate", 38400);
     const to = setmgr.getSetting("remote.vfdIdleTime", 39);
@@ -3756,16 +3812,19 @@ function buildSystemPage()
 
     list.setItems([
       `UI: Auto-recall setlist entry on scroll: {bold}${ar ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
+      `UI: Enable fuzzy search in lists: {bold}${fz ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
       `Remote: Serial Port: {bold}${rs}{/bold}`,
       `Remote: Serial Speed: {bold}${rb}{/bold}`,
       `Remote: Display Idle Time: {bold}${to}{/bold}`,
       `Remote: Display Deep Sleep: {bold}${ds ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
       `Remote: Display Brightness: {bold}${br}{/bold}`,
-      "{yellow-fg}Machine: Hardware reboot!{/yellow-fg}",
+      "{yellow-fg}Machine: Software restart!{/yellow-fg}",
+      "{#FFA500-fg}Machine: Hardware reboot!{/#FFA500-fg}",
       "{red-fg}Machine: Hardware poweroff!{/red-fg}",
       "{green-fg}About MIDISTAGE...{/green-fg}"
     ]);
-    list.select(0);
+
+    list.select(currentItem);
   }
 
   function askYes(question, action)
@@ -3803,6 +3862,13 @@ function buildSystemPage()
       screen.render();
       const ok = runSystemctl(a);
       if (!ok) setStatus("Failed to execute systemctl (sudo/policy?).", "err");
+    } 
+    else if (a === "restart")
+    {
+      setStatus("Restarting software services...", "ok");
+      screen.render();
+      const ok = runPM2(["restart", "all"]);
+      if (!ok) setStatus("Failed to execute PM2 restart command... :(", "err");   
     }
   }
 
@@ -3823,7 +3889,18 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 1)  // remote serial port
+    if (idx === 1)  // fuzzy search
+    {
+      const cur = !!setmgr.getSetting("ui.enableFuzzySearch", false);
+      setmgr.setSetting("ui.enableFuzzySearch", !cur);
+      settings = setmgr.settings;
+      model.fuzzySearchEnabled = !cur;
+      buildItems();
+      setStatus(`Fuzzy search is now ${!cur ? "enabled" : "disabled"}.`, "ok");
+      return;
+    }
+
+    if (idx === 2)  // remote serial port
     {
       const prompt = blessed.prompt({
         parent: screen,
@@ -3842,7 +3919,7 @@ function buildSystemPage()
 
       prompt.input(
       "Type the patch to the serial port. e.g.: /dev/ttyS0",
-      "",
+      "/dev/",
       (err, value) => {
           screen.grabKeys = false;
 
@@ -3893,7 +3970,7 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 2)  // remote serial speed
+    if (idx === 3)  // remote serial speed
     {
       const prompt = blessed.prompt({
         parent: screen,
@@ -3949,7 +4026,7 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 3)  // remote display idle time
+    if (idx === 4)  // remote display idle time
     {
       const prompt = blessed.prompt({
         parent: screen,
@@ -4006,7 +4083,7 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 4)  // remote display deep sleep
+    if (idx === 5)  // remote display deep sleep
     {
       const cur = !!setmgr.getSetting("remote.vfdDeepSleep", false);
       setmgr.setSetting("remote.vfdDeepSleep", !cur);
@@ -4017,7 +4094,7 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 5)  // remote display brightness
+    if (idx === 6)  // remote display brightness
     {
       const prompt = blessed.prompt({
         parent: screen,
@@ -4074,19 +4151,25 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 6)  // reboot
+    if (idx === 7)  // restart soft
+    {
+      askYes("Restart the software?", "restart");
+      return;
+    }
+
+    if (idx === 8)  // reboot
     {
       askYes("Reboot the system?", "reboot");
       return;
     }
 
-    if (idx === 7)  // poweroff
+    if (idx === 9)  // poweroff
     {
       askYes("Power off the system?", "poweroff");
       return;
     }
 
-    if (idx === 8)  // aboutbox
+    if (idx === 10)  // aboutbox
     {
       // IMPORTANT FIX: open About box next tick so it doesn't immediately eat the Enter key.
       setImmediate(() =>

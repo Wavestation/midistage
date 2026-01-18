@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MIDINameDocument PUBLIC "-//MIDI Manufacturers Association//DTD MIDINameDocument 0.7//EN" "http://www.sonosphere.com/dtds/MIDINameDocument.dtd">
+
+<MIDINameDocument>
+	<Author>Mark of the Unicorn - converted from FreeMIDI</Author>
+	<MasterDeviceNames>
+		<Manufacturer>Roland</Manufacturer>
+		<Model>M-BD1</Model>
+		<CustomDeviceMode Name="Mode 1" >
+			<ChannelNameSetAssignments>
+				<ChannelNameSetAssign Channel="1" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="2" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="3" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="4" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="5" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="6" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="7" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="8" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="9" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="10" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="11" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="12" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="13" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="14" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="15" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="16" NameSet="Name Set 1" />
+			</ChannelNameSetAssignments>
+		</CustomDeviceMode>
+		<ChannelNameSet Name="Name Set 1" >
+			<AvailableForChannels>
+				<AvailableChannel Channel="1" Available="true" />
+				<AvailableChannel Channel="2" Available="true" />
+				<AvailableChannel Channel="3" Available="true" />
+				<AvailableChannel Channel="4" Available="true" />
+				<AvailableChannel Channel="5" Available="true" />
+				<AvailableChannel Channel="6" Available="true" />
+				<AvailableChannel Channel="7" Available="true" />
+				<AvailableChannel Channel="8" Available="true" />
+				<AvailableChannel Channel="9" Available="true" />
+				<AvailableChannel Channel="10" Available="true" />
+				<AvailableChannel Channel="11" Available="true" />
+				<AvailableChannel Channel="12" Available="true" />
+				<AvailableChannel Channel="13" Available="true" />
+				<AvailableChannel Channel="14" Available="true" />
+				<AvailableChannel Channel="15" Available="true" />
+				<AvailableChannel Channel="16" Available="true" />
+			</AvailableForChannels>
+			<PatchBank Name="Preset A" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="80" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="01" Name="Marcus 3way" ProgramChange="0" />
+					<Patch Number="02" Name="MM Slap Bass" ProgramChange="1" />
+					<Patch Number="03" Name="MM Fat Slap" ProgramChange="2" />
+					<Patch Number="04" Name="Miller Pop" ProgramChange="3" />
+					<Patch Number="05" Name="MM Dynathumb" ProgramChange="4" />
+					<Patch Number="06" Name="Abe Sr. 4way" ProgramChange="5" />
+					<Patch Number="07" Name="Abe 3way Bs" ProgramChange="6" />
+					<Patch Number="08" Name="AL 3way P.Bs" ProgramChange="7" />
+					<Patch Number="09" Name="Space Bass" ProgramChange="8" />
+					<Patch Number="10" Name="Hyper Funk" ProgramChange="9" />
+					<Patch Number="11" Name="Abe's Thumbs" ProgramChange="10" />
+					<Patch Number="12" Name="AL Dark Slap" ProgramChange="11" />
+					<Patch Number="13" Name="Poppin' Abe" ProgramChange="12" />
+					<Patch Number="14" Name="John P.4way" ProgramChange="13" />
+					<Patch Number="15" Name="John P.3way" ProgramChange="14" />
+					<Patch Number="16" Name="JP Chorus Bs" ProgramChange="15" />
+					<Patch Number="17" Name="6StringThing" ProgramChange="16" />
+					<Patch Number="18" Name="Mondo Johndo" ProgramChange="17" />
+					<Patch Number="19" Name="JP Fat Slap" ProgramChange="18" />
+					<Patch Number="20" Name="JP Brite Slap" ProgramChange="19" />
+					<Patch Number="21" Name="JP Fing+Slap" ProgramChange="20" />
+					<Patch Number="22" Name="Solo Fretles" ProgramChange="21" />
+					<Patch Number="23" Name="MM FretNotBs" ProgramChange="22" />
+					<Patch Number="24" Name="Marcus OctFl" ProgramChange="23" />
+					<Patch Number="25" Name="MM FrtlsBnd" ProgramChange="24" />
+					<Patch Number="26" Name="MM Smooth Fl" ProgramChange="25" />
+					<Patch Number="27" Name="MM Weathery" ProgramChange="26" />
+					<Patch Number="28" Name="Abe's Fretls" ProgramChange="27" />
+					<Patch Number="29" Name="AL French Ch" ProgramChange="28" />
+					<Patch Number="30" Name="AL Layer Fls" ProgramChange="29" />
+					<Patch Number="31" Name="AL Fls Solo" ProgramChange="30" />
+					<Patch Number="32" Name="JP 6Str Fls" ProgramChange="31" />
+					<Patch Number="33" Name="JP Solo Fls" ProgramChange="32" />
+					<Patch Number="34" Name="John's OctFl" ProgramChange="33" />
+					<Patch Number="35" Name="B-Motional" ProgramChange="34" />
+					<Patch Number="36" Name="Weather Fls" ProgramChange="35" />
+					<Patch Number="37" Name="AcoustiTouch" ProgramChange="36" />
+					<Patch Number="38" Name="JP Soft A.Bs" ProgramChange="37" />
+					<Patch Number="39" Name="JP Hard A.Bs" ProgramChange="38" />
+					<Patch Number="40" Name="Ac.Bs Club" ProgramChange="39" />
+					<Patch Number="41" Name="Dry Acoustic" ProgramChange="40" />
+					<Patch Number="42" Name="Hybrid Wood" ProgramChange="41" />
+					<Patch Number="43" Name="John's Rock" ProgramChange="42" />
+					<Patch Number="44" Name="Pick UP" ProgramChange="43" />
+					<Patch Number="45" Name="JP Rock Pick" ProgramChange="44" />
+					<Patch Number="46" Name="Dark Pick" ProgramChange="45" />
+					<Patch Number="47" Name="KP Rock+Slap" ProgramChange="46" />
+					<Patch Number="48" Name="JP Rock Fls" ProgramChange="47" />
+					<Patch Number="49" Name="Velo Rock Bs" ProgramChange="48" />
+					<Patch Number="50" Name="JP P.Bass 1" ProgramChange="49" />
+					<Patch Number="51" Name="JP P.Bass 2" ProgramChange="50" />
+					<Patch Number="52" Name="JP P.Bass 3" ProgramChange="51" />
+					<Patch Number="53" Name="JP P.Bass 4" ProgramChange="52" />
+					<Patch Number="54" Name="Dyno Ballad" ProgramChange="53" />
+					<Patch Number="55" Name="Velo Fingers" ProgramChange="54" />
+					<Patch Number="56" Name="Ch. Fingers" ProgramChange="55" />
+					<Patch Number="57" Name="Studio Mellow" ProgramChange="56" />
+					<Patch Number="58" Name="Fat Fingers" ProgramChange="57" />
+					<Patch Number="59" Name="Touchy Bass" ProgramChange="58" />
+					<Patch Number="60" Name="Abe's P Bass" ProgramChange="59" />
+					<Patch Number="61" Name="AL Solid Fng" ProgramChange="60" />
+					<Patch Number="62" Name="AL 2 way Fng" ProgramChange="61" />
+					<Patch Number="63" Name="Abe Soft Bs" ProgramChange="62" />
+					<Patch Number="64" Name="Abe Latin Bs" ProgramChange="63" />
+					<Patch Number="65" Name="Al Latin Ch" ProgramChange="64" />
+					<Patch Number="66" Name="AL Fat Latin" ProgramChange="65" />
+					<Patch Number="67" Name="AL Old Soul" ProgramChange="66" />
+					<Patch Number="68" Name="AL Mellow" ProgramChange="67" />
+					<Patch Number="69" Name="Marcus Jazz" ProgramChange="68" />
+					<Patch Number="70" Name="MM Jazz Ch." ProgramChange="69" />
+					<Patch Number="71" Name="MM Jazz Bs" ProgramChange="70" />
+					<Patch Number="72" Name="Marcus Mute" ProgramChange="71" />
+					<Patch Number="73" Name="Bright Pick" ProgramChange="72" />
+					<Patch Number="74" Name="Garden Party" ProgramChange="73" />
+					<Patch Number="75" Name="Phaser Mute" ProgramChange="74" />
+					<Patch Number="76" Name="MM Dry Mute" ProgramChange="75" />
+					<Patch Number="77" Name="MM Hip Hop" ProgramChange="76" />
+					<Patch Number="78" Name="Rock Flanger" ProgramChange="77" />
+					<Patch Number="79" Name="Sticky Bass" ProgramChange="78" />
+					<Patch Number="80" Name="Abe Flang Pop" ProgramChange="79" />
+					<Patch Number="81" Name="Mutey SynBs" ProgramChange="80" />
+					<Patch Number="82" Name="T-Wow Frtls" ProgramChange="81" />
+					<Patch Number="83" Name="T-Wow Slappy" ProgramChange="82" />
+					<Patch Number="84" Name="Refretter 1" ProgramChange="83" />
+					<Patch Number="85" Name="Refretter 2" ProgramChange="84" />
+					<Patch Number="86" Name="Bass Harmos" ProgramChange="85" />
+					<Patch Number="87" Name="Marcus Harms" ProgramChange="86" />
+					<Patch Number="88" Name="Harmonicus" ProgramChange="87" />
+					<Patch Number="89" Name="Tune Up" ProgramChange="88" />
+					<Patch Number="90" Name="Harm Up" ProgramChange="89" />
+					<Patch Number="91" Name="Harm Down" ProgramChange="90" />
+					<Patch Number="92" Name="Harm A#9" ProgramChange="91" />
+					<Patch Number="93" Name="Harm Eb#9" ProgramChange="92" />
+					<Patch Number="94" Name="Harm E+11" ProgramChange="93" />
+					<Patch Number="95" Name="Harm E69" ProgramChange="94" />
+					<Patch Number="96" Name="SlidesNoises" ProgramChange="95" />
+					<Patch Number="97" Name="All SLides" ProgramChange="96" />
+					<Patch Number="98" Name="All Noises" ProgramChange="97" />
+					<Patch Number="99" Name="Ac.Bs Noises" ProgramChange="98" />
+					<Patch Number="100" Name="Kick Menu" ProgramChange="99" />
+					<Patch Number="101" Name="Snare Menu 1" ProgramChange="100" />
+					<Patch Number="102" Name="Snare Menu 2" ProgramChange="101" />
+					<Patch Number="103" Name="Snare Menu 3" ProgramChange="102" />
+					<Patch Number="104" Name="Hi-Hat Menu" ProgramChange="103" />
+					<Patch Number="105" Name="Tom-Tom Menu" ProgramChange="104" />
+					<Patch Number="106" Name="Cymbals Menu" ProgramChange="105" />
+					<Patch Number="107" Name="Drum LP Menu" ProgramChange="106" />
+					<Patch Number="108" Name="Sweeping LPs" ProgramChange="107" />
+					<Patch Number="109" Name="Slap Happy 90" ProgramChange="108" />
+					<Patch Number="110" Name="Play C4Fun 90" ProgramChange="109" />
+					<Patch Number="111" Name="Flanged 112" ProgramChange="110" />
+					<Patch Number="112" Name="BW Jz 6/8 52" ProgramChange="111" />
+					<Patch Number="113" Name="BW Brush 66" ProgramChange="112" />
+					<Patch Number="114" Name="AL SLam 66" ProgramChange="113" />
+					<Patch Number="115" Name="AL Whack 76" ProgramChange="114" />
+					<Patch Number="116" Name="AL Grunge 84" ProgramChange="115" />
+					<Patch Number="117" Name="BW Swamp 90" ProgramChange="116" />
+					<Patch Number="118" Name="BW Latin 102" ProgramChange="117" />
+					<Patch Number="119" Name="BW Fusion 112" ProgramChange="118" />
+					<Patch Number="120" Name="AL Funk 120" ProgramChange="119" />
+					<Patch Number="121" Name="AL Shuff 126" ProgramChange="120" />
+					<Patch Number="122" Name="Fat Rock Kit KSHT." ProgramChange="121" />
+					<Patch Number="123" Name="Ringer Kit KSHT" ProgramChange="122" />
+					<Patch Number="124" Name="DynaPicc. Kit KSH" ProgramChange="123" />
+					<Patch Number="125" Name="Whammer Kit KSH" ProgramChange="124" />
+					<Patch Number="126" Name="BigBallad KSHT" ProgramChange="125" />
+					<Patch Number="127" Name="Fat PunchKit KSHT" ProgramChange="126" />
+					<Patch Number="128" Name="FatFunk Kit KSHT" ProgramChange="127" />
+				</PatchNameList>
+			</PatchBank>
+			<PatchBank Name="Preset B" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="81" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="1" Name="Garage Kit KSHT" ProgramChange="0" />
+					<Patch Number="2" Name="Rock On Kit KSHT" ProgramChange="1" />
+					<Patch Number="3" Name="Natural Kit KSHT" ProgramChange="2" />
+					<Patch Number="4" Name="Pitched Kit KSHT" ProgramChange="3" />
+					<Patch Number="5" Name="Basher Kit KSHT" ProgramChange="4" />
+					<Patch Number="6" Name="Edgy Kit KSHT" ProgramChange="5" />
+					<Patch Number="7" Name="Fat Comp Kit KSHT" ProgramChange="6" />
+					<Patch Number="8" Name="Fat &amp; Tight KSHT" ProgramChange="7" />
+					<Patch Number="9" Name="Studio Kit KSHT" ProgramChange="8" />
+					<Patch Number="10" Name="Tight Funk Kit KSHT" ProgramChange="9" />
+					<Patch Number="11" Name="Tight Picc Kit KSHT" ProgramChange="10" />
+					<Patch Number="12" Name="Dry Dance Kit KSHT" ProgramChange="11" />
+					<Patch Number="13" Name="R&amp;B Kit KSHT" ProgramChange="12" />
+					<Patch Number="14" Name="DynoSnareKit KSH" ProgramChange="13" />
+					<Patch Number="15" Name="Room Toms T" ProgramChange="14" />
+					<Patch Number="16" Name="Natural Toms T" ProgramChange="15" />
+					<Patch Number="17" Name="Soft Toms T" ProgramChange="16" />
+					<Patch Number="18" Name="Big Toms Dry T" ProgramChange="17" />
+					<Patch Number="19" Name="Nig Toms Wet T" ProgramChange="18" />
+					<Patch Number="20" Name="Ringer Snare S" ProgramChange="19" />
+					<Patch Number="21" Name="Loud Ring Snare S" ProgramChange="20" />
+					<Patch Number="22" Name="Live Piccolo S" ProgramChange="21" />
+					<Patch Number="23" Name="Wet Piccolo S" ProgramChange="22" />
+					<Patch Number="24" Name="Natural Krak S" ProgramChange="23" />
+					<Patch Number="25" Name="Natural Verb S" ProgramChange="24" />
+					<Patch Number="26" Name="Natural Bright S" ProgramChange="25" />
+					<Patch Number="27" Name="Dry Ringer S" ProgramChange="26" />
+					<Patch Number="28" Name="Rock On Room S" ProgramChange="27" />
+					<Patch Number="29" Name="Rock On Wet S" ProgramChange="28" />
+					<Patch Number="30" Name="FAT Impact S" ProgramChange="29" />
+					<Patch Number="31" Name="Nice Ballad S" ProgramChange="30" />
+					<Patch Number="32" Name="Huge FAT SNare S" ProgramChange="31" />
+					<Patch Number="33" Name="Warm Room SNare S" ProgramChange="32" />
+					<Patch Number="34" Name="Warm Verb Snare S" ProgramChange="33" />
+					<Patch Number="35" Name="Dry Fat Snare S" ProgramChange="34" />
+					<Patch Number="36" Name="FAT Hall SN S" ProgramChange="35" />
+					<Patch Number="37" Name="Funk Sn Dry S" ProgramChange="36" />
+					<Patch Number="38" Name="Funk Sn Room S" ProgramChange="37" />
+					<Patch Number="39" Name="Natural Ping S" ProgramChange="38" />
+					<Patch Number="40" Name="Room Ping S" ProgramChange="39" />
+					<Patch Number="41" Name="Dance Snr 1" ProgramChange="40" />
+					<Patch Number="42" Name="Dance Snr 2" ProgramChange="41" />
+					<Patch Number="43" Name="Kick&amp;Cym 1/2 K" ProgramChange="42" />
+					<Patch Number="44" Name="Kick&amp;Cym 1/4 K" ProgramChange="43" />
+					<Patch Number="45" Name="Kick&amp;Cym 2 K" ProgramChange="44" />
+					<Patch Number="46" Name="But Kicker K" ProgramChange="45" />
+					<Patch Number="47" Name="Kick&amp;Cym 2/3 K" ProgramChange="46" />
+					<Patch Number="48" Name="Kick&amp;Cym 2/8 K" ProgramChange="47" />
+					<Patch Number="49" Name="Kick&amp;Cym 3 K" ProgramChange="48" />
+					<Patch Number="50" Name="Kick&amp;Cym 4 K" ProgramChange="49" />
+					<Patch Number="51" Name="Kick&amp;Cym 5 K" ProgramChange="50" />
+					<Patch Number="52" Name="Kick&amp;Cym 6 K" ProgramChange="51" />
+					<Patch Number="53" Name="Kick&amp;Cym 7 K" ProgramChange="52" />
+					<Patch Number="54" Name="Kick&amp;Cym 6/8 K" ProgramChange="53" />
+					<Patch Number="55" Name="Kick&amp;Cym 8 K" ProgramChange="54" />
+					<Patch Number="56" Name="Kick&amp;Cym 8/2 K" ProgramChange="55" />
+					<Patch Number="57" Name="Kick&amp;Cym 9 K" ProgramChange="56" />
+					<Patch Number="58" Name="Kick&amp;Cym 9/6 K" ProgramChange="57" />
+					<Patch Number="59" Name="Kick&amp;Cym 10 K" ProgramChange="58" />
+					<Patch Number="60" Name="Kick&amp;Cym 11 K" ProgramChange="59" />
+					<Patch Number="61" Name="Kick&amp;Cym 12 K" ProgramChange="60" />
+					<Patch Number="62" Name="Kick&amp;Cym 11/12 K" ProgramChange="61" />
+					<Patch Number="63" Name="Kick&amp;Cym12/4 K" ProgramChange="62" />
+					<Patch Number="64" Name="Lo-Fi Kick K" ProgramChange="63" />
+					<Patch Number="65" Name="18 Hi-Hats1 H " ProgramChange="64" />
+					<Patch Number="66" Name="18 Hi-Hats2 H" ProgramChange="65" />
+					<Patch Number="67" Name="16 Hi-Hats1 H" ProgramChange="66" />
+					<Patch Number="68" Name="16 Hi-Hats2 H" ProgramChange="67" />
+					<Patch Number="69" Name="CR-78 Hi-Hats H" ProgramChange="68" />
+				</PatchNameList>
+			</PatchBank>
+		</ChannelNameSet>
+	</MasterDeviceNames>
+</MIDINameDocument>

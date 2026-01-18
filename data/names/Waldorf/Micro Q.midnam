@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MIDINameDocument PUBLIC "-//MIDI Manufacturers Association//DTD MIDINameDocument 0.7//EN" "http://www.sonosphere.com/dtds/MIDINameDocument.dtd">
+
+<MIDINameDocument>
+	<Author>Mark of the Unicorn - converted from FreeMIDI</Author>
+	<MasterDeviceNames>
+		<Manufacturer>Waldorf</Manufacturer>
+		<Model>Micro Q</Model>
+		<CustomDeviceMode Name="Mode 1" >
+			<ChannelNameSetAssignments>
+				<ChannelNameSetAssign Channel="1" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="2" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="3" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="4" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="5" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="6" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="7" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="8" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="9" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="10" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="11" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="12" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="13" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="14" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="15" NameSet="Name Set 1" />
+				<ChannelNameSetAssign Channel="16" NameSet="Name Set 1" />
+			</ChannelNameSetAssignments>
+		</CustomDeviceMode>
+		<ChannelNameSet Name="Name Set 1" >
+			<AvailableForChannels>
+				<AvailableChannel Channel="1" Available="true" />
+				<AvailableChannel Channel="2" Available="true" />
+				<AvailableChannel Channel="3" Available="true" />
+				<AvailableChannel Channel="4" Available="true" />
+				<AvailableChannel Channel="5" Available="true" />
+				<AvailableChannel Channel="6" Available="true" />
+				<AvailableChannel Channel="7" Available="true" />
+				<AvailableChannel Channel="8" Available="true" />
+				<AvailableChannel Channel="9" Available="true" />
+				<AvailableChannel Channel="10" Available="true" />
+				<AvailableChannel Channel="11" Available="true" />
+				<AvailableChannel Channel="12" Available="true" />
+				<AvailableChannel Channel="13" Available="true" />
+				<AvailableChannel Channel="14" Available="true" />
+				<AvailableChannel Channel="15" Available="true" />
+				<AvailableChannel Channel="16" Available="true" />
+			</AvailableForChannels>
+			<PatchBank Name="Bank A" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="32" />
+					<ControlChange Control="32" Value="0" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="1" Name="Attacke WMFArp" ProgramChange="0" />
+					<Patch Number="2" Name="Demolition DKLead" ProgramChange="1" />
+					<Patch Number="3" Name="Expensive WMFArp" ProgramChange="2" />
+					<Patch Number="4" Name="100StenzsAtOnceSPad" ProgramChange="3" />
+					<Patch Number="5" Name="Night Flight SArp" ProgramChange="4" />
+					<Patch Number="6" Name="Spell: F-A-T SLead" ProgramChange="5" />
+					<Patch Number="7" Name="Bells WMFBell" ProgramChange="6" />
+					<Patch Number="8" Name="Liquid Strg WMFStrg" ProgramChange="7" />
+					<Patch Number="9" Name="Q-Tip DKBass" ProgramChange="8" />
+					<Patch Number="10" Name="Upgrade WMFArp" ProgramChange="9" />
+					<Patch Number="11" Name="VA LA WMFPoly" ProgramChange="10" />
+					<Patch Number="12" Name="TschingHisCan TAtmo" ProgramChange="11" />
+					<Patch Number="13" Name="MI5 Pad ughPad" ProgramChange="12" />
+					<Patch Number="14" Name="CombTutorial WMFAtmo" ProgramChange="13" />
+					<Patch Number="15" Name="Antarktis2000 jhAtmo" ProgramChange="14" />
+					<Patch Number="16" Name="JMX vs. DeLeon TLead" ProgramChange="15" />
+					<Patch Number="17" Name="ArpHeaven SKYArp" ProgramChange="16" />
+					<Patch Number="18" Name="Liquid Mel WMFLead" ProgramChange="17" />
+					<Patch Number="19" Name="WashOrigVerp WMFPad" ProgramChange="18" />
+					<Patch Number="20" Name="TB  OrigVerp WMFSeq" ProgramChange="19" />
+					<Patch Number="21" Name="Sequence 15k 1kArp" ProgramChange="20" />
+					<Patch Number="22" Name="QubikSound15k DKLead" ProgramChange="21" />
+					<Patch Number="23" Name="Slow Wavetrip TWave" ProgramChange="22" />
+					<Patch Number="24" Name="Panreduction WMFArp" ProgramChange="23" />
+					<Patch Number="25" Name="Enough Power TPoly" ProgramChange="24" />
+					<Patch Number="26" Name="Q-Sweep2 TKPad" ProgramChange="25" />
+					<Patch Number="27" Name="Simple Saw jhLead" ProgramChange="26" />
+					<Patch Number="28" Name="Slow Strings1 TKStrg" ProgramChange="27" />
+					<Patch Number="29" Name="Stuermer 2 WMFLead" ProgramChange="28" />
+					<Patch Number="30" Name="HornsOfJerichojhWave" ProgramChange="29" />
+					<Patch Number="31" Name="CS100 TPad" ProgramChange="30" />
+					<Patch Number="32" Name="Waterfone2000 EYFX" ProgramChange="31" />
+					<Patch Number="33" Name="wave@waldorf.neTWave" ProgramChange="32" />
+					<Patch Number="34" Name="The Beginning TWave" ProgramChange="33" />
+					<Patch Number="35" Name="Q Tables jhWave" ProgramChange="34" />
+					<Patch Number="36" Name="Polaris DKWave" ProgramChange="35" />
+					<Patch Number="37" Name="Baraka TWave" ProgramChange="36" />
+					<Patch Number="38" Name="Buzzer 1 WMFLead" ProgramChange="37" />
+					<Patch Number="39" Name="Onyx ughLead" ProgramChange="38" />
+					<Patch Number="40" Name="Brownies WMFPoly" ProgramChange="39" />
+					<Patch Number="41" Name="Simple Saw jhLead" ProgramChange="40" />
+					<Patch Number="42" Name="Minor Chord RZPoly" ProgramChange="41" />
+					<Patch Number="43" Name="Quintage TLead" ProgramChange="42" />
+					<Patch Number="44" Name="Bright Syn 1 EYLead" ProgramChange="43" />
+					<Patch Number="45" Name="Jazz Percssn WMFOrgn" ProgramChange="44" />
+					<Patch Number="46" Name="Dirty Organ1 WMFOrgn" ProgramChange="45" />
+					<Patch Number="47" Name="Saw Lead HMLead" ProgramChange="46" />
+					<Patch Number="48" Name="Saw 1 Osc WMFLead" ProgramChange="47" />
+					<Patch Number="49" Name="Mayday Solo jhLead" ProgramChange="48" />
+					<Patch Number="50" Name="LoFi Lead WMFLead" ProgramChange="49" />
+					<Patch Number="51" Name="Mono Sync jhLead" ProgramChange="50" />
+					<Patch Number="52" Name="Zombie Nation TLead" ProgramChange="51" />
+					<Patch Number="53" Name="Dr. Motte TLead" ProgramChange="52" />
+					<Patch Number="54" Name="Stuermer 3 WMFLead" ProgramChange="53" />
+					<Patch Number="55" Name="Satte Sache WMFPoly" ProgramChange="54" />
+					<Patch Number="56" Name="Crunchy Nuts jhLead" ProgramChange="55" />
+					<Patch Number="57" Name="Wells'Tripod WMFPoly" ProgramChange="56" />
+					<Patch Number="58" Name="Phat Beat jhLead" ProgramChange="57" />
+					<Patch Number="59" Name="Highpass Pad jhPad" ProgramChange="58" />
+					<Patch Number="60" Name="Ikea Arsvik ughSeq" ProgramChange="59" />
+					<Patch Number="61" Name="Big Beat Sync jhLead" ProgramChange="60" />
+					<Patch Number="62" Name="D.K.Dent Solo1DKLead" ProgramChange="61" />
+					<Patch Number="63" Name="DollarBells ughBell" ProgramChange="62" />
+					<Patch Number="64" Name="Acronaut ughPoly" ProgramChange="63" />
+					<Patch Number="65" Name="Full Brass PROXPoly" ProgramChange="64" />
+					<Patch Number="66" Name="Stuermer 2 WMFLead" ProgramChange="65" />
+					<Patch Number="67" Name="Comb Clavi HMKeys" ProgramChange="66" />
+					<Patch Number="68" Name="Qvation  WMFPluk" ProgramChange="67" />
+					<Patch Number="69" Name="Alphaville ?! jhLead" ProgramChange="68" />
+					<Patch Number="70" Name="PPG Nylons PROXSeq" ProgramChange="69" />
+					<Patch Number="71" Name="HornsOfJerichojhWave" ProgramChange="70" />
+					<Patch Number="72" Name="Pizzicated WMFPluk" ProgramChange="71" />
+					<Patch Number="73" Name="Celli WMFStrg" ProgramChange="72" />
+					<Patch Number="74" Name="Violas WMFStrg" ProgramChange="73" />
+					<Patch Number="75" Name="Violins WMFStrg" ProgramChange="74" />
+					<Patch Number="76" Name="StringOrchid WMFStrg" ProgramChange="75" />
+					<Patch Number="77" Name="BackStrings WMFStrg" ProgramChange="76" />
+					<Patch Number="78" Name="TripleStringsWMFStrg" ProgramChange="77" />
+					<Patch Number="79" Name="WideWarmWash WMFStrg" ProgramChange="78" />
+					<Patch Number="80" Name="Faiza Strg WMFStrg" ProgramChange="79" />
+					<Patch Number="81" Name="Dark Strings jhStrg" ProgramChange="80" />
+					<Patch Number="82" Name="Bandsweep  FPPad" ProgramChange="81" />
+					<Patch Number="83" Name="SlowThinPhaseWMFPad" ProgramChange="82" />
+					<Patch Number="84" Name="Silk Pad 2 DKPad" ProgramChange="83" />
+					<Patch Number="85" Name="Padagogy TPad" ProgramChange="84" />
+					<Patch Number="86" Name="Noise Pad WMFPad" ProgramChange="85" />
+					<Patch Number="87" Name="CS100 TPad" ProgramChange="86" />
+					<Patch Number="88" Name="JPad FPPad" ProgramChange="87" />
+					<Patch Number="89" Name="FORoMANTic  ughPad" ProgramChange="88" />
+					<Patch Number="90" Name="High Sweep jhPad" ProgramChange="89" />
+					<Patch Number="91" Name="Choir Pad SPad" ProgramChange="90" />
+					<Patch Number="92" Name="Om mani padme HMPad" ProgramChange="91" />
+					<Patch Number="93" Name="Fiftyfive SKYPad" ProgramChange="92" />
+					<Patch Number="94" Name="Dreamware  ughAtmo" ProgramChange="93" />
+					<Patch Number="95" Name="S&amp;H&amp;Pad&amp;Nice WMFAtmo" ProgramChange="94" />
+					<Patch Number="96" Name="Slow Motion SKYAtmo" ProgramChange="95" />
+					<Patch Number="97" Name="Singing Glass DKAtmo" ProgramChange="96" />
+					<Patch Number="98" Name="Sphaer PROXAtmo" ProgramChange="97" />
+					<Patch Number="99" Name="Not guilty! TAtmo" ProgramChange="98" />
+					<Patch Number="100" Name="ARCTICA SKYAtmo" ProgramChange="99" />
+				</PatchNameList>
+			</PatchBank>
+			<PatchBank Name="Bank B" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="32" />
+					<ControlChange Control="32" Value="1" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="1" Name="Buzzer 3 WMFArp" ProgramChange="0" />
+					<Patch Number="2" Name="ClickChords WMFArp" ProgramChange="1" />
+					<Patch Number="3" Name="Cleanline 303 jhArp " ProgramChange="2" />
+					<Patch Number="4" Name="Clockworx ughArp " ProgramChange="3" />
+					<Patch Number="5" Name="DanceSequence jhArp" ProgramChange="4" />
+					<Patch Number="6" Name="Bassline 3O3 jhArp " ProgramChange="5" />
+					<Patch Number="7" Name="Another One WMFArp" ProgramChange="6" />
+					<Patch Number="8" Name="Brighter Than jhArp " ProgramChange="7" />
+					<Patch Number="9" Name="J106 Xiox PROXArp" ProgramChange="8" />
+					<Patch Number="10" Name="Mantra ughArp " ProgramChange="9" />
+					<Patch Number="11" Name="Rhythmic Hold jhArp " ProgramChange="10" />
+					<Patch Number="12" Name="Physical FM  SKYArp" ProgramChange="11" />
+					<Patch Number="13" Name="Harp 2000 jhArp " ProgramChange="12" />
+					<Patch Number="14" Name="WarinthARPa TArp " ProgramChange="13" />
+					<Patch Number="15" Name="TechTrigger ughArp " ProgramChange="14" />
+					<Patch Number="16" Name="Groove On SKYArp " ProgramChange="15" />
+					<Patch Number="17" Name="PWM ResoBass jhBass" ProgramChange="16" />
+					<Patch Number="18" Name="MM Fat Boy PROXBass" ProgramChange="17" />
+					<Patch Number="19" Name="Data Bass WMFBass" ProgramChange="18" />
+					<Patch Number="20" Name="Fat Dad jhBass" ProgramChange="19" />
+					<Patch Number="21" Name="Dirty Bass jhBass" ProgramChange="20" />
+					<Patch Number="22" Name="Pulse Bass 6 jhBass" ProgramChange="21" />
+					<Patch Number="23" Name="BassPhase WMFBass" ProgramChange="22" />
+					<Patch Number="24" Name="FilterFM BassWMFBass" ProgramChange="23" />
+					<Patch Number="25" Name="Jamiro-Q-ai WMFBass" ProgramChange="24" />
+					<Patch Number="26" Name="Dust Brothers TBass" ProgramChange="25" />
+					<Patch Number="27" Name="BassTARD TBass" ProgramChange="26" />
+					<Patch Number="28" Name="Fat Square jhBass" ProgramChange="27" />
+					<Patch Number="29" Name="Ultra Sub WMFBass" ProgramChange="28" />
+					<Patch Number="30" Name="NoAttackBass ughBass" ProgramChange="29" />
+					<Patch Number="31" Name="First:TheBassWMFBass" ProgramChange="30" />
+					<Patch Number="32" Name="Bass-Piano RZBass" ProgramChange="31" />
+					<Patch Number="33" Name="E-Qiano DKKeys" ProgramChange="32" />
+					<Patch Number="34" Name="ElectricGrand HMKeys" ProgramChange="33" />
+					<Patch Number="35" Name="FM-Rhodes 1 HMKeys" ProgramChange="34" />
+					<Patch Number="36" Name="Rhodos Corso WMFKeys" ProgramChange="35" />
+					<Patch Number="37" Name="UnpredictableUGHLead" ProgramChange="36" />
+					<Patch Number="38" Name="DeeB ughLead" ProgramChange="37" />
+					<Patch Number="39" Name="Soft Leader RZLead" ProgramChange="38" />
+					<Patch Number="40" Name="Modern Clavi jhKey " ProgramChange="39" />
+					<Patch Number="41" Name="Ring Sequel PROXKeys" ProgramChange="40" />
+					<Patch Number="42" Name="Pick It! jhSeq " ProgramChange="41" />
+					<Patch Number="43" Name="Straight ughLead" ProgramChange="42" />
+					<Patch Number="44" Name="TelegraphSyn ughPoly" ProgramChange="43" />
+					<Patch Number="45" Name="Dukelead FPLead" ProgramChange="44" />
+					<Patch Number="46" Name="Iceland ughLead" ProgramChange="45" />
+					<Patch Number="47" Name="Tron Flutes HMLead" ProgramChange="46" />
+					<Patch Number="48" Name="Zelluloid ughRAND" ProgramChange="47" />
+					<Patch Number="49" Name="TributeTo DX WMFBell" ProgramChange="48" />
+					<Patch Number="50" Name="Hansaplast ughLead" ProgramChange="49" />
+					<Patch Number="51" Name="Broadway ughPad " ProgramChange="50" />
+					<Patch Number="52" Name="Wartofsky TStrg" ProgramChange="51" />
+					<Patch Number="53" Name="Cassandra ughPad" ProgramChange="52" />
+					<Patch Number="54" Name="No. 5 lives TPad " ProgramChange="53" />
+					<Patch Number="55" Name="Flinker  WMFPad " ProgramChange="54" />
+					<Patch Number="56" Name="FMBP Sweep jhPad" ProgramChange="55" />
+					<Patch Number="57" Name="Glidebells FPPad " ProgramChange="56" />
+					<Patch Number="58" Name="G.Quman  DKPad" ProgramChange="57" />
+					<Patch Number="59" Name="HiFi Beast jhPad " ProgramChange="58" />
+					<Patch Number="60" Name="ProducersPad ughPad " ProgramChange="59" />
+					<Patch Number="61" Name="Slow Strings1 TKStrg" ProgramChange="60" />
+					<Patch Number="62" Name="PWM Pad 2000  jhPad" ProgramChange="61" />
+					<Patch Number="63" Name="Nimm Oel !!! TPad " ProgramChange="62" />
+					<Patch Number="64" Name="Phazer PWM  jhPad " ProgramChange="63" />
+					<Patch Number="65" Name="Shadow2  ughPad " ProgramChange="64" />
+					<Patch Number="66" Name="TheWidestEverWMFStrg" ProgramChange="65" />
+					<Patch Number="67" Name="Q-rious? II  WMFPad " ProgramChange="66" />
+					<Patch Number="68" Name="Transformer DKPad " ProgramChange="67" />
+					<Patch Number="69" Name="PhenixAstero SKYAtmo" ProgramChange="68" />
+					<Patch Number="70" Name="Paranoia ughAtmo" ProgramChange="69" />
+					<Patch Number="71" Name="Simple&amp;Sold  WMFAtmo" ProgramChange="70" />
+					<Patch Number="72" Name="The Fog  ughAtmo" ProgramChange="71" />
+					<Patch Number="73" Name="Replik.DreamPROXAtmo" ProgramChange="72" />
+					<Patch Number="74" Name="Glas RZAtmo" ProgramChange="73" />
+					<Patch Number="75" Name="AdventurBell ughAtmo" ProgramChange="74" />
+					<Patch Number="76" Name="Clock&amp;Bells RZBell" ProgramChange="75" />
+					<Patch Number="77" Name="Chordial ughBell" ProgramChange="76" />
+					<Patch Number="78" Name="Bandsalat jhSeq " ProgramChange="77" />
+					<Patch Number="79" Name="Buzzer 2  WMFLead" ProgramChange="78" />
+					<Patch Number="80" Name="Highmel FPLead" ProgramChange="79" />
+					<Patch Number="81" Name="Meteor WMFPluk" ProgramChange="80" />
+					<Patch Number="82" Name="Tandem ughKey" ProgramChange="81" />
+					<Patch Number="83" Name="Indish  RZKey " ProgramChange="82" />
+					<Patch Number="84" Name="Chinese Tune RZKey " ProgramChange="83" />
+					<Patch Number="85" Name="OBX Purple5 PROXLead" ProgramChange="84" />
+					<Patch Number="86" Name="IQ7 ughSeq " ProgramChange="85" />
+					<Patch Number="87" Name="Liquid Var  WMFLead" ProgramChange="86" />
+					<Patch Number="88" Name="No Drive DKLead" ProgramChange="87" />
+					<Patch Number="89" Name="Dopehead 4 DKLead" ProgramChange="88" />
+					<Patch Number="90" Name="Not so bad RZLead" ProgramChange="89" />
+					<Patch Number="91" Name="Qontexxt ughLead" ProgramChange="90" />
+					<Patch Number="92" Name="SEX sells! ughLead" ProgramChange="91" />
+					<Patch Number="93" Name="Space Guitar jhLead" ProgramChange="92" />
+					<Patch Number="94" Name="Telepromter ughPoly" ProgramChange="93" />
+					<Patch Number="95" Name="VintageSpringWMFLead" ProgramChange="94" />
+					<Patch Number="96" Name="Big Sync  WMFPoly" ProgramChange="95" />
+					<Patch Number="97" Name="Dirty Larry ughOrgn" ProgramChange="96" />
+					<Patch Number="98" Name="Crunchy jhLead" ProgramChange="97" />
+					<Patch Number="99" Name="Grizzle ughSeq " ProgramChange="98" />
+					<Patch Number="100" Name="Hooked on Q  ughLead" ProgramChange="99" />
+				</PatchNameList>
+			</PatchBank>
+			<PatchBank Name="Bank C" >
+				<MIDICommands>
+					<ControlChange Control="0" Value="32" />
+					<ControlChange Control="32" Value="2" />
+				</MIDICommands>
+				<PatchNameList>
+					<Patch Number="1" Name="UltraFatPoly WMFPoly" ProgramChange="0" />
+					<Patch Number="2" Name="Up to 5 OSC  RZLead" ProgramChange="1" />
+					<Patch Number="3" Name="Ouch! ughLead" ProgramChange="2" />
+					<Patch Number="4" Name="Steroid ughLead" ProgramChange="3" />
+					<Patch Number="5" Name="HouseBrass PROXPoly" ProgramChange="4" />
+					<Patch Number="6" Name="Up And Down jhLead" ProgramChange="5" />
+					<Patch Number="7" Name="PowerLead  WMFLead" ProgramChange="6" />
+					<Patch Number="8" Name="Stuermer 1 WMFLead" ProgramChange="7" />
+					<Patch Number="9" Name="Pulse Bass 2  jhBass" ProgramChange="8" />
+					<Patch Number="10" Name="Ass age:101 HMBass" ProgramChange="9" />
+					<Patch Number="11" Name="CascadeVCF  WMFBass" ProgramChange="10" />
+					<Patch Number="12" Name="Juicy Bass  WMFBass" ProgramChange="11" />
+					<Patch Number="13" Name="Knurrhahn  WMFBass" ProgramChange="12" />
+					<Patch Number="14" Name="Mars Mouse  WMFBass" ProgramChange="13" />
+					<Patch Number="15" Name="HitwerQ  WMFLead" ProgramChange="14" />
+					<Patch Number="16" Name="Narrow Sub WMFBass" ProgramChange="15" />
+					<Patch Number="17" Name="Pisa Bass ughBass" ProgramChange="16" />
+					<Patch Number="18" Name="Pulse Bass 1 DKBass" ProgramChange="17" />
+					<Patch Number="19" Name="Pulse Bass 4  DKBass" ProgramChange="18" />
+					<Patch Number="20" Name="Pulse P66  WMFBass" ProgramChange="19" />
+					<Patch Number="21" Name="Q-Bass  TKBass" ProgramChange="20" />
+					<Patch Number="22" Name="Gum Bass WMFBass" ProgramChange="21" />
+					<Patch Number="23" Name="Real Bass  WMFBass" ProgramChange="22" />
+					<Patch Number="24" Name="Sawproof 2 jhBass" ProgramChange="23" />
+					<Patch Number="25" Name="Shark Bass2! DKBass" ProgramChange="24" />
+					<Patch Number="26" Name="Sounds BP DKBass" ProgramChange="25" />
+					<Patch Number="27" Name="Yo mom!  ughBass" ProgramChange="26" />
+					<Patch Number="28" Name="Sub  Bass  EYBass" ProgramChange="27" />
+					<Patch Number="29" Name="Blubby 126bpm jhArp" ProgramChange="28" />
+					<Patch Number="30" Name="Fade to clear HMArp " ProgramChange="29" />
+					<Patch Number="31" Name="GeeGaGooQ  WMFArp " ProgramChange="30" />
+					<Patch Number="32" Name="KrautedHaus ughArp " ProgramChange="31" />
+					<Patch Number="33" Name="PheeGaDee WMFArp " ProgramChange="32" />
+					<Patch Number="34" Name="Pluck U2 MW  HMArp " ProgramChange="33" />
+					<Patch Number="35" Name="SqrBassSwing WMFArp" ProgramChange="34" />
+					<Patch Number="36" Name="Vince Clark 2 jhArp " ProgramChange="35" />
+					<Patch Number="37" Name="Yust noise  RZArp " ProgramChange="36" />
+					<Patch Number="38" Name="ARP-&gt;Voc-&gt;5FX  TArp" ProgramChange="37" />
+					<Patch Number="39" Name="Bee Drum  JFDrum" ProgramChange="38" />
+					<Patch Number="40" Name="ClipDrum  jhDrum" ProgramChange="39" />
+					<Patch Number="41" Name="909 Kick 1 WMFDrum" ProgramChange="40" />
+					<Patch Number="42" Name="El Bass Drum  JFDrum" ProgramChange="41" />
+					<Patch Number="43" Name="Kick 4  WMFDrum" ProgramChange="42" />
+					<Patch Number="44" Name="808 Snare 2  WMFDrum" ProgramChange="43" />
+					<Patch Number="45" Name="SnareOrigVerp JFDrum" ProgramChange="44" />
+					<Patch Number="46" Name="El Snare Drum JFDrum" ProgramChange="45" />
+					<Patch Number="47" Name="E-Snare 3  jhDrum" ProgramChange="46" />
+					<Patch Number="48" Name="15k FastSnare jhDrum" ProgramChange="47" />
+					<Patch Number="49" Name="Metalic Snare DKDrum" ProgramChange="48" />
+					<Patch Number="50" Name="ZipfSnare WMFDrum" ProgramChange="49" />
+					<Patch Number="51" Name="Snare 1 WMFDrum" ProgramChange="50" />
+					<Patch Number="52" Name="Thin Snare WMFDrum" ProgramChange="51" />
+					<Patch Number="53" Name="SrReductionSD DKDrum" ProgramChange="52" />
+					<Patch Number="54" Name="SimmonsSnare WMFDrum" ProgramChange="53" />
+					<Patch Number="55" Name="TR66 Snare WMFDrum" ProgramChange="54" />
+					<Patch Number="56" Name="Eperc A ughPerc" ProgramChange="55" />
+					<Patch Number="57" Name="Eperc B ughPerc" ProgramChange="56" />
+					<Patch Number="58" Name="open HH jhDrum" ProgramChange="57" />
+					<Patch Number="59" Name="ElHihatOpen JFDrum" ProgramChange="58" />
+					<Patch Number="60" Name="ElHihatOpenArpJFDrum" ProgramChange="59" />
+					<Patch Number="61" Name="ElHihatClsd JFDrum" ProgramChange="60" />
+					<Patch Number="62" Name="ElHihatClsdArpJFDrum" ProgramChange="61" />
+					<Patch Number="63" Name="TR66 Hihat WMFDrum" ProgramChange="62" />
+					<Patch Number="64" Name="Percy Noises jhFX  " ProgramChange="63" />
+					<Patch Number="65" Name="Fat Zaps jhDrum" ProgramChange="64" />
+					<Patch Number="66" Name="Laser Shot jhDrum" ProgramChange="65" />
+					<Patch Number="67" Name="FM Noises jhFX  " ProgramChange="66" />
+					<Patch Number="68" Name="THE Claps WMFDrum" ProgramChange="67" />
+					<Patch Number="69" Name="Strom  WMFPerc" ProgramChange="68" />
+					<Patch Number="70" Name="TR66 Sidestk WMFDrum" ProgramChange="69" />
+					<Patch Number="71" Name="African Perc. jhPerc" ProgramChange="70" />
+					<Patch Number="72" Name="Conga WMFPerc" ProgramChange="71" />
+					<Patch Number="73" Name="Claps 1 WMFDrum" ProgramChange="72" />
+					<Patch Number="74" Name="Quiro WMFPerc" ProgramChange="73" />
+					<Patch Number="75" Name="Noise Reverse jhFX  " ProgramChange="74" />
+					<Patch Number="76" Name="Chinese Gong  jhFX  " ProgramChange="75" />
+					<Patch Number="77" Name="Shattering FX jhFX  " ProgramChange="76" />
+					<Patch Number="78" Name="LFO  Speeddwn jhFX  " ProgramChange="77" />
+					<Patch Number="79" Name="LFO  Speedup  jhFX  " ProgramChange="78" />
+					<Patch Number="80" Name="Open Sesam  ughFX " ProgramChange="79" />
+					<Patch Number="81" Name="Tuxedosun  WMFFX" ProgramChange="80" />
+					<Patch Number="82" Name="THX Spot jhFX  " ProgramChange="81" />
+					<Patch Number="83" Name="Househarp ughFX" ProgramChange="82" />
+					<Patch Number="84" Name="Help  RZFX  " ProgramChange="83" />
+					<Patch Number="85" Name="Cpt. Future 2 jhFX " ProgramChange="84" />
+					<Patch Number="86" Name="Alien Syn EYFX  " ProgramChange="85" />
+					<Patch Number="87" Name="S.O.S DKFX  " ProgramChange="86" />
+					<Patch Number="88" Name="Spiders2000  EYFX  " ProgramChange="87" />
+					<Patch Number="89" Name="FromOutaSpace jhFX " ProgramChange="88" />
+					<Patch Number="90" Name="Voc. Strings TVoc " ProgramChange="89" />
+					<Patch Number="91" Name="VocoderComb  TVoc " ProgramChange="90" />
+					<Patch Number="92" Name="Mindblast VC SKYVoc " ProgramChange="91" />
+					<Patch Number="93" Name="Voc. Strings 2 TVoc " ProgramChange="92" />
+					<Patch Number="94" Name="Vocoder Crazy  TVoc" ProgramChange="93" />
+					<Patch Number="95" Name="Vocoder Mod  TVoc" ProgramChange="94" />
+					<Patch Number="96" Name="Voc. Robot TVoc " ProgramChange="95" />
+					<Patch Number="97" Name="Extern FX 1 TExt " ProgramChange="96" />
+					<Patch Number="98" Name="Extern FX 2 TExt " ProgramChange="97" />
+					<Patch Number="99" Name="External ThroughExt " ProgramChange="98" />
+					<Patch Number="100" Name="Init Sound Init" ProgramChange="99" />
+				</PatchNameList>
+			</PatchBank>
+		</ChannelNameSet>
+	</MasterDeviceNames>
+</MIDINameDocument>
