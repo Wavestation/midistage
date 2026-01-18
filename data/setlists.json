@@ -512,9 +512,399 @@
     {
       "id": "sl_9418758836b3",
       "name": "Inatteignable",
-      "entries": [],
+      "entries": [
+        {
+          "id": "e_551c6d3e291b",
+          "name": "Zgwiwiwy",
+          "routes": [
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank E",
+              "msb": 0,
+              "lsb": 4,
+              "program": 10,
+              "patchName": "Cliquotbl",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 24,
+              "patchName": "Preset 024",
+              "ccSlots": null
+            }
+          ]
+        }
+      ],
       "hotkeys": {}
+    },
+    {
+      "id": "sl_95765ec38e86",
+      "name": "Hina Tool",
+      "entries": [
+        {
+          "id": "e_287ee50da425",
+          "name": "NS AE Piano",
+          "routes": [
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "Prog B",
+              "msb": 82,
+              "lsb": 0,
+              "program": 38,
+              "patchName": "MIDI Grand",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 25,
+              "patchName": "Preset 025",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_1b39745840c1",
+          "name": "AP EP Mix",
+          "routes": [
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "Prog B",
+              "msb": 82,
+              "lsb": 0,
+              "program": 38,
+              "patchName": "MIDI Grand",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank J",
+              "msb": 0,
+              "lsb": 9,
+              "program": 66,
+              "patchName": "Wurly KS",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 77
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 28,
+              "patchName": "Preset 028",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_60b5702732b4",
+          "name": "EP Wurli",
+          "routes": [
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank J",
+              "msb": 0,
+              "lsb": 9,
+              "program": 66,
+              "patchName": "Wurly KS",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank I",
+              "msb": 0,
+              "lsb": 8,
+              "program": 14,
+              "patchName": "Myriade FM EP+KS",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 24,
+              "patchName": "Preset 024",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_44764549c894",
+          "name": "Dreamy Soft",
+          "routes": [
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 18,
+              "patchName": "Dreamy Strings",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 111
+                },
+                {
+                  "cc": 91,
+                  "value": 39
+                }
+              ]
+            },
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "Prog C",
+              "msb": 83,
+              "lsb": 0,
+              "program": 118,
+              "patchName": "Soft Pad",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 96
+                },
+                {
+                  "cc": 91,
+                  "value": 96
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 28,
+              "patchName": "Preset 028",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_d7a4de1e54a4",
+          "name": "Maxi Strings",
+          "routes": [
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 28,
+              "patchName": "Preset 028",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "Prog B",
+              "msb": 82,
+              "lsb": 0,
+              "program": 22,
+              "patchName": "AnaStrings",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 77
+                },
+                {
+                  "cc": 91,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 11,
+              "patchName": "FilterStrings",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 99
+                },
+                {
+                  "cc": 91,
+                  "value": 69
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e_715be3cc57ac",
+          "name": "MASK",
+          "routes": [
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 26,
+              "patchName": "Preset 026",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_a920e28688b2",
+          "name": "Stadium",
+          "routes": [
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank I",
+              "msb": 0,
+              "lsb": 8,
+              "program": 60,
+              "patchName": "Wavestadium",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 99
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 24,
+              "patchName": "Preset 024",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_81aab632ce72",
+          "name": "NS marimbah",
+          "routes": [
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "GM-a",
+              "msb": 0,
+              "lsb": 0,
+              "program": 12,
+              "patchName": "Marimba",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 25,
+              "patchName": "Preset 025",
+              "ccSlots": null
+            }
+          ]
+        }
+      ],
+      "hotkeys": {
+        "A": "e_287ee50da425",
+        "B": "e_1b39745840c1",
+        "C": "e_60b5702732b4",
+        "D": "e_44764549c894",
+        "E": "e_d7a4de1e54a4",
+        "F": "e_715be3cc57ac",
+        "G": "e_a920e28688b2",
+        "H": "e_81aab632ce72"
+      }
     }
   ],
-  "activeId": "sl_123abc"
+  "activeId": "sl_95765ec38e86"
 }
