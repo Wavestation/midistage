@@ -403,10 +403,10 @@ function runPM2(action)
     // “Instruments” = machines.json
     const filesList = blessed.list({
       parent: frame,
-      top: 3,
+      top: 1,
       left: 1,
       width: "33%-2",
-      height: "100%-9",
+      height: "100%-7",
       border: "line",
       label: " Instruments ",
       keys: true,
@@ -417,10 +417,10 @@ function runPM2(action)
 
     const banksList = blessed.list({
       parent: frame,
-      top: 3,
+      top: 1,
       left: "33%",
       width: "34%-1",
-      height: "100%-9",
+      height: "100%-7",
       border: "line",
       label: " Banks ",
       keys: true,
@@ -431,10 +431,10 @@ function runPM2(action)
 
     const patchesList = blessed.list({
       parent: frame,
-      top: 3,
+      top: 1,
       left: "67%",
       width: "33%-2",
-      height: "100%-12",
+      height: "100%-10",
       border: "line",
       label: " Patches ",
       keys: true,
