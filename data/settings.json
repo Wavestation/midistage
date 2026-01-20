@@ -4,7 +4,7 @@
     "enableFuzzySearch": false
   },
   "remote": {
-    "vfdBrightness": 4,
+    "vfdBrightness": 3,
     "vfdIdleTime": 10,
     "serialRate": 38400,
     "serialPort": "/dev/ttyUSB0",

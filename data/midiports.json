@@ -154,7 +154,7 @@
     },
     {
       "slot": 31,
-      "label": null,
+      "label": "Ext Ctrl",
       "port": "rtpmidid:mioXL 29A-22 128:22"
     },
     {
@@ -165,7 +165,7 @@
     {
       "slot": 33,
       "label": null,
-      "port": null
+      "port": "IF700:IF700 MIDI 1 28:0"
     },
     {
       "slot": 34,

@@ -13,9 +13,6 @@ const { EventEmitter } = require("events");
 const { isNumberObject } = require("util/types");
 
 
-
-
-
 function fuzzyMatch(query, text)
 {
     query = (query || "").toLowerCase();
@@ -657,7 +654,8 @@ class Model extends EventEmitter
         {
             const msb = b.msb == null ? "-" : b.msb;
             const lsb = b.lsb == null ? "-" : b.lsb;
-            return `${i + 1}. ${b.name}  [MSB ${msb} / LSB ${lsb}]  (${b.patches.length})`;
+            //${String(parseInt(i)).padStart(3, " ")} 
+            return `${String(b.name).padEnd(10, " ")}  {grey-fg}[MSB=${String(msb).padStart(3, "0")} LSB=${String(lsb).padStart(3, "0")}] (${b.patches.length}){/grey-fg}`;
         });
 
         return { items, count: items.length };
@@ -699,7 +697,8 @@ class Model extends EventEmitter
             this.state.globalSearchResults = results;
 
             const items = results.map(r =>
-                `[${r.bank.name}] ${String(r.patch.program).padStart(3, " ")}  ${r.patch.name}`
+                String(`{yellow-fg}[${r.bank.name}]{/yellow-fg}`).padEnd(20, " ") 
+                + String(` {cyan-fg}${String(r.patch.program).padStart(3, " ")}{/cyan-fg}  ${r.patch.name}`).padStart(24, " ")
             );
 
             return {
@@ -719,7 +718,7 @@ class Model extends EventEmitter
         }
 
         const items = bank.patches.map(p =>
-            `${String(p.program).padStart(3, " ")}  ${p.name}`
+            `{cyan-fg}${String(p.program).padStart(3, " ")}{/cyan-fg}  ${p.name}`
         );
 
         return {

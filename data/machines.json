@@ -96,6 +96,14 @@
       "out": null,
       "outSlot": 31,
       "channel": 16
+    },
+    {
+      "id": "m_2fa7605d6229",
+      "name": "Melody Mate",
+      "midnamFile": "E-Mu/Proteus Custom.midnam",
+      "out": null,
+      "outSlot": 33,
+      "channel": 2
     }
   ]
 }
