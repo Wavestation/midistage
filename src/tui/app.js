@@ -15,7 +15,7 @@ const { Model } = require("../core/model");
 // -------------------- Splashscreen helpers --------------------
 function makeItGayLol(rainbowText)
 {
-  const rainbowColors = ["red-fg","yellow-fg","green-fg","cyan-fg","blue-fg","magenta-fg"];
+  const rainbowColors = ["red-fg","#FFA500-fg","yellow-fg","green-fg","cyan-fg","blue-fg","magenta-fg"];
 
   const rainbow = String(rainbowText || "").split("").map((ch, i) =>
   {
@@ -1099,7 +1099,8 @@ function runPM2(action)
 
     const chLabel = blessed.box({
       parent: editor,
-      top:23,
+      //top:23,
+      bottom: 2, 
       left: 2,
       height: 1,
       width: "50%",
@@ -1109,8 +1110,8 @@ function runPM2(action)
 
     const chBox = blessed.textbox({
       parent: editor,
-      top: 22,
-      bottom: 3,
+      //top: 22,
+      bottom: 1,
       left: "50%-9",
       height: 3,
       width: 5,
@@ -1123,7 +1124,7 @@ function runPM2(action)
 
     const help = blessed.box({
       parent: editor,
-      top: 25,
+      // top: 25,
       bottom: 0,
       left: 0,
       height: 1,

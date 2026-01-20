@@ -904,7 +904,33 @@
         "G": "e_a920e28688b2",
         "H": "e_81aab632ce72"
       }
+    },
+    {
+      "id": "sl_0d633c1450cd",
+      "name": "Vushi",
+      "entries": [
+        {
+          "id": "e_c9ec991464d3",
+          "name": "Hot Line",
+          "routes": [
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 24,
+              "patchName": "Preset 024",
+              "ccSlots": null
+            }
+          ]
+        }
+      ],
+      "hotkeys": {
+        "F": "e_c9ec991464d3"
+      }
     }
   ],
-  "activeId": "sl_95765ec38e86"
+  "activeId": "sl_5843e77461b3"
 }
