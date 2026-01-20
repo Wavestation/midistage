@@ -923,6 +923,17 @@
               "program": 24,
               "patchName": "Preset 024",
               "ccSlots": null
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 0,
+              "patchName": "Glass Organ",
+              "ccSlots": null
             }
           ]
         }
@@ -932,5 +943,5 @@
       }
     }
   ],
-  "activeId": "sl_5843e77461b3"
+  "activeId": "sl_0d633c1450cd"
 }

@@ -867,6 +867,7 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
         return {
             machineId: machine.id || "default",
             midnamFile: this.state.currentMidnamFile,
+            channel: machine.channel || 1,
             deviceName: m.deviceName,
             bankName: bank?.name || null,
             msb: bank?.msb ?? null,
@@ -918,7 +919,10 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
             return { ok: false, message: "Draft is empty: nothing to paste." };
         }
 
+
         const existing = Array.isArray(e.routes) ? e.routes : [];
+
+        /*
         const existingByMachine = new Map();
         for (const r of existing)
         {
@@ -931,6 +935,23 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
         {
             if (!r || !r.machineId) continue;
             if (existingByMachine.has(r.machineId)) conflicts.push(r.machineId);
+        }
+        */
+
+        const existingByMachineAndChannel = new Map();
+        for (const r of existing) {
+            if (r && r.machineId) {
+                // On crée une clé unique "ID_CANAL"
+                const key = `${r.machineId}_${r.channel || 1}`;
+                existingByMachineAndChannel.set(key, r);
+            }
+        }
+    
+        const conflicts = [];
+        for (const r of draftRoutes) {
+            if (!r || !r.machineId) continue;
+            const key = `${r.machineId}_${r.channel || 1}`;
+            if (existingByMachineAndChannel.has(key)) conflicts.push(key);
         }
 
         const force = !!(options && (options.force === true));
@@ -962,7 +983,8 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
             if (!r || !r.machineId) continue;
 
             const copy = Object.assign({}, r);
-            const had = existingByMachine.has(copy.machineId);
+            // const had = existingByMachine.has(copy.machineId);
+            const had = existingByMachineAndChannel.has(copy.machineId);
 
             const ok = this.setlists.upsertRoute(s.id, entryId, copy);
             if (ok)

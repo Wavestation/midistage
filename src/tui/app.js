@@ -58,7 +58,43 @@ function showJowliSplash(screen, { name, version, asciiArt = "" })
     content
   });
 
+  const progress = blessed.progressbar({
+    parent: splash,
+    border: 'none',
+    style: {
+      fg: 'cyan',
+      bg: 'black',     
+      bar: {bg: 'blue'}
+    },
+    ch: ' ',           
+    width: '50%',
+    height: 3,
+    bottom: 5,
+    left: 'center',
+    label: '',
+    tags: true,
+    filled: 0          
+  });
+
   screen.render();
+
+
+  // tawrawra-boum-dié !
+  let percent = 0;
+  const interval = setInterval(() => {
+    const rainbowColors = ["red","#FFA500","yellow","green","cyan","blue","magenta"];
+
+    percent += 5;
+    progress.setProgress(percent);
+    
+    //progress.style.bar.bg = rainbowColors[percent % rainbowColors.length];
+    screen.render();
+
+    if (percent >= 100) {
+      clearInterval(interval);
+      setTimeout(() => progress.destroy(), 500);
+    }
+  }, 100);
 
   return () =>
   {
@@ -361,7 +397,7 @@ function runPM2(action)
       tags: true,
       style: THEME.header,
       content:
-        "{bold}Tab{/bold} focus | {bold}Enter{/bold} send prog. change | {bold}s{/bold} search | {bold}l{/bold} setlist page | {bold}a{/bold} add->draft | {bold}m{/bold} machines mgmt menu | {bold}t{/bold} system menu"
+        "{bold}Tab{/bold} focus | {bold}Enter{/bold} send prog. change | {bold}s{/bold} search | {bold}l{/bold} setlist page | {bold}a{/bold} add->draft | {bold}x{/bold} clear draft | {bold}m{/bold} machines mgmt menu | {bold}t{/bold} system menu"
     });
 
     // “Instruments” = machines.json
@@ -836,6 +872,38 @@ function runPM2(action)
     kb.bindKey(["C-n"], () => moveSelection(+1));
     kb.bindKey(["C-p"], () => moveSelection(-1));
     kb.bindKey(["a"], () => addToDraft());
+    kb.bindKey(["x"], () => {
+      const qst = blessed.question({
+        parent: screen,
+        border: 'line',
+        height: 'shrink',
+        width: 'half',
+        top: 'center',
+        left: 'center',
+        tags: true
+      });
+      
+      qst.ask("This will empty the current draft!!\n Continue or Cancel?", (err, ans) => {
+        if (!!err)
+        {
+          setStatus("Unable to empty draft: " + err, "err");
+          screen.render();
+          return;
+        }
+
+        if (ans) 
+        {
+          model.draftClear();
+          setStatus("Draft totally trashed!", "warn");
+        } 
+        else
+        {
+          setStatus("Draft not trashed !", "ok");
+        }
+        screen.render();
+        return;
+      });
+    });
 
     // System settings
     kb.bindKey(["t"], () => switchPage("system"));
@@ -870,8 +938,6 @@ function runPM2(action)
     };
   }
 
-  // -------------------- Machines Page --------------------
-  // (inchangé depuis ton fichier: je ne te le casse pas ici)
   // -------------------- Machines Page --------------------
 
   function buildMachinesPage()
@@ -1790,9 +1856,6 @@ function runPM2(action)
     };
   }
 
-
-  // -------------------- MIDI Ports Page --------------------
-  // (inchangé depuis ton fichier)
   // -------------------- MIDI Ports Page --------------------
 
   function buildMidiPortsPage()
@@ -2954,28 +3017,51 @@ function runPM2(action)
       openRoutesEditor(entryId, r.machineId);
     });
 
-    routesList.key(["delete", "backspace"], () =>
+    routesList.key(["delete", "backspace"], () => 
     {
       const entryId = _routesEntryId;
       const r = getSelectedRouteInModal();
+      const m = model.machines.getById(r.machineId);
+      const mName = (m && m.name) ? m.name : r.machineId;
 
-      if (!entryId || !r)
+      if (!entryId || !r) return;
+
+      inputModal.setFront(); 
+
+      askInput(`Delete route for machine <${mName}>? Type "yes"`, "", (err, value) => 
       {
-        setStatus("No route selected.", "warn");
-        return;
-      }
+        setImmediate(() => {
+          if (err) 
+          {
+            routesList.focus();
+            screen.render();
+            return;
+          }
 
-      if (!model.removeEntryRoute)
-      {
-        setStatus("Missing model.removeEntryRoute().", "err");
-        return;
-      }
+          const v = String(value || "").trim().toLowerCase();
+          if (v !== "yes") 
+          {
+            setStatus("Cancelled.", "warn");
+            routesList.focus();
+            screen.render();
+            return;
+          }
 
-      const ok = model.removeEntryRoute(entryId, r.machineId);
-      setStatus(ok ? "Route removed." : "Route remove failed.", ok ? "ok" : "err");
-
-      refreshEntries(entryId);
-      openRoutesEditor(entryId, null);
+          const ok = model.removeEntryRoute(entryId, r.machineId);
+          if (ok) 
+          {
+            setStatus("Route removed.", "ok");
+            refreshEntries(entryId);
+            openRoutesEditor(entryId, null);
+          } 
+          else 
+          {
+            setStatus("Route remove failed.", "err");
+            routesList.focus();
+            screen.render();
+          }
+        });
+      });
     });
 
     // ------- Common helpers -------
