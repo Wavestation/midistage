@@ -655,7 +655,7 @@ class Model extends EventEmitter
             const msb = b.msb == null ? "-" : b.msb;
             const lsb = b.lsb == null ? "-" : b.lsb;
             //${String(parseInt(i)).padStart(3, " ")} 
-            return `${String(b.name).padEnd(10, " ")}  {grey-fg}[MSB=${String(msb).padStart(3, "0")} LSB=${String(lsb).padStart(3, "0")}] (${b.patches.length}){/grey-fg}`;
+            return `${String(b.name).padEnd(16, " ")}  {grey-fg}[MSB=${String(msb).padStart(3, "0")} LSB=${String(lsb).padStart(3, "0")}] (${b.patches.length}){/grey-fg}`;
         });
 
         return { items, count: items.length };

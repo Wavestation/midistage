@@ -3078,8 +3078,13 @@ function runPM2(action)
       const n = s.entries ? s.entries.length : 0;
       const active = model.getActiveSetlist();
       const isActive = active && active.id === s.id;
-      const mark = isActive ? FOCUS_MARK + " " : "  ";
-      return `${mark}${s.name}  {gray-fg}[${n} entries]{/gray-fg}`;
+      const mark = isActive ? FOCUS_MARK + " " : "";
+      const smark = isActive ? "{magenta-fg}" : "";
+      const emark = isActive ? "{/magenta-fg}" : "";
+
+      return `${smark}${String(s.name).padEnd(19, " ")}${emark} {gray-fg}[${n} entries]{/gray-fg}`;
+
+      //return String(`${mark}${s.name}`).padEnd(19, " ") + `{gray-fg}[${n} entries]{/gray-fg}`;
     }
 
     function refreshSetlists()
@@ -3118,7 +3123,7 @@ function runPM2(action)
       const hk = model.getHotkeyForEntry(getSelectedSetlist().id, e.id)
       //const hk = Object.keys(model.getHotkeyForEntry(getSelectedSetlist().id, e.id)).join(", ");
 
-      return `{green-fg}${String(idx + 1).padStart(2, "0")}{/green-fg} ${e.name}  {yellow-fg}[HK: ${hk || "N/A"}]{/yellow-fg} {gray-fg}[${n} route(s)]{/gray-fg}`;
+      return `{green-fg}${String(idx + 1).padStart(2, "0")}{/green-fg} ${String(e.name).padEnd(20, " ")}  {#FC6C47-fg}[HK: ${hk || "N/A"}]{/#FC6C47-fg}  {gray-fg}[${n} route(s)]{/gray-fg}`;
     }
 
     function refreshPreview()
@@ -3292,6 +3297,7 @@ function runPM2(action)
       setStatus(`Active setlist: ${s.name}`, "ok");
       refreshEntries(null);
       entriesList.focus();
+      focusIndex = 1;
       refreshFocusMarkers();
     });
 
