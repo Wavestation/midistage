@@ -4,9 +4,9 @@
     "enableFuzzySearch": false
   },
   "remote": {
-    "vfdBrightness": 3,
+    "vfdBrightness": 4,
     "backlightColor": "#11FF11",
-    "vfdIdleTime": 10,
+    "vfdIdleTime": 39,
     "serialRate": 38400,
     "serialPort": "/dev/ttyUSB0",
     "vfdDeepSleep": true
