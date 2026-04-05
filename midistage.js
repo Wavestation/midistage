@@ -6,45 +6,42 @@ const { startSerialServer } = require("./src/tui/serialServer");
 // const { startTelnetPtyServer } = require("./src/tui/telnetPtyServer");
 
 const { Model } = require("./src/core/model");
-const { RemoteDevice } = require("./src/remote/remoteDevice");
+const { G13RemoteDevice } = require("./src/remote/g13RemoteDevice");
 const { Settings } = require("./src/core/settings");
-
 
 const MIDNAM_DIR = path.join(__dirname, "data", "names");
 const SETTINGS_PATH = path.join(__dirname, "data", "settings.json");
 
-const appVer = "1.1"
+const appVer = "1.1";
 
 const settings = new Settings(SETTINGS_PATH);
 
 const model = new Model({
-  midnamDir: MIDNAM_DIR, 
+  midnamDir: MIDNAM_DIR,
   fuzzySearchEnabled: !!settings.getSetting("ui.enableFuzzySearch", false)
 });
 
-function getArg(name, def = null) 
+function getArg(name, def = null)
 {
   const i = process.argv.indexOf(name);
   if (i >= 0 && i + 1 < process.argv.length) return process.argv[i + 1];
   return def;
 }
 
-function clampInt(v, def, min, max) 
+function clampInt(v, def, min, max)
 {
   const n = parseInt(String(v), 10);
   if (!Number.isFinite(n)) return def;
   return Math.max(min, Math.min(max, n));
 }
 
-if (process.argv.includes("--telnet")) 
+if (process.argv.includes("--telnet"))
 {
-  // Telnet
   const port = parseInt(getArg("--port", "2323"), 10);
 
   console.log("Starting Telnet on port " + port + " ...");
 
   startTelnetServer((io) => startApp(MIDNAM_DIR, io, appVer, model), port, {
-    //terminal: "ansi",
     terminal: "xterm-256color",
     unicode: true,
     cols: 80,
@@ -54,7 +51,8 @@ if (process.argv.includes("--telnet"))
 else if (process.argv.includes("--serial"))
 {
   const portPath = getArg("--serial", null);
-  if (!portPath) {
+  if (!portPath)
+  {
     console.error("Usage: node midistage.js --serial <COM3|/dev/ttyUSB0> [--baud 115200] [--cols 80] [--rows 24]");
     process.exit(2);
   }
@@ -71,7 +69,6 @@ else if (process.argv.includes("--serial"))
       baudRate: baud,
       cols,
       rows,
-      //terminal: "ansi",   // <-- IMPORTANT pour Kermit-95 / ANSI-BBS
       terminal: "xterm-256color",
       unicode: false
     },
@@ -86,30 +83,28 @@ else if (process.argv.includes("--serial"))
   process.on("SIGINT", shutdown);
   process.on("SIGTERM", shutdown);
 }
-else 
+else
 {
-  // local  
   startApp(MIDNAM_DIR, null, appVer, model);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
-// Démarrage de la RC
-const remote = new RemoteDevice({
-  path: settings.getSetting("remote.serialPort", "/dev/ttyS0"),
-  baudRate: parseInt(settings.getSetting("remote.serialRate", 38400)),
+// D?marrage de la RC
+const remote = new G13RemoteDevice({
   log: console.log,
-  vfdIdleDelay: parseInt(settings.getSetting("remote.vfdIdleTime", 39)) * 1000,
+  vfdIdleDelay: parseInt(settings.getSetting("remote.vfdIdleTime", 39), 10) * 1000,
   vfdDefaultBrightness: settings.getSetting("remote.vfdBrightness", 3),
-  vfdDeepSleepEnabled: !!settings.getSetting("remote.vfdDeepSleep", false)
+  vfdDeepSleepEnabled: !!settings.getSetting("remote.vfdDeepSleep", false),
+  displayFont: 1,
+  backlightColor: settings.getSetting("remote.backlightColor", "#48C410")
 });
-
-// console.log("[DEBUG] Setting VFD: " + settings.getSetting("remote.vfdBrightness", 3))
 
 remote.initVFD();
 remote.setVFDBrightness(settings.getSetting("remote.vfdBrightness", 3));
+remote.setBacklightColor(settings.getSetting("remote.backlightColor", "#48C410"));
 remote.setCharTable(0);
 remote.setIntlFont(0);
 
-remote.showText(`è MIDISTAGE ver${appVer} è`, "");
+remote.showText(`? MIDISTAGE ver${appVer} ?`, "");
 
 let remoteLogoAnimStep = 0;
 let remoteLogoAnim = setInterval(() => {
@@ -121,26 +116,38 @@ let remoteLogoAnim = setInterval(() => {
 }, 100);
 
 setTimeout(() => {
-
   clearInterval(remoteLogoAnim);
-  
+
   const uis = model.getUiState();
-  let currentName = uis.currentEntryName
-  if (model.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>" 
+  let currentName = uis.currentEntryName;
+  if (model.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>";
 
   remote.showText(`{${uis.currentSetlistName}}`, currentName);
-  remote.showTextXY(`[WT]`, 17, 1);
-
+  remote.showTextXY("[WT]", 17, 1);
 }, 2639);
 
-// Remote Events handle
-remote.on("key", k => { 
+remote.on("connect", (payload) => {
+  console.log(`[REMOTE] G13 AVAILABLE ON ${payload.devicePath}`);
+});
+
+remote.on("disconnect", (payload) => {
+  console.warn(`[REMOTE] G13 DISCONNECTED (${payload.reason || "disconnect"})`);
+});
+
+remote.on("error", (error) => {
+  console.warn(`[REMOTE] G13 ERROR ${error.message}`);
+});
+
+remote.on("key", (k) => {
   try
   {
     console.log("[REMOTE] Key Pressed:" + k);
     model.handleRemoteKey(k);
-  } catch(er) { console.warn("[REMOTE] ERR KEYPRESS " + er); } // doesn't crash here
-
+  }
+  catch (er)
+  {
+    console.warn("[REMOTE] ERR KEYPRESS " + er);
+  }
 });
 
 model.on("recalledEntry", (state) =>
@@ -152,12 +159,12 @@ model.on("recalledEntry", (state) =>
 });
 
 model.on("changedSetlist", (state) =>
-  {
-    remote.clearVFD();
-    remote.showText(state.setlist, state.entry);
-    remote.showTextXY(`[${state.status}]`, 17, 1);
-    console.log(`[REMOTE] RECALLED SETLIST TO REMOTE ${state.setlist} - ${state.entry}`);
-  });
+{
+  remote.clearVFD();
+  remote.showText(state.setlist, state.entry);
+  remote.showTextXY(`[${state.status}]`, 17, 1);
+  console.log(`[REMOTE] RECALLED SETLIST TO REMOTE ${state.setlist} - ${state.entry}`);
+});
 
 model.on("remoteMessage", (message) => {
   remote.showText(message.up, message.down);
@@ -177,10 +184,16 @@ model.on("remoteVFDBrightness", (value) => {
 });
 
 model.on("remoteVFDIdleTime", (value) => {
-  remote.idleDelay = parseInt(value.value) * 1000;
+  remote.idleDelay = parseInt(value.value, 10) * 1000;
   console.log(`[REMOTE] PARAMETER IDLEDLY CHANGED TO ${value.value}`);
 });
+
 model.on("remoteVFDDeepSleep", (value) => {
-  remote.deepSleepEnabled = !!value.value
+  remote.deepSleepEnabled = !!value.value;
   console.log(`[REMOTE] PARAMETER DEEPSLEEP CHANGED TO ${!!value.value}`);
+});
+
+model.on("remoteBacklightColor", (value) => {
+  const applied = remote.setBacklightColor(value.value);
+  console.log(`[REMOTE] PARAMETER BACKLIGHT COLOR CHANGED TO ${applied}`);
 });

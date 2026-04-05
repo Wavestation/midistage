@@ -5,7 +5,13 @@ const path = require("path");
 const { EventEmitter } = require("events");
 
 const DEFAULT_SETTINGS_PATH = path.join(__dirname, "..", "..", "data", "settings.json");
-const DEFAULT_SETTINGS = { ui: { autorecallOnScroll: false }, remote: {vfdBrightness: 3 } };
+const DEFAULT_SETTINGS = {
+    ui: { autorecallOnScroll: false },
+    remote: {
+        vfdBrightness: 3,
+        backlightColor: "#48C410"
+    }
+};
 
 class Settings extends EventEmitter
 {
@@ -30,8 +36,8 @@ class Settings extends EventEmitter
             const v = src[k];
             if (v && typeof v === "object" && !Array.isArray(v))
             {
-            if (!dst[k] || typeof dst[k] !== "object") dst[k] = {};
-            this.deepMerge(dst[k], v);
+                if (!dst[k] || typeof dst[k] !== "object") dst[k] = {};
+                this.deepMerge(dst[k], v);
             }
             else dst[k] = v;
         }
@@ -63,7 +69,7 @@ class Settings extends EventEmitter
             try { this.atomicWriteJson(this.SETTINGS_PATH, s); } catch { }
             return s;
         }
-        catch(er)
+        catch (er)
         {
             console.warn("[LOADSETTINGS] ERROR: " + er);
             return JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
@@ -79,7 +85,7 @@ class Settings extends EventEmitter
             for (const p of parts) cur = cur[p];
             return (cur === undefined) ? fallback : cur;
         }
-        catch(er) { console.warn("[GETSETTING] ERROR: " + er); return fallback; }
+        catch (er) { console.warn("[GETSETTING] ERROR: " + er); return fallback; }
     }
 
     setSetting(pathStr, value)
@@ -96,9 +102,8 @@ class Settings extends EventEmitter
         }
         cur[parts[parts.length - 1]] = value;
 
-        try { this.atomicWriteJson(this.SETTINGS_PATH , this.settings); } catch(er) { console.warn("[SETSETTING] ERROR: " + er); }
+        try { this.atomicWriteJson(this.SETTINGS_PATH, this.settings); } catch (er) { console.warn("[SETSETTING] ERROR: " + er); }
     }
-
 }
 
 module.exports = { Settings };

@@ -6,11 +6,10 @@ const child_process = require("child_process");
 const { parseMidnamFile } = require("../midnam/parseMidnam");
 const midiDriver = require("../midi/driver");
 const { MachinesStore } = require("./machines");
-const { SetlistsStore } = require("./setlists");
+const { SetlistsStore, normalizeHotkey } = require("./setlists");
 const { MidiPortsStore } = require("./midiports");
 
 const { EventEmitter } = require("events");
-const { isNumberObject } = require("util/types");
 
 
 function fuzzyMatch(query, text)
@@ -255,12 +254,103 @@ class Model extends EventEmitter
 
     handleRemoteKey(key)
     {
-        if (!Number.isInteger(parseInt(key)))
+        const remoteKey = String(key || "").trim().toUpperCase();
+        if (!remoteKey) return;
+
+        const hotkey = normalizeHotkey(remoteKey);
+        if (hotkey)
         {
-            this.triggerSetlistHotkey(key);
-        } else {
-            this.triggerFunctionKey(key);
+            this.triggerSetlistHotkey(hotkey);
+            return;
         }
+
+        if (/^\d+$/.test(remoteKey))
+        {
+            this.triggerFunctionKey(Number(remoteKey));
+            return;
+        }
+
+        switch (remoteKey)
+        {
+            case "M1":
+                this.triggerFunctionKey(1);
+                return;
+            case "M2":
+                this.triggerFunctionKey(2);
+                return;
+            case "M3":
+                this.triggerFunctionKey(4);
+                return;
+            case "MR":
+                this.triggerFunctionKey(5);
+                return;
+            case "LCD3":
+                this.triggerFunctionKey(6);
+                return;
+            case "FUNC":
+                if (this.currentMenu !== "power") this.openRemotePowerMenu();
+                return;
+            case "LCD1":
+                if (this.currentMenu === "power") this.executeRemoteReboot();
+                return;
+            case "LCD2":
+                if (this.currentMenu === "power") this.executeRemoteShutdown();
+                return;
+            case "LCD4":
+                if (this.currentMenu === "power") this.closeRemotePowerMenu();
+                return;
+            default:
+                return;
+        }
+    }
+
+    showRemoteCurrentSetlist()
+    {
+        const uis = this.getUiState();
+        let currentName = uis.currentEntryName;
+        if (this.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>";
+
+        this.emit?.("changedSetlist", {
+            setlist:`{${uis.currentSetlistName}}`,
+            entry:currentName,
+            status:"WT"
+        });
+    }
+
+    openRemotePowerMenu()
+    {
+        this.currentMenu = "power";
+        this.emit("remoteMessage", {
+            up:"FUNC: Power Menu",
+            down:"1:REB 2:OFF 4:BK"
+        });
+    }
+
+    closeRemotePowerMenu()
+    {
+        this.currentMenu = "main";
+        this.showRemoteCurrentSetlist();
+    }
+
+    executeRemoteReboot()
+    {
+        this.emit("remoteMessage", {
+            up:"MIDISTAGE REBOOTING",
+            down: "Please Wait..."
+        });
+        this.runSystemctl("reboot");
+    }
+
+    executeRemoteShutdown()
+    {
+        this.emit("remoteMessage", {
+            up:"MIDISTAGE SYSTEM...",
+            down: "...IS SHUTTING DOWN"
+        });
+        setTimeout(() => {
+            this.emit("remoteDisplayPower", {value:0});
+            this.runSystemctl("poweroff");
+        }, 1939);
     }
 
     /**
@@ -273,28 +363,23 @@ class Model extends EventEmitter
 
         console.log("[MODEL] FKEY: " + n);
 
-        switch(n)
+        switch (n)
         {
             case 1:
-                // previous setlist
-                if(this.currentMenu != "main") return;
-
-                this.currentMenu = "main"
+                if (this.currentMenu != "main") return;
+                this.currentMenu = "main";
                 this.activateSetlistDelta(-1);
                 break;
             case 2:
-                // next setlist
-                if(this.currentMenu != "main") return;
-
-                this.currentMenu = "main"
+                if (this.currentMenu != "main") return;
+                this.currentMenu = "main";
                 this.activateSetlistDelta(1);
                 break;
             case 3:
-                // activate current setlist
-                if(this.currentMenu != "main") return;
+                if (this.currentMenu != "main") return;
 
                 if (this.getActiveSetlist().entries.length == 0) return;
-                this.currentMenu = "main" 
+                this.currentMenu = "main";
                 setTimeout(() =>
                 {
                     this.emit("remoteDisplayXY", {
@@ -305,131 +390,89 @@ class Model extends EventEmitter
                 }, 39);
                 if (this.currentEntryId) return this.activateEntry(this.currentEntryId);
 
-                // If nothing selected yet, activate first entry if exists
-                const s = this.getActiveSetlist();
-                const first = s?.entries?.[0]?.id || null;
-                if (first) return this.activateEntry(first);
-                console.log("[MODEL] F6: " + first);
-                return;
+                {
+                    const s = this.getActiveSetlist();
+                    const first = s?.entries?.[0]?.id || null;
+                    if (first) return this.activateEntry(first);
+                    console.log("[MODEL] F6: " + first);
+                    return;
+                }
             case 4:
-                // previous entry
-                if(this.currentMenu != "main") return;
+                if (this.currentMenu != "main") return;
 
                 if (this.getActiveSetlist().entries.length == 0) return;
-                this.currentMenu = "main"
+                this.currentMenu = "main";
                 return this.activateEntryDelta(-1);
             case 5:
-                // next entry
-                if(this.currentMenu != "main") return;
+                if (this.currentMenu != "main") return;
 
-                this.currentMenu = "main"
+                this.currentMenu = "main";
                 if (this.getActiveSetlist().entries.length == 0) return;
                 return this.activateEntryDelta(+1);
             case 6:
-                if(this.currentMenu == "power")  // REBOOT
+                if (this.currentMenu == "power")
                 {
-                    this.emit("remoteMessage", {
-                        up:"MIDISTAGE REBOOTING",
-                        down: "Please Wait..."
-                    });
-                    this.runSystemctl("reboot");
+                    this.executeRemoteReboot();
                 }
-                else                               // normal operation : VIEW MENU
+                else
                 {
-                    const uis = this.getUiState();
-                    let currentName = uis.currentEntryName
-                    if (this.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>" 
-
-                    this.emit?.("changedSetlist", {
-                        setlist:`{${uis.currentSetlistName}}`,
-                        entry:currentName,
-                        status:"WT"
-                    });
+                    this.showRemoteCurrentSetlist();
                 }
                 break;
             case 7:
-                if(this.currentMenu == "power") // SHUTDOWN
+                if (this.currentMenu == "power")
                 {
-                    this.emit("remoteMessage", {
-                        up:"MIDISTAGE SYSTEM...",
-                        down: "...IS SHUTTING DOWN"
-                    });
-                    setTimeout(() => {
-
-                        this.emit("remoteDisplayPower", {value:0});
-                        this.runSystemctl("poweroff");
-                    }, 1939);
-                    
-                }
-                else                           // NORMAL OPERATION : TBD
-                {
-                    // Do other things // key currently unassigned
+                    this.executeRemoteShutdown();
                 }
                 break;
             case 8:
-                // power menu
                 if (this.currentMenu != "power")
                 {
-                    this.currentMenu = "power";
-                    this.emit("remoteMessage", {
-                        up:"Power Menu (F8:BACK)",
-                        down: "F6:REBOOT F7:POWROFF"
-                    });
-                } 
-                else if(this.currentMenu == "power") 
+                    this.openRemotePowerMenu();
+                }
+                else
                 {
-                    this.currentMenu = "main";
-                    const uis = this.getUiState();
-                    let currentName = uis.currentEntryName
-                    if (this.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>" 
-
-                    this.emit?.("changedSetlist", {
-                        setlist:`{${uis.currentSetlistName}}`,
-                        entry:currentName,
-                        status:"WT"
-                    });
+                    this.closeRemotePowerMenu();
                 }
                 break;
         }
     }
 
     /**
-     * Hotkeys A..H stored in setlist JSON: setlist.hotkeys = { A: entryId, ... }
+     * Hotkeys G1..G22 stored in setlist JSON: setlist.hotkeys = { G1: entryId, ... }
+     * Legacy A..H mappings are normalized to G1..G8 on load.
      */
     triggerSetlistHotkey(letter)
     {
-        if(this.currentMenu != "main") return;
-        this.currentMenu = "main"
-
-        console.log("[MODEL] LKEY: " + letter);
-        
+        if (this.currentMenu != "main") return;
+        this.currentMenu = "main";
 
         const s = this.getActiveSetlist();
         if (!s) return;
 
-        console.log(s.hotkeys);
+        const key = normalizeHotkey(letter);
+        if (!key) return;
 
-        const key = String(letter || "").trim().toUpperCase();
         const entryId = s.hotkeys?.[key];
 
-        console.log("[MODEL] eID: " + key);
-
-        if (!entryId) 
+        if (!entryId)
         {
             this.emit("remoteMessage", {
                 up:`{${s.name}}`,
-                down: `HKey [${key}] unassigned!`
+                down: `Hotkey [${key}] unassigned!`
             });
             return;
         }
+
         setTimeout(() =>
-            {
-                this.emit("remoteDisplayXY", {
-                    text:String.fromCharCode(0x9F) + key,
-                    xpos:18,
-                    ypos:1
-                });
-            }, 339);
+        {
+            this.emit("remoteDisplayXY", {
+                text:key,
+                xpos:Math.max(1, 21 - key.length),
+                ypos:1
+            });
+        }, 339);
+
         return this.activateEntry(entryId);
     }
 
@@ -1185,42 +1228,38 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
     // ---------- Setlist Hotkeys (mirrorées dans le model) ----------
 
     /**
-     * Assign a hotkey (A..H) to a given entry in the active setlist.
+     * Assign a hotkey (G1..G22) to a given entry in the active setlist.
+     * Legacy A..H and bare 1..22 inputs are normalized automatically.
      * @param {string} setlistId - ID of the setlist
-     * @param {string} letter - Hotkey letter A..H
+     * @param {string} letter - Hotkey label
      * @param {string} entryId - ID of the entry to assign
      * @returns {boolean} true if saved successfully
      */
     assignHotkey(setlistId, letter, entryId)
     {
-
         console.log("[MODEL] ENTERING ASSIGN HOTKEY " + setlistId);
 
         const s = this.setlists.getById(setlistId);
         if (!s) return false;
 
-        const key = String(letter || "").trim().toUpperCase();
-        if (!/^[A-H]$/.test(key)) return false;
+        const key = normalizeHotkey(letter);
+        if (!key) return false;
 
-        /*
-        if (!s.hotkeys) s.hotkeys = {};
-        s.hotkeys[key] = entryId;
-        */
-        console.log("[MODEL] ASSIGN HOTKEY THEN SAVE " + letter + " " + entryId);
+        console.log("[MODEL] ASSIGN HOTKEY THEN SAVE " + key + " " + entryId);
         const result = this.setlists.assignHotkey(setlistId, key, entryId);
 
         if (result)
         {
             this.emit("remoteMessage", {
                 up:`{${s.name}}`,
-                down: `HKey [${key}] assigned!`
+                down: `Hotkey [${key}] assigned!`
             });
         }
-        return result;    
+        return result;
     }
 
     /**
-     * Clear any hotkey (A..H) pointing to a given entry in the active setlist.
+     * Clear any hotkey pointing to a given entry in the active setlist.
      * @param {string} setlistId - ID of the setlist
      * @param {string} entryId - ID of the entry to clear
      * @returns {boolean} true if saved successfully
@@ -1232,7 +1271,6 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
         const s = this.setlists.getById(setlistId);
         if (!s || !s.hotkeys) return false;
 
-        // Remove any hotkey pointing to entryId
         const key = this.setlists.getHotkeyForEntry(setlistId, entryId);
 
         console.log("[MODEL] REMOVE HOTKEY THEN SAVE " + key + " " + entryId);
@@ -1242,14 +1280,13 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
         {
             this.emit("remoteMessage", {
                 up:`{${s.name}}`,
-                down: `HKey [${key}] removed!`
+                down: `Hotkey [${key}] removed!`
             });
         }
 
         return result;
     }
 
-    // Wrapper to hotkeys functions
     clearHotkeys(setlistId)
     {
         return this.setlists.clearHotkeys(setlistId);
@@ -1260,12 +1297,12 @@ const msg = midiDriver.sendPatch(machineRun, bank, patch);
         return this.setlists.listHotkeys(setlistId);
     }
 
-
     getHotkeyForEntry(setlistId, entryId)
     {
         return this.setlists.getHotkeyForEntry(setlistId, entryId);
     }
 
+    // Logging helpers
     // Logging helpers
     _nowStamp()
     {

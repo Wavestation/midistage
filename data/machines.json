@@ -1,5 +1,5 @@
 {
-  "activeId": "m_58281203af4d",
+  "activeId": "m_24d196fd4495",
   "machines": [
     {
       "id": "m_korgtr_ch5",
@@ -75,19 +75,19 @@
     },
     {
       "id": "m_bc84fb8a2c41",
-      "name": "MASK1 interface mobile",
-      "midnamFile": "E-Mu/Proteus Custom.midnam",
+      "name": "MOTIF Rack mobile",
+      "midnamFile": "Yamaha/MOTIF Rack.midnam",
       "out": null,
       "outSlot": 26,
       "channel": 1
     },
     {
       "id": "m_22df58e6d023",
-      "name": "EFM CH2 interface mobile",
-      "midnamFile": "Kodamo/Essence FM.midnam",
+      "name": "Virus Rack XL mobile",
+      "midnamFile": "Access/Virus Rack XL.midnam",
       "out": null,
-      "outSlot": 25,
-      "channel": 2
+      "outSlot": 27,
+      "channel": 1
     },
     {
       "id": "m_57f33818bc73",
@@ -104,6 +104,22 @@
       "out": null,
       "outSlot": 33,
       "channel": 2
+    },
+    {
+      "id": "m_b66e22ab60e0",
+      "name": "Kurzweil PC3K7",
+      "midnamFile": "Kurzweil/PC3K.midnam",
+      "out": null,
+      "outSlot": 5,
+      "channel": 1
+    },
+    {
+      "id": "m_0cc8b896a979",
+      "name": "GEM S3 TURBO",
+      "midnamFile": "Generalmusic/S2 S3 Turbo.midnam",
+      "out": null,
+      "outSlot": 30,
+      "channel": 1
     }
   ]
 }

@@ -4,6 +4,20 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 
+const LEGACY_HOTKEY_MAP = Object.freeze({
+    A: "G1",
+    B: "G2",
+    C: "G3",
+    D: "G4",
+    E: "G5",
+    F: "G6",
+    G: "G7",
+    H: "G8"
+});
+
+const G13_HOTKEY_RE = /^G(?:[1-9]|1\d|2[0-2])$/;
+const G13_BARE_HOTKEY_RE = /^(?:[1-9]|1\d|2[0-2])$/;
+
 function makeId(prefix = "s")
 {
     return `${prefix}_${crypto.randomBytes(6).toString("hex")}`;
@@ -49,7 +63,7 @@ function normalizeCCSlots(src)
                 const cc = Number(it[0]);
                 const value = Number(it[1]);
                 if (!Number.isFinite(cc) || !Number.isFinite(value)) return null;
-                return { cc: Math.max(0, Math.min(127, cc|0)), value: Math.max(0, Math.min(127, value|0)) };
+                return { cc: Math.max(0, Math.min(127, cc | 0)), value: Math.max(0, Math.min(127, value | 0)) };
             }
 
             if (typeof it === "object")
@@ -57,7 +71,7 @@ function normalizeCCSlots(src)
                 const cc = Number(it.cc);
                 const value = Number(it.value);
                 if (!Number.isFinite(cc) || !Number.isFinite(value)) return null;
-                return { cc: Math.max(0, Math.min(127, cc|0)), value: Math.max(0, Math.min(127, value|0)) };
+                return { cc: Math.max(0, Math.min(127, cc | 0)), value: Math.max(0, Math.min(127, value | 0)) };
             }
 
             return null;
@@ -70,7 +84,7 @@ function normalizeCCSlots(src)
             const cc = Number(k);
             const value = Number(src[k]);
             if (!Number.isFinite(cc) || !Number.isFinite(value)) continue;
-            arr.push({ cc: Math.max(0, Math.min(127, cc|0)), value: Math.max(0, Math.min(127, value|0)) });
+            arr.push({ cc: Math.max(0, Math.min(127, cc | 0)), value: Math.max(0, Math.min(127, value | 0)) });
         }
     }
 
@@ -103,24 +117,75 @@ function normalizeEntry(e)
     };
 }
 
-function normalizeSetlist(s)
+function normalizeHotkey(k)
 {
+    if (k == null) return null;
+
+    const key = String(k).trim().toUpperCase();
+    if (!key) return null;
+    if (G13_HOTKEY_RE.test(key)) return key;
+    if (G13_BARE_HOTKEY_RE.test(key)) return `G${Number(key)}`;
+    if (LEGACY_HOTKEY_MAP[key]) return LEGACY_HOTKEY_MAP[key];
+    return null;
+}
+
+function normalizeHotkeysMap(src)
+{
+    const hotkeys = {};
+    let migrated = false;
+
+    if (!src || typeof src !== "object")
+    {
+        return { hotkeys, migrated };
+    }
+
+    for (const [rawKey, rawEntryId] of Object.entries(src))
+    {
+        const entryId = rawEntryId == null ? null : String(rawEntryId);
+        const normalizedKey = normalizeHotkey(rawKey);
+
+        if (!entryId || !normalizedKey)
+        {
+            migrated = true;
+            continue;
+        }
+
+        if (normalizedKey !== String(rawKey).trim().toUpperCase())
+        {
+            migrated = true;
+        }
+
+        if (!hotkeys[normalizedKey])
+        {
+            hotkeys[normalizedKey] = entryId;
+        }
+        else if (hotkeys[normalizedKey] !== entryId)
+        {
+            migrated = true;
+        }
+    }
+
+    return { hotkeys, migrated };
+}
+
+function normalizeSetlistWithMeta(s)
+{
+    const { hotkeys, migrated } = normalizeHotkeysMap(s && typeof s.hotkeys === "object" ? s.hotkeys : {});
+
     return {
-        id: String((s && s.id) || makeId("sl")),
-        name: String((s && s.name) || "Setlist"),
-        entries: Array.isArray(s && s.entries) ? s.entries.map(normalizeEntry) : [],
-        hotkeys: (s && typeof s.hotkeys === "object" && s.hotkeys) ? Object.assign({}, s.hotkeys) : {}
+        setlist: {
+            id: String((s && s.id) || makeId("sl")),
+            name: String((s && s.name) || "Setlist"),
+            entries: Array.isArray(s && s.entries) ? s.entries.map(normalizeEntry) : [],
+            hotkeys
+        },
+        migrated
     };
 }
 
-function normalizeHotkey(k)
+function normalizeSetlist(s)
 {
-    if (!k) return null;
-    const key = String(k).trim().toUpperCase();
-    if (key.length !== 1) return null;
-    const c = key.charCodeAt(0);
-    if (c < 65 || c > 72) return null; // A..H
-    return key;
+    return normalizeSetlistWithMeta(s).setlist;
 }
 
 class SetlistsStore
@@ -135,10 +200,16 @@ class SetlistsStore
     load()
     {
         const raw = safeReadJson(this.filePath, { setlists: [], activeId: null });
+        let shouldSave = false;
 
         if (Array.isArray(raw.setlists))
         {
-            raw.setlists = raw.setlists.map(normalizeSetlist);
+            raw.setlists = raw.setlists.map((setlist) =>
+            {
+                const normalized = normalizeSetlistWithMeta(setlist);
+                shouldSave = shouldSave || normalized.migrated;
+                return normalized.setlist;
+            });
         }
         else
         {
@@ -153,6 +224,12 @@ class SetlistsStore
         if (this.data.activeId && !this.getById(this.data.activeId))
         {
             this.data.activeId = this.data.setlists[0]?.id || null;
+            shouldSave = true;
+        }
+
+        if (shouldSave)
+        {
+            this.save();
         }
     }
 
@@ -259,7 +336,6 @@ class SetlistsStore
 
         s.entries.splice(idx, 1);
 
-        // nettoyage hotkeys
         for (const k of Object.keys(s.hotkeys))
         {
             if (s.hotkeys[k] === entryId) delete s.hotkeys[k];
@@ -305,15 +381,15 @@ class SetlistsStore
         if (!src) return null;
 
         const copy = normalizeEntry({
-        name: newName || (src.name + " (copy)"),
-        routes: (src.routes || []).map(r => ({ ...r })) // shallow OK ici (valeurs primitives)
+            name: newName || (src.name + " (copy)"),
+            routes: (src.routes || []).map(r => ({ ...r }))
         });
 
         s.entries.push(copy);
         this.save();
         return copy;
     }
-    
+
     // ----- Routes -----
 
     upsertRoute(setlistId, entryId, route)
@@ -327,7 +403,6 @@ class SetlistsStore
         const idx = e.routes.findIndex(x => x.machineId === r.machineId);
         if (idx >= 0)
         {
-            // Preserve existing CC slots unless the new route explicitly provides them
             if (r.ccSlots == null && e.routes[idx] && e.routes[idx].ccSlots != null)
             {
                 r.ccSlots = e.routes[idx].ccSlots;
@@ -356,28 +431,26 @@ class SetlistsStore
         this.save();
         return true;
     }
+
     // ----- HOTKEYS -----
 
-    assignHotkey(setlistId, key, entryId) 
+    assignHotkey(setlistId, key, entryId)
     {
         const s = this.getById(setlistId);
         if (!s) return false;
-    
+
         const hk = normalizeHotkey(key);
         if (!hk) return false;
-    
+
         if (!s.entries.find(e => e.id === entryId)) return false;
-    
-        // check if already assigned
-        const alreadyAssigned = Object.entries(s.hotkeys).some(([k, id]) => id === entryId && k !== hk);
-    
+
+        const alreadyAssigned = Object.entries(s.hotkeys).some(([existingKey, id]) => id === entryId && existingKey !== hk);
         if (alreadyAssigned) return false;
-    
+
         s.hotkeys[hk] = entryId;
         this.save();
         return true;
     }
-    
 
     removeHotkey(setlistId, key)
     {
@@ -423,4 +496,4 @@ class SetlistsStore
     }
 }
 
-module.exports = { SetlistsStore };
+module.exports = { SetlistsStore, normalizeHotkey };

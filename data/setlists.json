@@ -184,9 +184,9 @@
         }
       ],
       "hotkeys": {
-        "A": "e_251c6475101c",
-        "B": "e_03dd5400118e",
-        "C": "e_3a874124be5c"
+        "G1": "e_251c6475101c",
+        "G2": "e_03dd5400118e",
+        "G3": "e_3a874124be5c"
       }
     },
     {
@@ -502,11 +502,11 @@
         }
       ],
       "hotkeys": {
-        "A": "e_6be0004e39e6",
-        "B": "e_d73e14a68e81",
-        "D": "e_0d1d296bd06c",
-        "E": "e_67767b65c9df",
-        "C": "e_258c29e807d4"
+        "G1": "e_6be0004e39e6",
+        "G2": "e_d73e14a68e81",
+        "G3": "e_258c29e807d4",
+        "G4": "e_0d1d296bd06c",
+        "G5": "e_67767b65c9df"
       }
     },
     {
@@ -664,22 +664,6 @@
               ]
             },
             {
-              "machineId": "m_22df58e6d023",
-              "midnamFile": "Essence FM.midnam",
-              "deviceName": "Kodamo Essence FM",
-              "bankName": "Bank I",
-              "msb": 0,
-              "lsb": 8,
-              "program": 14,
-              "patchName": "Myriade FM EP+KS",
-              "ccSlots": [
-                {
-                  "cc": 7,
-                  "value": 69
-                }
-              ]
-            },
-            {
               "machineId": "m_57f33818bc73",
               "midnamFile": "Proteus Custom.midnam",
               "deviceName": "E-mu Systems Proteus Custom",
@@ -808,7 +792,7 @@
         },
         {
           "id": "e_715be3cc57ac",
-          "name": "MASK",
+          "name": "MASK1 EX Pad",
           "routes": [
             {
               "machineId": "m_57f33818bc73",
@@ -892,17 +876,62 @@
               "ccSlots": null
             }
           ]
+        },
+        {
+          "id": "e_5845cc6f177a",
+          "name": "Super Piano",
+          "routes": [
+            {
+              "machineId": "m_58281203af4d",
+              "midnamFile": "Korg/NS5R.midnam",
+              "deviceName": "Korg NS5R",
+              "bankName": "Prog A",
+              "msb": 81,
+              "lsb": 0,
+              "program": 41,
+              "patchName": "PianoHaven",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_5e47b1df2b7f",
+              "midnamFile": "Kurzweil/K2000.midnam",
+              "deviceName": "Kurzweil K2000",
+              "bankName": "Bank 9",
+              "msb": null,
+              "lsb": 9,
+              "program": 99,
+              "patchName": "Pad Nine",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_c222bc580330",
+          "name": "FM Piano KRZ",
+          "routes": [
+            {
+              "machineId": "m_b66e22ab60e0",
+              "midnamFile": "Kurzweil/PC3K.midnam",
+              "deviceName": "Kurzweil",
+              "bankName": "G",
+              "msb": 0,
+              "lsb": 6,
+              "program": 1,
+              "patchName": "769\tFM E Piano 1",
+              "ccSlots": null
+            }
+          ]
         }
       ],
       "hotkeys": {
-        "A": "e_287ee50da425",
-        "B": "e_1b39745840c1",
-        "C": "e_60b5702732b4",
-        "D": "e_44764549c894",
-        "E": "e_d7a4de1e54a4",
-        "F": "e_715be3cc57ac",
-        "G": "e_a920e28688b2",
-        "H": "e_81aab632ce72"
+        "G2": "e_1b39745840c1",
+        "G3": "e_60b5702732b4",
+        "G4": "e_44764549c894",
+        "G5": "e_d7a4de1e54a4",
+        "G6": "e_715be3cc57ac",
+        "G7": "e_a920e28688b2",
+        "G8": "e_81aab632ce72",
+        "G1": "e_287ee50da425"
       }
     },
     {
@@ -931,17 +960,927 @@
               "bankName": "Bank A",
               "msb": 0,
               "lsb": 0,
-              "program": 0,
-              "patchName": "Glass Organ",
+              "program": 65,
+              "patchName": "Snow Pad",
               "ccSlots": null
             }
           ]
         }
       ],
       "hotkeys": {
-        "F": "e_c9ec991464d3"
+        "G6": "e_c9ec991464d3"
+      }
+    },
+    {
+      "id": "sl_d248e39ffb1b",
+      "name": "Groove Lab",
+      "entries": [
+        {
+          "id": "e_94bdc12f5f05",
+          "name": "Simple A.Piano",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "Preset Voice Bank 1",
+              "msb": 63,
+              "lsb": 0,
+              "program": 0,
+              "patchName": "Ap: PowerGrand",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 25,
+              "patchName": "Preset 025",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_9a4b33314480",
+          "name": "Organic A.Piano",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "Preset Voice Bank 1",
+              "msb": 63,
+              "lsb": 0,
+              "program": 0,
+              "patchName": "Ap: PowerGrand",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 120
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 29,
+              "patchName": "Preset 029",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Access/Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank E",
+              "msb": 0,
+              "lsb": 4,
+              "program": 102,
+              "patchName": "SynthPnoJL",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 111
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e_ceaabafd4217",
+          "name": "Wurly E.Piano",
+          "routes": [
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank J",
+              "msb": 0,
+              "lsb": 9,
+              "program": 66,
+              "patchName": "Wurly KS",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 0
+                },
+                {
+                  "cc": 93,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 24,
+              "patchName": "Preset 024",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_fcf8a1696771",
+          "name": "Orgy E.Piano",
+          "routes": [
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank J",
+              "msb": 0,
+              "lsb": 9,
+              "program": 66,
+              "patchName": "Wurly KS",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 111
+                },
+                {
+                  "cc": 91,
+                  "value": 0
+                },
+                {
+                  "cc": 93,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 28,
+              "patchName": "Preset 028",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Access/Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank E",
+              "msb": 0,
+              "lsb": 4,
+              "program": 102,
+              "patchName": "SynthPnoJL",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 96
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e_236a9f33758f",
+          "name": "Stack E.Piano",
+          "routes": [
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Access/Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank E",
+              "msb": 0,
+              "lsb": 4,
+              "program": 102,
+              "patchName": "SynthPnoJL",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 111
+                }
+              ]
+            },
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "Preset Voice Bank 1",
+              "msb": 63,
+              "lsb": 0,
+              "program": 24,
+              "patchName": "Kb: TX802",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 120
+                },
+                {
+                  "cc": 91,
+                  "value": 39
+                },
+                {
+                  "cc": 93,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 29,
+              "patchName": "Preset 029",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_651bbddef2fb",
+          "name": "Woofy Organ",
+          "routes": [
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Access/Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank C",
+              "msb": 0,
+              "lsb": 2,
+              "program": 113,
+              "patchName": "Organic PS",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 111
+                }
+              ]
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 107,
+              "patchName": "Simple Church Organ",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 99
+                },
+                {
+                  "cc": 91,
+                  "value": 0
+                },
+                {
+                  "cc": 93,
+                  "value": 39
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 28,
+              "patchName": "Preset 028",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_508e94f69b78",
+          "name": "Rowly Organ",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "Preset Voice Bank 1",
+              "msb": 63,
+              "lsb": 0,
+              "program": 57,
+              "patchName": "Or: Greasy",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 77
+                },
+                {
+                  "cc": 91,
+                  "value": 0
+                },
+                {
+                  "cc": 93,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Access/Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank B",
+              "msb": 0,
+              "lsb": 1,
+              "program": 55,
+              "patchName": "OrganizeSV",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 96
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 30,
+              "patchName": "Preset 030",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank I",
+              "msb": 0,
+              "lsb": 8,
+              "program": 72,
+              "patchName": "PIKHORG",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 99
+                },
+                {
+                  "cc": 91,
+                  "value": 0
+                },
+                {
+                  "cc": 93,
+                  "value": 69
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e_226874ed3a93",
+          "name": "Total Pad",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "Preset Voice Bank 4",
+              "msb": 63,
+              "lsb": 3,
+              "program": 111,
+              "patchName": "Pd: Angelvoice",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 121
+                },
+                {
+                  "cc": 91,
+                  "value": 39
+                },
+                {
+                  "cc": 93,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Access/Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank C",
+              "msb": 0,
+              "lsb": 2,
+              "program": 15,
+              "patchName": "DarkliteSV",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 77
+                }
+              ]
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 11,
+              "patchName": "FilterStrings",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 121
+                },
+                {
+                  "cc": 91,
+                  "value": 39
+                },
+                {
+                  "cc": 93,
+                  "value": 93
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 30,
+              "patchName": "Preset 030",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_ad69f10c48ee",
+          "name": "Maxi Strings",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "Preset Voice Bank 2",
+              "msb": 63,
+              "lsb": 1,
+              "program": 13,
+              "patchName": "St: Background",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 121
+                },
+                {
+                  "cc": 91,
+                  "value": 7
+                },
+                {
+                  "cc": 93,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Access/Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank C",
+              "msb": 0,
+              "lsb": 2,
+              "program": 15,
+              "patchName": "DarkliteSV",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 77
+                }
+              ]
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 11,
+              "patchName": "FilterStrings",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 121
+                },
+                {
+                  "cc": 91,
+                  "value": 7
+                },
+                {
+                  "cc": 93,
+                  "value": 93
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 30,
+              "patchName": "Preset 030",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_43705578d9e5",
+          "name": "Simple Marimba",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "GM Voice Bank",
+              "msb": 0,
+              "lsb": 0,
+              "program": 12,
+              "patchName": "Marimba",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 25,
+              "patchName": "Preset 025",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_da68cd63df21",
+          "name": "Gluey Marimba",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "GM Voice Bank",
+              "msb": 0,
+              "lsb": 0,
+              "program": 12,
+              "patchName": "Marimba",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 27,
+              "patchName": "Preset 027",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank C",
+              "msb": 0,
+              "lsb": 2,
+              "program": 12,
+              "patchName": "Marimba",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 101
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e_1890a378f28a",
+          "name": "Stacked Marimba",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "GM Voice Bank",
+              "msb": 0,
+              "lsb": 0,
+              "program": 12,
+              "patchName": "Marimba",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 120
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 30,
+              "patchName": "Preset 030",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_22df58e6d023",
+              "midnamFile": "Access/Virus Rack XL.midnam",
+              "deviceName": "Access Virus Rack XL",
+              "bankName": "Singles Bank E",
+              "msb": 0,
+              "lsb": 4,
+              "program": 57,
+              "patchName": "NintendoJL",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 111
+                }
+              ]
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank C",
+              "msb": 0,
+              "lsb": 2,
+              "program": 45,
+              "patchName": "Pizzicato Strings",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 99
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 96
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e_56467291c0c3",
+          "name": "Simple Vibraphone",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "GM Voice Bank",
+              "msb": 0,
+              "lsb": 0,
+              "program": 11,
+              "patchName": "Vibes",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 25,
+              "patchName": "Preset 025",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_7dacd1794f20",
+          "name": "Vibrabeth",
+          "routes": [
+            {
+              "machineId": "m_bc84fb8a2c41",
+              "midnamFile": "Yamaha/MOTIF Rack.midnam",
+              "deviceName": "Yamaha MOTIF Rack",
+              "bankName": "GM Voice Bank",
+              "msb": 0,
+              "lsb": 0,
+              "program": 11,
+              "patchName": "Vibes",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 27,
+              "patchName": "Preset 027",
+              "ccSlots": null
+            },
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank B",
+              "msb": 0,
+              "lsb": 1,
+              "program": 0,
+              "patchName": "Tibetan Bells",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 77
+                },
+                {
+                  "cc": 91,
+                  "value": 11
+                },
+                {
+                  "cc": 93,
+                  "value": 93
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e_c49d3775a3e6",
+          "name": "Brassy AT",
+          "routes": [
+            {
+              "machineId": "m_24d196fd4495",
+              "midnamFile": "Kodamo/Essence FM.midnam",
+              "deviceName": "Kodamo Essence FM",
+              "bankName": "Bank E",
+              "msb": 0,
+              "lsb": 4,
+              "program": 11,
+              "patchName": "-",
+              "ccSlots": [
+                {
+                  "cc": 7,
+                  "value": 127
+                },
+                {
+                  "cc": 91,
+                  "value": 0
+                },
+                {
+                  "cc": 93,
+                  "value": 69
+                }
+              ]
+            },
+            {
+              "machineId": "m_57f33818bc73",
+              "midnamFile": "E-Mu/Proteus Custom.midnam",
+              "deviceName": "E-mu Systems Proteus Custom",
+              "bankName": "User Bank 0",
+              "msb": 0,
+              "lsb": 0,
+              "program": 24,
+              "patchName": "Preset 024",
+              "ccSlots": null
+            }
+          ]
+        }
+      ],
+      "hotkeys": {
+        "G1": "e_94bdc12f5f05",
+        "G2": "e_9a4b33314480",
+        "G3": "e_ceaabafd4217",
+        "G4": "e_fcf8a1696771",
+        "G5": "e_236a9f33758f",
+        "G6": "e_651bbddef2fb",
+        "G7": "e_508e94f69b78",
+        "G8": "e_226874ed3a93",
+        "G9": "e_ad69f10c48ee",
+        "G10": "e_43705578d9e5",
+        "G11": "e_da68cd63df21",
+        "G12": "e_1890a378f28a",
+        "G13": "e_56467291c0c3",
+        "G14": "e_7dacd1794f20",
+        "G15": "e_c49d3775a3e6"
       }
     }
   ],
-  "activeId": "sl_5843e77461b3"
+  "activeId": "sl_d248e39ffb1b"
 }

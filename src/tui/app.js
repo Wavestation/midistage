@@ -5,8 +5,6 @@ const fs = require("fs");
 const path = require("path");
 const child_process = require("child_process");
 
-const { SerialPort } = require("serialport");
-
 const blessed = require("blessed");
 
 const { Settings } = require("../core/settings");
@@ -3381,7 +3379,7 @@ function runPM2(action)
         prompt.focus();
     
         prompt.input(
-            "Type A to H to assign, DEL to remove, ALL to clear all entries",
+            "Type 1 to 22 to assign, DEL to remove, ALL to clear all entries",
             "",
             (err, value) => {
                 screen.grabKeys = false;
@@ -3413,7 +3411,7 @@ function runPM2(action)
                       setStatus("Unable to clear hotkeys!", "warn");
                     }
                 }
-                else if (/^[A-H]$/.test(v)) 
+                else if (/^(?:[1-9]|1\d|2[0-2])$/.test(v)) 
                 {
                   if(model.assignHotkey(model.getActiveSetlist().id, v, e.id))
                   {
@@ -3890,27 +3888,54 @@ function buildSystemPage()
     screen.render();
   }
 
+  const BACKLIGHT_COLOR_PRESETS = Object.freeze({
+    green: "#48C410",
+    amber: "#FF8C00",
+    orange: "#FF8C00",
+    red: "#FF4030",
+    blue: "#4080FF",
+    cyan: "#30D0D0",
+    magenta: "#D040FF",
+    purple: "#8A4DFF",
+    pink: "#FF66CC",
+    white: "#FFFFFF",
+    off: "#000000"
+  });
+
+  function normalizeBacklightColorInput(value)
+  {
+    const raw = String(value || "").trim();
+    if (!raw) return null;
+
+    const preset = BACKLIGHT_COLOR_PRESETS[raw.toLowerCase()];
+    if (preset) return preset;
+
+    const hex = raw.startsWith("#") ? raw.slice(1) : raw;
+    if (/^[0-9a-fA-F]{6}$/.test(hex)) return `#${hex.toUpperCase()}`;
+    if (/^[0-9a-fA-F]{3}$/.test(hex)) return `#${hex.split("").map((ch) => ch + ch).join("").toUpperCase()}`;
+    return null;
+  }
+
   function buildItems()
   {
-
     const currentItem = list.selected | 0;
 
     const ar = !!setmgr.getSetting("ui.autorecallOnScroll", false);
     const fz = !!setmgr.getSetting("ui.enableFuzzySearch", false);
-    const rs = setmgr.getSetting("remote.serialPort", "/dev/ttyS0");
-    const rb = setmgr.getSetting("remote.serialRate", 38400);
     const to = setmgr.getSetting("remote.vfdIdleTime", 39);
     const ds = !!setmgr.getSetting("remote.vfdDeepSleep", false);
     const br = setmgr.getSetting("remote.vfdBrightness", 3);
+    const bc = normalizeBacklightColorInput(setmgr.getSetting("remote.backlightColor", "#48C410")) || "#48C410";
 
     list.setItems([
       `UI: Auto-recall setlist entry on scroll: {bold}${ar ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
       `UI: Enable fuzzy search in lists: {bold}${fz ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
-      `Remote: Serial Port: {bold}${rs}{/bold}`,
-      `Remote: Serial Speed: {bold}${rb}{/bold}`,
+      "Remote: Device: {bold}Logitech G13{/bold}",
+      "Remote: Hotkeys: {bold}G1..G22{/bold}",
       `Remote: Display Idle Time: {bold}${to}{/bold}`,
       `Remote: Display Deep Sleep: {bold}${ds ? "{green-fg}ON{/green-fg}" : "{red-fg}OFF{/red-fg}"}{/bold}`,
       `Remote: Display Brightness: {bold}${br}{/bold}`,
+      `Remote: Backlight Color: {bold}${bc}{/bold}`,
       "{yellow-fg}Machine: Software restart!{/yellow-fg}",
       "{#FFA500-fg}Machine: Hardware reboot!{/#FFA500-fg}",
       "{red-fg}Machine: Hardware poweroff!{/red-fg}",
@@ -3955,13 +3980,13 @@ function buildSystemPage()
       screen.render();
       const ok = runSystemctl(a);
       if (!ok) setStatus("Failed to execute systemctl (sudo/policy?).", "err");
-    } 
+    }
     else if (a === "restart")
     {
       setStatus("Restarting software services...", "ok");
       screen.render();
       const ok = runPM2(["restart", "all"]);
-      if (!ok) setStatus("Failed to execute PM2 restart command... :(", "err");   
+      if (!ok) setStatus("Failed to execute PM2 restart command... :(", "err");
     }
   }
 
@@ -3993,129 +4018,15 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 2)  // remote serial port
+    if (idx === 2)
     {
-      const prompt = blessed.prompt({
-        parent: screen,
-        border: "line",
-        height: 7,
-        width: 60,
-        top: "center",
-        left: "center",
-        label: " Set remote serial port ",
-        keys: true,
-        vi: true
-      });
-
-      screen.grabKeys = true;
-      prompt.focus();
-
-      prompt.input(
-      "Type the patch to the serial port. e.g.: /dev/ttyS0",
-      "/dev/",
-      (err, value) => {
-          screen.grabKeys = false;
-
-          if (err || !value) 
-          {
-              screen.render();
-              return;
-          }
-
-          let n = value.trim();
-
-          let validatePort = false;
-          const ports = SerialPort.list().then(ports => {
-            console.log("[APP / SYSTEM] AVAILABLE PORTS: " + JSON.stringify(ports));
-
-            validatePort = ports.find(p => p.path === n);
-
-            if (validatePort)
-            {
-              setmgr.setSetting("remote.serialPort", n);
-              console.log("[APP / SYSTEM] SETTINGS: " + settings);
-              settings = setmgr.settings;
-              buildItems();
-
-              setStatus(`Remote serial port is now ${n}. Please reboot to apply.`, "ok");
-
-              const cur = setmgr.getSetting("remote.serialPort", 0);
-
-              console.log("[APP / SYSTEM] SAVING REMPORT " + cur + ":" + n);
-
-              screen.render();
-              return;
-            } else {
-              setStatus(`Unable to set ${n} as remote serial port. Please check your input.`, "warn");
-            }
-            screen.render();
-            return;
-          })
-          .catch(err =>
-          {
-            setStatus(`Unable to list serial ports. Please check your hardware.`, "err");
-            screen.render();
-            return;
-          });
-        }
-      );
-      screen.render();
+      setStatus("Midistage now uses the Logitech G13 directly. No serial port is required.", "ok");
       return;
     }
 
-    if (idx === 3)  // remote serial speed
+    if (idx === 3)
     {
-      const prompt = blessed.prompt({
-        parent: screen,
-        border: "line",
-        height: 7,
-        width: 60,
-        top: "center",
-        left: "center",
-        label: " Set remote serial baudrate ",
-        keys: true,
-        vi: true
-      });
-
-      screen.grabKeys = true;
-      prompt.focus();
-
-      prompt.input(
-      "Type a number between 10 and 115200 to set remote serial baudrate.",
-      "",
-      (err, value) => {
-          screen.grabKeys = false;
-
-          if (err || !value) 
-          {
-              screen.render();
-              return;
-          }
-
-          if (Number.isInteger(parseInt(value)))
-          {
-            const n = Math.max(10, Math.min(115200, value));
-
-            setmgr.setSetting("remote.serialRate", n);
-            console.log("[APP / SYSTEM] SETTINGS: " + settings);
-            settings = setmgr.settings;
-            buildItems();
-
-            setStatus(`Remote serial baudrate is now ${n}. Please reboot to apply.`, "ok");
-
-            const cur = setmgr.getSetting("remote.serialRate", 0);
-
-            console.log("[APP / SYSTEM] SAVING REMBAUD " + cur + ":" + n);
-
-            screen.render();
-            return;
-          }
-
-          screen.render();
-          return;
-        }
-      );
-      screen.render();
+      setStatus("Hotkeys now use G1..G22. In assignment prompts, type 1..22.", "ok");
       return;
     }
 
@@ -4142,7 +4053,7 @@ function buildSystemPage()
       (err, value) => {
           screen.grabKeys = false;
 
-          if (err || !value) 
+          if (err || !value)
           {
               screen.render();
               return;
@@ -4210,7 +4121,7 @@ function buildSystemPage()
       (err, value) => {
           screen.grabKeys = false;
 
-          if (err || !value) 
+          if (err || !value)
           {
               screen.render();
               return;
@@ -4244,27 +4155,76 @@ function buildSystemPage()
       return;
     }
 
-    if (idx === 7)  // restart soft
+    if (idx === 7)  // remote backlight color
+    {
+      const prompt = blessed.prompt({
+        parent: screen,
+        border: "line",
+        height: 8,
+        width: 68,
+        top: "center",
+        left: "center",
+        label: " Set remote backlight color ",
+        keys: true,
+        vi: true
+      });
+
+      screen.grabKeys = true;
+      prompt.focus();
+
+      prompt.input(
+      "Type a color name (green, amber, red, blue, cyan, magenta, white, off) or #RRGGBB",
+      normalizeBacklightColorInput(setmgr.getSetting("remote.backlightColor", "#48C410")) || "#48C410",
+      (err, value) => {
+          screen.grabKeys = false;
+
+          if (err || !value)
+          {
+              screen.render();
+              return;
+          }
+
+          const color = normalizeBacklightColorInput(value);
+          if (!color)
+          {
+            setStatus("Invalid color. Use a preset name or a #RRGGBB value.", "warn");
+            screen.render();
+            return;
+          }
+
+          setmgr.setSetting("remote.backlightColor", color);
+          settings = setmgr.settings;
+          buildItems();
+          model.emit("remoteBacklightColor", {value: color});
+          setStatus(`Backlight color is now ${color}.`, "ok");
+          screen.render();
+        }
+      );
+      screen.render();
+      return;
+    }
+
+    if (idx === 8)  // restart soft
     {
       askYes("Restart the software?", "restart");
       return;
     }
 
-    if (idx === 8)  // reboot
+    if (idx === 9)  // reboot
     {
       askYes("Reboot the system?", "reboot");
       return;
     }
 
-    if (idx === 9)  // poweroff
+    if (idx === 10)  // poweroff
     {
       askYes("Power off the system?", "poweroff");
       return;
     }
 
-    if (idx === 10)  // aboutbox
+    if (idx === 11)  // aboutbox
     {
-      // IMPORTANT FIX: open About box next tick so it doesn't immediately eat the Enter key.
+      // IMPORTANT FIX: open About box next tick so it does not immediately eat the Enter key.
       setImmediate(() =>
       {
         const logo = (typeof ASCIILogo !== "undefined" && ASCIILogo && ASCIILogo.length)
