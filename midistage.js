@@ -104,11 +104,14 @@ remote.setBacklightColor(settings.getSetting("remote.backlightColor", "#48C410")
 remote.setCharTable(0);
 remote.setIntlFont(0);
 
-remote.showText(`? MIDISTAGE ver${appVer} ?`, "");
+//remote.showText(`${String.fromCharCode(7)} MIDISTAGE ver${appVer} ${String.fromCharCode(7)}`, "");
+remote.showText(`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)}MIDISTAGE ver${appVer} ${String.fromCharCode(7)}`, "");
+
 
 let remoteLogoAnimStep = 0;
 let remoteLogoAnim = setInterval(() => {
-  const animsymbs = [176, 176, 176, 176, 176, 177, 177, 177, 177, 177, 178, 178, 178, 178, 178, 219, 219, 219, 219, 219];
+  //const animsymbs = [176, 176, 176, 176, 176, 177, 177, 177, 177, 177, 178, 178, 178, 178, 178, 219, 219, 219, 219, 219];
+  const animsymbs = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4];
   remote.showTextXY(String.fromCharCode(animsymbs[remoteLogoAnimStep]), remoteLogoAnimStep, 2);
 
   remoteLogoAnimStep++;
