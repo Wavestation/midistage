@@ -12,7 +12,7 @@ const { Settings } = require("./src/core/settings");
 const MIDNAM_DIR = path.join(__dirname, "data", "names");
 const SETTINGS_PATH = path.join(__dirname, "data", "settings.json");
 
-const appVer = "1.1";
+const appVer = "1.2";
 
 const settings = new Settings(SETTINGS_PATH);
 
@@ -85,7 +85,7 @@ else
   startApp(MIDNAM_DIR, null, appVer, model);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
-// D?marrage de la RC
+// Démarrage de la RC
 const remote = new G13RemoteDevice({
   log: console.log,
   vfdIdleDelay: parseInt(settings.getSetting("remote.vfdIdleTime", 39), 10) * 1000,
@@ -125,7 +125,7 @@ process.on("SIGTERM", () => { void shutdown(0); });
 
 remote.initVFD();
 remote.setVFDBrightness(settings.getSetting("remote.vfdBrightness", 3));
-remote.setBacklightColor(settings.getSetting("remote.backlightColor", "#48C410"));
+remote.setBacklightColor("#48C410");
 remote.setCharTable(0);
 remote.setIntlFont(0);
 
@@ -136,8 +136,31 @@ remote.showText(`${String.fromCharCode(7)} MIDISTAGE ver${appVer} ${String.fromC
 let remoteLogoAnimStep = 0;
 remoteLogoAnim = setInterval(() => {
   //const animsymbs = [176, 176, 176, 176, 176, 177, 177, 177, 177, 177, 178, 178, 178, 178, 178, 219, 219, 219, 219, 219];
-  const animsymbs = [0, 0x1E, 0x1F, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7];
+  const animsymbs = [0, 0x1E, 0x1F, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7];
+  const animgay = [
+    "#ff0000", // Rouge
+    "#ff5500",
+    "#ffaa00",
+    "#ffff00", // Jaune
+    "#aaff00",
+    "#55ff00",
+    "#00ff00", // Vert
+    "#00ff55",
+    "#00ffaa",
+    "#00ffff", // Cyan
+    "#00aaff",
+    "#0055ff",
+    "#0000ff", // Bleu
+    "#2a00ff",
+    "#5500ff",
+    "#8000ff", // Indigo / Violet
+    "#aa00ff",
+    "#d400ff",
+    "#ff00ff"  // Magenta
+  ];
+  remote.setBacklightColor(animgay[remoteLogoAnimStep]);
   remote.showTextXY(`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)}MIDISTAGE ver${appVer} ${String.fromCharCode(0)}`, 1, 1);
+  if (remoteLogoAnimStep >= 10) remote.showTextXY(`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)} by Masami Komuro`, 1, 1);
   remote.showTextXY(`${String.fromCharCode(0x1E)}${String.fromCharCode(0x1F)}`, 1, 2);
   remote.showTextXY(String.fromCharCode(animsymbs[remoteLogoAnimStep]), remoteLogoAnimStep, 2);
 
@@ -152,9 +175,10 @@ remoteSplashTimer = setTimeout(() => {
   let currentName = uis.currentEntryName;
   if (model.getActiveSetlist().entries.length == 0) currentName = "<NO ENTRY>";
 
+  remote.setBacklightColor(settings.getSetting("remote.backlightColor", "#48C410"));
   remote.showText(`{${uis.currentSetlistName}}`, currentName);
   remote.showTextXY("[WT]", 17, 1);
-}, 2639);
+}, 2939);
 
 remote.on("connect", (payload) => {
   console.log(`[REMOTE] G13 AVAILABLE ON ${payload.devicePath}`);
@@ -184,7 +208,7 @@ model.on("recalledEntry", (state) =>
 {
   remote.clearVFD();
   remote.showText(state.setlist, state.entry);
-  remote.showTextXY(`[${state.status}]`, 17, 1);
+  remote.showTextXY(`[${state.status}]`, 14, 1);
   console.log(`[REMOTE] RECALLED ENTRY TO REMOTE ${state.setlist} - ${state.entry}`);
 });
 
@@ -192,7 +216,7 @@ model.on("changedSetlist", (state) =>
 {
   remote.clearVFD();
   remote.showText(state.setlist, state.entry);
-  remote.showTextXY(`[${state.status}]`, 17, 1);
+  remote.showTextXY(`[${state.status}]`, 14, 1);
   console.log(`[REMOTE] RECALLED SETLIST TO REMOTE ${state.setlist} - ${state.entry}`);
 });
 
@@ -224,6 +248,6 @@ model.on("remoteVFDDeepSleep", (value) => {
 });
 
 model.on("remoteBacklightColor", (value) => {
-  const applied = remote.setBacklightColor(value.value);
+  const applied = remote.setBacklightColor(value.value || settings.getSetting("remote.backlightColor", "#48C410"));
   console.log(`[REMOTE] PARAMETER BACKLIGHT COLOR CHANGED TO ${applied}`);
 });

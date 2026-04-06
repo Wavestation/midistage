@@ -278,23 +278,26 @@ class Model extends EventEmitter
             case "M2":
                 this.triggerFunctionKey(2);
                 return;
+            case "JOY_LEFT":
             case "M3":
                 this.triggerFunctionKey(4);
                 return;
+            case "JOY_DOWN":
             case "MR":
                 this.triggerFunctionKey(5);
                 return;
-            case "LCD3":
-                this.triggerFunctionKey(6);
-                return;
             case "FUNC":
                 if (this.currentMenu !== "power") this.openRemotePowerMenu();
+                if (this.currentMenu === "power") this.closeRemotePowerMenu();
                 return;
             case "LCD1":
                 if (this.currentMenu === "power") this.executeRemoteReboot();
                 return;
             case "LCD2":
                 if (this.currentMenu === "power") this.executeRemoteShutdown();
+                return;
+            case "LCD3":
+                // pour plus tard
                 return;
             case "LCD4":
                 if (this.currentMenu === "power") this.closeRemotePowerMenu();
@@ -320,15 +323,18 @@ class Model extends EventEmitter
     openRemotePowerMenu()
     {
         this.currentMenu = "power";
+        
         this.emit("remoteMessage", {
-            up:"FUNC: Power Menu",
-            down:"1:REB 2:OFF 4:BK"
+            up:"---- POWER MENU ----",
+            down:`${String.fromCharCode(0x02)}REBOOT ${String.fromCharCode(0x02)}PWROFF BCK${String.fromCharCode(0x02)}`
         });
+        this.emit("remoteBacklightColor", {value:"#FF0101"});
     }
 
     closeRemotePowerMenu()
     {
         this.currentMenu = "main";
+        this.emit("remoteBacklightColor", {value:""});
         this.showRemoteCurrentSetlist();
     }
 
@@ -459,7 +465,7 @@ class Model extends EventEmitter
         {
             this.emit("remoteMessage", {
                 up:`{${s.name}}`,
-                down: `Hotkey [${key}] unassigned!`
+                down: `[${key}] not assigned!`
             });
             return;
         }
