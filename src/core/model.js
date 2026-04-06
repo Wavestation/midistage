@@ -11,7 +11,7 @@ const { MidiPortsStore } = require("./midiports");
 
 const { EventEmitter } = require("events");
 
-const REMOTE_MAIN_TIP_TEXT = "?HELP? | ----- | ----- | ABOUT";
+const REMOTE_MAIN_TIP_TEXT = "?HELP? | ----- | SHOWC | ABOUT";
 const REMOTE_CLOSE_TIP_TEXT = " ----- | ----- | ----- | CLOSE";
 
 const gaycolors = [
@@ -337,7 +337,7 @@ class Model extends EventEmitter
                 if (this.currentMenu === "power") this.executeRemoteShutdown();
                 return;
             case "LCD3":
-                // pour plus tard
+                if (this.currentMenu === "main") this.showRemoteCurrentSetlist();
                 return;
             case "LCD4":
                 if (this.currentMenu === "power")
@@ -386,14 +386,14 @@ class Model extends EventEmitter
         {
             case "help":
                 this.emit("remoteMessage", {
-                    up:"M1-M2:Setlist Nav",
-                    down:"M3-MR:Entry Nav"
+                    up:`M1-M2 ${String.fromCharCode(0x03)} Setlist Nav`,
+                    down:`M3-MR ${String.fromCharCode(0x03)} Entry Nav`
                 });
                 break;
 
             case "about":
                 this.emit("remoteMessage", {
-                    up:`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)} MIDISTAGE ver%appver%`,
+                    up:`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)} MIDISTAGE${String.fromCharCode(0)}${String.fromCharCode(0)}${String.fromCharCode(0)}v%appver%`,
                     down:`${String.fromCharCode(0x1E)}${String.fromCharCode(0x1F)} by Masami Komuro`
                 });
                 break;

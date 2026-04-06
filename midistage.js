@@ -129,9 +129,9 @@ remote.setBacklightColor("#48C410");
 remote.setCharTable(0);
 remote.setIntlFont(0);
 
-remote.showText(`${String.fromCharCode(7)} MIDISTAGE ver${appVer} ${String.fromCharCode(7)}`, "");
+remote.showText(`${String.fromCharCode(7)} MIDISTAGE remote  ${String.fromCharCode(7)}`, "");
 //remote.showText(`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)}MIDISTAGE ver${appVer}${String.fromCharCode(0x1E)}${String.fromCharCode(0x1F)}`, "");
-
+remote.showTipText(`FW version ${appVer}`);
 
 let remoteLogoAnimStep = 0;
 remoteLogoAnim = setInterval(() => {
@@ -159,7 +159,7 @@ remoteLogoAnim = setInterval(() => {
     "#ff00ff"  // Magenta
   ];
   remote.setBacklightColor(animgay[remoteLogoAnimStep]);
-  remote.showTextXY(`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)}MIDISTAGE ver${appVer} ${String.fromCharCode(0)}`, 1, 1);
+  remote.showTextXY(`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)}MIDISTAGE remote  ${String.fromCharCode(0)}`, 1, 1);
   if (remoteLogoAnimStep >= 10) remote.showTextXY(`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)} by Masami Komuro`, 1, 1);
   remote.showTextXY(`${String.fromCharCode(0x1E)}${String.fromCharCode(0x1F)}`, 1, 2);
   remote.showTextXY(String.fromCharCode(animsymbs[remoteLogoAnimStep]), remoteLogoAnimStep, 2);
@@ -179,7 +179,7 @@ remoteSplashTimer = setTimeout(() => {
   remote.showText(`{${uis.currentSetlistName}}`, currentName);
   remote.showTextXY("[WT]", 17, 1);
 
-  remote.showTipText("?HELP? | ----- | ----- | ABOUT");
+  remote.showTipText("?HELP? | ----- | SHOWC | ABOUT");
 }, 2939);
 
 remote.on("connect", (payload) => {
