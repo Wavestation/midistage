@@ -364,7 +364,7 @@ function runPM2(action)
   function quit()
   {
     try { screen.destroy(); } catch { }
-    process.exit(0);
+    process.kill(process.pid, "SIGTERM");
   }
 
   // -------------------- Browse Page --------------------

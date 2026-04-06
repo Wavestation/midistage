@@ -16,6 +16,10 @@ const appVer = "1.1";
 
 const settings = new Settings(SETTINGS_PATH);
 
+let runtimeServer = null;
+let remoteLogoAnim = null;
+let remoteSplashTimer = null;
+
 const model = new Model({
   midnamDir: MIDNAM_DIR,
   fuzzySearchEnabled: !!settings.getSetting("ui.enableFuzzySearch", false)
@@ -41,7 +45,7 @@ if (process.argv.includes("--telnet"))
 
   console.log("Starting Telnet on port " + port + " ...");
 
-  startTelnetServer((io) => startApp(MIDNAM_DIR, io, appVer, model), port, {
+  runtimeServer = startTelnetServer((io) => startApp(MIDNAM_DIR, io, appVer, model), port, {
     terminal: "xterm-256color",
     unicode: true,
     cols: 80,
@@ -63,7 +67,7 @@ else if (process.argv.includes("--serial"))
 
   console.log("Starting Telnet on port " + portPath + " ...");
 
-  const srv = startSerialServer(
+  runtimeServer = startSerialServer(
     {
       path: portPath,
       baudRate: baud,
@@ -75,13 +79,6 @@ else if (process.argv.includes("--serial"))
     (io) => startApp(MIDNAM_DIR, io, appVer, model)
   );
 
-  const shutdown = () => {
-    try { srv.close(); } catch {}
-    try { require("./src/midi/driver").closeAll(); } catch {}
-    process.exit(0);
-  };
-  process.on("SIGINT", shutdown);
-  process.on("SIGTERM", shutdown);
 }
 else
 {
@@ -98,6 +95,34 @@ const remote = new G13RemoteDevice({
   backlightColor: settings.getSetting("remote.backlightColor", "#48C410")
 });
 
+let shuttingDown = false;
+
+async function shutdown(exitCode = 0)
+{
+  if (shuttingDown) return;
+  shuttingDown = true;
+
+  try { clearInterval(remoteLogoAnim); } catch {}
+  try { clearTimeout(remoteSplashTimer); } catch {}
+
+  try
+  {
+    await remote.shutdown();
+  }
+  catch (error)
+  {
+    console.warn("[REMOTE] SHUTDOWN ERROR " + (error.message || error));
+  }
+
+  try { runtimeServer && runtimeServer.close(); } catch {}
+  try { require("./src/midi/driver").closeAll(); } catch {}
+
+  process.exit(exitCode);
+}
+
+process.on("SIGINT", () => { void shutdown(0); });
+process.on("SIGTERM", () => { void shutdown(0); });
+
 remote.initVFD();
 remote.setVFDBrightness(settings.getSetting("remote.vfdBrightness", 3));
 remote.setBacklightColor(settings.getSetting("remote.backlightColor", "#48C410"));
@@ -109,7 +134,7 @@ remote.showText(`${String.fromCharCode(7)} MIDISTAGE ver${appVer} ${String.fromC
 
 
 let remoteLogoAnimStep = 0;
-let remoteLogoAnim = setInterval(() => {
+remoteLogoAnim = setInterval(() => {
   //const animsymbs = [176, 176, 176, 176, 176, 177, 177, 177, 177, 177, 178, 178, 178, 178, 178, 219, 219, 219, 219, 219];
   const animsymbs = [0, 0x1E, 0x1F, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7];
   remote.showTextXY(`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)}MIDISTAGE ver${appVer} ${String.fromCharCode(0)}`, 1, 1);
@@ -120,7 +145,7 @@ let remoteLogoAnim = setInterval(() => {
   if (remoteLogoAnimStep >= 21) clearInterval(remoteLogoAnim);
 }, 100);
 
-setTimeout(() => {
+remoteSplashTimer = setTimeout(() => {
   clearInterval(remoteLogoAnim);
 
   const uis = model.getUiState();

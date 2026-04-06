@@ -184,7 +184,13 @@ function sendCC(machine, cc, value)
 
 
 process.on("exit", closeAll);
-process.on("SIGINT", () => { closeAll(); process.exit(0); });
-process.on("SIGTERM", () => { closeAll(); process.exit(0); });
+process.on("SIGINT", () => {
+  closeAll();
+  if (process.listenerCount("SIGINT") === 1) process.exit(0);
+});
+process.on("SIGTERM", () => {
+  closeAll();
+  if (process.listenerCount("SIGTERM") === 1) process.exit(0);
+});
 
 module.exports = { listOutputs, sendPatch, sendCC, closeAll };

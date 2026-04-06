@@ -419,10 +419,37 @@ class G13RemoteDevice extends EventEmitter
     this._renderSafely();
   }
 
-  close()
+  async shutdown()
   {
     this._clearTimers();
-    this.device.close().catch((error) => this._handleError(error));
+    this.vfdoff = true;
+    this.sleeping = false;
+
+    try
+    {
+      await this._applyVisualState();
+      await this._render();
+    }
+    catch (error)
+    {
+      this._handleError(error);
+    }
+
+    await this.close();
+  }
+
+  async close()
+  {
+    this._clearTimers();
+
+    try
+    {
+      await this.device.close();
+    }
+    catch (error)
+    {
+      this._handleError(error);
+    }
   }
 }
 
