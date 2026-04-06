@@ -178,6 +178,8 @@ remoteSplashTimer = setTimeout(() => {
   remote.setBacklightColor(settings.getSetting("remote.backlightColor", "#48C410"));
   remote.showText(`{${uis.currentSetlistName}}`, currentName);
   remote.showTextXY("[WT]", 17, 1);
+
+  remote.showTipText("?HELP? | ----- | ----- | ABOUT");
 }, 2939);
 
 remote.on("connect", (payload) => {
@@ -221,11 +223,16 @@ model.on("changedSetlist", (state) =>
 });
 
 model.on("remoteMessage", (message) => {
-  remote.showText(message.up, message.down);
+  remote.showText(message.up.replace("%appver%", appVer), message.down.replace("%appver%", appVer));
 });
 
 model.on("remoteDisplayXY", (message) => {
   remote.showTextXY(message.text, message.xpos, message.ypos);
+});
+
+model.on("remoteTipText", (message) => {
+  const text = (message && typeof message === "object") ? message.text : message;
+  remote.showTipText(text);
 });
 
 model.on("remoteDisplayPower", (value) => {

@@ -4,6 +4,11 @@ const { EventEmitter } = require("events");
 const { G13Interface } = require("gtreize-interface");
 
 const DISPLAY_WIDTH = 20;
+const DISPLAY_HEIGHT = 43;
+const MAIN_LINE_HEIGHT = 16;
+const TIP_FONT_ID = 0;
+const TIP_LINE_HEIGHT = 8;
+const TIP_TEXT_Y = DISPLAY_HEIGHT - TIP_LINE_HEIGHT;
 const BLANK_LINE = " ".repeat(DISPLAY_WIDTH);
 const POWER_OFF_DELAY_OFFSET_SECONDS = 3600;
 const DEFAULT_BACKLIGHT_COLOR = "#48C410";
@@ -160,6 +165,7 @@ class G13RemoteDevice extends EventEmitter
     this.vfdoff = false;
     this.disabled = false;
     this.lines = [BLANK_LINE, BLANK_LINE];
+    this.tipText = "";
 
     this.device = new G13Interface({
       pollIntervalMs,
@@ -305,12 +311,33 @@ class G13RemoteDevice extends EventEmitter
       return;
     }
 
-    await this.device.display.write(`${this.lines[0]}\n${this.lines[1]}`, {
+    const lcd = this.device.lcd;
+    lcd.clear();
+    lcd.drawText(0, 0, this.lines[0], {
       font: this.fontId,
       wrap: false,
-      lineHeight: 16,
+      lineHeight: MAIN_LINE_HEIGHT,
       spacing: 0
     });
+    lcd.drawText(0, MAIN_LINE_HEIGHT, this.lines[1], {
+      font: this.fontId,
+      wrap: false,
+      lineHeight: MAIN_LINE_HEIGHT,
+      spacing: 0
+    });
+
+    if (this.tipText)
+    {
+      lcd.drawText(0, TIP_TEXT_Y, this.tipText, {
+        font: TIP_FONT_ID,
+        wrap: false,
+        lineHeight: TIP_LINE_HEIGHT,
+        spacing: 1,
+        maxWidth: lcd.width
+      });
+    }
+
+    await lcd.flush();
   }
 
   _renderSafely()
@@ -424,6 +451,14 @@ class G13RemoteDevice extends EventEmitter
     this.lines[row] = line.join("");
     this._resetIdleTimer();
     this._renderSafely();
+  }
+
+  showTipText(text)
+  {
+    this.tipText = sanitizeDisplayText(text);
+    this._resetIdleTimer();
+    this._renderSafely();
+    return this.tipText;
   }
 
   async shutdown()

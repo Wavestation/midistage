@@ -11,6 +11,30 @@ const { MidiPortsStore } = require("./midiports");
 
 const { EventEmitter } = require("events");
 
+const REMOTE_MAIN_TIP_TEXT = "?HELP? | ----- | ----- | ABOUT";
+const REMOTE_CLOSE_TIP_TEXT = " ----- | ----- | ----- | CLOSE";
+
+const gaycolors = [
+    "#ff0000", // Rouge
+    "#ff5500",
+    "#ffaa00",
+    "#ffff00", // Jaune
+    "#aaff00",
+    "#55ff00",
+    "#00ff00", // Vert
+    "#00ff55",
+    "#00ffaa",
+    "#00ffff", // Cyan
+    "#00aaff",
+    "#0055ff",
+    "#0000ff", // Bleu
+    "#2a00ff",
+    "#5500ff",
+    "#8000ff", // Indigo / Violet
+    "#aa00ff",
+    "#d400ff",
+    "#ff00ff"  // Magenta
+  ];
 
 function fuzzyMatch(query, text)
 {
@@ -297,8 +321,17 @@ class Model extends EventEmitter
                     this.closeRemotePowerMenu();
                     return;
                 }
+                return;
             case "LCD1":
-                if (this.currentMenu === "power") this.executeRemoteReboot();
+                if (this.currentMenu === "power")
+                {
+                    this.executeRemoteReboot();
+                    return;
+                }
+                if (this.currentMenu === "main")
+                {
+                    this.openRemoteHelpScreen();
+                }
                 return;
             case "LCD2":
                 if (this.currentMenu === "power") this.executeRemoteShutdown();
@@ -307,7 +340,20 @@ class Model extends EventEmitter
                 // pour plus tard
                 return;
             case "LCD4":
-                if (this.currentMenu === "power") this.closeRemotePowerMenu();
+                if (this.currentMenu === "power")
+                {
+                    this.closeRemotePowerMenu();
+                    return;
+                }
+                if (this.currentMenu === "main")
+                {
+                    this.openRemoteAboutScreen();
+                    return;
+                }
+                if (this.currentMenu === "help" || this.currentMenu === "about")
+                {
+                    this.closeRemoteAuxScreen();
+                }
                 return;
             default:
                 return;
@@ -327,14 +373,67 @@ class Model extends EventEmitter
         });
     }
 
+    showRemoteMainTip()
+    {
+        this.emit("remoteTipText", { text: REMOTE_MAIN_TIP_TEXT });
+    }
+
+    openRemotePlaceholderScreen(menuName)
+    {
+        this.currentMenu = menuName;
+
+        switch(menuName)
+        {
+            case "help":
+                this.emit("remoteMessage", {
+                    up:"M1-M2:Setlist Nav",
+                    down:"M3-MR:Entry Nav"
+                });
+                break;
+
+            case "about":
+                this.emit("remoteMessage", {
+                    up:`${String.fromCharCode(0x1C)}${String.fromCharCode(0x1D)} MIDISTAGE ver%appver%`,
+                    down:`${String.fromCharCode(0x1E)}${String.fromCharCode(0x1F)} by Masami Komuro`
+                });
+                break;
+        }
+        this.emit("remoteTipText", { text: REMOTE_CLOSE_TIP_TEXT });
+    }
+
+    openRemoteHelpScreen()
+    {
+        this.openRemotePlaceholderScreen("help");
+        this.emit("remoteBacklightColor", {value:"#0039FF"});
+        this.emit("remoteMacroLeds", { m1: true, m2: true, m3: true, mr: true });
+    }
+
+    openRemoteAboutScreen()
+    {
+        const rndcolor = Math.floor(Math.random() * gaycolors.length)
+        this.openRemotePlaceholderScreen("about");
+        this.emit("remoteBacklightColor", {value:gaycolors[rndcolor]});
+        this.emit("remoteMacroLeds", { m1: false, m2: false, m3: false, mr: false });
+    }
+
+    closeRemoteAuxScreen()
+    {
+        this.currentMenu = "main";
+        this.emit("remoteBacklightColor", {value:""});
+        this.emit("remoteMacroLeds", { m1: true, m2: true, m3: true, mr: true });
+        this.showRemoteMainTip();
+        this.showRemoteCurrentSetlist();
+    }
+
     openRemotePowerMenu()
     {
         this.currentMenu = "power";
         
         this.emit("remoteMessage", {
             up:"---- POWER MENU ----",
-            down:`${String.fromCharCode(0x02)}REBOOT ${String.fromCharCode(0x02)}PWROFF BCK${String.fromCharCode(0x02)}`
+            down:`${String.fromCharCode(0x02)}use keys below LCD${String.fromCharCode(0x02)}`
         });
+        this.emit("remoteTipText", { text: "REBOOT | PWROFF | ---- | CLOSE" });
         this.emit("remoteBacklightColor", {value:"#FF0101"});
         this.emit("remoteMacroLeds", { m1: false, m2: false, m3: false, mr: false });
     }
@@ -342,6 +441,7 @@ class Model extends EventEmitter
     closeRemotePowerMenu()
     {
         this.currentMenu = "main";
+        this.showRemoteMainTip();
         this.emit("remoteBacklightColor", {value:""});
         this.emit("remoteMacroLeds", { m1: true, m2: true, m3: true, mr: true });
         this.showRemoteCurrentSetlist();
