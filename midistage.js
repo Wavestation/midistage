@@ -179,7 +179,7 @@ remoteSplashTimer = setTimeout(() => {
   remote.showText(`{${uis.currentSetlistName}}`, currentName);
   remote.showTextXY("[WT]", 17, 1);
 
-  remote.showTipText("?HELP? | ----- | SHOWC | ABOUT");
+  remote.showTipText(" HELP? | ----- | SHOWC | ABOUT");
 }, 2939);
 
 remote.on("connect", (payload) => {

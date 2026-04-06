@@ -11,7 +11,7 @@ const { MidiPortsStore } = require("./midiports");
 
 const { EventEmitter } = require("events");
 
-const REMOTE_MAIN_TIP_TEXT = "?HELP? | ----- | SHOWC | ABOUT";
+const REMOTE_MAIN_TIP_TEXT = " HELP? | ----- | SHOWC | ABOUT";
 const REMOTE_CLOSE_TIP_TEXT = " ----- | ----- | ----- | CLOSE";
 
 const gaycolors = [
