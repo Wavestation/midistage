@@ -378,7 +378,7 @@ class Model extends EventEmitter
         this.emit("remoteTipText", { text: REMOTE_MAIN_TIP_TEXT });
     }
 
-    openRemotePlaceholderScreen(menuName)
+    openRemoteAuxScreen(menuName)
     {
         this.currentMenu = menuName;
 
@@ -403,7 +403,7 @@ class Model extends EventEmitter
 
     openRemoteHelpScreen()
     {
-        this.openRemotePlaceholderScreen("help");
+        this.openRemoteAuxScreen("help");
         this.emit("remoteBacklightColor", {value:"#0039FF"});
         this.emit("remoteMacroLeds", { m1: true, m2: true, m3: true, mr: true });
     }
@@ -411,7 +411,7 @@ class Model extends EventEmitter
     openRemoteAboutScreen()
     {
         const rndcolor = Math.floor(Math.random() * gaycolors.length)
-        this.openRemotePlaceholderScreen("about");
+        this.openRemoteAuxScreen("about");
         this.emit("remoteBacklightColor", {value:gaycolors[rndcolor]});
         this.emit("remoteMacroLeds", { m1: false, m2: false, m3: false, mr: false });
     }
@@ -431,7 +431,7 @@ class Model extends EventEmitter
         
         this.emit("remoteMessage", {
             up:"---- POWER MENU ----",
-            down:`${String.fromCharCode(0x02)}use keys below LCD${String.fromCharCode(0x02)}`
+            down:`${String.fromCharCode(0x02)} use context keys ${String.fromCharCode(0x02)}`
         });
         this.emit("remoteTipText", { text: "REBOOT | PWROFF | ---- | CLOSE" });
         this.emit("remoteBacklightColor", {value:"#FF0101"});
