@@ -251,3 +251,8 @@ model.on("remoteBacklightColor", (value) => {
   const applied = remote.setBacklightColor(value.value || settings.getSetting("remote.backlightColor", "#48C410"));
   console.log(`[REMOTE] PARAMETER BACKLIGHT COLOR CHANGED TO ${applied}`);
 });
+
+model.on("remoteMacroLeds", (value) => {
+  const applied = remote.setMacroLeds(value);
+  console.log(`[REMOTE] PARAMETER REMOTE LEDS SET TO ${applied}`);
+});

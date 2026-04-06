@@ -351,6 +351,13 @@ class G13RemoteDevice extends EventEmitter
     return colorToHex(this.baseBacklightColor);
   }
 
+  setMacroLeds(value)
+  {
+    // { m1: false, m2: false, m3: false, mr: false }
+    this.device.lights.setMacroIndicators(value);
+    return value;
+  }
+
   setVFDReverse()
   {
   }

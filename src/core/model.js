@@ -287,9 +287,16 @@ class Model extends EventEmitter
                 this.triggerFunctionKey(5);
                 return;
             case "FUNC":
-                if (this.currentMenu !== "power") this.openRemotePowerMenu();
-                if (this.currentMenu === "power") this.closeRemotePowerMenu();
-                return;
+                if (this.currentMenu !== "power") 
+                {
+                    this.openRemotePowerMenu();
+                    return;
+                }
+                else if (this.currentMenu === "power") 
+                {
+                    this.closeRemotePowerMenu();
+                    return;
+                }
             case "LCD1":
                 if (this.currentMenu === "power") this.executeRemoteReboot();
                 return;
@@ -329,12 +336,14 @@ class Model extends EventEmitter
             down:`${String.fromCharCode(0x02)}REBOOT ${String.fromCharCode(0x02)}PWROFF BCK${String.fromCharCode(0x02)}`
         });
         this.emit("remoteBacklightColor", {value:"#FF0101"});
+        this.emit("remoteMacroLeds", { m1: false, m2: false, m3: false, mr: false });
     }
 
     closeRemotePowerMenu()
     {
         this.currentMenu = "main";
         this.emit("remoteBacklightColor", {value:""});
+        this.emit("remoteMacroLeds", { m1: true, m2: true, m3: true, mr: true });
         this.showRemoteCurrentSetlist();
     }
 
