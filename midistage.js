@@ -136,7 +136,7 @@ remote.showText(`${String.fromCharCode(7)} MIDISTAGE ver${appVer} ${String.fromC
 let remoteLogoAnimStep = 0;
 remoteLogoAnim = setInterval(() => {
   //const animsymbs = [176, 176, 176, 176, 176, 177, 177, 177, 177, 177, 178, 178, 178, 178, 178, 219, 219, 219, 219, 219];
-  const animsymbs = [0, 0x1E, 0x1F, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7];
+  const animsymbs = [0, 0x1E, 0x1F, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5];
   const animgay = [
     "#ff0000", // Rouge
     "#ff5500",

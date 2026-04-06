@@ -453,6 +453,7 @@ class Model extends EventEmitter
             up:"MIDISTAGE REBOOTING",
             down: "Please Wait..."
         });
+        this.emit("remoteTipText", { text: ""});
         this.runSystemctl("reboot");
     }
 
@@ -462,6 +463,7 @@ class Model extends EventEmitter
             up:"MIDISTAGE SYSTEM...",
             down: "...IS SHUTTING DOWN"
         });
+        this.emit("remoteTipText", { text: ""});
         setTimeout(() => {
             this.emit("remoteDisplayPower", {value:0});
             this.runSystemctl("poweroff");
