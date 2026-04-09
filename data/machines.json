@@ -1,5 +1,5 @@
 {
-  "activeId": "m_24d196fd4495",
+  "activeId": "m_22df58e6d023",
   "machines": [
     {
       "id": "m_korgtr_ch5",
@@ -120,6 +120,14 @@
       "out": null,
       "outSlot": 30,
       "channel": 1
+    },
+    {
+      "id": "m_bfc9fced4f53",
+      "name": "Fusion 8HD",
+      "midnamFile": "Alesis/Fusion.midnam",
+      "out": null,
+      "outSlot": 29,
+      "channel": 16
     }
   ]
 }

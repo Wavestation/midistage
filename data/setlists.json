@@ -184,8 +184,8 @@
         }
       ],
       "hotkeys": {
-        "G1": "e_251c6475101c",
         "G2": "e_03dd5400118e",
+        "G1": "e_251c6475101c",
         "G3": "e_3a874124be5c"
       }
     },
@@ -502,11 +502,11 @@
         }
       ],
       "hotkeys": {
-        "G1": "e_6be0004e39e6",
         "G2": "e_d73e14a68e81",
+        "G5": "e_67767b65c9df",
+        "G1": "e_6be0004e39e6",
         "G3": "e_258c29e807d4",
-        "G4": "e_0d1d296bd06c",
-        "G5": "e_67767b65c9df"
+        "G4": "e_0d1d296bd06c"
       }
     },
     {
@@ -924,14 +924,14 @@
         }
       ],
       "hotkeys": {
-        "G2": "e_1b39745840c1",
         "G3": "e_60b5702732b4",
-        "G4": "e_44764549c894",
-        "G5": "e_d7a4de1e54a4",
+        "G1": "e_287ee50da425",
         "G6": "e_715be3cc57ac",
-        "G7": "e_a920e28688b2",
+        "G4": "e_44764549c894",
+        "G2": "e_1b39745840c1",
+        "G5": "e_d7a4de1e54a4",
         "G8": "e_81aab632ce72",
-        "G1": "e_287ee50da425"
+        "G7": "e_a920e28688b2"
       }
     },
     {
@@ -1864,22 +1864,107 @@
         }
       ],
       "hotkeys": {
-        "G1": "e_94bdc12f5f05",
+        "G15": "e_c49d3775a3e6",
         "G2": "e_9a4b33314480",
-        "G3": "e_ceaabafd4217",
-        "G4": "e_fcf8a1696771",
-        "G5": "e_236a9f33758f",
-        "G6": "e_651bbddef2fb",
-        "G7": "e_508e94f69b78",
-        "G8": "e_226874ed3a93",
-        "G9": "e_ad69f10c48ee",
-        "G10": "e_43705578d9e5",
-        "G11": "e_da68cd63df21",
         "G12": "e_1890a378f28a",
+        "G3": "e_ceaabafd4217",
+        "G5": "e_236a9f33758f",
+        "G1": "e_94bdc12f5f05",
+        "G4": "e_fcf8a1696771",
+        "G6": "e_651bbddef2fb",
         "G13": "e_56467291c0c3",
         "G14": "e_7dacd1794f20",
-        "G15": "e_c49d3775a3e6"
+        "G7": "e_508e94f69b78",
+        "G9": "e_ad69f10c48ee",
+        "G8": "e_226874ed3a93",
+        "G11": "e_da68cd63df21",
+        "G10": "e_43705578d9e5"
       }
+    },
+    {
+      "id": "sl_d4282dfc27fd",
+      "name": "Bakasable",
+      "entries": [
+        {
+          "id": "e_e70d3fe542f8",
+          "name": "Dark Classical",
+          "routes": [
+            {
+              "machineId": "m_bfc9fced4f53",
+              "midnamFile": "Alesis/Fusion.midnam",
+              "deviceName": "Alesis Fusion",
+              "bankName": "Preset 3",
+              "msb": 2,
+              "lsb": null,
+              "program": 0,
+              "patchName": "Holy Grail Dark Classical",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_0d013423997a",
+          "name": "Tiny Tines",
+          "routes": [
+            {
+              "machineId": "m_bfc9fced4f53",
+              "midnamFile": "Alesis/Fusion.midnam",
+              "deviceName": "Alesis Fusion",
+              "bankName": "Preset 2",
+              "msb": 1,
+              "lsb": null,
+              "program": 3,
+              "patchName": "Fusion Dyno Tines",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_c2ea732c93b5",
+          "name": "Masamixomatoz",
+          "routes": [
+            {
+              "machineId": "m_bfc9fced4f53",
+              "midnamFile": "Alesis/Fusion.midnam",
+              "deviceName": "Alesis Fusion",
+              "bankName": "Preset 1",
+              "msb": 0,
+              "lsb": null,
+              "program": 14,
+              "patchName": "Chimey",
+              "ccSlots": null
+            }
+          ]
+        },
+        {
+          "id": "e_7a4a5178b193",
+          "name": "Sompourt",
+          "routes": [
+            {
+              "machineId": "m_korgtr_ch5",
+              "midnamFile": "Korg/TR-Rack.midnam",
+              "deviceName": "Korg TR-Rack",
+              "bankName": "Program Bank A",
+              "msb": 0,
+              "lsb": 0,
+              "program": 0,
+              "patchName": "Tsunami Warning",
+              "ccSlots": null
+            }
+          ]
+        }
+      ],
+      "hotkeys": {
+        "G1": "e_e70d3fe542f8",
+        "G2": "e_0d013423997a",
+        "G3": "e_c2ea732c93b5"
+      }
+    },
+    {
+      "id": "sl_2f5e892b1746",
+      "name": "Nouvelle setlist",
+      "entries": [],
+      "hotkeys": {}
     }
   ],
   "activeId": "sl_d248e39ffb1b"

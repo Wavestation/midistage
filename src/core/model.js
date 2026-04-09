@@ -11,7 +11,7 @@ const { MidiPortsStore } = require("./midiports");
 
 const { EventEmitter } = require("events");
 
-const REMOTE_MAIN_TIP_TEXT = " HELP? | ----- | SHOWC | ABOUT";
+const REMOTE_MAIN_TIP_TEXT = " HELP? | ----- | SHOW ! | ABOUT";
 const REMOTE_CLOSE_TIP_TEXT = " ----- | ----- | ----- | CLOSE";
 
 const gaycolors = [
@@ -99,6 +99,23 @@ class Model extends EventEmitter
         try
         {
             const p = child_process.spawn("sudo", ["/bin/systemctl", action], {
+            stdio: "ignore",
+            detached: true
+            });
+            p.unref();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    runPM2(action)
+    {
+        try
+        {
+            const p = child_process.spawn("/usr/local/bin/pm2", action, {
             stdio: "ignore",
             detached: true
             });
@@ -325,7 +342,7 @@ class Model extends EventEmitter
             case "LCD1":
                 if (this.currentMenu === "power")
                 {
-                    this.executeRemoteReboot();
+                    this.executeRemoteRestart();
                     return;
                 }
                 if (this.currentMenu === "main")
@@ -334,10 +351,11 @@ class Model extends EventEmitter
                 }
                 return;
             case "LCD2":
-                if (this.currentMenu === "power") this.executeRemoteShutdown();
+                if (this.currentMenu === "power") this.executeRemoteReboot();
                 return;
             case "LCD3":
-                if (this.currentMenu === "main") this.showRemoteCurrentSetlist();
+                if (this.currentMenu === "power") this.executeRemoteShutdown();
+                else if (this.currentMenu === "main") this.showRemoteCurrentSetlist();
                 return;
             case "LCD4":
                 if (this.currentMenu === "power")
@@ -433,7 +451,7 @@ class Model extends EventEmitter
             up:"---- POWER MENU ----",
             down:`${String.fromCharCode(0x02)} use context keys ${String.fromCharCode(0x02)}`
         });
-        this.emit("remoteTipText", { text: "REBOOT | PWROFF | ---- | CLOSE" });
+        this.emit("remoteTipText", { text: "SW.RBT | HW.RBT | PWROFF | CLOSE" });
         this.emit("remoteBacklightColor", {value:"#FF0101"});
         this.emit("remoteMacroLeds", { m1: false, m2: false, m3: false, mr: false });
     }
@@ -467,6 +485,19 @@ class Model extends EventEmitter
         setTimeout(() => {
             this.emit("remoteDisplayPower", {value:0});
             this.runSystemctl("poweroff");
+        }, 1939);
+    }
+
+    executeRemoteRestart()
+    {
+        this.emit("remoteMessage", {
+            up:"MIDISTAGE SOFTWARE..",
+            down: "...IS RESTARTING..."
+        });
+        this.emit("remoteTipText", { text: ""});
+        setTimeout(() => {
+            this.emit("remoteDisplayPower", {value:0});
+            this.runPM2(["restart", "all"]);
         }, 1939);
     }
 

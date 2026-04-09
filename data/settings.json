@@ -5,7 +5,7 @@
   },
   "remote": {
     "vfdBrightness": 4,
-    "backlightColor": "#11FF11",
+    "backlightColor": "#01FF39",
     "vfdIdleTime": 39,
     "serialRate": 38400,
     "serialPort": "/dev/ttyUSB0",
